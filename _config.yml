@@ -1,15 +1,15 @@
 # Site settings
-name: Liu Qibo
+name: 刘其宝 
 email: liuqibao566@163.com
-author: Liu Qibao
+author: 刘其宝 
 url: http://liuqibao.me
-resume_site: http://www.hifreud.com/Resume.io/
+resume_site: http://liuqibao.me 
 github: https://github.com/liuqb566
 baseurl: ""
-description: Actually, less is more!
+description: Good Good Study Go Go Up! 
 meta_description: God!
 motto: It's our wits that make us men.
-banner: 学而不思则罔，思而不学则殆。
+banner: 学操千曲而后晓声，观千剑而后识器！
 
 #permalink: /:categories/:year/:month/:day/:title/
 permalink: /:year/:month/:day/:title/
@@ -27,9 +27,9 @@ FB:
   comments :
     provider : duoshuo
     duoshuo:
-        short_name : luoyan35714
+        short_name : liuqibao 
     disqus :
-        short_name : freudkang
+        short_name : 
     # facebook :
     #   appid : 123
     #   num_posts: 5

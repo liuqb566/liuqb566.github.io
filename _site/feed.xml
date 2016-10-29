@@ -2,11 +2,11 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title></title>
-    <description>Actually, less is more!</description>
-    <link>http://localhost:4000/</link>
-    <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sat, 29 Oct 2016 22:04:44 +0800</pubDate>
-    <lastBuildDate>Sat, 29 Oct 2016 22:04:44 +0800</lastBuildDate>
+    <description>Good Good Study Go Go Up!</description>
+    <link>http://liuqibao.me/</link>
+    <atom:link href="http://liuqibao.me/feed.xml" rel="self" type="application/rss+xml"/>
+    <pubDate>Sun, 30 Oct 2016 00:02:45 +0800</pubDate>
+    <lastBuildDate>Sun, 30 Oct 2016 00:02:45 +0800</lastBuildDate>
     <generator>Jekyll v3.3.0</generator>
     
       <item>
@@ -126,8 +126,8 @@ tag: 教程
 &lt;p&gt;&lt;img src=&quot;/styles/images/weixin.png&quot; alt=&quot;微信二维码付款给Freud&quot; /&gt;&lt;/p&gt;
 </description>
         <pubDate>Sat, 27 Aug 2016 01:08:00 +0800</pubDate>
-        <link>http://localhost:4000/2016/08/27/how-to-use-this-jekyll-theme/</link>
-        <guid isPermaLink="true">http://localhost:4000/2016/08/27/how-to-use-this-jekyll-theme/</guid>
+        <link>http://liuqibao.me/2016/08/27/how-to-use-this-jekyll-theme/</link>
+        <guid isPermaLink="true">http://liuqibao.me/2016/08/27/how-to-use-this-jekyll-theme/</guid>
         
         <category>教程</category>
         
@@ -175,8 +175,8 @@ tag: 教程
 &lt;p&gt;深呼吸然后记住这只是一次谈话，面试官给你一个评价是很重要的，但是同样重要的是你也要给面试官一个评价，并且确认这是你想要工作的地方。&lt;/p&gt;
 </description>
         <pubDate>Sat, 20 Dec 2014 20:05:00 +0800</pubDate>
-        <link>http://localhost:4000/2014/12/20/I-ve-Interviewed-100s-of-Candidates-and-the-Ones-I-Hire-Always-Do-This/</link>
-        <guid isPermaLink="true">http://localhost:4000/2014/12/20/I-ve-Interviewed-100s-of-Candidates-and-the-Ones-I-Hire-Always-Do-This/</guid>
+        <link>http://liuqibao.me/2014/12/20/I-ve-Interviewed-100s-of-Candidates-and-the-Ones-I-Hire-Always-Do-This/</link>
+        <guid isPermaLink="true">http://liuqibao.me/2014/12/20/I-ve-Interviewed-100s-of-Candidates-and-the-Ones-I-Hire-Always-Do-This/</guid>
         
         <category>interview</category>
         
@@ -204,8 +204,8 @@ tag: 教程
 
 </description>
         <pubDate>Mon, 17 Nov 2014 13:31:01 +0800</pubDate>
-        <link>http://localhost:4000/2014/11/17/welcome-to-jekyll/</link>
-        <guid isPermaLink="true">http://localhost:4000/2014/11/17/welcome-to-jekyll/</guid>
+        <link>http://liuqibao.me/2014/11/17/welcome-to-jekyll/</link>
+        <guid isPermaLink="true">http://liuqibao.me/2014/11/17/welcome-to-jekyll/</guid>
         
         <category>jekyll</category>
         
