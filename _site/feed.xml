@@ -3,10 +3,10 @@
   <channel>
     <title></title>
     <description>Good Good Study Go Go Up!</description>
-    <link>http://localhost:4000/</link>
-    <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Fri, 02 Dec 2016 01:58:21 -0500</pubDate>
-    <lastBuildDate>Fri, 02 Dec 2016 01:58:21 -0500</lastBuildDate>
+    <link>http://liuqibao.me/</link>
+    <atom:link href="http://liuqibao.me/feed.xml" rel="self" type="application/rss+xml"/>
+    <pubDate>Fri, 02 Dec 2016 03:42:53 -0500</pubDate>
+    <lastBuildDate>Fri, 02 Dec 2016 03:42:53 -0500</lastBuildDate>
     <generator>Jekyll v3.3.1</generator>
     
       <item>
@@ -126,8 +126,8 @@ tag: 教程
 &lt;p&gt;&lt;img src=&quot;/styles/images/weixin.png&quot; alt=&quot;微信二维码付款给Freud&quot; /&gt;&lt;/p&gt;
 </description>
         <pubDate>Fri, 26 Aug 2016 13:08:00 -0400</pubDate>
-        <link>http://localhost:4000/2016/08/26/how-to-use-this-jekyll-theme/</link>
-        <guid isPermaLink="true">http://localhost:4000/2016/08/26/how-to-use-this-jekyll-theme/</guid>
+        <link>http://liuqibao.me/2016/08/26/how-to-use-this-jekyll-theme/</link>
+        <guid isPermaLink="true">http://liuqibao.me/2016/08/26/how-to-use-this-jekyll-theme/</guid>
         
         <category>教程</category>
         
@@ -142,8 +142,8 @@ tag: 教程
 &lt;p&gt;play a try!&lt;/p&gt;
 </description>
         <pubDate>Sat, 20 Dec 2014 07:05:00 -0500</pubDate>
-        <link>http://localhost:4000/2014/12/20/I-ve-Interviewed-100s-of-Candidates-and-the-Ones-I-Hire-Always-Do-This/</link>
-        <guid isPermaLink="true">http://localhost:4000/2014/12/20/I-ve-Interviewed-100s-of-Candidates-and-the-Ones-I-Hire-Always-Do-This/</guid>
+        <link>http://liuqibao.me/2014/12/20/I-ve-Interviewed-100s-of-Candidates-and-the-Ones-I-Hire-Always-Do-This/</link>
+        <guid isPermaLink="true">http://liuqibao.me/2014/12/20/I-ve-Interviewed-100s-of-Candidates-and-the-Ones-I-Hire-Always-Do-This/</guid>
         
         <category>interview</category>
         
@@ -171,8 +171,8 @@ tag: 教程
 
 </description>
         <pubDate>Mon, 17 Nov 2014 00:31:01 -0500</pubDate>
-        <link>http://localhost:4000/2014/11/17/welcome-to-jekyll/</link>
-        <guid isPermaLink="true">http://localhost:4000/2014/11/17/welcome-to-jekyll/</guid>
+        <link>http://liuqibao.me/2014/11/17/welcome-to-jekyll/</link>
+        <guid isPermaLink="true">http://liuqibao.me/2014/11/17/welcome-to-jekyll/</guid>
         
         <category>jekyll</category>
         
