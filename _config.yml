@@ -1,15 +1,15 @@
 # Site settings
 name: 刘其宝 
 email: liuqibao566@163.com
-author: 刘其宝 
+author: Gossie 
 url: http://liuqibao.me
 resume_site: http://liuqibao.me 
 github: https://github.com/liuqb566
 baseurl: ""
-description: Good Good Study Go Go Up! 
-meta_description: God!
-motto: It's our wits that make us men.
-banner: 学操千曲而后晓声，观千剑而后识器！
+description: 好记性不如写博客！ 
+meta_description: 
+motto: 操千曲而后晓声，观千剑而后识器！
+banner:  
 
 #permalink: /:categories/:year/:month/:day/:title/
 permalink: /:year/:month/:day/:title/
