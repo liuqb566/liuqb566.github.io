@@ -1,14 +1,14 @@
 # Site settings
-name: 刘其宝
+name: 刘其宝的日常
 email: liuqibao566@163.com 
 author: Gossie 
 url: http://liuqibao.me
-resume_site: http://www.hifreud.com/Resume.io/
+resume_site:                                               # set my resume dress 
 github: https://github.com/liuqibao566
 baseurl: ""
 description: 好记性不如写博文！ 
-meta_description: 康志华;个人博客;学而不思则罔;思而不学则殆;生命不止;折腾不休
-motto: 
+meta_description:                                              # maybe appear in resume 
+motto:                                                    # appear in head 
 banner: 操千曲而后晓声，观千剑而后识器。
 
 #permalink: /:categories/:year/:month/:day/:title/
