@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>第7章 认识客串</title>
+
+	<link rel="shortcut icon" href="/styles/images/favicon.jpg">
+	<link rel="icon" href="/styles/images/favicon.jpg">
+
+	<link rel="stylesheet" href="/styles/css/index.css">
+	<link rel="stylesheet" href="/styles/css/fontawesome/css/font-awesome.min.css">
+	<link rel="canonical" href="/2016/12/06/%E7%AC%AC7%E7%AB%A0-%E8%AE%A4%E8%AF%86%E5%AE%A2%E4%B8%B2/">
+	<link rel="alternate" type="application/rss+xml" title="刘其宝的日常" href="/feed.xml">
+	
+	<meta name="description" content="">
+
+	<script src="/styles/js/jquery.min.js"></script>
+	<!--[if lt IE 9]>
+    	<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  	<![endif]-->
+  	<script>
+		var _hmt = _hmt || [];
+		(function() {
+		  var hm = document.createElement("script");
+		  hm.src = "//hm.baidu.com/hm.js?94be4b0f9fc5d94cc0d0415ea6761ae9";
+		  var s = document.getElementsByTagName("script")[0]; 
+		  s.parentNode.insertBefore(hm, s);
+		})();
+	</script>
+  	<style type="text/css">
+	  	.docs-content{
+	  		margin-bottom: 10px;
+	  	}
+  	</style>
+</head>
+
+
+  <body class="index">
+
+    <header class="navbar navbar-inverse navbar-fixed-top docs-nav" role="banner">
+  <div class="container">
+    <div class="navbar-header">
+      <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".bs-navbar-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="/" class="navbar-brand">
+        <img src="/styles/images/logo.jpg">
+      </a>
+    </div>
+    <nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">
+      <ul class="nav navbar-nav">    
+        <li>
+          <a href="/">Home</a>
+        </li>
+        <li>
+          <a href="/categories/">分类</a>
+        </li>
+        <li>
+          <a href="/tag">标签</a>
+        </li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+          <a href="/donate/"><strong>打赏</strong></a>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">关于<b class="caret"></b></a>
+          <ul class="dropdown-menu">
+            <li><a rel="nofollow" target="_blank" href="https://github.com/liuqibao566">Github</a></li>
+            <li><a rel="nofollow" target="_blank" href="">关于作者</a></li>
+            <li><a rel="nofollow" href="/books">Maker1</a></li>
+            <li><a rel="nofollow" href="/reference">Maker2</a></li>
+            <li><a href="/feed.xml">RSS订阅</a></li>
+            <li class="divider"></li>
+            <li><a rel="nofollow" target="_blank" href="https://github.com/liuqb566/">本项目</a></li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+    <div class="docs-header" id="content">
+  <div class="container">
+  	
+  		<!--
+		    <h1>第7章 认识客串</h1>
+		    <p>Post on Dec 06, 2016 by <a href="/about">Gossie</a></p>
+		-->
+		    <h1></h1>
+    
+  </div>
+</div>
+    
+      
+<div class="banner">
+  <div class="container">
+  	
+    	<a href="/categories/#Python学习手册-ref">Python学习手册</a>	/
+    	<a href="/tag/#Python-ref">Python</a>
+    
+  </div>
+</div>
+
+    
+
+    <div class="container docs-container">
+  <div class="row">
+    <div class="col-md-3">
+      <div class="sidebar hidden-print" role="complementary">
+        <div id="navigation">
+  <h1>目录</h1>
+  <ul class="nav sidenav">
+<!--
+    
+      
+      
+      
+      
+
+      
+        <li><a href="#year_2016">2016</a>
+          <ul class="nav">
+            <li><a href="#month_2016_December">December</a></li>
+      
+
+      
+            
+          
+        
+      
+    
+      
+      
+      
+      
+
+      
+
+      
+            </ul>
+          </li>
+      
+    
+-->
+  </ul>
+</div> 
+      </div>
+    </div>
+    <div class="col-md-9" role="main">
+      <div class="panel docs-content">
+        <div class="wrapper">
+            <header class="post-header">
+              <h1 class="post-title">第7章 认识客串</h1>
+              <!--
+                <p class="post-meta">Dec 6, 2016</p>
+              -->
+              <div class="meta">Posted on <span class="postdate">Dec 06, 2016</span> By <a target="_blank" href="http://liuqibao.me">Gossie</a></div>
+              <br />
+            </header>
+            <article class="post-content">
+              <ul id="markdown-toc">
+  <li><a href="#字符串常量" id="markdown-toc-字符串常量">字符串常量</a>    <ul>
+      <li><a href="#单双引号字符串是一样的" id="markdown-toc-单双引号字符串是一样的">单双引号字符串是一样的</a></li>
+      <li><a href="#用转义序列代表特殊字节" id="markdown-toc-用转义序列代表特殊字节">用转义序列代表特殊字节</a></li>
+      <li><a href="#raw字符串抑制转义" id="markdown-toc-raw字符串抑制转义">raw字符串抑制转义</a></li>
+      <li><a href="#三重引号编写多行字符串块" id="markdown-toc-三重引号编写多行字符串块">三重引号编写多行字符串块</a></li>
+    </ul>
+  </li>
+  <li><a href="#实际应用中的字符串" id="markdown-toc-实际应用中的字符串">实际应用中的字符串</a>    <ul>
+      <li><a href="#基本操作" id="markdown-toc-基本操作">基本操作</a></li>
+      <li><a href="#索引和分片" id="markdown-toc-索引和分片">索引和分片</a></li>
+      <li><a href="#字符串转换工具" id="markdown-toc-字符串转换工具">字符串转换工具</a></li>
+    </ul>
+  </li>
+  <li><a href="#字符串方法" id="markdown-toc-字符串方法">字符串方法</a>    <ul>
+      <li><a href="#字符串方法实例修改字符串" id="markdown-toc-字符串方法实例修改字符串">字符串方法实例：修改字符串</a></li>
+      <li><a href="#字符串方法实例文本解析" id="markdown-toc-字符串方法实例文本解析">字符串方法实例：<strong>文本解析</strong></a></li>
+      <li><a href="#实际应用中的其他常见字符串方法" id="markdown-toc-实际应用中的其他常见字符串方法">实际应用中的其他常见字符串方法</a></li>
+      <li><a href="#字符串格式化表达式" id="markdown-toc-字符串格式化表达式">字符串格式化表达式</a>        <ul>
+          <li><a href="#更高级的字符串格式化表达式" id="markdown-toc-更高级的字符串格式化表达式">更高级的字符串格式化表达式</a></li>
+          <li><a href="#基于字典的字符串格式化" id="markdown-toc-基于字典的字符串格式化">基于字典的字符串格式化</a></li>
+        </ul>
+      </li>
+      <li><a href="#字符串格式化调用方法" id="markdown-toc-字符串格式化调用方法">字符串格式化调用方法</a>        <ul>
+          <li><a href="#基础知识" id="markdown-toc-基础知识">基础知识</a></li>
+          <li><a href="#添加键属性和偏移量" id="markdown-toc-添加键属性和偏移量">添加键、属性和偏移量</a></li>
+          <li><a href="#添加具体格式化" id="markdown-toc-添加具体格式化">添加具体格式化</a></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li><a href="#通常意义下的类型分类" id="markdown-toc-通常意义下的类型分类">通常意义下的类型分类</a>    <ul>
+      <li><a href="#同样分类的类型共享其操作集合" id="markdown-toc-同样分类的类型共享其操作集合">同样分类的类型共享其操作集合</a></li>
+      <li><a href="#可变类型能够在原处修改" id="markdown-toc-可变类型能够在原处修改">可变类型能够在原处修改</a></li>
+    </ul>
+  </li>
+</ul>
+
+<hr />
+<p>字符串处理工具：核心系列、re模块、基于模式的字符串处理（eg.自然语言处理）、文本处理工具（eg.XML解析器）
+***</p>
+
+<h3 id="字符串常量">字符串常量</h3>
+
+<h4 id="单双引号字符串是一样的">单双引号字符串是一样的</h4>
+
+<h4 id="用转义序列代表特殊字节">用转义序列代表特殊字节</h4>
+
+<h4 id="raw字符串抑制转义">raw字符串抑制转义</h4>
+
+<ul>
+  <li>
+    <p>raw字符串会关闭转义机制，这在输入网址时很有用，<code class="highlighter-rouge">ft=open(r‘c:\new\text','w')</code></p>
+  </li>
+  <li>
+    <p>另一种办法：使用两个反斜线来保留反斜线,<code class="highlighter-rouge">ft=open('c:\\new\\text','w')</code></p>
+  </li>
+</ul>
+
+<h4 id="三重引号编写多行字符串块">三重引号编写多行字符串块</h4>
+
+<p><strong>原则：</strong>输入的是什么，得到的就是什么！</p>
+
+<h3 id="实际应用中的字符串">实际应用中的字符串</h3>
+
+<h4 id="基本操作">基本操作</h4>
+
+<h4 id="索引和分片">索引和分片</h4>
+
+<ul>
+  <li>步长：<code class="highlighter-rouge">X[I:J:K]</code>其中<code class="highlighter-rouge">K</code>为步长。</li>
+</ul>
+
+<p><strong>若<code class="highlighter-rouge">K=-1</code>就会对字符串进行反转</strong></p>
+
+<ul>
+  <li>分片</li>
+</ul>
+
+<blockquote>
+  <ul>
+    <li><code class="highlighter-rouge">line[:-1]</code>会将该行除最后一个字符之外的所有内容提取</li>
+    <li><code class="highlighter-rouge">line.rstrip()</code>会留下没有换行字符的那一年行的最后一个字符。（<strong>推荐</strong>）</li>
+  </ul>
+</blockquote>
+
+<h4 id="字符串转换工具">字符串转换工具</h4>
+
+<ul>
+  <li><code class="highlighter-rouge">int（）</code>和<code class="highlighter-rouge">str（）</code></li>
+  <li>代码转换：<code class="highlighter-rouge">ord（）</code>和<code class="highlighter-rouge">chr（）</code></li>
+</ul>
+
+<h3 id="字符串方法">字符串方法</h3>
+
+<h4 id="字符串方法实例修改字符串">字符串方法实例：修改字符串</h4>
+
+<ul>
+  <li>替换字符串：<code class="highlighter-rouge">replace</code>方法</li>
+  <li><code class="highlighter-rouge">find</code>搜索字符串，返回<strong>字符串出现处的偏移</strong></li>
+  <li><code class="highlighter-rouge">jion</code>将列表“合成”一个字符串</li>
+</ul>
+
+<h4 id="字符串方法实例文本解析">字符串方法实例：<strong>文本解析</strong></h4>
+
+<ul>
+  <li>用<strong>分片</strong>技术提取字符串</li>
+  <li><code class="highlighter-rouge">split</code>方法将一个字符串分割为一个子字符串的列表，以<strong>分隔符字符串</strong>为标准
+    <blockquote>
+      <p>在此分隔答符不一定是<strong>空格</strong>或<strong>标点符号</strong>，也可以是一个<strong>字符串</strong>。</p>
+    </blockquote>
+  </li>
+</ul>
+
+<h4 id="实际应用中的其他常见字符串方法">实际应用中的其他常见字符串方法</h4>
+
+<ul>
+  <li><code class="highlighter-rouge">rstrip</code>：清除每行末尾空白</li>
+  <li><code class="highlighter-rouge">upper</code>：执行大小写转换</li>
+  <li><code class="highlighter-rouge">isalpha</code>：测试内容</li>
+  <li><code class="highlighter-rouge">startswith</code>和<code class="highlighter-rouge">endswith</code>：检测起始和末尾子字符串</li>
+</ul>
+
+<h4 id="字符串格式化表达式">字符串格式化表达式</h4>
+
+<p>字符串格式化允许在一个单个的步骤中对一个字符串执行多个特定类型的替换。</p>
+<blockquote>
+  <p>两种形式的实现方式：</p>
+  <ul>
+    <li>字符串格式化表达式</li>
+    <li>字符串格式化方法调用</li>
+  </ul>
+</blockquote>
+
+<ol>
+  <li><code class="highlighter-rouge">%</code>操作符的左侧放置一个需要进行格式化的字符串。</li>
+  <li><code class="highlighter-rouge">%</code>操作符右侧放置一个（或多个，嵌入到元组中）的对象。</li>
+</ol>
+
+<h5 id="更高级的字符串格式化表达式">更高级的字符串格式化表达式</h5>
+
+<p>详见标准手册</p>
+
+<h5 id="基于字典的字符串格式化">基于字典的字符串格式化</h5>
+
+<h4 id="字符串格式化调用方法">字符串格式化调用方法</h4>
+
+<h5 id="基础知识">基础知识</h5>
+
+<p><code class="highlighter-rouge">format</code>方法使用主体字符串作为模板，在主体字符串中，花括号<code class="highlighter-rouge"><span class="p">{}</span></code>通过位置或关键字指出替换目标及将要插入的参数。</p>
+
+<h5 id="添加键属性和偏移量">添加键、属性和偏移量</h5>
+
+<h5 id="添加具体格式化">添加具体格式化</h5>
+
+<h3 id="通常意义下的类型分类">通常意义下的类型分类</h3>
+
+<h4 id="同样分类的类型共享其操作集合">同样分类的类型共享其操作集合</h4>
+
+<p>三个主要类型（以及操作）分类：</p>
+
+<ul>
+  <li>数字（整数、浮点数、二进制、分数等）</li>
+</ul>
+
+<p>支持加法和乘法等。</p>
+
+<ul>
+  <li>序列（字符串、列表、元组）：</li>
+</ul>
+
+<p>支持索引、分片和合并等。</p>
+
+<ul>
+  <li>映射（字典）：</li>
+</ul>
+
+<p>支持通过徤的索引等。</p>
+
+<p>集合是自成一体的一个分类。</p>
+
+<h4 id="可变类型能够在原处修改">可变类型能够在原处修改</h4>
+
+<p>主要核心类型：</p>
+
+<ul>
+  <li>
+    <p>不可变类型（数字、字符串、元组、不可变集合）</p>
+  </li>
+  <li>
+    <p>可变类型（列表、字典、可变集合）</p>
+  </li>
+</ul>
+
+
+            </article>
+        </div>
+      </div>
+      <div class="panel docs-content">
+        <article class="post-content">
+          <div class="wrapper">
+            
+
+
+  <div class="ds-thread" data-thread-key="/2016/12/06/%E7%AC%AC7%E7%AB%A0-%E8%AE%A4%E8%AF%86%E5%AE%A2%E4%B8%B2/" data-title="第7章 认识客串" data-url="http://liuqibao.me/2016/12/06/%E7%AC%AC7%E7%AB%A0-%E8%AE%A4%E8%AF%86%E5%AE%A2%E4%B8%B2/"></div>
+
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"Gossie"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+</script>
+
+
+ 
+          </div>
+        </article>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+    <footer class="footer" role="contentinfo">
+	<div class="container">
+		<p class="copyright">Copyright &copy; 2014-2016 <a href=""><code>Gossie</code></a>.</p>
+		<p>Site powered by <a href="http://jekyllrb.com">Jekyll</a> && <a href="http://www.github.com">Github</a></p>
+	</div>
+</footer>
+
+<script src="/styles/js/jquery.min.js"></script>
+<script src="/styles/js/bootstrap.min.js"></script>
+<script src="/styles/js/holder.min.js"></script>
+<script src="/styles/js/application.js"></script>
+<script src="/styles/js/lessismore.js"></script>
+
+
+  </body>
+</html>

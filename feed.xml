@@ -5,9 +5,217 @@
     <description>好记性不如写博文！</description>
     <link>http://liuqibao.me/</link>
     <atom:link href="http://liuqibao.me/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Mon, 05 Dec 2016 05:45:35 -0500</pubDate>
-    <lastBuildDate>Mon, 05 Dec 2016 05:45:35 -0500</lastBuildDate>
+    <pubDate>Tue, 06 Dec 2016 06:19:26 -0500</pubDate>
+    <lastBuildDate>Tue, 06 Dec 2016 06:19:26 -0500</lastBuildDate>
     <generator>Jekyll v3.3.1</generator>
+    
+      <item>
+        <title>第7章 认识客串</title>
+        <description>&lt;ul id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#字符串常量&quot; id=&quot;markdown-toc-字符串常量&quot;&gt;字符串常量&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#单双引号字符串是一样的&quot; id=&quot;markdown-toc-单双引号字符串是一样的&quot;&gt;单双引号字符串是一样的&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#用转义序列代表特殊字节&quot; id=&quot;markdown-toc-用转义序列代表特殊字节&quot;&gt;用转义序列代表特殊字节&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#raw字符串抑制转义&quot; id=&quot;markdown-toc-raw字符串抑制转义&quot;&gt;raw字符串抑制转义&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#三重引号编写多行字符串块&quot; id=&quot;markdown-toc-三重引号编写多行字符串块&quot;&gt;三重引号编写多行字符串块&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#实际应用中的字符串&quot; id=&quot;markdown-toc-实际应用中的字符串&quot;&gt;实际应用中的字符串&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#基本操作&quot; id=&quot;markdown-toc-基本操作&quot;&gt;基本操作&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#索引和分片&quot; id=&quot;markdown-toc-索引和分片&quot;&gt;索引和分片&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#字符串转换工具&quot; id=&quot;markdown-toc-字符串转换工具&quot;&gt;字符串转换工具&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#字符串方法&quot; id=&quot;markdown-toc-字符串方法&quot;&gt;字符串方法&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#字符串方法实例修改字符串&quot; id=&quot;markdown-toc-字符串方法实例修改字符串&quot;&gt;字符串方法实例：修改字符串&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#字符串方法实例文本解析&quot; id=&quot;markdown-toc-字符串方法实例文本解析&quot;&gt;字符串方法实例：&lt;strong&gt;文本解析&lt;/strong&gt;&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#实际应用中的其他常见字符串方法&quot; id=&quot;markdown-toc-实际应用中的其他常见字符串方法&quot;&gt;实际应用中的其他常见字符串方法&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#字符串格式化表达式&quot; id=&quot;markdown-toc-字符串格式化表达式&quot;&gt;字符串格式化表达式&lt;/a&gt;        &lt;ul&gt;
+          &lt;li&gt;&lt;a href=&quot;#更高级的字符串格式化表达式&quot; id=&quot;markdown-toc-更高级的字符串格式化表达式&quot;&gt;更高级的字符串格式化表达式&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#基于字典的字符串格式化&quot; id=&quot;markdown-toc-基于字典的字符串格式化&quot;&gt;基于字典的字符串格式化&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#字符串格式化调用方法&quot; id=&quot;markdown-toc-字符串格式化调用方法&quot;&gt;字符串格式化调用方法&lt;/a&gt;        &lt;ul&gt;
+          &lt;li&gt;&lt;a href=&quot;#基础知识&quot; id=&quot;markdown-toc-基础知识&quot;&gt;基础知识&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#添加键属性和偏移量&quot; id=&quot;markdown-toc-添加键属性和偏移量&quot;&gt;添加键、属性和偏移量&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#添加具体格式化&quot; id=&quot;markdown-toc-添加具体格式化&quot;&gt;添加具体格式化&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#通常意义下的类型分类&quot; id=&quot;markdown-toc-通常意义下的类型分类&quot;&gt;通常意义下的类型分类&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#同样分类的类型共享其操作集合&quot; id=&quot;markdown-toc-同样分类的类型共享其操作集合&quot;&gt;同样分类的类型共享其操作集合&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#可变类型能够在原处修改&quot; id=&quot;markdown-toc-可变类型能够在原处修改&quot;&gt;可变类型能够在原处修改&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+&lt;p&gt;字符串处理工具：核心系列、re模块、基于模式的字符串处理（eg.自然语言处理）、文本处理工具（eg.XML解析器）
+***&lt;/p&gt;
+
+&lt;h3 id=&quot;字符串常量&quot;&gt;字符串常量&lt;/h3&gt;
+
+&lt;h4 id=&quot;单双引号字符串是一样的&quot;&gt;单双引号字符串是一样的&lt;/h4&gt;
+
+&lt;h4 id=&quot;用转义序列代表特殊字节&quot;&gt;用转义序列代表特殊字节&lt;/h4&gt;
+
+&lt;h4 id=&quot;raw字符串抑制转义&quot;&gt;raw字符串抑制转义&lt;/h4&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;raw字符串会关闭转义机制，这在输入网址时很有用，&lt;code class=&quot;highlighter-rouge&quot;&gt;ft=open(r‘c:\new\text','w')&lt;/code&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;另一种办法：使用两个反斜线来保留反斜线,&lt;code class=&quot;highlighter-rouge&quot;&gt;ft=open('c:\\new\\text','w')&lt;/code&gt;&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;三重引号编写多行字符串块&quot;&gt;三重引号编写多行字符串块&lt;/h4&gt;
+
+&lt;p&gt;&lt;strong&gt;原则：&lt;/strong&gt;输入的是什么，得到的就是什么！&lt;/p&gt;
+
+&lt;h3 id=&quot;实际应用中的字符串&quot;&gt;实际应用中的字符串&lt;/h3&gt;
+
+&lt;h4 id=&quot;基本操作&quot;&gt;基本操作&lt;/h4&gt;
+
+&lt;h4 id=&quot;索引和分片&quot;&gt;索引和分片&lt;/h4&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;步长：&lt;code class=&quot;highlighter-rouge&quot;&gt;X[I:J:K]&lt;/code&gt;其中&lt;code class=&quot;highlighter-rouge&quot;&gt;K&lt;/code&gt;为步长。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;若&lt;code class=&quot;highlighter-rouge&quot;&gt;K=-1&lt;/code&gt;就会对字符串进行反转&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;分片&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;blockquote&gt;
+  &lt;ul&gt;
+    &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;line[:-1]&lt;/code&gt;会将该行除最后一个字符之外的所有内容提取&lt;/li&gt;
+    &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;line.rstrip()&lt;/code&gt;会留下没有换行字符的那一年行的最后一个字符。（&lt;strong&gt;推荐&lt;/strong&gt;）&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/blockquote&gt;
+
+&lt;h4 id=&quot;字符串转换工具&quot;&gt;字符串转换工具&lt;/h4&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;int（）&lt;/code&gt;和&lt;code class=&quot;highlighter-rouge&quot;&gt;str（）&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;代码转换：&lt;code class=&quot;highlighter-rouge&quot;&gt;ord（）&lt;/code&gt;和&lt;code class=&quot;highlighter-rouge&quot;&gt;chr（）&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;字符串方法&quot;&gt;字符串方法&lt;/h3&gt;
+
+&lt;h4 id=&quot;字符串方法实例修改字符串&quot;&gt;字符串方法实例：修改字符串&lt;/h4&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;替换字符串：&lt;code class=&quot;highlighter-rouge&quot;&gt;replace&lt;/code&gt;方法&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;find&lt;/code&gt;搜索字符串，返回&lt;strong&gt;字符串出现处的偏移&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;jion&lt;/code&gt;将列表“合成”一个字符串&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;字符串方法实例文本解析&quot;&gt;字符串方法实例：&lt;strong&gt;文本解析&lt;/strong&gt;&lt;/h4&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;用&lt;strong&gt;分片&lt;/strong&gt;技术提取字符串&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;split&lt;/code&gt;方法将一个字符串分割为一个子字符串的列表，以&lt;strong&gt;分隔符字符串&lt;/strong&gt;为标准
+    &lt;blockquote&gt;
+      &lt;p&gt;在此分隔答符不一定是&lt;strong&gt;空格&lt;/strong&gt;或&lt;strong&gt;标点符号&lt;/strong&gt;，也可以是一个&lt;strong&gt;字符串&lt;/strong&gt;。&lt;/p&gt;
+    &lt;/blockquote&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;实际应用中的其他常见字符串方法&quot;&gt;实际应用中的其他常见字符串方法&lt;/h4&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;rstrip&lt;/code&gt;：清除每行末尾空白&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;upper&lt;/code&gt;：执行大小写转换&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;isalpha&lt;/code&gt;：测试内容&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;startswith&lt;/code&gt;和&lt;code class=&quot;highlighter-rouge&quot;&gt;endswith&lt;/code&gt;：检测起始和末尾子字符串&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;字符串格式化表达式&quot;&gt;字符串格式化表达式&lt;/h4&gt;
+
+&lt;p&gt;字符串格式化允许在一个单个的步骤中对一个字符串执行多个特定类型的替换。&lt;/p&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;两种形式的实现方式：&lt;/p&gt;
+  &lt;ul&gt;
+    &lt;li&gt;字符串格式化表达式&lt;/li&gt;
+    &lt;li&gt;字符串格式化方法调用&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/blockquote&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;%&lt;/code&gt;操作符的左侧放置一个需要进行格式化的字符串。&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;%&lt;/code&gt;操作符右侧放置一个（或多个，嵌入到元组中）的对象。&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h5 id=&quot;更高级的字符串格式化表达式&quot;&gt;更高级的字符串格式化表达式&lt;/h5&gt;
+
+&lt;p&gt;详见标准手册&lt;/p&gt;
+
+&lt;h5 id=&quot;基于字典的字符串格式化&quot;&gt;基于字典的字符串格式化&lt;/h5&gt;
+
+&lt;h4 id=&quot;字符串格式化调用方法&quot;&gt;字符串格式化调用方法&lt;/h4&gt;
+
+&lt;h5 id=&quot;基础知识&quot;&gt;基础知识&lt;/h5&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;format&lt;/code&gt;方法使用主体字符串作为模板，在主体字符串中，花括号&lt;code class=&quot;highlighter-rouge&quot;&gt;&lt;span class=&quot;p&quot;&gt;{}&lt;/span&gt;&lt;/code&gt;通过位置或关键字指出替换目标及将要插入的参数。&lt;/p&gt;
+
+&lt;h5 id=&quot;添加键属性和偏移量&quot;&gt;添加键、属性和偏移量&lt;/h5&gt;
+
+&lt;h5 id=&quot;添加具体格式化&quot;&gt;添加具体格式化&lt;/h5&gt;
+
+&lt;h3 id=&quot;通常意义下的类型分类&quot;&gt;通常意义下的类型分类&lt;/h3&gt;
+
+&lt;h4 id=&quot;同样分类的类型共享其操作集合&quot;&gt;同样分类的类型共享其操作集合&lt;/h4&gt;
+
+&lt;p&gt;三个主要类型（以及操作）分类：&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;数字（整数、浮点数、二进制、分数等）&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;支持加法和乘法等。&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;序列（字符串、列表、元组）：&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;支持索引、分片和合并等。&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;映射（字典）：&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;支持通过徤的索引等。&lt;/p&gt;
+
+&lt;p&gt;集合是自成一体的一个分类。&lt;/p&gt;
+
+&lt;h4 id=&quot;可变类型能够在原处修改&quot;&gt;可变类型能够在原处修改&lt;/h4&gt;
+
+&lt;p&gt;主要核心类型：&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;不可变类型（数字、字符串、元组、不可变集合）&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;可变类型（列表、字典、可变集合）&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+</description>
+        <pubDate>Tue, 06 Dec 2016 00:00:00 -0500</pubDate>
+        <link>http://liuqibao.me/2016/12/06/%E7%AC%AC7%E7%AB%A0-%E8%AE%A4%E8%AF%86%E5%AE%A2%E4%B8%B2/</link>
+        <guid isPermaLink="true">http://liuqibao.me/2016/12/06/%E7%AC%AC7%E7%AB%A0-%E8%AE%A4%E8%AF%86%E5%AE%A2%E4%B8%B2/</guid>
+        
+        <category>Python</category>
+        
+        
+        <category>Python学习手册</category>
+        
+      </item>
     
       <item>
         <title>我的第一篇博文</title>
