@@ -7,18 +7,24 @@ permalink: /books/
 * content
 {:toc}
 
+***
 
-2016书单
------------------------------------------------------------------
+### Linux
 
-+ 《Think in java 4th》
-+ 《鸟哥的Linux私房菜基础学习篇-第三版》
-+ 《重构》
-+ 《Getting real》
-+ 《深入JVM虚拟机》
-+ 《Head first设计模式》
-+ 《算法(第四版)》
-+ 《Maven实战》
-+ 《HTTP协议详解》
-+ 《TCP/IP协议详解-卷一》
-+ 《阿弥陀佛么么哒》
+1. 鸟哥的私房菜（基础篇）
+
+### Python
+
+1. Head First:Python
+
+2. Python 基础教程
+
+3. Python学习手册
+
+### R
+
+1. R 实战
+
+### 文本编辑
+
+1. 精通正则表达式
