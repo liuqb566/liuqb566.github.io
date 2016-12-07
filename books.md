@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 我的书单
+title: 书单
 permalink: /books/
 ---
 
