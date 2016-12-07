@@ -5,12 +5,12 @@
     <description>好记性不如写博文！</description>
     <link>http://liuqibao.me/</link>
     <atom:link href="http://liuqibao.me/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Tue, 06 Dec 2016 06:19:26 -0500</pubDate>
-    <lastBuildDate>Tue, 06 Dec 2016 06:19:26 -0500</lastBuildDate>
+    <pubDate>Wed, 07 Dec 2016 05:18:19 -0500</pubDate>
+    <lastBuildDate>Wed, 07 Dec 2016 05:18:19 -0500</lastBuildDate>
     <generator>Jekyll v3.3.1</generator>
     
       <item>
-        <title>第7章 认识客串</title>
+        <title>第7章 认识字符串</title>
         <description>&lt;ul id=&quot;markdown-toc&quot;&gt;
   &lt;li&gt;&lt;a href=&quot;#字符串常量&quot; id=&quot;markdown-toc-字符串常量&quot;&gt;字符串常量&lt;/a&gt;    &lt;ul&gt;
       &lt;li&gt;&lt;a href=&quot;#单双引号字符串是一样的&quot; id=&quot;markdown-toc-单双引号字符串是一样的&quot;&gt;单双引号字符串是一样的&lt;/a&gt;&lt;/li&gt;
@@ -207,8 +207,8 @@
 
 </description>
         <pubDate>Tue, 06 Dec 2016 00:00:00 -0500</pubDate>
-        <link>http://liuqibao.me/2016/12/06/%E7%AC%AC7%E7%AB%A0-%E8%AE%A4%E8%AF%86%E5%AE%A2%E4%B8%B2/</link>
-        <guid isPermaLink="true">http://liuqibao.me/2016/12/06/%E7%AC%AC7%E7%AB%A0-%E8%AE%A4%E8%AF%86%E5%AE%A2%E4%B8%B2/</guid>
+        <link>http://liuqibao.me/2016/12/06/%E7%AC%AC7%E7%AB%A0-%E8%AE%A4%E8%AF%86%E5%AD%97%E7%AC%A6%E4%B8%B2/</link>
+        <guid isPermaLink="true">http://liuqibao.me/2016/12/06/%E7%AC%AC7%E7%AB%A0-%E8%AE%A4%E8%AF%86%E5%AD%97%E7%AC%A6%E4%B8%B2/</guid>
         
         <category>Python</category>
         
