@@ -1,9 +1,8 @@
-
 ---
 layout: post
 title: 正则表达式的平衡法则
 categories: 文本编辑
-tag：正则表达式
+tag: 正则表达式
 ---
 
 * content

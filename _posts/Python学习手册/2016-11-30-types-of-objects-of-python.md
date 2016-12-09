@@ -1,4 +1,3 @@
-
 ---
 layout: post
 title: 第4章 介绍python对象的类型
