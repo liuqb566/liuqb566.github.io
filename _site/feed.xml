@@ -5,13 +5,53 @@
     <description>好记性不如写博文！</description>
     <link>http://liuqibao.me/</link>
     <atom:link href="http://liuqibao.me/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Fri, 09 Dec 2016 00:27:38 -0500</pubDate>
-    <lastBuildDate>Fri, 09 Dec 2016 00:27:38 -0500</lastBuildDate>
+    <pubDate>Fri, 09 Dec 2016 00:35:41 -0500</pubDate>
+    <lastBuildDate>Fri, 09 Dec 2016 00:35:41 -0500</lastBuildDate>
     <generator>Jekyll v3.3.1</generator>
     
       <item>
         <title>第8章 列表与字典</title>
-        <description>&lt;p&gt;*content&lt;/p&gt;
+        <description>&lt;ul id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#列表&quot; id=&quot;markdown-toc-列表&quot;&gt;列表&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#实际应用中的列表&quot; id=&quot;markdown-toc-实际应用中的列表&quot;&gt;实际应用中的列表&lt;/a&gt;        &lt;ul&gt;
+          &lt;li&gt;&lt;a href=&quot;#基本列表操作&quot; id=&quot;markdown-toc-基本列表操作&quot;&gt;基本列表操作&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#列表迭代和解析&quot; id=&quot;markdown-toc-列表迭代和解析&quot;&gt;列表迭代和解析&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#索引分片和矩阵&quot; id=&quot;markdown-toc-索引分片和矩阵&quot;&gt;索引、分片和矩阵&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#原处修改列表&quot; id=&quot;markdown-toc-原处修改列表&quot;&gt;原处修改列表&lt;/a&gt;            &lt;ul&gt;
+              &lt;li&gt;&lt;a href=&quot;#索引与分片的赋值&quot; id=&quot;markdown-toc-索引与分片的赋值&quot;&gt;索引与分片的赋值&lt;/a&gt;&lt;/li&gt;
+              &lt;li&gt;&lt;a href=&quot;#列表方法调用&quot; id=&quot;markdown-toc-列表方法调用&quot;&gt;列表方法调用&lt;/a&gt;&lt;/li&gt;
+              &lt;li&gt;&lt;a href=&quot;#其他常见列表操作&quot; id=&quot;markdown-toc-其他常见列表操作&quot;&gt;其他常见列表操作&lt;/a&gt;&lt;/li&gt;
+            &lt;/ul&gt;
+          &lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#字典&quot; id=&quot;markdown-toc-字典&quot;&gt;字典&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#实际应用中的字典&quot; id=&quot;markdown-toc-实际应用中的字典&quot;&gt;实际应用中的字典&lt;/a&gt;        &lt;ul&gt;
+          &lt;li&gt;&lt;a href=&quot;#字典的基本操作&quot; id=&quot;markdown-toc-字典的基本操作&quot;&gt;字典的基本操作&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#原处修改字典&quot; id=&quot;markdown-toc-原处修改字典&quot;&gt;原处修改字典&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#其他字典方法&quot; id=&quot;markdown-toc-其他字典方法&quot;&gt;其他字典方法&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#语言表&quot; id=&quot;markdown-toc-语言表&quot;&gt;语言表&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#字典etifiyujgkad&quot; id=&quot;markdown-toc-字典etifiyujgkad&quot;&gt;字典etifiyujgkad&lt;/a&gt;        &lt;ul&gt;
+          &lt;li&gt;&lt;a href=&quot;#使用字典模拟灵活的列表&quot; id=&quot;markdown-toc-使用字典模拟灵活的列表&quot;&gt;使用字典模拟灵活的列表&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#字典用于稀疏数据结构&quot; id=&quot;markdown-toc-字典用于稀疏数据结构&quot;&gt;字典用于稀疏数据结构&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#避免missing-key错误&quot; id=&quot;markdown-toc-避免missing-key错误&quot;&gt;避免missing-key错误&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#使用字典作为记录&quot; id=&quot;markdown-toc-使用字典作为记录&quot;&gt;使用字典作为“记录”&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#创建字典的其他方法&quot; id=&quot;markdown-toc-创建字典的其他方法&quot;&gt;创建字典的其他方法&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#字典解析&quot; id=&quot;markdown-toc-字典解析&quot;&gt;字典解析&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#字典视图&quot; id=&quot;markdown-toc-字典视图&quot;&gt;字典视图&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#字典的视图和几何&quot; id=&quot;markdown-toc-字典的视图和几何&quot;&gt;字典的视图和几何&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#排序字典&quot; id=&quot;markdown-toc-排序字典&quot;&gt;排序字典&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#字典大小比较无效&quot; id=&quot;markdown-toc-字典大小比较无效&quot;&gt;字典大小比较无效&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#has_key方法已死in永生&quot; id=&quot;markdown-toc-has_key方法已死in永生&quot;&gt;has_key方法已死：in永生&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
 
 &lt;h3 id=&quot;列表&quot;&gt;列表&lt;/h3&gt;
 
@@ -182,6 +222,8 @@ dict.fromkeys(['a','b'],0)
         
         <category>Python学习手册</category>
         
+        
+        <category>Python</category>
         
       </item>
     

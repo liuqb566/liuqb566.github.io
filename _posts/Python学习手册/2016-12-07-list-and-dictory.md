@@ -1,12 +1,12 @@
 ---
 layout: post
 title: 第8章 列表与字典
-date: 20161207
-catagores: Python
+date: 2016-12-07
+categories: Python
 tag: Python学习手册
 ---
 
-*content
+* content
 {:toc}
 
 
