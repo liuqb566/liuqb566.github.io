@@ -5,8 +5,8 @@
     <description>好记性不如写博文！</description>
     <link>http://liuqibao.me/</link>
     <atom:link href="http://liuqibao.me/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Fri, 09 Dec 2016 07:25:04 -0500</pubDate>
-    <lastBuildDate>Fri, 09 Dec 2016 07:25:04 -0500</lastBuildDate>
+    <pubDate>Fri, 09 Dec 2016 09:31:03 -0500</pubDate>
+    <lastBuildDate>Fri, 09 Dec 2016 09:31:03 -0500</lastBuildDate>
     <generator>Jekyll v3.3.1</generator>
     
       <item>
@@ -1056,16 +1056,8 @@ finger root bin daemon adm ?...
       </item>
     
       <item>
-        <title>Types Of Objects Of Python</title>
-        <description>
-&lt;hr /&gt;
-&lt;p&gt;layout: post
-title: 第4章 介绍python对象的类型
-categories: Python
-tag: Pyhton学习手册
-—&lt;/p&gt;
-
-&lt;ul id=&quot;markdown-toc&quot;&gt;
+        <title>第4章 介绍python对象的类型</title>
+        <description>&lt;ul id=&quot;markdown-toc&quot;&gt;
   &lt;li&gt;&lt;a href=&quot;#python的核心数据类型&quot; id=&quot;markdown-toc-python的核心数据类型&quot;&gt;Python的核心数据类型&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;#数字&quot; id=&quot;markdown-toc-数字&quot;&gt;数字&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;#字符串&quot; id=&quot;markdown-toc-字符串&quot;&gt;字符串&lt;/a&gt;&lt;/li&gt;
@@ -1172,20 +1164,16 @@ T.count（）
         <link>http://liuqibao.me/2016/11/30/types-of-objects-of-python/</link>
         <guid isPermaLink="true">http://liuqibao.me/2016/11/30/types-of-objects-of-python/</guid>
         
+        <category>Pyhton学习手册</category>
+        
+        
+        <category>Python</category>
         
       </item>
     
       <item>
-        <title>Skills Of Regular Expression</title>
-        <description>
-&lt;hr /&gt;
-&lt;p&gt;layout: post
-title: 正则表达式的平衡法则
-categories: 文本编辑
-tag：正则表达式
-—&lt;/p&gt;
-
-&lt;ul id=&quot;markdown-toc&quot;&gt;
+        <title>正则表达式的平衡法则</title>
+        <description>&lt;ul id=&quot;markdown-toc&quot;&gt;
   &lt;li&gt;&lt;a href=&quot;#正则表达式的平衡法则&quot; id=&quot;markdown-toc-正则表达式的平衡法则&quot;&gt;正则表达式的平衡法则&lt;/a&gt;    &lt;ul&gt;
       &lt;li&gt;&lt;a href=&quot;#匹配ip地址&quot; id=&quot;markdown-toc-匹配ip地址&quot;&gt;匹配IP地址&lt;/a&gt;&lt;/li&gt;
       &lt;li&gt;&lt;a href=&quot;#处理文件名&quot; id=&quot;markdown-toc-处理文件名&quot;&gt;处理文件名&lt;/a&gt;&lt;/li&gt;
@@ -1270,20 +1258,16 @@ tag：正则表达式
         <link>http://liuqibao.me/2016/11/27/skills-of-regular-expression/</link>
         <guid isPermaLink="true">http://liuqibao.me/2016/11/27/skills-of-regular-expression/</guid>
         
+        <category>正则表达式</category>
+        
+        
+        <category>文本编辑</category>
         
       </item>
     
       <item>
-        <title>Re How To Work</title>
-        <description>
-&lt;hr /&gt;
-&lt;p&gt;layout: post
-title: 第四章 正则表达式的匹配原理
-categories: 文本编辑
-tag：正则表达式
-—&lt;/p&gt;
-
-&lt;ul id=&quot;markdown-toc&quot;&gt;
+        <title>第四章 正则表达式的匹配原理</title>
+        <description>&lt;ul id=&quot;markdown-toc&quot;&gt;
   &lt;li&gt;&lt;a href=&quot;#正则引擎的分类&quot; id=&quot;markdown-toc-正则引擎的分类&quot;&gt;正则引擎的分类&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;#匹配的基础&quot; id=&quot;markdown-toc-匹配的基础&quot;&gt;匹配的基础&lt;/a&gt;    &lt;ul&gt;
       &lt;li&gt;&lt;a href=&quot;#规则1优先选择最左端的匹配结果&quot; id=&quot;markdown-toc-规则1优先选择最左端的匹配结果&quot;&gt;规则1：优先选择最左端的匹配结果&lt;/a&gt;&lt;/li&gt;
@@ -1449,6 +1433,10 @@ tag：正则表达式
         <link>http://liuqibao.me/2016/11/24/RE-how-to-work/</link>
         <guid isPermaLink="true">http://liuqibao.me/2016/11/24/RE-how-to-work/</guid>
         
+        <category>正则表达式</category>
+        
+        
+        <category>文本编辑</category>
         
       </item>
     
