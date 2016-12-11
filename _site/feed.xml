@@ -5,21 +5,13 @@
     <description>好记性不如写博文！</description>
     <link>http://liuqibao.me/</link>
     <atom:link href="http://liuqibao.me/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sat, 10 Dec 2016 23:36:13 -0500</pubDate>
-    <lastBuildDate>Sat, 10 Dec 2016 23:36:13 -0500</lastBuildDate>
+    <pubDate>Sun, 11 Dec 2016 01:02:28 -0500</pubDate>
+    <lastBuildDate>Sun, 11 Dec 2016 01:02:28 -0500</lastBuildDate>
     <generator>Jekyll v3.3.1</generator>
     
       <item>
-        <title>Tuple And File</title>
-        <description>&lt;hr /&gt;
-&lt;p&gt;layout: post
-title: 元组和文件
-date: 2016-12-08
-categories: Python
-tag: Python学习手册
-——–&lt;/p&gt;
-
-&lt;ul id=&quot;markdown-toc&quot;&gt;
+        <title>元组和文件</title>
+        <description>&lt;ul id=&quot;markdown-toc&quot;&gt;
   &lt;li&gt;&lt;a href=&quot;#元组&quot; id=&quot;markdown-toc-元组&quot;&gt;元组&lt;/a&gt;    &lt;ul&gt;
       &lt;li&gt;&lt;a href=&quot;#实际应用中的元组&quot; id=&quot;markdown-toc-实际应用中的元组&quot;&gt;实际应用中的元组&lt;/a&gt;        &lt;ul&gt;
           &lt;li&gt;&lt;a href=&quot;#元组的特殊语法逗号和圆括号&quot; id=&quot;markdown-toc-元组的特殊语法逗号和圆括号&quot;&gt;元组的特殊语法：逗号和圆括号&lt;/a&gt;&lt;/li&gt;
@@ -225,6 +217,10 @@ tag: Python学习手册
         <link>http://liuqibao.me/2016/12/08/tuple-and-file/</link>
         <guid isPermaLink="true">http://liuqibao.me/2016/12/08/tuple-and-file/</guid>
         
+        <category>Python学习手册</category>
+        
+        
+        <category>Python</category>
         
       </item>
     
