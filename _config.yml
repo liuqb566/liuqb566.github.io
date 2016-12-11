@@ -15,7 +15,7 @@ banner: 操千曲而后晓声，观千剑而后识器。
 permalink: /:year/:month/:day/:title/
 paginate: 10
 
-exclude: ['README.md', 'Gemfile.lock', 'Gemfile', 'Rakefile','*.sh']
+exclude: ['README.md', 'Gemfile.lock', 'Gemfile', 'Rakefile']
 
 github_username: liuqibao566
 highlighter: rouge

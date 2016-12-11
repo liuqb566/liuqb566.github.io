@@ -1,10 +1,10 @@
----------------------
+---
 layout: post
 title: 正规表示法与文件格式化处理
-date: 20161207
+date: 2016-12-07
 categories: Linux
 tag: 文本处理
--------------------------
+---
 
 * content
 {:toc}
