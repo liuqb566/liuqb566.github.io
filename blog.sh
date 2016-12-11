@@ -21,5 +21,5 @@ git checkout source || exit 0
 
  # cp _sit to another dir
  rm -rf /tmp/site/*
- cp -r -a /_site?* /tmp/site/
+ cp -r -a ./_site/* /tmp/site/
 
