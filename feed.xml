@@ -5,8 +5,8 @@
     <description>好记性不如写博文！</description>
     <link>http://liuqibao.me/</link>
     <atom:link href="http://liuqibao.me/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sat, 10 Dec 2016 23:02:44 -0500</pubDate>
-    <lastBuildDate>Sat, 10 Dec 2016 23:02:44 -0500</lastBuildDate>
+    <pubDate>Sat, 10 Dec 2016 23:20:42 -0500</pubDate>
+    <lastBuildDate>Sat, 10 Dec 2016 23:20:42 -0500</lastBuildDate>
     <generator>Jekyll v3.3.1</generator>
     
       <item>
@@ -15,7 +15,7 @@
 &lt;p&gt;layout: post
 title: 元组和文件
 categories: Python
-tag: python学习手册
+tag: Rython学习手册
 ——–&lt;/p&gt;
 
 &lt;ul id=&quot;markdown-toc&quot;&gt;
@@ -344,16 +344,226 @@ T.count（）
       </item>
     
       <item>
-        <title>Regular Expression</title>
-        <description>&lt;hr /&gt;
-&lt;p&gt;layout: post
-title: 正规表示法与文件格式化处理
-date: 20161207
-categories: Linux
-tag: 文本处理
-————————-&lt;/p&gt;
+        <title>第8章 列表与字典</title>
+        <description>&lt;ul id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#列表&quot; id=&quot;markdown-toc-列表&quot;&gt;列表&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#实际应用中的列表&quot; id=&quot;markdown-toc-实际应用中的列表&quot;&gt;实际应用中的列表&lt;/a&gt;        &lt;ul&gt;
+          &lt;li&gt;&lt;a href=&quot;#基本列表操作&quot; id=&quot;markdown-toc-基本列表操作&quot;&gt;基本列表操作&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#列表迭代和解析&quot; id=&quot;markdown-toc-列表迭代和解析&quot;&gt;列表迭代和解析&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#索引分片和矩阵&quot; id=&quot;markdown-toc-索引分片和矩阵&quot;&gt;索引、分片和矩阵&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#原处修改列表&quot; id=&quot;markdown-toc-原处修改列表&quot;&gt;原处修改列表&lt;/a&gt;            &lt;ul&gt;
+              &lt;li&gt;&lt;a href=&quot;#索引与分片的赋值&quot; id=&quot;markdown-toc-索引与分片的赋值&quot;&gt;索引与分片的赋值&lt;/a&gt;&lt;/li&gt;
+              &lt;li&gt;&lt;a href=&quot;#列表方法调用&quot; id=&quot;markdown-toc-列表方法调用&quot;&gt;列表方法调用&lt;/a&gt;&lt;/li&gt;
+              &lt;li&gt;&lt;a href=&quot;#其他常见列表操作&quot; id=&quot;markdown-toc-其他常见列表操作&quot;&gt;其他常见列表操作&lt;/a&gt;&lt;/li&gt;
+            &lt;/ul&gt;
+          &lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#字典&quot; id=&quot;markdown-toc-字典&quot;&gt;字典&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#实际应用中的字典&quot; id=&quot;markdown-toc-实际应用中的字典&quot;&gt;实际应用中的字典&lt;/a&gt;        &lt;ul&gt;
+          &lt;li&gt;&lt;a href=&quot;#字典的基本操作&quot; id=&quot;markdown-toc-字典的基本操作&quot;&gt;字典的基本操作&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#原处修改字典&quot; id=&quot;markdown-toc-原处修改字典&quot;&gt;原处修改字典&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#其他字典方法&quot; id=&quot;markdown-toc-其他字典方法&quot;&gt;其他字典方法&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#语言表&quot; id=&quot;markdown-toc-语言表&quot;&gt;语言表&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#字典用法注意事&quot; id=&quot;markdown-toc-字典用法注意事&quot;&gt;字典用法注意事&lt;/a&gt;        &lt;ul&gt;
+          &lt;li&gt;&lt;a href=&quot;#使用字典模拟灵活的列表&quot; id=&quot;markdown-toc-使用字典模拟灵活的列表&quot;&gt;使用字典模拟灵活的列表&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#字典用于稀疏数据结构&quot; id=&quot;markdown-toc-字典用于稀疏数据结构&quot;&gt;字典用于稀疏数据结构&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#避免missing-key错误&quot; id=&quot;markdown-toc-避免missing-key错误&quot;&gt;避免missing-key错误&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#使用字典作为记录&quot; id=&quot;markdown-toc-使用字典作为记录&quot;&gt;使用字典作为“记录”&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#创建字典的其他方法&quot; id=&quot;markdown-toc-创建字典的其他方法&quot;&gt;创建字典的其他方法&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#字典解析&quot; id=&quot;markdown-toc-字典解析&quot;&gt;字典解析&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#字典视图&quot; id=&quot;markdown-toc-字典视图&quot;&gt;字典视图&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#字典的视图和几何&quot; id=&quot;markdown-toc-字典的视图和几何&quot;&gt;字典的视图和几何&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#排序字典&quot; id=&quot;markdown-toc-排序字典&quot;&gt;排序字典&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#字典大小比较无效&quot; id=&quot;markdown-toc-字典大小比较无效&quot;&gt;字典大小比较无效&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#has_key方法已死in永生&quot; id=&quot;markdown-toc-has_key方法已死in永生&quot;&gt;has_key方法已死：in永生&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
 
-&lt;ul id=&quot;markdown-toc&quot;&gt;
+&lt;h3 id=&quot;列表&quot;&gt;列表&lt;/h3&gt;
+
+&lt;p&gt;主要属性：&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;任意对象的有序集合&lt;/li&gt;
+  &lt;li&gt;通过偏移读取&lt;/li&gt;
+  &lt;li&gt;可变长度、异构以及任意嵌套&lt;/li&gt;
+  &lt;li&gt;属于可变序列的分类&lt;/li&gt;
+  &lt;li&gt;对象引用数组&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;运行‘help（list）&lt;code class=&quot;highlighter-rouge&quot;&gt;或&lt;/code&gt;dir（list）`查看list方法的完整列表清单。&lt;/p&gt;
+
+&lt;h4 id=&quot;实际应用中的列表&quot;&gt;实际应用中的列表&lt;/h4&gt;
+
+&lt;h5 id=&quot;基本列表操作&quot;&gt;基本列表操作&lt;/h5&gt;
+
+&lt;h5 id=&quot;列表迭代和解析&quot;&gt;列表迭代和解析&lt;/h5&gt;
+
+&lt;h5 id=&quot;索引分片和矩阵&quot;&gt;索引、分片和矩阵&lt;/h5&gt;
+
+&lt;p&gt;&lt;strong&gt;索引&lt;/strong&gt;的结果是你指定的偏移处的&lt;strong&gt;对象&lt;/strong&gt;（无论对象是什么类型），而对列表进行&lt;strong&gt;分片&lt;/strong&gt;时往往返回一个&lt;strong&gt;新的列表&lt;/strong&gt;。&lt;/p&gt;
+
+&lt;h5 id=&quot;原处修改列表&quot;&gt;原处修改列表&lt;/h5&gt;
+
+&lt;p&gt;本节的操作都可以直接修改对象，而不会像字符串那样强迫你建立一个新的拷贝。&lt;/p&gt;
+
+&lt;h6 id=&quot;索引与分片的赋值&quot;&gt;索引与分片的赋值&lt;/h6&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;L[1:2]=[]&lt;/code&gt;实际上是删除操作。&lt;/p&gt;
+
+&lt;p&gt;被赋值的序列长度不一定要与被赋值的分片的长度相匹配。&lt;/p&gt;
+
+&lt;h6 id=&quot;列表方法调用&quot;&gt;列表方法调用&lt;/h6&gt;
+
+&lt;p&gt;方法就是附属于特定对象的函数（实际上是引用函数的属性）。&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;L.append（X）&lt;/code&gt;与&lt;code class=&quot;highlighter-rouge&quot;&gt;L+[X]&lt;/code&gt;的结果类似，不同的是，前者会&lt;strong&gt;原地修改L&lt;/strong&gt;，而后者会生成&lt;strong&gt;新的列表&lt;/strong&gt;。&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;sort:原地对列表排序。&lt;strong&gt;默认比较字符串，以递增的顺序进行排序&lt;/strong&gt;&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;reverse&lt;/code&gt;参数允许排序按照降序而不是升序进行&lt;/p&gt;
+
+&lt;hr /&gt;
+&lt;p&gt;&lt;strong&gt;注意：&lt;/strong&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;append&lt;/code&gt;和&lt;code class=&quot;highlighter-rouge&quot;&gt;sort&lt;/code&gt;是原处修改相关的列表对象，而结果&lt;strong&gt;并没有返回列表&lt;/strong&gt;（实际上，两者都返回的值为&lt;strong&gt;None&lt;/strong&gt;）。&lt;/p&gt;
+
+&lt;p&gt;如果编辑类似&lt;code class=&quot;highlighter-rouge&quot;&gt;L=L.append（x)&lt;/code&gt;的语句，将不会得L修改后的值，即相当于&lt;code class=&quot;highlighter-rouge&quot;&gt;L=None&lt;/code&gt;。
+***&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;reverse：原地反转列表&lt;/li&gt;
+  &lt;li&gt;extend：末端插入&lt;strong&gt;多个&lt;/strong&gt;元素&lt;/li&gt;
+  &lt;li&gt;pop：末端删除&lt;strong&gt;一个&lt;/strong&gt;元素
+&lt;em&gt;**
+列表的pop方法和append方法常被联用，来实现快速的后进先出（LIFO，last-in-first-out）堆栈结构。
+**&lt;/em&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h6 id=&quot;其他常见列表操作&quot;&gt;其他常见列表操作&lt;/h6&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;del语句在原处删除某项或某片段。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;字典&quot;&gt;字典&lt;/h3&gt;
+
+&lt;p&gt;主要属性：&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;通过键而不是偏移来读取&lt;/li&gt;
+  &lt;li&gt;任意对象的无序集合&lt;/li&gt;
+  &lt;li&gt;可变长度、异构、任意嵌套&lt;/li&gt;
+  &lt;li&gt;属于可变映射类型&lt;/li&gt;
+  &lt;li&gt;对象引用表（散列表）&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;和列表一样，字典存储的是对象引用（不是拷贝）。&lt;/strong&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;实际应用中的字典&quot;&gt;实际应用中的字典&lt;/h4&gt;
+
+&lt;h5 id=&quot;字典的基本操作&quot;&gt;字典的基本操作&lt;/h5&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;len函数：返回幸元素的数目，即keys列表的长度。&lt;/li&gt;
+  &lt;li&gt;keys方法：返回字典中所有的键，将它们收集在一个&lt;strong&gt;列表&lt;/strong&gt;中。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;在Python3.0中，&lt;code class=&quot;highlighter-rouge&quot;&gt;list(D.keys())&lt;/code&gt;:&lt;code class=&quot;highlighter-rouge&quot;&gt;keys&lt;/code&gt;返回一个迭代器，而不是一个物理的列表，&lt;code class=&quot;highlighter-rouge&quot;&gt;list&lt;/code&gt;调用迫使它一次生成所有的值。&lt;/p&gt;
+
+&lt;h4 id=&quot;原处修改字典&quot;&gt;原处修改字典&lt;/h4&gt;
+
+&lt;h4 id=&quot;其他字典方法&quot;&gt;其他字典方法&lt;/h4&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;values：返回字典值列表&lt;/li&gt;
+  &lt;li&gt;items：返回（key，value）元组对&lt;/li&gt;
+  &lt;li&gt;get：当&lt;strong&gt;键&lt;/strong&gt;不存在时，返回默认值（None或用户定义的默认值）&lt;/li&gt;
+  &lt;li&gt;update：类似合并&lt;/li&gt;
+  &lt;li&gt;pop：删除一个键并&lt;strong&gt;返回&lt;/strong&gt;它的值&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;语言表&quot;&gt;语言表&lt;/h4&gt;
+
+&lt;h4 id=&quot;字典用法注意事&quot;&gt;字典用法注意事&lt;/h4&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;序列运算无效&lt;/li&gt;
+  &lt;li&gt;对新索引赋值会添加项&lt;/li&gt;
+  &lt;li&gt;键不一定总是字符串&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h5 id=&quot;使用字典模拟灵活的列表&quot;&gt;使用字典模拟灵活的列表&lt;/h5&gt;
+
+&lt;h5 id=&quot;字典用于稀疏数据结构&quot;&gt;字典用于稀疏数据结构&lt;/h5&gt;
+
+&lt;h5 id=&quot;避免missing-key错误&quot;&gt;避免missing-key错误&lt;/h5&gt;
+
+&lt;h5 id=&quot;使用字典作为记录&quot;&gt;使用字典作为“记录”&lt;/h5&gt;
+
+&lt;h5 id=&quot;创建字典的其他方法&quot;&gt;创建字典的其他方法&lt;/h5&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; # 一
+{'name':'mel','age':45}
+ # 二
+D = {}
+D['name']='mel'
+D['age']=45
+ # 三
+dict(name='mel',age=45)
+ # 四
+dict([('name','mel'),('age',45)])
+ # 初始化
+dict.fromkeys(['a','b'],0)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h5 id=&quot;字典解析&quot;&gt;字典解析&lt;/h5&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;zip函数：构建字典&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h5 id=&quot;字典视图&quot;&gt;字典视图&lt;/h5&gt;
+
+&lt;p&gt;在Python3.0中，字典的keys、values和items都返回视图对象。&lt;strong&gt;视图对象是可迭代的，即对象每次产生一个结果项，而不是在内存中立即产生结果列表（即一次性产生和存储所有结果）&lt;/strong&gt;。所以，为了显示它们的值，必须通过内置函数list来运行这3个方法的结果。&lt;/p&gt;
+
+&lt;h5 id=&quot;字典的视图和几何&quot;&gt;字典的视图和几何&lt;/h5&gt;
+
+&lt;h5 id=&quot;排序字典&quot;&gt;排序字典&lt;/h5&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;手动地转换一个列表&lt;/li&gt;
+  &lt;li&gt;在一个键视图或字典自身上且用sorted调用&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h5 id=&quot;字典大小比较无效&quot;&gt;字典大小比较无效&lt;/h5&gt;
+
+&lt;h5 id=&quot;has_key方法已死in永生&quot;&gt;has_key方法已死：in永生&lt;/h5&gt;
+
+</description>
+        <pubDate>Wed, 07 Dec 2016 00:00:00 -0500</pubDate>
+        <link>http://liuqibao.me/2016/12/07/list-and-dictory/</link>
+        <guid isPermaLink="true">http://liuqibao.me/2016/12/07/list-and-dictory/</guid>
+        
+        <category>Python学习手册</category>
+        
+        
+        <category>Python</category>
+        
+      </item>
+    
+      <item>
+        <title>正规表示法与文件格式化处理</title>
+        <description>&lt;ul id=&quot;markdown-toc&quot;&gt;
   &lt;li&gt;&lt;a href=&quot;#语系对正规表示法的影响&quot; id=&quot;markdown-toc-语系对正规表示法的影响&quot;&gt;语系对正规表示法的影响&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;#grep-的一些进阶选项&quot; id=&quot;markdown-toc-grep-的一些进阶选项&quot;&gt;grep 的一些进阶选项&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;#基础正规表示法练习&quot; id=&quot;markdown-toc-基础正规表示法练习&quot;&gt;基础正规表示法练习&lt;/a&gt;&lt;/li&gt;
@@ -784,224 +994,10 @@ to-file ：一个档名，作为目的比对档案的档名；
         <link>http://liuqibao.me/2016/12/07/regular-expression/</link>
         <guid isPermaLink="true">http://liuqibao.me/2016/12/07/regular-expression/</guid>
         
-        
-      </item>
-    
-      <item>
-        <title>第8章 列表与字典</title>
-        <description>&lt;ul id=&quot;markdown-toc&quot;&gt;
-  &lt;li&gt;&lt;a href=&quot;#列表&quot; id=&quot;markdown-toc-列表&quot;&gt;列表&lt;/a&gt;    &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;#实际应用中的列表&quot; id=&quot;markdown-toc-实际应用中的列表&quot;&gt;实际应用中的列表&lt;/a&gt;        &lt;ul&gt;
-          &lt;li&gt;&lt;a href=&quot;#基本列表操作&quot; id=&quot;markdown-toc-基本列表操作&quot;&gt;基本列表操作&lt;/a&gt;&lt;/li&gt;
-          &lt;li&gt;&lt;a href=&quot;#列表迭代和解析&quot; id=&quot;markdown-toc-列表迭代和解析&quot;&gt;列表迭代和解析&lt;/a&gt;&lt;/li&gt;
-          &lt;li&gt;&lt;a href=&quot;#索引分片和矩阵&quot; id=&quot;markdown-toc-索引分片和矩阵&quot;&gt;索引、分片和矩阵&lt;/a&gt;&lt;/li&gt;
-          &lt;li&gt;&lt;a href=&quot;#原处修改列表&quot; id=&quot;markdown-toc-原处修改列表&quot;&gt;原处修改列表&lt;/a&gt;            &lt;ul&gt;
-              &lt;li&gt;&lt;a href=&quot;#索引与分片的赋值&quot; id=&quot;markdown-toc-索引与分片的赋值&quot;&gt;索引与分片的赋值&lt;/a&gt;&lt;/li&gt;
-              &lt;li&gt;&lt;a href=&quot;#列表方法调用&quot; id=&quot;markdown-toc-列表方法调用&quot;&gt;列表方法调用&lt;/a&gt;&lt;/li&gt;
-              &lt;li&gt;&lt;a href=&quot;#其他常见列表操作&quot; id=&quot;markdown-toc-其他常见列表操作&quot;&gt;其他常见列表操作&lt;/a&gt;&lt;/li&gt;
-            &lt;/ul&gt;
-          &lt;/li&gt;
-        &lt;/ul&gt;
-      &lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#字典&quot; id=&quot;markdown-toc-字典&quot;&gt;字典&lt;/a&gt;    &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;#实际应用中的字典&quot; id=&quot;markdown-toc-实际应用中的字典&quot;&gt;实际应用中的字典&lt;/a&gt;        &lt;ul&gt;
-          &lt;li&gt;&lt;a href=&quot;#字典的基本操作&quot; id=&quot;markdown-toc-字典的基本操作&quot;&gt;字典的基本操作&lt;/a&gt;&lt;/li&gt;
-        &lt;/ul&gt;
-      &lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#原处修改字典&quot; id=&quot;markdown-toc-原处修改字典&quot;&gt;原处修改字典&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#其他字典方法&quot; id=&quot;markdown-toc-其他字典方法&quot;&gt;其他字典方法&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#语言表&quot; id=&quot;markdown-toc-语言表&quot;&gt;语言表&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#字典用法注意事&quot; id=&quot;markdown-toc-字典用法注意事&quot;&gt;字典用法注意事&lt;/a&gt;        &lt;ul&gt;
-          &lt;li&gt;&lt;a href=&quot;#使用字典模拟灵活的列表&quot; id=&quot;markdown-toc-使用字典模拟灵活的列表&quot;&gt;使用字典模拟灵活的列表&lt;/a&gt;&lt;/li&gt;
-          &lt;li&gt;&lt;a href=&quot;#字典用于稀疏数据结构&quot; id=&quot;markdown-toc-字典用于稀疏数据结构&quot;&gt;字典用于稀疏数据结构&lt;/a&gt;&lt;/li&gt;
-          &lt;li&gt;&lt;a href=&quot;#避免missing-key错误&quot; id=&quot;markdown-toc-避免missing-key错误&quot;&gt;避免missing-key错误&lt;/a&gt;&lt;/li&gt;
-          &lt;li&gt;&lt;a href=&quot;#使用字典作为记录&quot; id=&quot;markdown-toc-使用字典作为记录&quot;&gt;使用字典作为“记录”&lt;/a&gt;&lt;/li&gt;
-          &lt;li&gt;&lt;a href=&quot;#创建字典的其他方法&quot; id=&quot;markdown-toc-创建字典的其他方法&quot;&gt;创建字典的其他方法&lt;/a&gt;&lt;/li&gt;
-          &lt;li&gt;&lt;a href=&quot;#字典解析&quot; id=&quot;markdown-toc-字典解析&quot;&gt;字典解析&lt;/a&gt;&lt;/li&gt;
-          &lt;li&gt;&lt;a href=&quot;#字典视图&quot; id=&quot;markdown-toc-字典视图&quot;&gt;字典视图&lt;/a&gt;&lt;/li&gt;
-          &lt;li&gt;&lt;a href=&quot;#字典的视图和几何&quot; id=&quot;markdown-toc-字典的视图和几何&quot;&gt;字典的视图和几何&lt;/a&gt;&lt;/li&gt;
-          &lt;li&gt;&lt;a href=&quot;#排序字典&quot; id=&quot;markdown-toc-排序字典&quot;&gt;排序字典&lt;/a&gt;&lt;/li&gt;
-          &lt;li&gt;&lt;a href=&quot;#字典大小比较无效&quot; id=&quot;markdown-toc-字典大小比较无效&quot;&gt;字典大小比较无效&lt;/a&gt;&lt;/li&gt;
-          &lt;li&gt;&lt;a href=&quot;#has_key方法已死in永生&quot; id=&quot;markdown-toc-has_key方法已死in永生&quot;&gt;has_key方法已死：in永生&lt;/a&gt;&lt;/li&gt;
-        &lt;/ul&gt;
-      &lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;列表&quot;&gt;列表&lt;/h3&gt;
-
-&lt;p&gt;主要属性：&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;任意对象的有序集合&lt;/li&gt;
-  &lt;li&gt;通过偏移读取&lt;/li&gt;
-  &lt;li&gt;可变长度、异构以及任意嵌套&lt;/li&gt;
-  &lt;li&gt;属于可变序列的分类&lt;/li&gt;
-  &lt;li&gt;对象引用数组&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;运行‘help（list）&lt;code class=&quot;highlighter-rouge&quot;&gt;或&lt;/code&gt;dir（list）`查看list方法的完整列表清单。&lt;/p&gt;
-
-&lt;h4 id=&quot;实际应用中的列表&quot;&gt;实际应用中的列表&lt;/h4&gt;
-
-&lt;h5 id=&quot;基本列表操作&quot;&gt;基本列表操作&lt;/h5&gt;
-
-&lt;h5 id=&quot;列表迭代和解析&quot;&gt;列表迭代和解析&lt;/h5&gt;
-
-&lt;h5 id=&quot;索引分片和矩阵&quot;&gt;索引、分片和矩阵&lt;/h5&gt;
-
-&lt;p&gt;&lt;strong&gt;索引&lt;/strong&gt;的结果是你指定的偏移处的&lt;strong&gt;对象&lt;/strong&gt;（无论对象是什么类型），而对列表进行&lt;strong&gt;分片&lt;/strong&gt;时往往返回一个&lt;strong&gt;新的列表&lt;/strong&gt;。&lt;/p&gt;
-
-&lt;h5 id=&quot;原处修改列表&quot;&gt;原处修改列表&lt;/h5&gt;
-
-&lt;p&gt;本节的操作都可以直接修改对象，而不会像字符串那样强迫你建立一个新的拷贝。&lt;/p&gt;
-
-&lt;h6 id=&quot;索引与分片的赋值&quot;&gt;索引与分片的赋值&lt;/h6&gt;
-
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;L[1:2]=[]&lt;/code&gt;实际上是删除操作。&lt;/p&gt;
-
-&lt;p&gt;被赋值的序列长度不一定要与被赋值的分片的长度相匹配。&lt;/p&gt;
-
-&lt;h6 id=&quot;列表方法调用&quot;&gt;列表方法调用&lt;/h6&gt;
-
-&lt;p&gt;方法就是附属于特定对象的函数（实际上是引用函数的属性）。&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;
-    &lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;L.append（X）&lt;/code&gt;与&lt;code class=&quot;highlighter-rouge&quot;&gt;L+[X]&lt;/code&gt;的结果类似，不同的是，前者会&lt;strong&gt;原地修改L&lt;/strong&gt;，而后者会生成&lt;strong&gt;新的列表&lt;/strong&gt;。&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;sort:原地对列表排序。&lt;strong&gt;默认比较字符串，以递增的顺序进行排序&lt;/strong&gt;&lt;/p&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;reverse&lt;/code&gt;参数允许排序按照降序而不是升序进行&lt;/p&gt;
-
-&lt;hr /&gt;
-&lt;p&gt;&lt;strong&gt;注意：&lt;/strong&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;append&lt;/code&gt;和&lt;code class=&quot;highlighter-rouge&quot;&gt;sort&lt;/code&gt;是原处修改相关的列表对象，而结果&lt;strong&gt;并没有返回列表&lt;/strong&gt;（实际上，两者都返回的值为&lt;strong&gt;None&lt;/strong&gt;）。&lt;/p&gt;
-
-&lt;p&gt;如果编辑类似&lt;code class=&quot;highlighter-rouge&quot;&gt;L=L.append（x)&lt;/code&gt;的语句，将不会得L修改后的值，即相当于&lt;code class=&quot;highlighter-rouge&quot;&gt;L=None&lt;/code&gt;。
-***&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;reverse：原地反转列表&lt;/li&gt;
-  &lt;li&gt;extend：末端插入&lt;strong&gt;多个&lt;/strong&gt;元素&lt;/li&gt;
-  &lt;li&gt;pop：末端删除&lt;strong&gt;一个&lt;/strong&gt;元素
-&lt;em&gt;**
-列表的pop方法和append方法常被联用，来实现快速的后进先出（LIFO，last-in-first-out）堆栈结构。
-**&lt;/em&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h6 id=&quot;其他常见列表操作&quot;&gt;其他常见列表操作&lt;/h6&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;del语句在原处删除某项或某片段。&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;字典&quot;&gt;字典&lt;/h3&gt;
-
-&lt;p&gt;主要属性：&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;通过键而不是偏移来读取&lt;/li&gt;
-  &lt;li&gt;任意对象的无序集合&lt;/li&gt;
-  &lt;li&gt;可变长度、异构、任意嵌套&lt;/li&gt;
-  &lt;li&gt;属于可变映射类型&lt;/li&gt;
-  &lt;li&gt;对象引用表（散列表）&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;strong&gt;和列表一样，字典存储的是对象引用（不是拷贝）。&lt;/strong&gt;&lt;/p&gt;
-
-&lt;h4 id=&quot;实际应用中的字典&quot;&gt;实际应用中的字典&lt;/h4&gt;
-
-&lt;h5 id=&quot;字典的基本操作&quot;&gt;字典的基本操作&lt;/h5&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;len函数：返回幸元素的数目，即keys列表的长度。&lt;/li&gt;
-  &lt;li&gt;keys方法：返回字典中所有的键，将它们收集在一个&lt;strong&gt;列表&lt;/strong&gt;中。&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;在Python3.0中，&lt;code class=&quot;highlighter-rouge&quot;&gt;list(D.keys())&lt;/code&gt;:&lt;code class=&quot;highlighter-rouge&quot;&gt;keys&lt;/code&gt;返回一个迭代器，而不是一个物理的列表，&lt;code class=&quot;highlighter-rouge&quot;&gt;list&lt;/code&gt;调用迫使它一次生成所有的值。&lt;/p&gt;
-
-&lt;h4 id=&quot;原处修改字典&quot;&gt;原处修改字典&lt;/h4&gt;
-
-&lt;h4 id=&quot;其他字典方法&quot;&gt;其他字典方法&lt;/h4&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;values：返回字典值列表&lt;/li&gt;
-  &lt;li&gt;items：返回（key，value）元组对&lt;/li&gt;
-  &lt;li&gt;get：当&lt;strong&gt;键&lt;/strong&gt;不存在时，返回默认值（None或用户定义的默认值）&lt;/li&gt;
-  &lt;li&gt;update：类似合并&lt;/li&gt;
-  &lt;li&gt;pop：删除一个键并&lt;strong&gt;返回&lt;/strong&gt;它的值&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h4 id=&quot;语言表&quot;&gt;语言表&lt;/h4&gt;
-
-&lt;h4 id=&quot;字典用法注意事&quot;&gt;字典用法注意事&lt;/h4&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;序列运算无效&lt;/li&gt;
-  &lt;li&gt;对新索引赋值会添加项&lt;/li&gt;
-  &lt;li&gt;键不一定总是字符串&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h5 id=&quot;使用字典模拟灵活的列表&quot;&gt;使用字典模拟灵活的列表&lt;/h5&gt;
-
-&lt;h5 id=&quot;字典用于稀疏数据结构&quot;&gt;字典用于稀疏数据结构&lt;/h5&gt;
-
-&lt;h5 id=&quot;避免missing-key错误&quot;&gt;避免missing-key错误&lt;/h5&gt;
-
-&lt;h5 id=&quot;使用字典作为记录&quot;&gt;使用字典作为“记录”&lt;/h5&gt;
-
-&lt;h5 id=&quot;创建字典的其他方法&quot;&gt;创建字典的其他方法&lt;/h5&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; # 一
-{'name':'mel','age':45}
- # 二
-D = {}
-D['name']='mel'
-D['age']=45
- # 三
-dict(name='mel',age=45)
- # 四
-dict([('name','mel'),('age',45)])
- # 初始化
-dict.fromkeys(['a','b'],0)
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;h5 id=&quot;字典解析&quot;&gt;字典解析&lt;/h5&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;zip函数：构建字典&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h5 id=&quot;字典视图&quot;&gt;字典视图&lt;/h5&gt;
-
-&lt;p&gt;在Python3.0中，字典的keys、values和items都返回视图对象。&lt;strong&gt;视图对象是可迭代的，即对象每次产生一个结果项，而不是在内存中立即产生结果列表（即一次性产生和存储所有结果）&lt;/strong&gt;。所以，为了显示它们的值，必须通过内置函数list来运行这3个方法的结果。&lt;/p&gt;
-
-&lt;h5 id=&quot;字典的视图和几何&quot;&gt;字典的视图和几何&lt;/h5&gt;
-
-&lt;h5 id=&quot;排序字典&quot;&gt;排序字典&lt;/h5&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;手动地转换一个列表&lt;/li&gt;
-  &lt;li&gt;在一个键视图或字典自身上且用sorted调用&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h5 id=&quot;字典大小比较无效&quot;&gt;字典大小比较无效&lt;/h5&gt;
-
-&lt;h5 id=&quot;has_key方法已死in永生&quot;&gt;has_key方法已死：in永生&lt;/h5&gt;
-
-</description>
-        <pubDate>Wed, 07 Dec 2016 00:00:00 -0500</pubDate>
-        <link>http://liuqibao.me/2016/12/07/list-and-dictory/</link>
-        <guid isPermaLink="true">http://liuqibao.me/2016/12/07/list-and-dictory/</guid>
-        
-        <category>Python学习手册</category>
+        <category>文本处理</category>
         
         
-        <category>Python</category>
+        <category>Linux</category>
         
       </item>
     
