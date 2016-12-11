@@ -2,7 +2,7 @@
 layout: post
 title: 元组和文件
 categories: Python
-tag: Rython学习手册
+tag: Python学习手册
 --------
 
 * content
