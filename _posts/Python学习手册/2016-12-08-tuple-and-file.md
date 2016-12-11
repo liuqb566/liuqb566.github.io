@@ -1,6 +1,7 @@
 --------
 layout: post
 title: 元组和文件
+date: 2016-12-08
 categories: Python
 tag: Python学习手册
 --------

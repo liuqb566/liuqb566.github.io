@@ -1,9 +1,9 @@
 ---
 layout: post
 title: 第4章 介绍python对象的类型
-date: 2016-12-08
+date: 2016-11-30
 categories: Python
-tag: Pyhton学习手册
+tag: Python学习手册
 ---
 
 * content

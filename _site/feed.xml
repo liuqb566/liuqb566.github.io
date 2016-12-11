@@ -5,8 +5,8 @@
     <description>好记性不如写博文！</description>
     <link>http://liuqibao.me/</link>
     <atom:link href="http://liuqibao.me/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sat, 10 Dec 2016 23:31:25 -0500</pubDate>
-    <lastBuildDate>Sat, 10 Dec 2016 23:31:25 -0500</lastBuildDate>
+    <pubDate>Sat, 10 Dec 2016 23:36:13 -0500</pubDate>
+    <lastBuildDate>Sat, 10 Dec 2016 23:36:13 -0500</lastBuildDate>
     <generator>Jekyll v3.3.1</generator>
     
       <item>
@@ -14,6 +14,7 @@
         <description>&lt;hr /&gt;
 &lt;p&gt;layout: post
 title: 元组和文件
+date: 2016-12-08
 categories: Python
 tag: Python学习手册
 ——–&lt;/p&gt;
@@ -224,122 +225,6 @@ tag: Python学习手册
         <link>http://liuqibao.me/2016/12/08/tuple-and-file/</link>
         <guid isPermaLink="true">http://liuqibao.me/2016/12/08/tuple-and-file/</guid>
         
-        
-      </item>
-    
-      <item>
-        <title>第4章 介绍python对象的类型</title>
-        <description>&lt;ul id=&quot;markdown-toc&quot;&gt;
-  &lt;li&gt;&lt;a href=&quot;#python的核心数据类型&quot; id=&quot;markdown-toc-python的核心数据类型&quot;&gt;Python的核心数据类型&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#数字&quot; id=&quot;markdown-toc-数字&quot;&gt;数字&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#字符串&quot; id=&quot;markdown-toc-字符串&quot;&gt;字符串&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#列表&quot; id=&quot;markdown-toc-列表&quot;&gt;列表&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#字典&quot; id=&quot;markdown-toc-字典&quot;&gt;字典&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#元组&quot; id=&quot;markdown-toc-元组&quot;&gt;元组&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#文件&quot; id=&quot;markdown-toc-文件&quot;&gt;文件&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#集合&quot; id=&quot;markdown-toc-集合&quot;&gt;集合&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#用户定义的类&quot; id=&quot;markdown-toc-用户定义的类&quot;&gt;用户定义的类&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;python的核心数据类型&quot;&gt;Python的核心数据类型&lt;/h3&gt;
-
-&lt;p&gt;&lt;strong&gt;内置对象&lt;/strong&gt;&lt;/p&gt;
-
-&lt;blockquote&gt;
-
-  &lt;ul&gt;
-    &lt;li&gt;数字&lt;/li&gt;
-    &lt;li&gt;字符串&lt;/li&gt;
-    &lt;li&gt;列表&lt;/li&gt;
-    &lt;li&gt;字典&lt;/li&gt;
-    &lt;li&gt;元组&lt;/li&gt;
-    &lt;li&gt;文件&lt;/li&gt;
-    &lt;li&gt;集合&lt;/li&gt;
-    &lt;li&gt;其他类型&lt;/li&gt;
-    &lt;li&gt;编程单元类型&lt;/li&gt;
-    &lt;li&gt;与实现相关的类型&lt;/li&gt;
-  &lt;/ul&gt;
-
-&lt;/blockquote&gt;
-
-&lt;hr /&gt;
-
-&lt;p&gt;一旦创建了一个对象，它就和其相应的操作集合绑定了，即只能进行其合适的操作&lt;/p&gt;
-
-&lt;p&gt;可以使用dir()函数来查看一个对象的所有属性，dir()函数会列出该对象的实现方式（以双下划线开头和结尾）和能够调用的方法。要查询一个方法能做什么，你可以用help()函数来查询。&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;```
-s = 'hello'
-dir(s)
-help(s.replace)
-``` ***
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;h3 id=&quot;数字&quot;&gt;数字&lt;/h3&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;repr：as code&lt;/li&gt;
-  &lt;li&gt;str： user-friendly&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;字符串&quot;&gt;字符串&lt;/h3&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;索引从0开始&lt;/li&gt;
-  &lt;li&gt;能在方括号中使用任意表达式，而不仅仅是使用数字常量。eg. s[len(s)-1]&lt;/li&gt;
-  &lt;li&gt;不可变性&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;列表&quot;&gt;列表&lt;/h3&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;列表解析表达式。&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;字典&quot;&gt;字典&lt;/h3&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;唯一的映射&lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;键的排序：for循环&lt;/p&gt;
-
-    &lt;p&gt;keys()方法&lt;/p&gt;
-
-    &lt;p&gt;sort()方法&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;迭代和优化&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;strong&gt;列表解析和相关的函数编程工具（eg. ` map&lt;code class=&quot;highlighter-rouge&quot;&gt;和&lt;/code&gt;fileter&lt;code class=&quot;highlighter-rouge&quot;&gt;），通常运行速度比‘for&lt;/code&gt;循环快。&lt;/strong&gt;&lt;/p&gt;
-
-&lt;h3 id=&quot;元组&quot;&gt;元组&lt;/h3&gt;
-
-&lt;p&gt;两个专有的可调用方法&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;T.index（）
-
-T.count（）
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;h3 id=&quot;文件&quot;&gt;文件&lt;/h3&gt;
-
-&lt;p&gt;在Python3.0中，文本文件把内容显示为字符串，并且自动执行Unicode编码和解码；而二进制文件把内容显示为一个特定的字节字符串类型，并且允许你不修改地孔访问文件内容。&lt;/p&gt;
-
-&lt;h3 id=&quot;集合&quot;&gt;集合&lt;/h3&gt;
-
-&lt;h3 id=&quot;用户定义的类&quot;&gt;用户定义的类&lt;/h3&gt;
-
-</description>
-        <pubDate>Thu, 08 Dec 2016 00:00:00 -0500</pubDate>
-        <link>http://liuqibao.me/2016/12/08/types-of-objects-of-python/</link>
-        <guid isPermaLink="true">http://liuqibao.me/2016/12/08/types-of-objects-of-python/</guid>
-        
-        <category>Pyhton学习手册</category>
-        
-        
-        <category>Python</category>
         
       </item>
     
@@ -1826,6 +1711,122 @@ finger root bin daemon adm ?...
         
         
         <category>Linux</category>
+        
+      </item>
+    
+      <item>
+        <title>第4章 介绍python对象的类型</title>
+        <description>&lt;ul id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#python的核心数据类型&quot; id=&quot;markdown-toc-python的核心数据类型&quot;&gt;Python的核心数据类型&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#数字&quot; id=&quot;markdown-toc-数字&quot;&gt;数字&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#字符串&quot; id=&quot;markdown-toc-字符串&quot;&gt;字符串&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#列表&quot; id=&quot;markdown-toc-列表&quot;&gt;列表&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#字典&quot; id=&quot;markdown-toc-字典&quot;&gt;字典&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#元组&quot; id=&quot;markdown-toc-元组&quot;&gt;元组&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#文件&quot; id=&quot;markdown-toc-文件&quot;&gt;文件&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#集合&quot; id=&quot;markdown-toc-集合&quot;&gt;集合&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#用户定义的类&quot; id=&quot;markdown-toc-用户定义的类&quot;&gt;用户定义的类&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;python的核心数据类型&quot;&gt;Python的核心数据类型&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;内置对象&lt;/strong&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+
+  &lt;ul&gt;
+    &lt;li&gt;数字&lt;/li&gt;
+    &lt;li&gt;字符串&lt;/li&gt;
+    &lt;li&gt;列表&lt;/li&gt;
+    &lt;li&gt;字典&lt;/li&gt;
+    &lt;li&gt;元组&lt;/li&gt;
+    &lt;li&gt;文件&lt;/li&gt;
+    &lt;li&gt;集合&lt;/li&gt;
+    &lt;li&gt;其他类型&lt;/li&gt;
+    &lt;li&gt;编程单元类型&lt;/li&gt;
+    &lt;li&gt;与实现相关的类型&lt;/li&gt;
+  &lt;/ul&gt;
+
+&lt;/blockquote&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;一旦创建了一个对象，它就和其相应的操作集合绑定了，即只能进行其合适的操作&lt;/p&gt;
+
+&lt;p&gt;可以使用dir()函数来查看一个对象的所有属性，dir()函数会列出该对象的实现方式（以双下划线开头和结尾）和能够调用的方法。要查询一个方法能做什么，你可以用help()函数来查询。&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;```
+s = 'hello'
+dir(s)
+help(s.replace)
+``` ***
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&quot;数字&quot;&gt;数字&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;repr：as code&lt;/li&gt;
+  &lt;li&gt;str： user-friendly&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;字符串&quot;&gt;字符串&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;索引从0开始&lt;/li&gt;
+  &lt;li&gt;能在方括号中使用任意表达式，而不仅仅是使用数字常量。eg. s[len(s)-1]&lt;/li&gt;
+  &lt;li&gt;不可变性&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;列表&quot;&gt;列表&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;列表解析表达式。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;字典&quot;&gt;字典&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;唯一的映射&lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;键的排序：for循环&lt;/p&gt;
+
+    &lt;p&gt;keys()方法&lt;/p&gt;
+
+    &lt;p&gt;sort()方法&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;迭代和优化&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;列表解析和相关的函数编程工具（eg. ` map&lt;code class=&quot;highlighter-rouge&quot;&gt;和&lt;/code&gt;fileter&lt;code class=&quot;highlighter-rouge&quot;&gt;），通常运行速度比‘for&lt;/code&gt;循环快。&lt;/strong&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;元组&quot;&gt;元组&lt;/h3&gt;
+
+&lt;p&gt;两个专有的可调用方法&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;T.index（）
+
+T.count（）
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&quot;文件&quot;&gt;文件&lt;/h3&gt;
+
+&lt;p&gt;在Python3.0中，文本文件把内容显示为字符串，并且自动执行Unicode编码和解码；而二进制文件把内容显示为一个特定的字节字符串类型，并且允许你不修改地孔访问文件内容。&lt;/p&gt;
+
+&lt;h3 id=&quot;集合&quot;&gt;集合&lt;/h3&gt;
+
+&lt;h3 id=&quot;用户定义的类&quot;&gt;用户定义的类&lt;/h3&gt;
+
+</description>
+        <pubDate>Wed, 30 Nov 2016 00:00:00 -0500</pubDate>
+        <link>http://liuqibao.me/2016/11/30/types-of-objects-of-python/</link>
+        <guid isPermaLink="true">http://liuqibao.me/2016/11/30/types-of-objects-of-python/</guid>
+        
+        <category>Python学习手册</category>
+        
+        
+        <category>Python</category>
         
       </item>
     
