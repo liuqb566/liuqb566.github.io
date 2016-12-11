@@ -5,9 +5,787 @@
     <description>好记性不如写博文！</description>
     <link>http://liuqibao.me/</link>
     <atom:link href="http://liuqibao.me/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Fri, 09 Dec 2016 09:31:03 -0500</pubDate>
-    <lastBuildDate>Fri, 09 Dec 2016 09:31:03 -0500</lastBuildDate>
+    <pubDate>Sat, 10 Dec 2016 22:23:20 -0500</pubDate>
+    <lastBuildDate>Sat, 10 Dec 2016 22:23:20 -0500</lastBuildDate>
     <generator>Jekyll v3.3.1</generator>
+    
+      <item>
+        <title>Tuple And File</title>
+        <description>&lt;hr /&gt;
+&lt;p&gt;layout: post
+title: 元组和文件
+categories: Python
+tag: python学习手册
+——–&lt;/p&gt;
+
+&lt;ul id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#元组&quot; id=&quot;markdown-toc-元组&quot;&gt;元组&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#实际应用中的元组&quot; id=&quot;markdown-toc-实际应用中的元组&quot;&gt;实际应用中的元组&lt;/a&gt;        &lt;ul&gt;
+          &lt;li&gt;&lt;a href=&quot;#元组的特殊语法逗号和圆括号&quot; id=&quot;markdown-toc-元组的特殊语法逗号和圆括号&quot;&gt;元组的特殊语法：逗号和圆括号&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#转换方法以及不可变性&quot; id=&quot;markdown-toc-转换方法以及不可变性&quot;&gt;转换、方法以及不可变性&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#文件&quot; id=&quot;markdown-toc-文件&quot;&gt;文件&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#打开文件&quot; id=&quot;markdown-toc-打开文件&quot;&gt;打开文件&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#使用文件&quot; id=&quot;markdown-toc-使用文件&quot;&gt;使用文件&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#实际应用中的文件&quot; id=&quot;markdown-toc-实际应用中的文件&quot;&gt;实际应用中的文件&lt;/a&gt;        &lt;ul&gt;
+          &lt;li&gt;&lt;a href=&quot;#python-30中的文本和二进制文件&quot; id=&quot;markdown-toc-python-30中的文本和二进制文件&quot;&gt;Python 3.0中的文本和二进制文件&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#在文件中存储并解析python对象&quot; id=&quot;markdown-toc-在文件中存储并解析python对象&quot;&gt;在文件中存储并解析Python对象&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#用pickle存储python的原生对象&quot; id=&quot;markdown-toc-用pickle存储python的原生对象&quot;&gt;用pickle存储Python的原生对象&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#文件中打包二进制数据的存储与解析&quot; id=&quot;markdown-toc-文件中打包二进制数据的存储与解析&quot;&gt;文件中打包二进制数据的存储与解析&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#文件上下文管理器&quot; id=&quot;markdown-toc-文件上下文管理器&quot;&gt;文件上下文管理器&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#其他文件工具&quot; id=&quot;markdown-toc-其他文件工具&quot;&gt;其他文件工具&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#对象灵活性&quot; id=&quot;markdown-toc-对象灵活性&quot;&gt;对象灵活性&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#引用vs拷贝&quot; id=&quot;markdown-toc-引用vs拷贝&quot;&gt;引用VS拷贝&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#比较相等性和真值&quot; id=&quot;markdown-toc-比较相等性和真值&quot;&gt;比较、相等性和真值&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#python中真和假的含义&quot; id=&quot;markdown-toc-python中真和假的含义&quot;&gt;Python中真和假的含义&lt;/a&gt;        &lt;ul&gt;
+          &lt;li&gt;&lt;a href=&quot;#none对象&quot; id=&quot;markdown-toc-none对象&quot;&gt;None对象&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#bool类型&quot; id=&quot;markdown-toc-bool类型&quot;&gt;bool类型&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#python的类型层次&quot; id=&quot;markdown-toc-python的类型层次&quot;&gt;Python的类型层次&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#type-对象&quot; id=&quot;markdown-toc-type-对象&quot;&gt;Type 对象&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#python中的其他类型&quot; id=&quot;markdown-toc-python中的其他类型&quot;&gt;Python中的其他类型&lt;/a&gt;        &lt;ul&gt;
+          &lt;li&gt;&lt;a href=&quot;#内置类型陷阱&quot; id=&quot;markdown-toc-内置类型陷阱&quot;&gt;内置类型陷阱&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#赋值生成引用而不是拷贝&quot; id=&quot;markdown-toc-赋值生成引用而不是拷贝&quot;&gt;赋值生成引用，而不是拷贝&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#重复能够增加层次深度&quot; id=&quot;markdown-toc-重复能够增加层次深度&quot;&gt;重复能够增加层次深度&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#留意循环数据结构&quot; id=&quot;markdown-toc-留意循环数据结构&quot;&gt;留意循环数据结构&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#不可变类型不可以在原处改变&quot; id=&quot;markdown-toc-不可变类型不可以在原处改变&quot;&gt;不可变类型不可以在原处改变&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;元组&quot;&gt;元组&lt;/h3&gt;
+
+&lt;p&gt;元组不支持任何方法调用，但元组具有列表的大多数属性：&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;任意对象的有序集合&lt;/li&gt;
+  &lt;li&gt;通过偏移存取&lt;/li&gt;
+  &lt;li&gt;属于不可变序列类型&lt;/li&gt;
+  &lt;li&gt;固定长度、异构、任意嵌套&lt;/li&gt;
+  &lt;li&gt;对象引用的数组&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;实际应用中的元组&quot;&gt;实际应用中的元组&lt;/h4&gt;
+
+&lt;p&gt;元组没有方法，但支持字符串和列表的一般序列操作，如&lt;code class=&quot;highlighter-rouge&quot;&gt;+&lt;/code&gt;，&lt;code class=&quot;highlighter-rouge&quot;&gt;*&lt;/code&gt;&lt;/p&gt;
+
+&lt;h5 id=&quot;元组的特殊语法逗号和圆括号&quot;&gt;元组的特殊语法：逗号和圆括号&lt;/h5&gt;
+
+&lt;h5 id=&quot;转换方法以及不可变性&quot;&gt;转换、方法以及不可变性&lt;/h5&gt;
+
+&lt;p&gt;元组的不可变性只适用于元组本身顶层而并非其内容。&lt;/p&gt;
+
+&lt;h3 id=&quot;文件&quot;&gt;文件&lt;/h3&gt;
+
+&lt;p&gt;内置open函数会创建一个Python文件对象，可以作为计算机上的一个文件链接。在调用open函数之后，你可以通过调用和返回文件对象的方法来读写相关外部文件。&lt;/p&gt;
+
+&lt;h4 id=&quot;打开文件&quot;&gt;打开文件&lt;/h4&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt; file=open（r‘路径’，‘处理模式’）&lt;/code&gt;&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;‘r’:默认值，输入打开文件&lt;/li&gt;
+  &lt;li&gt;‘w’:输出生成并打开文件&lt;/li&gt;
+  &lt;li&gt;‘a’：为在文件尾部追加内容而打开文件&lt;/li&gt;
+  &lt;li&gt;’+’: 同时输入和输出，即可对相同的文件读写&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;使用文件&quot;&gt;使用文件&lt;/h4&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;文件迭代器是最好的读取工具&lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;内容是字符串，不是对象&lt;br /&gt;
+若想转换格式，需自己转换&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;close是通常选项&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;默认怀部下，输出文件总是&lt;strong&gt;缓冲&lt;/strong&gt;的，这意味着写入的文本可能不会立即自动从内存转换到硬盘；&lt;strong&gt;关闭一个文件&lt;/strong&gt;，或者运行其&lt;strong&gt;flush方法&lt;/strong&gt;，迫使缓存的数据进入硬盘。&lt;/p&gt;
+
+&lt;h4 id=&quot;实际应用中的文件&quot;&gt;实际应用中的文件&lt;/h4&gt;
+
+&lt;h5 id=&quot;python-30中的文本和二进制文件&quot;&gt;Python 3.0中的文本和二进制文件&lt;/h5&gt;
+
+&lt;p&gt;文本和二进制文件在Python3.0中有区别；&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;文本文件把内容表示为常规的str字符串&lt;/li&gt;
+  &lt;li&gt;二进制文件把内容表示为一个特殊的bytes字符串类型，所以必须用bytets字符串处理二进制文件。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h5 id=&quot;在文件中存储并解析python对象&quot;&gt;在文件中存储并解析Python对象&lt;/h5&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;输入后需将字符串转换成自己需要的格式。&lt;/li&gt;
+  &lt;li&gt;输出时需自己对字符串格式进行转换（字符串格式化），并加&lt;strong&gt;终止符&lt;/strong&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;\n&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;文件是缓冲的并且是可查找的&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h5 id=&quot;用pickle存储python的原生对象&quot;&gt;用pickle存储Python的原生对象&lt;/h5&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;pickle.dump()&lt;/li&gt;
+  &lt;li&gt;pickle.load(0&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h5 id=&quot;文件中打包二进制数据的存储与解析&quot;&gt;文件中打包二进制数据的存储与解析&lt;/h5&gt;
+
+&lt;p&gt;struct模块；能够构造并解析打包的二进制数据。&lt;/p&gt;
+
+&lt;h5 id=&quot;文件上下文管理器&quot;&gt;文件上下文管理器&lt;/h5&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;with….as…&lt;/li&gt;
+  &lt;li&gt;try:….finally:…&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h5 id=&quot;其他文件工具&quot;&gt;其他文件工具&lt;/h5&gt;
+
+&lt;p&gt;除open外，还有：&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;标准流：sys模块预先打开的文件对象&lt;/li&gt;
+  &lt;li&gt;os模块中的描述文件&lt;/li&gt;
+  &lt;li&gt;sockets、pipes和FIFO文件&lt;/li&gt;
+  &lt;li&gt;通过键来存取的文件&lt;/li&gt;
+  &lt;li&gt;Shell命令流：eg。os.popen,subprocess.Popen&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;对象灵活性&quot;&gt;对象灵活性&lt;/h4&gt;
+
+&lt;h4 id=&quot;引用vs拷贝&quot;&gt;引用VS拷贝&lt;/h4&gt;
+
+&lt;p&gt;&lt;strong&gt;赋值操作储存对象的引用，而不是这些对象的拷贝。&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;列表是可变的，修改一个列表可能会引起其它引用该对象的变量的改变。&lt;/p&gt;
+
+&lt;p&gt;拷贝的方法：&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;分片表达式，&lt;strong&gt;仅顶层复制，不能复制嵌套的数据结构。&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;字典copy方法，&lt;strong&gt;仅顶层复制，不能复制嵌套的数据结构。&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;内置函数，如list&lt;/li&gt;
+  &lt;li&gt;copy标准库，可以完整复制&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;比较相等性和真值&quot;&gt;比较、相等性和真值&lt;/h4&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;==&lt;/code&gt; 操作符测试值的相等性&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;is&lt;/code&gt; 表达式测试对象的一致性&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;python中真和假的含义&quot;&gt;Python中真和假的含义&lt;/h4&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;数字非零，为真&lt;/li&gt;
+  &lt;li&gt;其他对象如果非空，为真&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h5 id=&quot;none对象&quot;&gt;None对象&lt;/h5&gt;
+
+&lt;p&gt;&lt;strong&gt;None为真对象，有一块内存&lt;/strong&gt;&lt;/p&gt;
+
+&lt;h5 id=&quot;bool类型&quot;&gt;bool类型&lt;/h5&gt;
+
+&lt;h4 id=&quot;python的类型层次&quot;&gt;Python的类型层次&lt;/h4&gt;
+
+&lt;h4 id=&quot;type-对象&quot;&gt;Type 对象&lt;/h4&gt;
+
+&lt;p&gt;&lt;strong&gt;类型&lt;/strong&gt;本身在Python中也是&lt;strong&gt;对象类型&lt;/strong&gt;。（比较抽象）&lt;/p&gt;
+
+&lt;h4 id=&quot;python中的其他类型&quot;&gt;Python中的其他类型&lt;/h4&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;正则表达式对象&lt;/li&gt;
+  &lt;li&gt;DBM文件&lt;/li&gt;
+  &lt;li&gt;GUI组件&lt;/li&gt;
+  &lt;li&gt;网络套接字&lt;/li&gt;
+  &lt;li&gt;…&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h5 id=&quot;内置类型陷阱&quot;&gt;内置类型陷阱&lt;/h5&gt;
+
+&lt;h5 id=&quot;赋值生成引用而不是拷贝&quot;&gt;赋值生成引用，而不是拷贝&lt;/h5&gt;
+
+&lt;h5 id=&quot;重复能够增加层次深度&quot;&gt;重复能够增加层次深度&lt;/h5&gt;
+
+&lt;h5 id=&quot;留意循环数据结构&quot;&gt;留意循环数据结构&lt;/h5&gt;
+
+&lt;h5 id=&quot;不可变类型不可以在原处改变&quot;&gt;不可变类型不可以在原处改变&lt;/h5&gt;
+</description>
+        <pubDate>Thu, 08 Dec 2016 00:00:00 -0500</pubDate>
+        <link>http://liuqibao.me/2016/12/08/tuple-and-file/</link>
+        <guid isPermaLink="true">http://liuqibao.me/2016/12/08/tuple-and-file/</guid>
+        
+        
+      </item>
+    
+      <item>
+        <title>第4章 介绍python对象的类型</title>
+        <description>&lt;ul id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#python的核心数据类型&quot; id=&quot;markdown-toc-python的核心数据类型&quot;&gt;Python的核心数据类型&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#数字&quot; id=&quot;markdown-toc-数字&quot;&gt;数字&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#字符串&quot; id=&quot;markdown-toc-字符串&quot;&gt;字符串&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#列表&quot; id=&quot;markdown-toc-列表&quot;&gt;列表&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#字典&quot; id=&quot;markdown-toc-字典&quot;&gt;字典&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#元组&quot; id=&quot;markdown-toc-元组&quot;&gt;元组&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#文件&quot; id=&quot;markdown-toc-文件&quot;&gt;文件&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#集合&quot; id=&quot;markdown-toc-集合&quot;&gt;集合&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#用户定义的类&quot; id=&quot;markdown-toc-用户定义的类&quot;&gt;用户定义的类&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;python的核心数据类型&quot;&gt;Python的核心数据类型&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;内置对象&lt;/strong&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+
+  &lt;ul&gt;
+    &lt;li&gt;数字&lt;/li&gt;
+    &lt;li&gt;字符串&lt;/li&gt;
+    &lt;li&gt;列表&lt;/li&gt;
+    &lt;li&gt;字典&lt;/li&gt;
+    &lt;li&gt;元组&lt;/li&gt;
+    &lt;li&gt;文件&lt;/li&gt;
+    &lt;li&gt;集合&lt;/li&gt;
+    &lt;li&gt;其他类型&lt;/li&gt;
+    &lt;li&gt;编程单元类型&lt;/li&gt;
+    &lt;li&gt;与实现相关的类型&lt;/li&gt;
+  &lt;/ul&gt;
+
+&lt;/blockquote&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;一旦创建了一个对象，它就和其相应的操作集合绑定了，即只能进行其合适的操作&lt;/p&gt;
+
+&lt;p&gt;可以使用dir()函数来查看一个对象的所有属性，dir()函数会列出该对象的实现方式（以双下划线开头和结尾）和能够调用的方法。要查询一个方法能做什么，你可以用help()函数来查询。&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;```
+s = 'hello'
+dir(s)
+help(s.replace)
+``` ***
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&quot;数字&quot;&gt;数字&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;repr：as code&lt;/li&gt;
+  &lt;li&gt;str： user-friendly&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;字符串&quot;&gt;字符串&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;索引从0开始&lt;/li&gt;
+  &lt;li&gt;能在方括号中使用任意表达式，而不仅仅是使用数字常量。eg. s[len(s)-1]&lt;/li&gt;
+  &lt;li&gt;不可变性&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;列表&quot;&gt;列表&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;列表解析表达式。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;字典&quot;&gt;字典&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;唯一的映射&lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;键的排序：for循环&lt;/p&gt;
+
+    &lt;p&gt;keys()方法&lt;/p&gt;
+
+    &lt;p&gt;sort()方法&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;迭代和优化&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;列表解析和相关的函数编程工具（eg. ` map&lt;code class=&quot;highlighter-rouge&quot;&gt;和&lt;/code&gt;fileter&lt;code class=&quot;highlighter-rouge&quot;&gt;），通常运行速度比‘for&lt;/code&gt;循环快。&lt;/strong&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;元组&quot;&gt;元组&lt;/h3&gt;
+
+&lt;p&gt;两个专有的可调用方法&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;T.index（）
+
+T.count（）
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&quot;文件&quot;&gt;文件&lt;/h3&gt;
+
+&lt;p&gt;在Python3.0中，文本文件把内容显示为字符串，并且自动执行Unicode编码和解码；而二进制文件把内容显示为一个特定的字节字符串类型，并且允许你不修改地孔访问文件内容。&lt;/p&gt;
+
+&lt;h3 id=&quot;集合&quot;&gt;集合&lt;/h3&gt;
+
+&lt;h3 id=&quot;用户定义的类&quot;&gt;用户定义的类&lt;/h3&gt;
+
+</description>
+        <pubDate>Thu, 08 Dec 2016 00:00:00 -0500</pubDate>
+        <link>http://liuqibao.me/2016/12/08/types-of-objects-of-python/</link>
+        <guid isPermaLink="true">http://liuqibao.me/2016/12/08/types-of-objects-of-python/</guid>
+        
+        <category>Pyhton学习手册</category>
+        
+        
+        <category>Python</category>
+        
+      </item>
+    
+      <item>
+        <title>Regular Expression</title>
+        <description>&lt;hr /&gt;
+&lt;p&gt;layout: post
+title: 正规表示法与文件格式化处理
+date: 20161207
+categories: Linux
+tag: 文本处理
+————————-&lt;/p&gt;
+
+&lt;ul id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#语系对正规表示法的影响&quot; id=&quot;markdown-toc-语系对正规表示法的影响&quot;&gt;语系对正规表示法的影响&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#grep-的一些进阶选项&quot; id=&quot;markdown-toc-grep-的一些进阶选项&quot;&gt;grep 的一些进阶选项&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#基础正规表示法练习&quot; id=&quot;markdown-toc-基础正规表示法练习&quot;&gt;基础正规表示法练习&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#基础正规表示法字符汇整-characters&quot; id=&quot;markdown-toc-基础正规表示法字符汇整-characters&quot;&gt;基础正规表示法字符汇整 (characters)&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#sed-工具&quot; id=&quot;markdown-toc-sed-工具&quot;&gt;sed 工具&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#延伸正规表示法&quot; id=&quot;markdown-toc-延伸正规表示法&quot;&gt;延伸正规表示法&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#文件的格式化与相关处理&quot; id=&quot;markdown-toc-文件的格式化与相关处理&quot;&gt;文件的格式化与相关处理&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#格式化打印-printf&quot; id=&quot;markdown-toc-格式化打印-printf&quot;&gt;格式化打印： printf&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#awk好用的数据处理工具&quot; id=&quot;markdown-toc-awk好用的数据处理工具&quot;&gt;awk：好用的数据处理工具&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#awk-的逻辑运算字符&quot; id=&quot;markdown-toc-awk-的逻辑运算字符&quot;&gt;awk 的逻辑运算字符&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#档案比对工具&quot; id=&quot;markdown-toc-档案比对工具&quot;&gt;档案比对工具&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#cmp&quot; id=&quot;markdown-toc-cmp&quot;&gt;cmp&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#patch&quot; id=&quot;markdown-toc-patch&quot;&gt;patch&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#档案打印准备pr&quot; id=&quot;markdown-toc-档案打印准备pr&quot;&gt;档案打印准备：pr&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+&lt;p&gt;正规表示法与通配符是完全不一样的东西！&lt;br /&gt;
+通配符 (wildcard) 代表的是 bash 操作接口的一个功能&lt;br /&gt;
+正规表示法则是一种字符串处理的表示方式&lt;br /&gt;
+***&lt;/p&gt;
+
+&lt;h3 id=&quot;语系对正规表示法的影响&quot;&gt;语系对正规表示法的影响&lt;/h3&gt;
+
+&lt;p&gt;由于不同语系的编码数据并不相同，所以就会造成数据撷取结果的差异了。&lt;/p&gt;
+
+&lt;p&gt;由于一般我们在练习正规表示法时，使用的是兼容于 POSIX 的标准，因此就使用『C 』这个语系。 因此，底下的很多练习都是使用『LANG=C 』这个语系数据来进行的。&lt;/p&gt;
+
+&lt;p&gt;为了要避免这样编码所造成的英文与数字的撷取问题，因此有些特殊的符号我们得要了解一下。&lt;/p&gt;
+
+&lt;blockquote&gt;
+
+  &lt;ul&gt;
+    &lt;li&gt;[:alnum:] 代表英文大小写字符及数字，亦即  0-9,A-Z,a-z&lt;/li&gt;
+    &lt;li&gt;[:alpha:] 代表任何英文大小写字符，亦即 A-Z, a-z&lt;/li&gt;
+    &lt;li&gt;[:blank:] 代表空格键与 [Tab] 按键两者&lt;/li&gt;
+    &lt;li&gt;[:cntrl:] 代表键盘上面的控制按键，亦即包括 CR, LF, Tab, Del.. 等等&lt;/li&gt;
+    &lt;li&gt;[:digit:] 代表数字而已，亦即 0-9&lt;/li&gt;
+    &lt;li&gt;[:graph:] 除了空格符 (空格键与 [Tab] 按键) 外的其他所有按键&lt;/li&gt;
+    &lt;li&gt;[:lower:] 代表小写字符，亦即 a-z&lt;/li&gt;
+    &lt;li&gt;[:print:] 代表任何可以被打印出来的字符&lt;/li&gt;
+    &lt;li&gt;[:punct:] 代表标点符号 (punctuation symbol)，亦即：” ‘ ? ! ; : # $…&lt;/li&gt;
+    &lt;li&gt;[:upper:] 代表大写字符，亦即 A-Z&lt;/li&gt;
+    &lt;li&gt;[:space:] 任何会产生空白的字符，包括空格键, [Tab], CR 等等&lt;/li&gt;
+    &lt;li&gt;[:xdigit:] 代表 16 进位的数字类型，因此包括： 0-9, A-F, a-f 的数字与字符&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&quot;grep-的一些进阶选项&quot;&gt;grep 的一些进阶选项&lt;/h3&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;[root@www ~]# grep [-A] [-B] [--color=auto] '搜寻字符串' filename
+选项与参数：
+-A ：后面可加数字，为 after 的意思，除了列出该行外，后续的 n 行也列出来；
+-B ：后面可加数字，为 befer 的意思，除了列出该行外，前面的 n 行也列出来；
+--color=auto 可将正确的那个撷取数据列出颜色
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&quot;基础正规表示法练习&quot;&gt;基础正规表示法练习&lt;/h3&gt;
+
+&lt;p&gt;底下的练习大前提是：&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;语系已经使用&lt;code class=&quot;highlighter-rouge&quot;&gt;export LANG=C &lt;/code&gt;的设定值；&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;grep&lt;/code&gt;已经使用&lt;code class=&quot;highlighter-rouge&quot;&gt;alias&lt;/code&gt;设定成为&lt;code class=&quot;highlighter-rouge&quot;&gt;grep --color=auto &lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;练习文档：&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;下载连结：
+&lt;code class=&quot;highlighter-rouge&quot;&gt;http://linux.vbird.org/linux_basic/0330regularex/regular_express.txt&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;如果你的 Linux 可以直接连上 Internet 的话，那么使用如下的指令来捉取即可：
+&lt;code class=&quot;highlighter-rouge&quot;&gt;wget http://linux.vbird.org/linux_basic/0330regularex/regular_express.txt&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;基础正规表示法字符汇整-characters&quot;&gt;基础正规表示法字符汇整 (characters)&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;^word&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;意义：待搜寻的字符串(word)在行首！&lt;/p&gt;
+
+&lt;p&gt;范例：搜寻行首为 # 开始的那一行，并列出行号
+&lt;code class=&quot;highlighter-rouge&quot;&gt;grep -n '^#' regular_express.txt&lt;/code&gt;&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;word$&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;意义：待搜寻的字符串(word)在行尾！&lt;/p&gt;
+
+&lt;p&gt;范例：将行尾为 ! 的那一行打印出来，并列出行号
+&lt;code class=&quot;highlighter-rouge&quot;&gt;grep -n '!$' regular_express.txt&lt;/code&gt;&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;意义：代表『一定有一个任意字符』的字符！&lt;/p&gt;
+
+&lt;p&gt;范例：搜寻的字符串可以是 (eve) (eae) (eee) (e e)， 但不能仅有 (ee) ！亦即 e
+与 e 中间『一定』仅有一个字符，而空格符也是字符！
+&lt;code class=&quot;highlighter-rouge&quot;&gt;grep -n 'e.e' regular_express.txt&lt;/code&gt;&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;\&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;意义：跳脱字符，将特殊符号的特殊意义去除！&lt;/p&gt;
+
+&lt;p&gt;范例：搜寻含有单引号 ‘ 的那一行！
+&lt;code class=&quot;highlighter-rouge&quot;&gt;grep -n \' regular_express.txt&lt;/code&gt;&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;*&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;意义：重复零个到无穷多个的前一个 RE 字符&lt;/p&gt;
+
+&lt;p&gt;范例：找出含有 (es) (ess) (esss) 等等的字符串，注意，因为 * 可以是 0 个，所以es 也是符合带搜寻字符串。另外，因为 * 为重复『前一个 RE 字符』的符号， 因
+此，在 * 之前必须要紧接着一个 RE 字符喔！例如任意字符则为 『 .*』 ！
+&lt;code class=&quot;highlighter-rouge&quot;&gt;grep -n 'ess*' regular_express.txt&lt;/code&gt;&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;[list]&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;意义：字符集合的 RE 字符，里面列出想要撷取的字符！&lt;/p&gt;
+
+&lt;p&gt;范例：搜寻含有 (gl) 或 (gd) 的那一行，需要特别留意的是，在 [] 当中『谨代表一
+个待搜寻的字符』， 例如『a[afl]y 』代表搜寻的字符串可以是 aay, afy, aly 即
+[afl] 代表 a 或 f 或 l 的意思！
+&lt;code class=&quot;highlighter-rouge&quot;&gt;grep -n 'g[ld]' regular_express.txt&lt;/code&gt;&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;[n1-n2]&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;意义：字符集合的 RE 字符，里面列出想要撷取的字符范围！&lt;/p&gt;
+
+&lt;p&gt;范例：搜寻含有任意数字的那一行！需特别留意，在字符集合 [] 中的减号 - 是有
+特殊意义的，他代表两个字符之间的所有连续字符！但这个连续与否与 ASCII 编码
+有关，因此，你的编码需要设定正确(在 bash 当中，需要确定 LANG 与
+LANGUAGE 的变量是否正确！) 例如所有大写字符则为 [A-Z]
+&lt;code class=&quot;highlighter-rouge&quot;&gt;grep -n '[0-9]' regular_express.txt&lt;/code&gt;&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;[^list]&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;意义：字符集合的 RE 字符，里面列出不要的字符串或范围！&lt;/p&gt;
+
+&lt;p&gt;范例：搜寻的字符串可以是 (oog) (ood) 但不能是 (oot) ，那个 ^ 在 [] 内时，代
+表的意义是『反向选择』的意思。 例如，我不要大写字符，则为 [^A-Z]。但是，
+需要特别注意的是，如果以&lt;code class=&quot;highlighter-rouge&quot;&gt;grep -n [^A-Z] regular_express.txt&lt;/code&gt;来搜寻，却发现该档案内的所有行都被列出，为什么？因为这个 [^A-Z] 是『非大写字符』的意
+思， 因为每一行均有非大写字符，例如第一行的 “Open Source” 就有 p,e,n,o….
+等等的小写字
+&lt;code class=&quot;highlighter-rouge&quot;&gt;grep -n 'oo[^t]' regular_express.txt&lt;/code&gt;&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;{n,m}&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;意义：连续 n 到 m 个的『前一个 RE 字符』&lt;/p&gt;
+
+&lt;p&gt;意义：若为 {n} 则是连续 n 个的前一个 RE 字符，&lt;/p&gt;
+
+&lt;p&gt;意义：若是 {n,} 则是连续 n 个以上的前一个 RE 字符！ 范例：在 g 与 g 之间有
+2 个到 3 个的 o 存在的字符串，亦即 (goog)(gooog)
+&lt;code class=&quot;highlighter-rouge&quot;&gt;grep -n 'go\{2,3\}g' regular_express.txt&lt;/code&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
+&lt;p&gt;『 正规表示法的特殊字符』与一般在指令列输入指令的『通配符』并不相同， 例如，在通配符当中的 * 代表的是『0 ~ 无限多个字符』的意思，但是在正规表示法当中， * 则是『重复 0 到无穷多个的前一个 RE 字符』&lt;/p&gt;
+
+&lt;p&gt;举例来说，不支持正规表示法的 ls 这个工具中，若我们使用 ` ls -l * ` 代表的是任意档名的档案，而&lt;code class=&quot;highlighter-rouge&quot;&gt; ls -l a* &lt;/code&gt;代表的是以 a 为开头的任何档名的档案， 但在正规表示法中，我们要找到含有以 a 为开头的档案，则必须要这样：(需搭配支持正规表示法的工具):
+&lt;code class=&quot;highlighter-rouge&quot;&gt;ls | grep -n '^a.*'&lt;/code&gt;
+***&lt;/p&gt;
+
+&lt;h3 id=&quot;sed-工具&quot;&gt;sed 工具&lt;/h3&gt;
+
+&lt;p&gt;sed 本身也是一个管线命令，可以分析 standard input 的啦！ 而且 sed 还可以将数据进行取代、删除、新增、撷取特定行等等的功能。&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;[root@www ~]# sed [-nefr] [动作]
+选项与参数：
+-n ：使用安静(silent)模式。在一般 sed 的用法中，所有来自 STDIN 的数据一般都会被列出到屏幕上。但如果加上 -n 参数后，则只有经过 sed 特殊处理的那一行(或者动作)才会被列出来。
+-e ：直接在指令列模式上进行 sed 的动作编辑；
+-f ：直接将 sed 的动作写在一个档案内， `-f filename`则可以执行 filename 内 的 sed 动作；
+-r ：sed 的动作支持的是延伸型正规表示法的语法。 (预设是基础正规表示法语法)
+-i ：直接修改读取的档案内容，而不是由屏幕输出。
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;动作说明： [n1[,n2]]function
+n1, n2 ：不见得会存在，一般代表『选择进行动作的行数』，举例来说，如果我的动作是需要在 10 到 20 行之间进行的，则『10,20[动作行为] 』
+function 有底下这些咚咚：
+a ：新增， a 的后面可以接字符串，而这些字符串会在新的一行出现(目前的下一行)～
+c ：取代， c 的后面可以接字符串，这些字符串可以取代 n1,n2 之间的行！
+d ：删除，因为是删除啊，所以 d 后面通常不接任何咚咚；
+i ：插入，i 的后面可以接字符串，而这些字符串会在新的一行出现(目前的上一行)；
+p ：打印，亦即将某个选择的数据印出。通常 p 会与参数 sed -n 一起运作～
+s ：取代，可以直接进行取代的工作！通常这个 s 的动作可以搭配正规表示法！例如 `1,20s/old/new/g`！
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;以行为单位的新增/删除功能&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;范例一：将 /etc/passwd 的内容列出并且打印行号，同时，请将第 2~5 行删
+除！
+[root@www ~]# nl /etc/passwd | sed '2,5d'
+1 root:x:0:0:root:/root:/bin/bash
+6 sync:x:5:0:sync:/sbin:/bin/sync
+7 shutdown:x:6:0:shutdown:/sbin:/sbin/shutdown
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;注意&lt;/strong&gt;，原本应该是要下达&lt;code class=&quot;highlighter-rouge&quot;&gt;sed -e&lt;/code&gt;才对，没有&lt;code class=&quot;highlighter-rouge&quot;&gt;-e&lt;/code&gt;也行！同时也要注意的是，sed后面接的动作，要以&lt;code class=&quot;highlighter-rouge&quot;&gt;''&lt;/code&gt;两个单引号括住！但是，sed后面如果要接超过&lt;strong&gt;两个&lt;/strong&gt;以上的动作时，每个动作前面得加&lt;code class=&quot;highlighter-rouge&quot;&gt;-e&lt;/code&gt;才行&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;范例二：承上题，在第二行后(亦即是加在第三行)加上『 drink tea?』字样！
+[root@www ~]# nl /etc/passwd | sed '2a drink tea'
+1 root:x:0:0:root:/root:/bin/bash
+2 bin:x:1:1:bin:/bin:/sbin/nologin
+drink tea
+3 daemon:x:2:2:daemon:/sbin:/sbin/nologin
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;范例三：在第二行后面加入两行字，例如『 Drink tea or .....』与『 drink
+beer?』
+[root@www ~]# nl /etc/passwd | sed '2a Drink tea or ......\ drink beer ?'
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;重点是可以新增&lt;strong&gt;不只一行&lt;/strong&gt;！但是每一行之间都必须要以&lt;strong&gt;反斜杠&lt;/strong&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;\&lt;/code&gt;来进行新行的增加。&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;以行为单位的取代与显示功能&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;范例四：我想将第 2-5 行的内容取代成为『 No 2-5 number』呢？
+[root@www ~]# nl /etc/passwd | sed '2,5c No 2-5 number'
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;范例五：仅列出 /etc/passwd 档案内的第 5-7 行
+[root@www ~]# nl /etc/passwd | sed -n '5,7p'
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;&lt;strong&gt;注意：&lt;/strong&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;- n&lt;/code&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;部分数据的搜寻并取代的功能&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;除了整行的处理模式之外，sed 还可以用行为单位进行部分数据的搜寻并取代的功能。&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;sed 's/要被取代的字符串/新的字符串/g&lt;/code&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;直接修改档案内容(危险动作)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;范例六：利用 sed 将 regular_express.txt 内每一行结尾若为 . 则换成 !
+[root@www ~]# sed -i 's/\.$/\!/g' regular_express.txt
+# 上头的 -i 选项可以让你的 sed 直接去修改后面接的档案内容而不是由屏幕输出
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&quot;延伸正规表示法&quot;&gt;延伸正规表示法&lt;/h3&gt;
+
+&lt;p&gt;符合正则表达式的NFA流派。&lt;/p&gt;
+
+&lt;h3 id=&quot;文件的格式化与相关处理&quot;&gt;文件的格式化与相关处理&lt;/h3&gt;
+
+&lt;h4 id=&quot;格式化打印-printf&quot;&gt;格式化打印： printf&lt;/h4&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;[root@www ~]# printf '打印格式' 实际内容
+选项与参数：
+关于格式方面的几个特殊样式：
+\a 警告声音输出
+\b 退格键(backspace)
+\f 清除屏幕 (form feed)
+\n 输出新的一行
+\r 亦即 Enter 按键
+\t 水平的 [tab] 按键
+\v 垂直的 [tab] 按键
+\xNN NN 为两位数的数字，可以转换数字成为字符。
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&quot;awk好用的数据处理工具&quot;&gt;awk：好用的数据处理工具&lt;/h3&gt;
+
+&lt;p&gt;相较于 sed 常常作用于&lt;strong&gt;一整个行&lt;/strong&gt;的处理，awk 则比较倾向于一行当中分成数个*字段&lt;strong&gt;来处理。默认的『字段的分隔符为&lt;/strong&gt;空格键&lt;strong&gt;或 **[tab]键&lt;/strong&gt;因此，awk 相当的适合处理&lt;strong&gt;小型的数据&lt;/strong&gt;处理。&lt;/p&gt;
+
+&lt;p&gt;模式：
+` [root@www ~]# awk ‘条件类型 1{动作 1} 条件类型 2{动作 2} …’ filename `&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; # 取出账号与登入者的 IP ，且账号与 IP 之间以 [tab] 隔开
+[root@www ~]# last -n 5 | awk '{print $1 &quot;\t&quot; $3}'
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;上表是 awk 最常使用的动作&lt;strong&gt;透过 print 的功能将字段数据列出来&lt;/strong&gt;,字段的分隔则以空格键或 [tab] 按键来隔开。 因为不论哪一行我都要处理，因此，就不需要有** “条件类型”** 的限制！&lt;/p&gt;
+
+&lt;p&gt;使用 awk 的时候，请先确认一下你的数据当中，如果是连续性的数据，请不要有空格或 [tab] 在内，否则，就会发生误判！&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;awk 的处理流程：&lt;/strong&gt;
+    &lt;blockquote&gt;
+      &lt;ol&gt;
+        &lt;li&gt;读入第一行，并将第一行的资料填入 $0, $1, $2…. 等变数当中；&lt;/li&gt;
+        &lt;li&gt;依据 “条件类型” 的限制，判断是否需要进行后面的 “动作”；&lt;/li&gt;
+        &lt;li&gt;做完所有的动作与条件类型；&lt;/li&gt;
+        &lt;li&gt;若还有后续的『行』的数据，则重复上面1~3的步骤，直到所有的数据都读完为止。&lt;/li&gt;
+      &lt;/ol&gt;
+    &lt;/blockquote&gt;
+  &lt;/li&gt;
+  &lt;li&gt;awk 的内建变量：
+    &lt;blockquote&gt;
+      &lt;p&gt;NF 每一行 ($0) 拥有的字段总数&lt;br /&gt;
+NR 目前 awk 所处理的是『第几行』数据&lt;br /&gt;
+FS 目前的分隔字符，默认是空格键&lt;/p&gt;
+    &lt;/blockquote&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+&lt;p&gt;&lt;strong&gt;Tips:&lt;/strong&gt;
+要注意，awk 后续的所有动作是以单引号&lt;code class=&quot;highlighter-rouge&quot;&gt;'&lt;/code&gt;括住的，由于单引号与双引号都必须是成对的， 所以， awk 的格式内容如果想要以 print 打印时，记得非变量的文字部分，包含上一小节 printf 提到的格式中，都需要使用&lt;strong&gt;双引号&lt;/strong&gt;来定义出来喔！因为单引号已经是 awk 的指令固定用法了！
+***&lt;/p&gt;
+
+&lt;p&gt;以上面 last -n 5 的例子来做说明，如果我想要：&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;列出每一行的账号(就是&lt;code class=&quot;highlighter-rouge&quot;&gt;$1&lt;/code&gt;)；&lt;/li&gt;
+  &lt;li&gt;列出目前处理的行数(就是 awk 内的&lt;code class=&quot;highlighter-rouge&quot;&gt;NR&lt;/code&gt;变量)&lt;/li&gt;
+  &lt;li&gt;并且说明，该行有多少字段(就是 awk 内的&lt;code class=&quot;highlighter-rouge&quot;&gt;NF&lt;/code&gt;变量)则可以这样
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;[root@www ~]# last -n 5| awk '{print $1 &quot;\t lines: &quot; NR &quot;\t columes: &quot; NF}'
+root lines: 1 columes: 10
+&lt;/code&gt;&lt;/pre&gt;
+    &lt;/div&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;awk-的逻辑运算字符&quot;&gt;awk 的逻辑运算字符&lt;/h4&gt;
+
+&lt;p&gt;举例：在&lt;code class=&quot;highlighter-rouge&quot;&gt;/etc/passwd&lt;/code&gt;当中是以冒号 &lt;code class=&quot;highlighter-rouge&quot;&gt;:&lt;/code&gt; 来作为字段的分隔， 该档案中第一字段为账号，第三字段则是 UID。那假设我要查阅，第三栏小于 10 以下的数据，并且仅列出账号与第三栏， 那么可以这样做：&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;[root@www ~]# cat /etc/passwd | \
+&amp;gt; awk 'BEGIN {FS=&quot;:&quot;} $3 &amp;lt; 10 {print $1 &quot;\t &quot; $3}'
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt; BEGIN&lt;/code&gt;:预先设定 awk 的变量,否则FS从&lt;strong&gt;第二行&lt;/strong&gt;才能生效。&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;awk 来进行计算功能&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;例子：pay.txt
+Name 1st 2nd 3th
+VBird 23000 24000 25000
+DMTsai 21000 20000 23000
+Bird2 43000 42000 41000
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;计算每个人的总额并且格式化输出：&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;第一行只是说明，所以第一行不要进行加总 (&lt;code class=&quot;highlighter-rouge&quot;&gt;NR==1&lt;/code&gt;时处理)；&lt;/li&gt;
+  &lt;li&gt;第二行以后就会有加总的情况出现 (&lt;code class=&quot;highlighter-rouge&quot;&gt;NR&amp;gt;=2&lt;/code&gt;以后处理)
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;[root@www ~]# cat pay.txt | \
+&amp;gt; awk 'NR==1{printf
+&quot;%10s %10s %10s %10s %10s\n&quot;,$1,$2,$3,$4,&quot;Total&quot; }
+NR&amp;gt;=2{total = $2 + $3 + $4
+printf &quot;%10s %10d %10d %10d %10.2f\n&quot;, $1, $2, $3, $4, total}'
+Name 1st 2nd 3th Total
+VBird 23000 24000 25000 72000.00
+DMTsai 21000 20000 23000 64000.00
+Bird2 43000 42000 41000 126000.00
+&lt;/code&gt;&lt;/pre&gt;
+    &lt;/div&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;几个重要事项应该要先说明的：&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;awk 的指令间隔：所有 awk 的动作，亦即在&lt;code class=&quot;highlighter-rouge&quot;&gt;&lt;span class=&quot;p&quot;&gt;{}&lt;/span&gt;&lt;/code&gt;内的动作，如果有需要多个指令辅助时，可利用分号&lt;code class=&quot;highlighter-rouge&quot;&gt; ;&lt;/code&gt;间隔， 或者直接以 &lt;code class=&quot;highlighter-rouge&quot;&gt;Enter&lt;/code&gt; 按键来隔开每个指令，例如上面的范例中，鸟哥共按了三次&lt;code class=&quot;highlighter-rouge&quot;&gt;enter&lt;/code&gt; ！&lt;/li&gt;
+  &lt;li&gt;逻辑运算当中，如果是『等于』的情况，则务必使用两个等号&lt;code class=&quot;highlighter-rouge&quot;&gt; ==&lt;/code&gt;！&lt;/li&gt;
+  &lt;li&gt;格式化输出时，在&lt;code class=&quot;highlighter-rouge&quot;&gt;printf&lt;/code&gt;的格式设定当中，务必加上&lt;code class=&quot;highlighter-rouge&quot;&gt;\n&lt;/code&gt;，才能进行分行！&lt;/li&gt;
+  &lt;li&gt;与 bash shell 的变量不同，在 awk 当中，变量可以直接使用，不需加上&lt;code class=&quot;highlighter-rouge&quot;&gt;$&lt;/code&gt;符号。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;档案比对工具&quot;&gt;档案比对工具&lt;/h4&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;diff&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;diff 就是用在比对两个档案之间的差异的，并且是以行为单位来比对的！一般是用在 ASCII 纯文本档的比对上。 由于是以行为比对的单位，因此 diff 通常是用在同一的档案(或软件)的新旧版本差异上！&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;[root@www ~]# diff [-bBi] from-file to-file
+选项与参数：
+from-file ：一个档名，作为原始比对档案的档名；
+to-file ：一个档名，作为目的比对档案的档名；
+注意，from-file 或 to-file 可以 - 取代，那个 - 代表『 Standard input』之意。
+-b ：忽略一行当中，仅有多个空白的差异(例如 &quot;about me&quot; 与 &quot;about me&quot;视为相同
+-B ：忽略空白行的差异。
+-i ：忽略大小写的不同。
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;h4 id=&quot;cmp&quot;&gt;cmp&lt;/h4&gt;
+
+&lt;p&gt;mp 主要也是在比对两个档案，他主要利用&lt;strong&gt;字节&lt;/strong&gt;单位去比对， 因此，当然也可以比对&lt;strong&gt;binary file&lt;/strong&gt;。注意， diff 主要是以&lt;strong&gt;行&lt;/strong&gt;为单位比对， cmp 则是以&lt;strong&gt;字节&lt;/strong&gt;为单位去比对，这并不相同！&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;[root@www ~]# cmp [-s] file1 file2
+选项与参数：
+-s ：将所有的不同点的字节处都列出来。因为 cmp 预设仅会输出第一个发现的不同点。
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h4 id=&quot;patch&quot;&gt;patch&lt;/h4&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;[root@www ~]# patch -pN &amp;lt; patch_file &amp;lt;==更新
+[root@www ~]# patch -R -pN &amp;lt; patch_file &amp;lt;==还原
+选项与参数：
+-p ：后面可以接『取消几层目录』的意思。
+-R ：代表还原，将新的文件还原成原来旧的版本。
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h4 id=&quot;档案打印准备pr&quot;&gt;档案打印准备：pr&lt;/h4&gt;
+</description>
+        <pubDate>Wed, 07 Dec 2016 00:00:00 -0500</pubDate>
+        <link>http://liuqibao.me/2016/12/07/regular-expression/</link>
+        <guid isPermaLink="true">http://liuqibao.me/2016/12/07/regular-expression/</guid>
+        
+        
+      </item>
     
       <item>
         <title>第8章 列表与字典</title>
@@ -1052,122 +1830,6 @@ finger root bin daemon adm ?...
         
         
         <category>Linux</category>
-        
-      </item>
-    
-      <item>
-        <title>第4章 介绍python对象的类型</title>
-        <description>&lt;ul id=&quot;markdown-toc&quot;&gt;
-  &lt;li&gt;&lt;a href=&quot;#python的核心数据类型&quot; id=&quot;markdown-toc-python的核心数据类型&quot;&gt;Python的核心数据类型&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#数字&quot; id=&quot;markdown-toc-数字&quot;&gt;数字&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#字符串&quot; id=&quot;markdown-toc-字符串&quot;&gt;字符串&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#列表&quot; id=&quot;markdown-toc-列表&quot;&gt;列表&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#字典&quot; id=&quot;markdown-toc-字典&quot;&gt;字典&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#元组&quot; id=&quot;markdown-toc-元组&quot;&gt;元组&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#文件&quot; id=&quot;markdown-toc-文件&quot;&gt;文件&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#集合&quot; id=&quot;markdown-toc-集合&quot;&gt;集合&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#用户定义的类&quot; id=&quot;markdown-toc-用户定义的类&quot;&gt;用户定义的类&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;python的核心数据类型&quot;&gt;Python的核心数据类型&lt;/h3&gt;
-
-&lt;p&gt;&lt;strong&gt;内置对象&lt;/strong&gt;&lt;/p&gt;
-
-&lt;blockquote&gt;
-
-  &lt;ul&gt;
-    &lt;li&gt;数字&lt;/li&gt;
-    &lt;li&gt;字符串&lt;/li&gt;
-    &lt;li&gt;列表&lt;/li&gt;
-    &lt;li&gt;字典&lt;/li&gt;
-    &lt;li&gt;元组&lt;/li&gt;
-    &lt;li&gt;文件&lt;/li&gt;
-    &lt;li&gt;集合&lt;/li&gt;
-    &lt;li&gt;其他类型&lt;/li&gt;
-    &lt;li&gt;编程单元类型&lt;/li&gt;
-    &lt;li&gt;与实现相关的类型&lt;/li&gt;
-  &lt;/ul&gt;
-
-&lt;/blockquote&gt;
-
-&lt;hr /&gt;
-
-&lt;p&gt;一旦创建了一个对象，它就和其相应的操作集合绑定了，即只能进行其合适的操作&lt;/p&gt;
-
-&lt;p&gt;可以使用dir()函数来查看一个对象的所有属性，dir()函数会列出该对象的实现方式（以双下划线开头和结尾）和能够调用的方法。要查询一个方法能做什么，你可以用help()函数来查询。&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;```
-s = 'hello'
-dir(s)
-help(s.replace)
-``` ***
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;h3 id=&quot;数字&quot;&gt;数字&lt;/h3&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;repr：as code&lt;/li&gt;
-  &lt;li&gt;str： user-friendly&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;字符串&quot;&gt;字符串&lt;/h3&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;索引从0开始&lt;/li&gt;
-  &lt;li&gt;能在方括号中使用任意表达式，而不仅仅是使用数字常量。eg. s[len(s)-1]&lt;/li&gt;
-  &lt;li&gt;不可变性&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;列表&quot;&gt;列表&lt;/h3&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;列表解析表达式。&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;字典&quot;&gt;字典&lt;/h3&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;唯一的映射&lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;键的排序：for循环&lt;/p&gt;
-
-    &lt;p&gt;keys()方法&lt;/p&gt;
-
-    &lt;p&gt;sort()方法&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;迭代和优化&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;strong&gt;列表解析和相关的函数编程工具（eg. ` map&lt;code class=&quot;highlighter-rouge&quot;&gt;和&lt;/code&gt;fileter&lt;code class=&quot;highlighter-rouge&quot;&gt;），通常运行速度比‘for&lt;/code&gt;循环快。&lt;/strong&gt;&lt;/p&gt;
-
-&lt;h3 id=&quot;元组&quot;&gt;元组&lt;/h3&gt;
-
-&lt;p&gt;两个专有的可调用方法&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;T.index（）
-
-T.count（）
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;h3 id=&quot;文件&quot;&gt;文件&lt;/h3&gt;
-
-&lt;p&gt;在Python3.0中，文本文件把内容显示为字符串，并且自动执行Unicode编码和解码；而二进制文件把内容显示为一个特定的字节字符串类型，并且允许你不修改地孔访问文件内容。&lt;/p&gt;
-
-&lt;h3 id=&quot;集合&quot;&gt;集合&lt;/h3&gt;
-
-&lt;h3 id=&quot;用户定义的类&quot;&gt;用户定义的类&lt;/h3&gt;
-
-</description>
-        <pubDate>Wed, 30 Nov 2016 00:00:00 -0500</pubDate>
-        <link>http://liuqibao.me/2016/11/30/types-of-objects-of-python/</link>
-        <guid isPermaLink="true">http://liuqibao.me/2016/11/30/types-of-objects-of-python/</guid>
-        
-        <category>Pyhton学习手册</category>
-        
-        
-        <category>Python</category>
         
       </item>
     
