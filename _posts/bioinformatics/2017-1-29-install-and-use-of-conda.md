@@ -2,7 +2,7 @@
 layout: post
 title: "安装 conda"
 categories: bioinformatics
-tags: (python, conda)
+tags: [python, conda]
 ---
 
 第一次安装使用conda，真心累，不多说，标记下踩的坑吧。
