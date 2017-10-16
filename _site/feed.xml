@@ -5,9 +5,39 @@
     <description>好记性不如写博文！</description>
     <link>http://liuqibao.me/</link>
     <atom:link href="http://liuqibao.me/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Mon, 16 Oct 2017 21:45:07 +0800</pubDate>
-    <lastBuildDate>Mon, 16 Oct 2017 21:45:07 +0800</lastBuildDate>
+    <pubDate>Mon, 16 Oct 2017 22:44:38 +0800</pubDate>
+    <lastBuildDate>Mon, 16 Oct 2017 22:44:38 +0800</lastBuildDate>
     <generator>Jekyll v3.6.0</generator>
+    
+      <item>
+        <title>linux下的中文输入问题</title>
+        <description>&lt;h3 id=&quot;fcitx&quot;&gt;解决由于环境变量引起的软件不能使用中文输入法fcitx的问题&lt;/h3&gt;
+
+&lt;p&gt;linux 中的环境变量一直是一个让人头庝的问题，很多安装程序出现问题要不是权限，要不就是环境变量不对了。&lt;/p&gt;
+
+&lt;p&gt;一些软件，例如wps、rstudio、foxitreader等有时会无法使用 fcitx 输入法，也就无法输入中文，原因是环境变量没有设定。&lt;/p&gt;
+
+&lt;h4 id=&quot;section&quot;&gt;解决办法&lt;/h4&gt;
+
+&lt;p&gt;在启动脚本中写入
+&lt;code class=&quot;highlighter-rouge&quot;&gt;
+export XMODIFIERS=&quot;@im=fcitx&quot;
+export QT_IM_MODULE=&quot;fcitx&quot;
+&lt;/code&gt;
+重启就可以了。&lt;/p&gt;
+
+&lt;p&gt;需要注意的是，有些软件的启动脚本在&lt;code class=&quot;highlighter-rouge&quot;&gt;/usr/bin/&lt;/code&gt;目录下，例如wps在&lt;code class=&quot;highlighter-rouge&quot;&gt;/usr/bin/wps 或 wpp 或 et&lt;/code&gt;；而Foxitreader的在安装目录下，即&lt;code class=&quot;highlighter-rouge&quot;&gt;Foxitreader/Foxitreader.sh&lt;/code&gt;&lt;/p&gt;
+</description>
+        <pubDate>Wed, 28 Jun 2017 00:00:00 +0800</pubDate>
+        <link>http://liuqibao.me/2017/06/28/input-Chinese-in-linux/</link>
+        <guid isPermaLink="true">http://liuqibao.me/2017/06/28/input-Chinese-in-linux/</guid>
+        
+        <category>input</category>
+        
+        
+        <category>Linux</category>
+        
+      </item>
     
       <item>
         <title>Parameter About Gragh In R</title>
@@ -63,6 +93,267 @@ mtext(text, side = 3, line = 0, outer = FALSE, at = NA,
         <link>http://liuqibao.me/2017/05/16/parameter-about-gragh-in-R/</link>
         <guid isPermaLink="true">http://liuqibao.me/2017/05/16/parameter-about-gragh-in-R/</guid>
         
+        
+      </item>
+    
+      <item>
+        <title>在linux下添加用户</title>
+        <description>&lt;h2 id=&quot;useradd-&quot;&gt;在使用 useradd 命令时遇到的问题&lt;/h2&gt;
+
+&lt;p&gt;useradd 是添加新用户的命令，具体参数不再详述。
+这里主要记录一下遇到的一个小问题。
+linux 版本：Ubuntu 16.04&lt;/p&gt;
+
+&lt;h3 id=&quot;section&quot;&gt;问题1：没有家目录&lt;/h3&gt;
+
+&lt;p&gt;原因：Ubuntu 系统中，使用 useradd 添加新用户需要使用 &lt;code class=&quot;highlighter-rouge&quot;&gt;-d&lt;/code&gt; 参数指定用户目录，若用户目录不存在，同时用 &lt;code class=&quot;highlighter-rouge&quot;&gt;-m&lt;/code&gt; 参数创建主目录。推测添加用户的老师当时没有加参数。
+解决办法：没办法，找他新建主目录。&lt;/p&gt;
+
+&lt;h3 id=&quot;bashrc-&quot;&gt;问题2：家目录下没有 .bashrc 文件&lt;/h3&gt;
+
+&lt;p&gt;原因：不清楚
+解决办法：从 &lt;code class=&quot;highlighter-rouge&quot;&gt;/etc/skel/&lt;/code&gt; 中复制 &lt;code class=&quot;highlighter-rouge&quot;&gt;.bashrc&lt;/code&gt; 和 &lt;code class=&quot;highlighter-rouge&quot;&gt;.profile&lt;/code&gt; 到家目录&lt;/p&gt;
+
+&lt;h3 id=&quot;source-&quot;&gt;问题3：source 命令不管用，提示找不到文件&lt;/h3&gt;
+
+&lt;p&gt;原因：没有使用完整路径，但是在大多数系统不需要完整路径就能用，不清楚具体原因。（让我想起了 aspera 也是这毛病，linux 就是任性）
+解决办法：使用完整路径 &lt;code class=&quot;highlighter-rouge&quot;&gt;source ./.bashrc&lt;/code&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
+&lt;p&gt;ps：
+exec bash 命令会重启 shell，也就是你当前的 shell 正执行的命令会终止。
+source .bashrc 可以在当前 shell 上更改配置。&lt;/p&gt;
+
+</description>
+        <pubDate>Tue, 16 May 2017 00:00:00 +0800</pubDate>
+        <link>http://liuqibao.me/2017/05/16/problem-when-use-useradd-command/</link>
+        <guid isPermaLink="true">http://liuqibao.me/2017/05/16/problem-when-use-useradd-command/</guid>
+        
+        <category>command</category>
+        
+        
+        <category>Linux</category>
+        
+      </item>
+    
+      <item>
+        <title>linux下编码问题</title>
+        <description>&lt;ul id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#httpwwwitnosenetdetail6524108html&quot; id=&quot;markdown-toc-httpwwwitnosenetdetail6524108html&quot;&gt;&lt;a href=&quot;http://www.itnose.net/detail/6524108.html&quot;&gt;转&lt;/a&gt;&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#section&quot; id=&quot;markdown-toc-section&quot;&gt;查看文件编码&lt;/a&gt;        &lt;ul&gt;
+          &lt;li&gt;&lt;a href=&quot;#section-1&quot; id=&quot;markdown-toc-section-1&quot;&gt;文件编码转换&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#section-2&quot; id=&quot;markdown-toc-section-2&quot;&gt;文件名编码转换:&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;httpwwwitnosenetdetail6524108html&quot;&gt;&lt;a href=&quot;http://www.itnose.net/detail/6524108.html&quot;&gt;转&lt;/a&gt;&lt;/h2&gt;
+
+&lt;p&gt;在 Linux 中操作 windows 下的文件，可能会经常遇到文件编码转换的问题。Windows中默认的文件格式是GBK(gb2312)，而Linux一般都是UTF-8。下面介绍一下，在Linux中如何查看文件的编码及如何进行对文件进行编码转换。&lt;/p&gt;
+
+&lt;h3 id=&quot;section&quot;&gt;查看文件编码&lt;/h3&gt;
+&lt;p&gt;在Linux中查看文件编码可以通过以下几种方式：
+#### 在Vim中可以直接查看文件编码
+&lt;code class=&quot;highlighter-rouge&quot;&gt;:set fileencoding&lt;/code&gt;
+即可显示文件编码格式。
+如果你只是想查看其它编码格式的文件或者想解决用Vim查看文件乱码的问题，那么你可以在
+~/.vimrc 文件中添加以下内容：
+&lt;code class=&quot;highlighter-rouge&quot;&gt;set encoding=utf-8 fileencodings=ucs-bom,utf-8,cp936&lt;/code&gt;
+这样，就可以让vim自动识别文件编码（可以自动识别UTF-8或者GBK编码的文件），其实就是依照fileencodings提供的编码列表尝试，如果没有找到合适的编码，就用latin-1(ASCII)编码打开。&lt;/p&gt;
+
+&lt;h4 id=&quot;section-1&quot;&gt;文件编码转换&lt;/h4&gt;
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;在Vim中直接进行转换文件编码,比如将一个文件转换成utf-8格式
+&lt;code class=&quot;highlighter-rouge&quot;&gt;:set fileencoding=utf-8&lt;/code&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;iconv 转换，iconv的命令格式如下：
+&lt;code class=&quot;highlighter-rouge&quot;&gt;iconv -f encoding -t encoding inputfile&lt;/code&gt;
+比如将一个UTF-8 编码的文件转换成GBK编码
+&lt;code class=&quot;highlighter-rouge&quot;&gt;
+iconv -f GBK -t UTF-8 file1 -o file2
+iconv -f gbk -t utf8 linux常用命令.txt &amp;gt; linux常用命令.txt.utf8
+&lt;/code&gt;&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;section-2&quot;&gt;文件名编码转换:&lt;/h3&gt;
+
+&lt;p&gt;从Linux 往 windows拷贝文件或者从windows往Linux拷贝文件，有时会出现中文文件名乱码的情况，出现这种问题的原因是因为，windows的文件名 中文编码默认为GBK,而Linux中默认文件名编码为UTF8,由于编码不一致，所以导致了文件名乱码的问题，解决这个问题需要对文件名进行转码。
+在Linux中专门提供了一种工具convmv进行文件名编码的转换，可以将文件名从GBK转换成UTF-8编码,或者从UTF-8转换到GBK。&lt;/p&gt;
+
+&lt;p&gt;首先看一下你的系统上是否安装了convmv,如果没安装的话用:
+&lt;code class=&quot;highlighter-rouge&quot;&gt;yum -y install convmv&lt;/code&gt;
+安装。&lt;/p&gt;
+
+&lt;p&gt;下面看一下convmv的具体用法：&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;convmv -f 源编码 -t 新编码 [选项] 文件名&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;常用参数：
+-r 递归处理子文件夹
+–notest 真正进行操作，请注意在默认情况下是不对文件进行真实操作的，而只是试验。
+–list 显示所有支持的编码
+–unescap 可以做一下转义，比如把%20变成空格
+比如我们有一个utf8编码的文件名，转换成GBK编码，命令如下：
+&lt;code class=&quot;highlighter-rouge&quot;&gt;
+convmv -f UTF-8 -t GBK --notest utf8编码的文件名
+&lt;/code&gt;
+这样转换以后”utf8编码的文件名”会被转换成GBK编码（只是文件名编码的转换，文件内容不会发生变化）&lt;/p&gt;
+
+&lt;p&gt;为什么在linux下查看.txt格式的文件会出现乱码呢？因为linux操作系统和windows操作系统对于中文的压缩方式不同。在windows 中，中文压缩一般是.gbbk，而在linux环境中压缩为utf8，这就导致了在windows下能正常显示的.txt文件在linux中打开后呈现乱 码状态。对于这种情况的处理方法为在包含要打开的.txt文件的目录下，在终端输入：
+&lt;code class=&quot;highlighter-rouge&quot;&gt;
+iconv -f gbk -t utf8 filename.txt -&amp;gt; filename.txt.utf8
+&lt;/code&gt;
+用ls命令查看，生成了.utf8格式的文件，此时打开该文件就不再有乱码了.&lt;/p&gt;
+
+</description>
+        <pubDate>Tue, 16 May 2017 00:00:00 +0800</pubDate>
+        <link>http://liuqibao.me/2017/05/16/linux-file-encoding/</link>
+        <guid isPermaLink="true">http://liuqibao.me/2017/05/16/linux-file-encoding/</guid>
+        
+        <category>format</category>
+        
+        
+        <category>Linux</category>
+        
+      </item>
+    
+      <item>
+        <title>Ubuntu设置静态IP</title>
+        <description>&lt;h2 id=&quot;ubuntu-1610-&quot;&gt;手动设置 Ubuntu 16.10 的网卡&lt;/h2&gt;
+
+&lt;p&gt;最近新换了一个环境，需要手动设置 ip 地址上网，所以搞了一下！&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;查看网卡名&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;ip addr
+&lt;/div&gt;
+&lt;p&gt;我的有线网卡为：enp7s0
+无线网卡为：wlp8s0
+&lt;strong&gt;一定要看好网卡名字！！！&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;手动设置 ip
+```
+sudo vi /etc/network/interfaces&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;以下为输出&lt;/p&gt;
+
+&lt;h1 id=&quot;interfaces5-file-used-by-ifup8-and-ifdown8&quot;&gt;interfaces(5) file used by ifup(8) and ifdown(8)&lt;/h1&gt;
+&lt;p&gt;auto lo
+iface lo inet loopback&lt;/p&gt;
+
+&lt;h1 id=&quot;section&quot;&gt;以下为后来添加&lt;/h1&gt;
+&lt;p&gt;auto enp7s0
+iface enp7s0 inet static
+address 192.168.56.42
+netmask 255.255.255.0
+gateway 192.168.56.254&lt;/p&gt;
+
+&lt;h1 id=&quot;dns-nameserver-21033601&quot;&gt;dns-nameserver 210.33.60.1&lt;/h1&gt;
+&lt;p&gt;dns-nameserver 202.107.200.69
+```&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;重启
+&lt;code class=&quot;highlighter-rouge&quot;&gt;
+sudo /etc/init.d/networking restart
+sudo resolvconf -u    #重启 dns，否则无法解析域名
+&lt;/code&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;备用
+如果还是无法解析域名，可以试试：
+```
+vi /etc/resolvconf/resolv.conf.d/base&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;以下为输出&lt;/p&gt;
+
+&lt;p&gt;nameserver 210.33.60.1
+nameserver 202.107.200.69&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;刷新配置文件
+&lt;/div&gt;
+&lt;p&gt;sudo resolvconf -u
+```&lt;/p&gt;
+
+&lt;p&gt;补：
+用了几天突然 DNS 又不行了，做了以下修改：
+```
+sudo vi /etc/resolv.conf&lt;/p&gt;
+
+&lt;h1 id=&quot;section-1&quot;&gt;添加以下内容：&lt;/h1&gt;
+&lt;p&gt;nameserver 210.33.60.1 #或者其它 DNS 地址
+&lt;code class=&quot;highlighter-rouge&quot;&gt;
+重启
+&lt;/code&gt;
+sudo /etc/init.d/networking restart
+sudo resolvconf -u    #重启 dns，否则无法解析域名
+```&lt;/p&gt;
+</description>
+        <pubDate>Wed, 10 May 2017 00:00:00 +0800</pubDate>
+        <link>http://liuqibao.me/2017/05/10/set-static-ip-ubuntu16/</link>
+        <guid isPermaLink="true">http://liuqibao.me/2017/05/10/set-static-ip-ubuntu16/</guid>
+        
+        <category>internet</category>
+        
+        
+        <category>Linux</category>
+        
+      </item>
+    
+      <item>
+        <title>linux下通过校园网认证</title>
+        <description>&lt;h2 id=&quot;wget--curl--linux--web-&quot;&gt;用 wget 或者 curl 在 linux 上通过 web 认证&lt;/h2&gt;
+
+&lt;p&gt;一般校园网都会设置网关，每个人用帐号密码通过 web 认证进行上网。这在图形界面很容易，因为网页会自动跳转到认证界面。但是，如果在服务器的纯命令行界面，该如何通过 web 认证呢？这里推荐两种方法：curl 和 wget。&lt;/p&gt;
+
+&lt;h3 id=&quot;section&quot;&gt;1. 查看完整的认证过程&lt;/h3&gt;
+
+&lt;p&gt;这是最重要的一步！！！
+大部分的 web 认证都是基于 form 的认证方式，也就是你浏览器通过一个 form ，把用户名和密码 post 给服务器。
+所以 form 的格式是最重要的，不同的学校，可能会有所不同，因此，你应该先通过查看登陆界面的源码，了解你的 form data 和 Request URL。&lt;/p&gt;
+
+&lt;h3 id=&quot;section-1&quot;&gt;2. 认证&lt;/h3&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;wget 方式
+&lt;code class=&quot;highlighter-rouge&quot;&gt;
+wget --post-data=&quot;username=abc&amp;amp;password=123456&amp;amp;pwd=123456&amp;amp;secret=true&quot; --save-cookies=webcookie.txt --keep-session-cookies http://10.0.0.252/webAuth/ # 将登陆信息存储成 cookies，以便下次使用
+wget --load-cookies=webcookie.txt http://10.0.0.252/webAuth # 直接用载入 cookies，进行认证
+wget --post-data=&quot;username=abc&amp;amp;password=123456&amp;amp;pwd=123456&amp;amp;secret=true&quot; http://10.0.0.252/webAuth/ # 直接使用帐号密码登陆
+&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;如时登陆不成功，请先检查 form data 和 URL 是否格式正确！！！&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;curl 方式&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;curl --data &quot;username=liuqibao&amp;amp;password=666666&amp;amp;pwd=666666&amp;amp;secret=true&quot; http://10.0.0.252/webAuth/
+&lt;/div&gt;
+
+&lt;p&gt;最后再说一遍，一定要看清 form data 和 Request URL 的格式！！！&lt;/p&gt;
+</description>
+        <pubDate>Mon, 01 May 2017 00:00:00 +0800</pubDate>
+        <link>http://liuqibao.me/2017/05/01/web-authentication-by-wget-or-curl-in-linux/</link>
+        <guid isPermaLink="true">http://liuqibao.me/2017/05/01/web-authentication-by-wget-or-curl-in-linux/</guid>
+        
+        <category>internet</category>
+        
+        
+        <category>Linux</category>
         
       </item>
     
@@ -1114,1346 +1405,6 @@ nohup ~/ascp  -i  ~/asperaweb_id_dsa.putty --mode recv --host ftp-private.ncbi.n
         
         <category>数据上传下载</category>
         
-        
-      </item>
-    
-      <item>
-        <title>gemma 简单使用</title>
-        <description>&lt;ul id=&quot;markdown-toc&quot;&gt;
-  &lt;li&gt;&lt;a href=&quot;#section&quot; id=&quot;markdown-toc-section&quot;&gt;2. 输入文件格式&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#plink-binary-ped-&quot; id=&quot;markdown-toc-plink-binary-ped-&quot;&gt;2.1 PLINK Binary PED 格式&lt;/a&gt;    &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;#bimbam-&quot; id=&quot;markdown-toc-bimbam-&quot;&gt;2.2 BIMBAM 文件格式&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#section-1&quot; id=&quot;markdown-toc-section-1&quot;&gt;2.3 相关性矩阵文件格式&lt;/a&gt;        &lt;ul&gt;
-          &lt;li&gt;&lt;a href=&quot;#section-2&quot; id=&quot;markdown-toc-section-2&quot;&gt;2.3.1 原始矩阵格式&lt;/a&gt;&lt;/li&gt;
-          &lt;li&gt;&lt;a href=&quot;#section-3&quot; id=&quot;markdown-toc-section-3&quot;&gt;2.3.2 特征值和特征向量格式&lt;/a&gt;&lt;/li&gt;
-        &lt;/ul&gt;
-      &lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#section-4&quot; id=&quot;markdown-toc-section-4&quot;&gt;2.4 协变量文件格式（可选）&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#betaz-&quot; id=&quot;markdown-toc-betaz-&quot;&gt;2.5 Beta/Z 文件&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#section-5&quot; id=&quot;markdown-toc-section-5&quot;&gt;2.6 分类文件&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#ld-score-&quot; id=&quot;markdown-toc-ld-score-&quot;&gt;2.7 LD Score 文件&lt;/a&gt;&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#gemma&quot; id=&quot;markdown-toc-gemma&quot;&gt;3. 运行 GEMMA&lt;/a&gt;    &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;#gwas-&quot; id=&quot;markdown-toc-gwas-&quot;&gt;3.1 一个 GWAS 例子的小数据集&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#snp-&quot; id=&quot;markdown-toc-snp-&quot;&gt;3.2 SNP 过滤器&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#section-6&quot; id=&quot;markdown-toc-section-6&quot;&gt;3.3 用线性模型进行关联检验&lt;/a&gt;        &lt;ul&gt;
-          &lt;li&gt;&lt;a href=&quot;#section-7&quot; id=&quot;markdown-toc-section-7&quot;&gt;3.3.1 基本应用&lt;/a&gt;            &lt;ul&gt;
-              &lt;li&gt;&lt;a href=&quot;#section-8&quot; id=&quot;markdown-toc-section-8&quot;&gt;3.3.2 详细信息&lt;/a&gt;&lt;/li&gt;
-            &lt;/ul&gt;
-          &lt;/li&gt;
-          &lt;li&gt;&lt;a href=&quot;#section-9&quot; id=&quot;markdown-toc-section-9&quot;&gt;3.3.3 输出文件&lt;/a&gt;&lt;/li&gt;
-        &lt;/ul&gt;
-      &lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#section-10&quot; id=&quot;markdown-toc-section-10&quot;&gt;3.4 估计来自基因型的相关性矩阵&lt;/a&gt;        &lt;ul&gt;
-          &lt;li&gt;&lt;a href=&quot;#section-11&quot; id=&quot;markdown-toc-section-11&quot;&gt;3.4.1 基本应用&lt;/a&gt;&lt;/li&gt;
-          &lt;li&gt;&lt;a href=&quot;#section-12&quot; id=&quot;markdown-toc-section-12&quot;&gt;3.4.2 详细信息&lt;/a&gt;&lt;/li&gt;
-          &lt;li&gt;&lt;a href=&quot;#section-13&quot; id=&quot;markdown-toc-section-13&quot;&gt;3.4.3 输出文件&lt;/a&gt;&lt;/li&gt;
-        &lt;/ul&gt;
-      &lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#eigen-decomposition&quot; id=&quot;markdown-toc-eigen-decomposition&quot;&gt;3.5 进行相关矩阵的 Eigen-Decomposition&lt;/a&gt;        &lt;ul&gt;
-          &lt;li&gt;&lt;a href=&quot;#section-14&quot; id=&quot;markdown-toc-section-14&quot;&gt;3.5.1 基本应用&lt;/a&gt;&lt;/li&gt;
-          &lt;li&gt;&lt;a href=&quot;#section-15&quot; id=&quot;markdown-toc-section-15&quot;&gt;3.5.2 详细信息&lt;/a&gt;&lt;/li&gt;
-          &lt;li&gt;&lt;a href=&quot;#section-16&quot; id=&quot;markdown-toc-section-16&quot;&gt;3.5.3 输出文件&lt;/a&gt;&lt;/li&gt;
-        &lt;/ul&gt;
-      &lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#section-17&quot; id=&quot;markdown-toc-section-17&quot;&gt;3.6 单变量线性混合模型的关联检验&lt;/a&gt;        &lt;ul&gt;
-          &lt;li&gt;&lt;a href=&quot;#section-18&quot; id=&quot;markdown-toc-section-18&quot;&gt;3.6.1 基本应用&lt;/a&gt;&lt;/li&gt;
-          &lt;li&gt;&lt;a href=&quot;#section-19&quot; id=&quot;markdown-toc-section-19&quot;&gt;3.6.2 详细信息&lt;/a&gt;&lt;/li&gt;
-          &lt;li&gt;&lt;a href=&quot;#section-20&quot; id=&quot;markdown-toc-section-20&quot;&gt;3.6.3 输出文件&lt;/a&gt;&lt;/li&gt;
-        &lt;/ul&gt;
-      &lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#section-21&quot; id=&quot;markdown-toc-section-21&quot;&gt;3.7 多变量线性混合模型的关联检验&lt;/a&gt;        &lt;ul&gt;
-          &lt;li&gt;&lt;a href=&quot;#section-22&quot; id=&quot;markdown-toc-section-22&quot;&gt;3.7.1 基本应用&lt;/a&gt;&lt;/li&gt;
-          &lt;li&gt;&lt;a href=&quot;#section-23&quot; id=&quot;markdown-toc-section-23&quot;&gt;3.7.2 详细信息&lt;/a&gt;&lt;/li&gt;
-          &lt;li&gt;&lt;a href=&quot;#section-24&quot; id=&quot;markdown-toc-section-24&quot;&gt;3.7.3 输出文件&lt;/a&gt;&lt;/li&gt;
-        &lt;/ul&gt;
-      &lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#fit-a-bayesian-sparse-linear-mixed-modelbslmm&quot; id=&quot;markdown-toc-fit-a-bayesian-sparse-linear-mixed-modelbslmm&quot;&gt;3.8 Fit a Bayesian Sparse Linear Mixed Model（BSLMM）&lt;/a&gt;        &lt;ul&gt;
-          &lt;li&gt;&lt;a href=&quot;#section-25&quot; id=&quot;markdown-toc-section-25&quot;&gt;3.8.1 基本应用&lt;/a&gt;&lt;/li&gt;
-          &lt;li&gt;&lt;a href=&quot;#section-26&quot; id=&quot;markdown-toc-section-26&quot;&gt;3.8.2 详细信息&lt;/a&gt;            &lt;ul&gt;
-              &lt;li&gt;&lt;a href=&quot;#section-27&quot; id=&quot;markdown-toc-section-27&quot;&gt;3.8.3 输出文件&lt;/a&gt;&lt;/li&gt;
-            &lt;/ul&gt;
-          &lt;/li&gt;
-        &lt;/ul&gt;
-      &lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#bslmm-&quot; id=&quot;markdown-toc-bslmm-&quot;&gt;3.9 用来自 BSLMM 的输出文件预测表型&lt;/a&gt;        &lt;ul&gt;
-          &lt;li&gt;&lt;a href=&quot;#section-28&quot; id=&quot;markdown-toc-section-28&quot;&gt;3.9.1 基本应用&lt;/a&gt;&lt;/li&gt;
-          &lt;li&gt;&lt;a href=&quot;#section-29&quot; id=&quot;markdown-toc-section-29&quot;&gt;3.9.2 详细信息&lt;/a&gt;&lt;/li&gt;
-          &lt;li&gt;&lt;a href=&quot;#section-30&quot; id=&quot;markdown-toc-section-30&quot;&gt;3.9.3 输出文件&lt;/a&gt;&lt;/li&gt;
-        &lt;/ul&gt;
-      &lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#section-31&quot; id=&quot;markdown-toc-section-31&quot;&gt;3.10 相关性矩阵的方差分量估计&lt;/a&gt;        &lt;ul&gt;
-          &lt;li&gt;&lt;a href=&quot;#section-32&quot; id=&quot;markdown-toc-section-32&quot;&gt;3.10.1 基本应用&lt;/a&gt;&lt;/li&gt;
-          &lt;li&gt;&lt;a href=&quot;#section-33&quot; id=&quot;markdown-toc-section-33&quot;&gt;3.10.2 详细信息&lt;/a&gt;&lt;/li&gt;
-          &lt;li&gt;&lt;a href=&quot;#section-34&quot; id=&quot;markdown-toc-section-34&quot;&gt;3.10.3 输出文件&lt;/a&gt;&lt;/li&gt;
-        &lt;/ul&gt;
-      &lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#summary-statistics-&quot; id=&quot;markdown-toc-summary-statistics-&quot;&gt;3.11 Summary Statistics 的方差分量估计&lt;/a&gt;        &lt;ul&gt;
-          &lt;li&gt;&lt;a href=&quot;#section-35&quot; id=&quot;markdown-toc-section-35&quot;&gt;3.11.1 基本应用&lt;/a&gt;&lt;/li&gt;
-          &lt;li&gt;&lt;a href=&quot;#section-36&quot; id=&quot;markdown-toc-section-36&quot;&gt;3.11.4 详细信息&lt;/a&gt;&lt;/li&gt;
-          &lt;li&gt;&lt;a href=&quot;#section-37&quot; id=&quot;markdown-toc-section-37&quot;&gt;3.11.3 输出文件&lt;/a&gt;&lt;/li&gt;
-        &lt;/ul&gt;
-      &lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;GEMMA 要求基因型文件不能有缺失值，因此，SNP 要先 impute。
-虽然有表型缺失的个体不会用于 LMM 或者 BSLMM 分析，但是所有个体仍全部用于计算相关矩阵，所以相关矩阵的结果仍是 n x n 的矩阵。
-### 1. 安装&lt;/p&gt;
-
-&lt;p&gt;gemma 安装很简单，直接下载二进制可执行文件就行，不用解压，不用编译。
-最好再给它执行权限，&lt;code class=&quot;highlighter-rouge&quot;&gt;chmod a+x gemma&lt;/code&gt;。
-这已经足够 45,000 的样本的分析，如果你的数据更大，可以使用编译安装。&lt;/p&gt;
-
-&lt;h3 id=&quot;section&quot;&gt;2. 输入文件格式&lt;/h3&gt;
-
-&lt;p&gt;GEMMA 需要四个主要的输入文件，包括基因型、表型、相关矩阵和协变量（可选）。
-基因型和表型文件可以是两种格式，都是 PLINK binary ped 格式或者都 BIMBAM 格式。不可混用。&lt;/p&gt;
-
-&lt;h3 id=&quot;plink-binary-ped-&quot;&gt;2.1 PLINK Binary PED 格式&lt;/h3&gt;
-
-&lt;p&gt;GEMMA 识别基因型型和表型的 PLINK binary ped 文件格式.
-该格式需要三个文件：*.bed, *.bim, *.bam，所有文件都有相同的前缀。
-用户可以用 PLINK 将标准 ped 文件转换成 binary ped 文件：
-命令：
-&lt;code class=&quot;highlighter-rouge&quot;&gt;
-plink --file [file_prefix] --make-bed --out [bedfile_prefix]
-&lt;/code&gt;
-对于 *.fam 文件，GEMMA 仅读取第二列（individual id）和第六列（phenotype）.
-用户可以定义其它列作为 phenotype 列，使用 ‘-n [num]’ 参数，’-n 1’ 使用原始的第六列作为 phenotypes，’-n 2’ 使用第七列，以此类推。
-GEMMA 用 0/1 编码等位基因。
-*.bim 文件的第 5 列是 minor allele ，编码为 1；第 6 列为 major allele ，编码为 0.
-因此，第 5 列的 minor allele 是效应基因。&lt;/p&gt;
-
-&lt;p&gt;GEMMA 将按照提供的方式读入表型，’-9‘ 和 ‘NA’ 作为缺失表型。&lt;/p&gt;
-
-&lt;h4 id=&quot;bimbam-&quot;&gt;2.2 BIMBAM 文件格式&lt;/h4&gt;
-
-&lt;p&gt;详见&lt;a href=&quot;http://zzz.bwh.harvard.edu/plink/data.shtml&quot;&gt;使用手册&lt;/a&gt;&lt;/p&gt;
-
-&lt;h4 id=&quot;section-1&quot;&gt;2.3 相关性矩阵文件格式&lt;/h4&gt;
-
-&lt;p&gt;两种方法，使用原始相关矩阵，或者使用原始相关矩阵的特征值和特征微量。&lt;/p&gt;
-
-&lt;h5 id=&quot;section-2&quot;&gt;2.3.1 原始矩阵格式&lt;/h5&gt;
-
-&lt;p&gt;用户可以通过 ’-km [num]’ 参数选择使用哪种格式，即：
--km 1：PLINK binary ped 格式的第一种；或者 BIMPAM 格式；
--km 2: PLINK binary ped 格式的第二种（id id value）&lt;/p&gt;
-
-&lt;h5 id=&quot;section-3&quot;&gt;2.3.2 特征值和特征向量格式&lt;/h5&gt;
-
-&lt;p&gt;详见原文&lt;/p&gt;
-
-&lt;h4 id=&quot;section-4&quot;&gt;2.4 协变量文件格式（可选）&lt;/h4&gt;
-
-&lt;h4 id=&quot;betaz-&quot;&gt;2.5 Beta/Z 文件&lt;/h4&gt;
-
-&lt;h4 id=&quot;section-5&quot;&gt;2.6 分类文件&lt;/h4&gt;
-
-&lt;h4 id=&quot;ld-score-&quot;&gt;2.7 LD Score 文件&lt;/h4&gt;
-
-&lt;h3 id=&quot;gemma&quot;&gt;3. 运行 GEMMA&lt;/h3&gt;
-
-&lt;h4 id=&quot;gwas-&quot;&gt;3.1 一个 GWAS 例子的小数据集&lt;/h4&gt;
-
-&lt;p&gt;该数据集在 GEMMA 的源文件中，可以在官网下载，也可以在 GitHub 下载。&lt;/p&gt;
-
-&lt;h4 id=&quot;snp-&quot;&gt;3.2 SNP 过滤器&lt;/h4&gt;
-
-&lt;p&gt;软件提供了几个 SNP 过滤器。&lt;/p&gt;
-
-&lt;p&gt;多态性：没有多态性的 SNPs 不会用于分析。
-缺失值：‘-miss [num]’ 参数调节，默认 5%。例，’-miss 0.1’
-最小等位基因频率：‘-maf [num]’ 参数调节，默认 1%。例，’-maf 0.05’
-Correlation with any covariate：’-r2 [num]‘ 调节，默认 0.9999。例，’-r2 0.999999
-哈迪——温勃格平衡：‘-hww [num]’ 参数调节。例，‘-hwe 0.001’，将过滤 hwe 的 p 值小于 0.001 的 SNPs。&lt;/p&gt;
-
-&lt;p&gt;以上阈值计算基于分析的个体（即，个体没有缺失的表型和没有缺失的协变量）。
-因此，如果所有的个体都有缺失表型，那么没有 SNP 会被分析，输出矩阵为空。&lt;/p&gt;
-
-&lt;h4 id=&quot;section-6&quot;&gt;3.3 用线性模型进行关联检验&lt;/h4&gt;
-
-&lt;h5 id=&quot;section-7&quot;&gt;3.3.1 基本应用&lt;/h5&gt;
-
-&lt;p&gt;用 PLINK bed 格式或者 BIMBAM 格式进行线性模型关联分析的基本应用：
-&lt;code class=&quot;highlighter-rouge&quot;&gt;
-./gemma -bfile [prefix] -lm [num] -o [prefix]
-./gemma -g [filename] -p [filename] -a [filename] -lm [num] -o [prefix]
-&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;-lm：指定用哪种频数检验
-  -lm 1：Wald test
-  -lm 2: likelihood ratio test
-  -lm 3：score test
-  -lm 4: 以上三种检验
--bfile [prefix]: PLINK binary ped file 前缀
--g [filename]：BIMBAM mean genotype 文件名
--p [filename]：BIMBAM 表型文件名
--a [filename]：可选，BIMBAM SNP 注释文件名
--o [prefix] ：输出文件前缀&lt;/p&gt;
-
-&lt;p&gt;注意：与线性混合模型不同，该分析不需要相关性矩阵&lt;/p&gt;
-
-&lt;h6 id=&quot;section-8&quot;&gt;3.3.2 详细信息&lt;/h6&gt;
-
-&lt;p&gt;对二进制性状，用户可以将对照组标记为 0 ，实验组标记为 1，然后通过把二进制化的对照实验标签当作数量性状，跟据以上方法用线性混合模型拟合数据。&lt;/p&gt;
-
-&lt;h5 id=&quot;section-9&quot;&gt;3.3.3 输出文件&lt;/h5&gt;
-
-&lt;p&gt;共有两个输出文件，都在当前目录下的文件夹中。
-‘preix.log.txt’ 文件有一些关于运行参数和计算时间的细节信息。除此之外，还包含 PBE 检测和它的标准误。
-’prefix.assoc.txt’ 文件包含结果。例如：
-&lt;code class=&quot;highlighter-rouge&quot;&gt;
-chr rs ps n_mis n_obs allele1 allele0 af beta se p_wald
-1 rs3683945 3197400 0 1410 A G 0.443 -1.586575e-01 3.854542e-02 4.076703e-05
-1 rs3707673 3407393 0 1410 G A 0.443 -1.563903e-01 3.855200e-02 5.252187e-05
-1 rs6269442 3492195 0 1410 A G 0.365 -2.349908e-01 3.905200e-02 2.256622e-09
-1 rs6336442 3580634 0 1410 A G 0.443 -1.566721e-01 3.857380e-02 5.141944e-05
-1 rs13475700 4098402 0 1410 A C 0.127 2.209575e-01 5.644804e-02 9.497902e-05
-&lt;/code&gt;
-这 11 行是：染色体、SNP id、碱基对在染色体上的位置、相应 SNP 的缺失个体数量、相应 SNP 的无缺个体数量、最小等位基困、最大等位基因、等位基因频率、beta 检测、beta 标准误、Wald 检验的 P 值。&lt;/p&gt;
-
-&lt;h4 id=&quot;section-10&quot;&gt;3.4 估计来自基因型的相关性矩阵&lt;/h4&gt;
-
-&lt;h5 id=&quot;section-11&quot;&gt;3.4.1 基本应用&lt;/h5&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;./gemma -bfile [prefix] -gk [num] -o [prefix]
-./gemma -g [filename] -p [filename] -gk [num] -o [prefix]
-&lt;/div&gt;
-&lt;p&gt;-gk [num]: 估计哪种相关性矩阵：
-  -gk 1: centered relatedness matrix, 默认
-  -gk 2: standardized relatedness matrix
--bfile [prefix]: PLINK binary ped file prefix
--g [filename]: 见 3.3
--p [filename]:  见 3.3
--o [prefix]: 见 3.3&lt;/p&gt;
-
-&lt;p&gt;注意：BIMBAM mean genotype 文件可以用 gzip 压缩格式&lt;/p&gt;
-
-&lt;h5 id=&quot;section-12&quot;&gt;3.4.2 详细信息&lt;/h5&gt;
-
-&lt;p&gt;较低的最小等位基因频率趋于较大的效应：standardized genotype atrix
-SNP 的效应大小不依赖于最小等位基因频率：ecntered genotype matrix&lt;/p&gt;
-
-&lt;h5 id=&quot;section-13&quot;&gt;3.4.3 输出文件&lt;/h5&gt;
-
-&lt;h4 id=&quot;eigen-decomposition&quot;&gt;3.5 进行相关矩阵的 Eigen-Decomposition&lt;/h4&gt;
-
-&lt;h5 id=&quot;section-14&quot;&gt;3.5.1 基本应用&lt;/h5&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;./gemma -bfile [prefix] -k [filename] -eigen -o [prefix]
-./gemma -g [filename] -p [filename] -k [filename] -eigen -o [prefix]
-&lt;/div&gt;
-&lt;p&gt;-b：见前文
--g：见前文
--p：见前文
--k [filename]：相关矩阵文件名&lt;/p&gt;
-
-&lt;p&gt;注意：BIMBAM mean genotype/相关矩阵文件格式可以是 gzip 压缩格式&lt;/p&gt;
-
-&lt;h5 id=&quot;section-15&quot;&gt;3.5.2 详细信息&lt;/h5&gt;
-
-&lt;h5 id=&quot;section-16&quot;&gt;3.5.3 输出文件&lt;/h5&gt;
-
-&lt;h4 id=&quot;section-17&quot;&gt;3.6 单变量线性混合模型的关联检验&lt;/h4&gt;
-
-&lt;h5 id=&quot;section-18&quot;&gt;3.6.1 基本应用&lt;/h5&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;./gemma -bfile [prefix] -k [filename] -lmm [num] -o [prefix]
-./gemma -g [filename] -p [filename] -a [filename] -k [filename] -lmm [num] -o [prefix]
-&lt;/div&gt;
-&lt;p&gt;-lmm：指定用哪种频数检验
-  -lmm 1：Wald test
-  -lmm 2: likelihood ratio test
-  -lmm 3：score test
-  -lmm 4: 以上三种检验
--bfile [prefix]: PLINK binary ped file 前缀
--g [filename]：BIMBAM mean genotype 文件名
--p [filename]：BIMBAM 表型文件名
--a [filename]：可选，BIMBAM SNP 注释文件名
--o [prefix] ：输出文件前缀
--k [filename]：相关矩阵文件名&lt;/p&gt;
-
-&lt;p&gt;为检测基因-环境的交互作用，你可以加 ’-gxe [filename]’ 参数。
-注意：‘-k [filename]’ 可以用 ‘-d [filename]’ （特征值文件）和 ‘-u [filename]’ （特征向量文件）所代替。&lt;/p&gt;
-
-&lt;h5 id=&quot;section-19&quot;&gt;3.6.2 详细信息&lt;/h5&gt;
-
-&lt;h5 id=&quot;section-20&quot;&gt;3.6.3 输出文件&lt;/h5&gt;
-
-&lt;p&gt;见前文&lt;/p&gt;
-
-&lt;h4 id=&quot;section-21&quot;&gt;3.7 多变量线性混合模型的关联检验&lt;/h4&gt;
-
-&lt;h5 id=&quot;section-22&quot;&gt;3.7.1 基本应用&lt;/h5&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;./gemma -bfile [prefix] -k [filename] -lmm [num] -n [num1] [num2] [num3] -o [prefix]
-./gemma -g [filename] -p [filename] -a [filename] -k [filename] -lmm [num] -n [num1] [num2] [num3] -o [prefix]
-&lt;/div&gt;
-
-&lt;p&gt;-lmm：指定用哪种频数检验
-  -lmm 1：Wald test
-  -lmm 2: likelihood ratio test
-  -lmm 3：score test
-  -lmm 4: 以上三种检验
--n [num1] [num2] [num3]: 表型文件中哪些表型用于关联
--bfile [prefix]: PLINK binary ped file 前缀
--g [filename]：BIMBAM mean genotype 文件名
--p [filename]：BIMBAM 表型文件名
--a [filename]：可选，BIMBAM SNP 注释文件名
--o [prefix] ：输出文件前缀
--k [filename]：相关矩阵文件名&lt;/p&gt;
-
-&lt;p&gt;为检测基因-环境的交互作用，你可以加 ’-gxe [filename]’ 参数。
-注意：‘-k [filename]’ 可以用 ‘-d [filename]’ （特征值文件）和 ‘-u [filename]’ （特征向量文件）所代替。&lt;/p&gt;
-
-&lt;h5 id=&quot;section-23&quot;&gt;3.7.2 详细信息&lt;/h5&gt;
-
-&lt;p&gt;建议表型的数量小于 10 个。
-当表型的一小部分缺失的时候，用户可以在关联前推测缺失值:
-&lt;code class=&quot;highlighter-rouge&quot;&gt;
-./gemma -bfile [prefix] -k [filename] -predict -n [num1] [num2] [num3] -o [prefix]
-./gemma -g [filename] -p [filename] -a [filename] -k [filename] -predict -n [num1] [num2] [num3] -o [prefix]
-&lt;/code&gt;&lt;/p&gt;
-
-&lt;h5 id=&quot;section-24&quot;&gt;3.7.3 输出文件&lt;/h5&gt;
-
-&lt;p&gt;见前文&lt;/p&gt;
-
-&lt;h4 id=&quot;fit-a-bayesian-sparse-linear-mixed-modelbslmm&quot;&gt;3.8 Fit a Bayesian Sparse Linear Mixed Model（BSLMM）&lt;/h4&gt;
-
-&lt;h5 id=&quot;section-25&quot;&gt;3.8.1 基本应用&lt;/h5&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;./gemma -bfile [prefix] -bslmm [num] -o [prefix]
-./gemma -g [filename] -p [filename] -a [filename] -bslmm [num] -o [prefix]
-
-&lt;/div&gt;
-&lt;p&gt;-bslmm [num]：
-  -bslmm 1: a standard linear BSLMM，使用 MCMC
-  -bslmm 2: a ridge regression/GBLUP，使用 standard non-MCMC 方法。最快
-  -bslmm 3: a probit BSLMM，使用 MCMC。最慢&lt;/p&gt;
-
-&lt;h5 id=&quot;section-26&quot;&gt;3.8.2 详细信息&lt;/h5&gt;
-
-&lt;p&gt;注意：拟合 BSLMM 需要大量内存（例，4000 个体，400，000 SNPs，20 GB 内存），因为软件会存储整个基因型矩阵到内存中。
-foat 版本（gemmaf）可以在不会缺失太大精度的情况下节省一半的内存。&lt;/p&gt;
-
-&lt;p&gt;GEMMA 默认不需要用户提供相关性矩阵，它会自动计算，你也可以通过 ‘-k [filename]’ 自己提供。
-在拟合 BSLMM 的时候，GEMMA 不需要协变量文件，然而，用户可以用 BIMBAM mean genotype 文件存储协变量，用 ‘-notsnp’ 参数使用它们。&lt;/p&gt;
-
-&lt;p&gt;使用基于 MCMC 的方法时，用户可以通过 ‘-w [num]’ 选择 burn-in iterations 的数量，‘-s [num]’ 选择 sampling iterations 的数量。
-此外，用户可以使用 ‘-smax [num]’ 选择用于模型的最大 SNPs 数量（即，有加性效应的 SNPs），probit BSLMM 很需要，因为它的计算负担重。
-为了平衡计算精度和计算时间，用户可以自己决定使用这些参数。&lt;/p&gt;
-
-&lt;h6 id=&quot;section-27&quot;&gt;3.8.3 输出文件&lt;/h6&gt;
-
-&lt;p&gt;共有 5 个输出文件，位于当前目录的输出文件夹下。
-prefix.log.txt：
-prefix.hyp.txt：
-prefix.param.txt：
-prefix.bv.txt：一列育种值
-prefix.gamma.txt：&lt;/p&gt;
-
-&lt;h4 id=&quot;bslmm-&quot;&gt;3.9 用来自 BSLMM 的输出文件预测表型&lt;/h4&gt;
-
-&lt;h5 id=&quot;section-28&quot;&gt;3.9.1 基本应用&lt;/h5&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;./gemma -bfile [prefix] -epm [filename] -emu [filename] -ebv [filename] -k [filename] -predict [num] -o [prefix]
-./gemma -g [filename] -p [filename] -epm [filename] -emu [filename] -ebv [filename] -k [filename] -predict [num] -o [prefix]
-&lt;/div&gt;
-&lt;p&gt;-predict [num]: 预测值需要用正态累积分布函数（CDF）额外转换
-  -predict 1: 获得预测值
-  -predict 2: 获得预测值，用 CDF 将它们转换成概率大小。仅拟合 probit BSLMM 时用。
--epm [filename]：来自 BSLMM 的 prefix.param.txt
--emu [filename]: prefix.log.txt from BSLMM
--ebv [filename]: prefix.bv.txt from BSLMM
--k [filename]: 相关性矩阵&lt;/p&gt;
-
-&lt;h5 id=&quot;section-29&quot;&gt;3.9.2 详细信息&lt;/h5&gt;
-
-&lt;p&gt;使用拟合 BSLMM 中的同一个表型文件和基因型文件。
-如果用户使用默认矩阵进行拟合 BSLMM，那么在第二步不需要提供 ‘-bev’ 和 ‘-k’。&lt;/p&gt;
-
-&lt;h5 id=&quot;section-30&quot;&gt;3.9.3 输出文件&lt;/h5&gt;
-
-&lt;p&gt;在当前目录的输出文件夹下有两个输出文件。
-prefix.log.txt:
-prefix.prdt.txt:有一列所有个体的预测值&lt;/p&gt;
-
-&lt;h4 id=&quot;section-31&quot;&gt;3.10 相关性矩阵的方差分量估计&lt;/h4&gt;
-
-&lt;h6 id=&quot;section-32&quot;&gt;3.10.1 基本应用&lt;/h6&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;./gemma -p [filename] -k [filename] -n [num] -vc [num] -o [prefix]
-./gemma -p [filename] -mk [filename] -n [num] -vc [num] -o [prefix]
-&lt;/div&gt;
-&lt;p&gt;-vc: 作用哪种估计方式：
-  -vc 1: 默认，使用 HE regression
-  -vc 2: REML AI 算法
--n [num]: 使用表型的哪一列，默认 1&lt;/p&gt;
-
-&lt;h5 id=&quot;section-33&quot;&gt;3.10.2 详细信息&lt;/h5&gt;
-
-&lt;p&gt;默认 REML AI 算法的方差分量估计限制为正，用户可以在 ’-vc 2‘ 上用 ’-noconstrain‘。
-HE regression 没有限制&lt;/p&gt;
-
-&lt;h5 id=&quot;section-34&quot;&gt;3.10.3 输出文件&lt;/h5&gt;
-
-&lt;h4 id=&quot;summary-statistics-&quot;&gt;3.11 Summary Statistics 的方差分量估计&lt;/h4&gt;
-
-&lt;h5 id=&quot;section-35&quot;&gt;3.11.1 基本应用&lt;/h5&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;./gemma -beta [filename] -bfile [prefix] -vc 1 -o [prefix]
-./gemma -beta [filename] -g [filename] -p [filename] -a [filename] -vc 1 -o [prefix]
-&lt;/div&gt;
-&lt;p&gt;-vc 1: MQS-HEW
--beta [filename]: beta 文件名&lt;/p&gt;
-
-&lt;h5 id=&quot;section-36&quot;&gt;3.11.4 详细信息&lt;/h5&gt;
-
-&lt;h5 id=&quot;section-37&quot;&gt;3.11.3 输出文件&lt;/h5&gt;
-
-</description>
-        <pubDate>Thu, 20 Apr 2017 00:00:00 +0800</pubDate>
-        <link>http://liuqibao.me/2017/04/20/gemma-introdution/</link>
-        <guid isPermaLink="true">http://liuqibao.me/2017/04/20/gemma-introdution/</guid>
-        
-        <category>使用手册</category>
-        
-        
-        <category>bioinformatics</category>
-        
-      </item>
-    
-      <item>
-        <title>gapit：用户使用手册</title>
-        <description>&lt;ul id=&quot;markdown-toc&quot;&gt;
-  &lt;li&gt;&lt;a href=&quot;#gapit-&quot; id=&quot;markdown-toc-gapit-&quot;&gt;GAPIT 的简单使用&lt;/a&gt;    &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;#section&quot; id=&quot;markdown-toc-section&quot;&gt;1. 安装&lt;/a&gt;        &lt;ul&gt;
-          &lt;li&gt;&lt;a href=&quot;#section-1&quot; id=&quot;markdown-toc-section-1&quot;&gt;2.1. 基本应用&lt;/a&gt;&lt;/li&gt;
-          &lt;li&gt;&lt;a href=&quot;#enhanced-compression&quot; id=&quot;markdown-toc-enhanced-compression&quot;&gt;2.2. Enhanced Compression&lt;/a&gt;&lt;/li&gt;
-          &lt;li&gt;&lt;a href=&quot;#section-2&quot; id=&quot;markdown-toc-section-2&quot;&gt;2.4. 基因组预测&lt;/a&gt;&lt;/li&gt;
-          &lt;li&gt;&lt;a href=&quot;#section-3&quot; id=&quot;markdown-toc-section-3&quot;&gt;2.5. 多基因型文件&lt;/a&gt;&lt;/li&gt;
-          &lt;li&gt;&lt;a href=&quot;#numeric-genotype-format&quot; id=&quot;markdown-toc-numeric-genotype-format&quot;&gt;2.6. Numeric Genotype Format&lt;/a&gt;&lt;/li&gt;
-          &lt;li&gt;&lt;a href=&quot;#snps-fractional-snps-kinship--pcs&quot; id=&quot;markdown-toc-snps-fractional-snps-kinship--pcs&quot;&gt;2.8. 用部分 SNPs （Fractional SNPs）计算 Kinship 和 PCs&lt;/a&gt;&lt;/li&gt;
-          &lt;li&gt;&lt;a href=&quot;#section-4&quot; id=&quot;markdown-toc-section-4&quot;&gt;2.9. 节省内存&lt;/a&gt;&lt;/li&gt;
-          &lt;li&gt;&lt;a href=&quot;#section-5&quot; id=&quot;markdown-toc-section-5&quot;&gt;2.10. 模型选择&lt;/a&gt;&lt;/li&gt;
-          &lt;li&gt;&lt;a href=&quot;#super&quot; id=&quot;markdown-toc-super&quot;&gt;2.11. SUPER&lt;/a&gt;&lt;/li&gt;
-        &lt;/ul&gt;
-      &lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#section-6&quot; id=&quot;markdown-toc-section-6&quot;&gt;3. 数据&lt;/a&gt;        &lt;ul&gt;
-          &lt;li&gt;&lt;a href=&quot;#section-7&quot; id=&quot;markdown-toc-section-7&quot;&gt;3.1 表型数据&lt;/a&gt;&lt;/li&gt;
-          &lt;li&gt;&lt;a href=&quot;#section-8&quot; id=&quot;markdown-toc-section-8&quot;&gt;3.2 基因型数据&lt;/a&gt;            &lt;ul&gt;
-              &lt;li&gt;&lt;a href=&quot;#hapmap-&quot; id=&quot;markdown-toc-hapmap-&quot;&gt;3.2.1 HapMap 格式&lt;/a&gt;&lt;/li&gt;
-              &lt;li&gt;&lt;a href=&quot;#numeric-&quot; id=&quot;markdown-toc-numeric-&quot;&gt;3.2.2 numeric 格式&lt;/a&gt;&lt;/li&gt;
-            &lt;/ul&gt;
-          &lt;/li&gt;
-          &lt;li&gt;&lt;a href=&quot;#kinship&quot; id=&quot;markdown-toc-kinship&quot;&gt;3.3 Kinship&lt;/a&gt;&lt;/li&gt;
-          &lt;li&gt;&lt;a href=&quot;#section-9&quot; id=&quot;markdown-toc-section-9&quot;&gt;3.4 协变量&lt;/a&gt;&lt;/li&gt;
-          &lt;li&gt;&lt;a href=&quot;#section-10&quot; id=&quot;markdown-toc-section-10&quot;&gt;3.5 通过文件名输入基因型文件&lt;/a&gt;&lt;/li&gt;
-          &lt;li&gt;&lt;a href=&quot;#gapit--1&quot; id=&quot;markdown-toc-gapit--1&quot;&gt;3.6 其它 GAPIT 参数&lt;/a&gt;&lt;/li&gt;
-        &lt;/ul&gt;
-      &lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#section-11&quot; id=&quot;markdown-toc-section-11&quot;&gt;4. 结果&lt;/a&gt;&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;gapit-&quot;&gt;GAPIT 的简单使用&lt;/h2&gt;
-
-&lt;p&gt;GAPIT 2 是基于 R 语言的基因组关联和预测的整合工具包，提供了多种方法用于 GWAS 分析，包括 GLM、MLM、CMLM、P3D、EMMA等。
-对于包含大量 SNPs 的大数据集，可以通过将基因型文件分隔成多个文件进行分析，例如，每个染色体一个文件。
-GAPIT 的输入文件可以是 HapMap 格式，也可以是 EMMA 需要的 numerical 格式。&lt;/p&gt;
-
-&lt;h3 id=&quot;section&quot;&gt;1. 安装&lt;/h3&gt;
-
-&lt;p&gt;GAPIT 的需要几个 R 的依赖包，安装比较简单，具体请看&lt;a href=&quot;http://zzlab.net/GAPIT/&quot;&gt;使用手册&lt;/a&gt;，不再赘述。
-&lt;code class=&quot;highlighter-rouge&quot;&gt;
-source(&quot;http://www.bioconductor.org/biocLite.R&quot;)
-biocLite(&quot;multtest&quot;)
-install.packages(&quot;gplots&quot;)
-install.packages(&quot;LDheatmap&quot;)
-install.packages(&quot;genetics&quot;)
-install.packages(&quot;ape&quot;)
-install.packages(&quot;EMMREML&quot;)
-install.packages(&quot;scatterplot3d&quot;)
-&lt;/code&gt;
-### 2. 使用&lt;/p&gt;
-
-&lt;p&gt;以下包在每次使用前需要重新加载
-```
-library(multtest)
-library(gplots)
-library(LDheatmap)
-library(genetics)
-library(ape) # required for as.phylo
-library(EMMREML)
-library(compiler) #required for cmpfun
-library(“scatterplot3d”)&lt;/p&gt;
-
-&lt;p&gt;source(“http://www.zzlab.net/GAPIT/emma.txt”)           # 这两个脚本也可以下载到本地，通过本地路径加载
-source(“http://www.zzlab.net/GAPIT/gapit_functions.txt”)
-```&lt;/p&gt;
-
-&lt;p&gt;可以下载官网提供的数据进行练习&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;setwd(&quot;/myGAPIT&quot;) # 设定工作目录，结果文件将输出到该目录
-&lt;/div&gt;
-
-&lt;h4 id=&quot;section-1&quot;&gt;2.1. 基本应用&lt;/h4&gt;
-
-&lt;p&gt;基本应用需要两个文件（表型数据文件和基因型文件）和一个参数主成分的个数（&lt;code class=&quot;highlighter-rouge&quot;&gt;PCA.total&lt;/code&gt;）；GAPIT 会自动计算 K 矩阵（VanRaden 方法）；用默认的聚类算法（平均）和 group kinship type（Mean）进行 GWAS 分析。&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;# 输入文件
-myY  &amp;lt;- read.table(&quot;mdp_traits.txt&quot;, head = TRUE)
-myG &amp;lt;- read.delim(&quot;mdp_genotype_test.hmp.txt&quot;, head = FALSE)
-
-# 运行 GAPIT
-myGAPIT &amp;lt;- GAPIT(
-Y=myY,
-G=myG,
-PCA.total=3,
-)
-&lt;/div&gt;
-
-&lt;h4 id=&quot;enhanced-compression&quot;&gt;2.2. Enhanced Compression&lt;/h4&gt;
-
-&lt;p&gt;在这个用法中，你可以指定其它的聚类算法（&lt;code class=&quot;highlighter-rouge&quot;&gt;kinship.cluster&lt;/code&gt; 参数控制），kinship summary statistic（‘kinship.group’ 参数）。
-默认 ‘kinship.cluster=’average’、’kinship.group=’Mean’。
-a specific range group numbers（即，k 矩阵的维度）可以通过’group.from’,’group.to’,’group.by’ 三个参数指定。
-（好吧，我承认没看懂。。。）
-&lt;code class=&quot;highlighter-rouge&quot;&gt;
-#Step 1: Set data directory and import files
-myY &amp;lt;- read.table(&quot;mdp_traits.txt&quot;, head = TRUE)
-myG &amp;lt;- read.table(&quot;mdp_genotype_test.hmp.txt&quot;, head = FALSE)
-#Step 2: Run GAPIT
-myGAPIT &amp;lt;- GAPIT(
-Y=myY,
-G=myG,
-PCA.total=3,
-kinship.cluster=c(&quot;average&quot;, &quot;complete&quot;, &quot;ward&quot;),
-kinship.group=c(&quot;Mean&quot;, &quot;Max&quot;),
-group.from=200,
-group.to=1000000,
-group.by=10
-)
-&lt;/code&gt;
-#### 2.3. 用户输入的 K 矩阵和协变量&lt;/p&gt;
-
-&lt;p&gt;本用法假设用户提供了 K 矩阵和协变量文件。
-你可以使用第三方软件产生的 K 矩阵或协变量（如，PCs 等）。
-当用这种方法输入 PCs 时，参数 ‘PCA.total’ 应该设为 0 （默认），否则会出错。&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;#Step 1: Set data directory and import files
-myY &amp;lt;- read.table(&quot;mdp_traits.txt&quot;, head = TRUE)
-myG &amp;lt;- read.table(&quot;mdp_genotype_test.hmp.txt&quot;, head = FALSE)
-myKI &amp;lt;- read.table(&quot;KSN.txt&quot;, head = FALSE)
-myCV &amp;lt;- read.table(&quot;Copy of Q_First_Three_Principal_Components.txt&quot;, head = TRUE)
-#Step 2: Run GAPIT
-myGAPIT &amp;lt;- GAPIT(
-Y=myY,
-G=myG,
-KI=myKI,
-CV=myCV
-)
-&lt;/div&gt;
-
-&lt;h4 id=&quot;section-2&quot;&gt;2.4. 基因组预测&lt;/h4&gt;
-
-&lt;p&gt;Genomic prediction 不用进行 GWAS，所以需要关闭 GWAS 功能，参数为‘SNP.test=FALSE’。
-&lt;code class=&quot;highlighter-rouge&quot;&gt;
-#Step 1: Set data directory and import files
-myY &amp;lt;- read.table(&quot;mdp_traits.txt&quot;, head = TRUE)
-myKI &amp;lt;- read.table(&quot;KSN.txt&quot;, head = FALSE)
-#Step 2: Run GAPIT
-myGAPIT &amp;lt;- GAPIT(
-Y=myY,
-KI=myKI,
-PCA.total=3,
-SNP.test=FALSE
-)
-&lt;/code&gt;&lt;/p&gt;
-
-&lt;h4 id=&quot;section-3&quot;&gt;2.5. 多基因型文件&lt;/h4&gt;
-
-&lt;p&gt;在本用法中，来自用法 1 的 HapMap 基因型数据集被分割成多个基因型文件，每个文件对应一个染色体。
-这个用法适用于在 R 中处理基因型文件太大的情况。
-所有的基因型文件有一个通用名和一个扩展名，还有一个特定的序列号（例，’mdp_genotype_chr1.hmp.txt’,’mdp_genotype_chr2.hmp.txt’,…）。
-用‘file.from’ 和 ’file.to‘ 参数声明开始和结束文件。
-通常文件名（如，’mdp_genotype+chr’）和 扩展文件名（如，’hmp.txt’）通过 ’file.G’ 和 ‘file.Ext.G’ 参数传递给 GAPIT。
-当没有提供 ‘file.path’ 参数时，GAPIT 尝试从当前目录查找文件。&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;#Step 1: Set data directory and import files
-myY &amp;lt;- read.table(&quot;mdp_traits.txt&quot;, head = TRUE)
-#Step 2: Run GAPIT
-myGAPIT &amp;lt;- GAPIT(
-Y=myY,
-PCA.total=3,
-file.G=&quot;mdp_genotype_chr&quot;,
-file.Ext.G=&quot;hmp.txt&quot;,
-file.from=1,
-file.to=10,
-file.path=&quot;C:\\myGAPIT\\&quot;
-)
-&lt;/div&gt;
-
-&lt;h4 id=&quot;numeric-genotype-format&quot;&gt;2.6. Numeric Genotype Format&lt;/h4&gt;
-
-&lt;p&gt;在本用法中，基因型数据集是用的不同的格式，numerical 格式。
-需要两个基因型文件。
-一个文件包含基因型数据（’GD’，参数），另一个文件包含染色体和每个 SNP 的碱基对位置（’GM’，参数）。
-&lt;code class=&quot;highlighter-rouge&quot;&gt;
-#Step 1: Set data directory and import files
-myY &amp;lt;- read.table(&quot;mdp_traits.txt&quot;, head = TRUE)
-myGD &amp;lt;- read.table(&quot;mdp_numeric.txt&quot;, head = TRUE)
-myGM &amp;lt;- read.table(&quot;mdp_SNP_information.txt&quot; , head = TRUE)
-#Step 2: Run GAPIT
-myGAPIT &amp;lt;- GAPIT(
-Y=myY,
-GD=myGD,
-GM=myGM,
-PCA.total=3
-)
-&lt;/code&gt;
-#### 2.7. 多个文件的 Numeric genotype Format&lt;/p&gt;
-
-&lt;p&gt;在本用法中，用法 6 的 numeric genotype 数据集被分割成多个基因型文件。
-基因型文件的通用名和扩展名通过 ‘file.GD’ 和 ‘file.Ext.GD’ 参数传递给 GAPIT。
-基因型 map 文件的通用名和扩展名通过 ‘file.GM’ 和 ’file.Ext.GM’ 参数传递给 GAPIT。
-&lt;code class=&quot;highlighter-rouge&quot;&gt;
-#Step 1: Set data directory and import files
-myY &amp;lt;- read.table(&quot;mdp_traits.txt&quot;, head = TRUE)
-#Step 2: Run GAPIT
-myGAPIT &amp;lt;- GAPIT(
-Y=myY,
-PCA.total=3,
-file.GD=&quot;mdp_numeric&quot;,
-file.GM=&quot;mdp_SNP_information&quot;,
-file.Ext.GD=&quot;txt&quot;,
-file.Ext.GM=&quot;txt&quot;,
-file.from=1,
-file.to=3,
-)
-&lt;/code&gt;&lt;/p&gt;
-
-&lt;h4 id=&quot;snps-fractional-snps-kinship--pcs&quot;&gt;2.8. 用部分 SNPs （Fractional SNPs）计算 Kinship 和 PCs&lt;/h4&gt;
-
-&lt;p&gt;选取总 SNPs 的部分进行计算可以节省计算时间，更重要的是它的结果类似。
-fraction 可以通过 ‘Ratio’ 参数控制。
-取样是随机的。
-以下用的是 ’SNP.fraction=0.6’,总 SNPs 为 3093.&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;#Step 1: Set data directory and import files
-myY &amp;lt;- read.table(&quot;mdp_traits.txt&quot;, head = TRUE)
-#Step 2: Run GAPIT
-myGAPIT &amp;lt;- GAPIT(
-Y=myY,
-PCA.total=3,
-file.GD=&quot;mdp_numeric&quot;,
-file.GM=&quot;mdp_SNP_information&quot;,
-file.Ext.GD=&quot;txt&quot;,
-file.Ext.GM=&quot;txt&quot;,
-file.from=1,
-file.to=3,
-SNP.fraction=0.6
-)
-&lt;/div&gt;
-
-&lt;h4 id=&quot;section-4&quot;&gt;2.9. 节省内存&lt;/h4&gt;
-
-&lt;p&gt;如果样本量很大，读入整个基因型数据集是很难的。
-GPAIT 每次只载入一部分片段（fragment）。
-默认 fragment 大小是 512 SNPs。
-这个数字可以通过 ‘file.fragment’ 参数进行控制。
-这个例子是用的 ‘file.fragment=128’&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;#Step 1: Set data directory and import files
-myY &amp;lt;- read.table(&quot;mdp_traits.txt&quot;, head = TRUE)
-#Step 2: Run GAPIT
-myGAPIT &amp;lt;- GAPIT(
-Y=myY,
-PCA.total=3,
-file.GD=&quot;mdp_numeric&quot;,
-file.GM=&quot;mdp_SNP_information&quot;,
-file.Ext.GD=&quot;txt&quot;,
-file.Ext.GM=&quot;txt&quot;,
-file.from=1,
-file.to=3,
-SNP.fraction=0.6,
-file.fragment = 128
-)
-&lt;/div&gt;
-
-&lt;h4 id=&quot;section-5&quot;&gt;2.10. 模型选择&lt;/h4&gt;
-
-&lt;p&gt;群体结构相关性的程度随性状的改变而改变。
-因此，在 GWAS 中，选择的完整的 PCs 并不是必须的。
-GAPIT 可以通过通过基于贝叶斯信息评价的（BIC）的模型选择，寻找最合适的 PCs 数量。
-参数为 ‘Model.selection=TRUE’
-输出文件 ‘.BIC.Model.Selection.Results.csv’
-```&lt;/p&gt;
-
-&lt;p&gt;myY &amp;lt;- read.table(“mdp_traits.txt”, head = TRUE)
-myG &amp;lt;- read.table(“mdp_genotype_test.hmp.txt”, head = FALSE)
-#Step 2: Run GAPIT
-myGAPIT &amp;lt;- GAPIT(
-Y=myY,
-G=myG,
-PCA.total=3,
-Model.selection = TRUE
-)
-```&lt;/p&gt;
-
-&lt;h4 id=&quot;super&quot;&gt;2.11. SUPER&lt;/h4&gt;
-
-&lt;p&gt;GAPIT 也提供了 SUPER GWAS 方法，它提取 SNPs 的小数据集用于 FaST-LMM。
-&lt;code class=&quot;highlighter-rouge&quot;&gt;
-#Step 1: Set data directory and import files
-myCV &amp;lt;- read.table(&quot;Copy of Q_First_Three_Principal_Components.txt&quot;, head = TRUE)
-myY &amp;lt;- read.table(&quot;mdp_traits.txt&quot;, head = TRUE)
-myG &amp;lt;- read.table(&quot;mdp_genotype_test.hmp.txt&quot; , head = FALSE)
-#Step 2: Run GAPIT
-myGAPIT_SUPER &amp;lt;- GAPIT(
-Y=myY[,c(1,2)],
-G=myG,
-#KI=myKI,
-CV=myCV,
-#PCA.total=3,
-sangwich.top=&quot;MLM&quot;, #options are GLM,MLM,CMLM, FaST and SUPER
-sangwich.bottom=&quot;SUPER&quot;, #options are GLM,MLM,CMLM, FaST and SUPER
-LD=0.1,
-)
-&lt;/code&gt;&lt;/p&gt;
-
-&lt;h3 id=&quot;section-6&quot;&gt;3. 数据&lt;/h3&gt;
-
-&lt;p&gt;所有的输入数据都应该被保存在 ’\t‘ 分割的 text 文件中，建议 taxa 安字母表排序。&lt;/p&gt;
-
-&lt;h4 id=&quot;section-7&quot;&gt;3.1 表型数据&lt;/h4&gt;
-
-&lt;p&gt;多个性状可以放在一个文件中。
-第一列为 ’taxa‘ （样本），其它列为表型数据。（’\t‘ 分割）
-缺失数据用 ’NaN‘ 或者 ’NA‘。
-&lt;code class=&quot;highlighter-rouge&quot;&gt;
-myY &amp;lt;- read.table(&quot;mdp_traits.txt&quot;, head = TRUE)
-head（myY）
-  Taxa EarHT dpoll   EarDia
-  1   811 59.50   NaN      NaN
-  2  4226 65.50  59.5 32.21933
-  3  4722 81.13  71.5 32.42100
-  4 33-16 64.75  64.5      NaN
-  5 38-11 92.25  68.5 37.89700
-  6  A188 27.50  62.0 31.4190
-&lt;/code&gt;&lt;/p&gt;
-
-&lt;h4 id=&quot;section-8&quot;&gt;3.2 基因型数据&lt;/h4&gt;
-
-&lt;p&gt;GWAS 需要基因型数据，基因组预测可不用。
-基因型数据的数据格式可以用 HapMap 格式或者 numeric 格式。&lt;/p&gt;
-
-&lt;h5 id=&quot;hapmap-&quot;&gt;3.2.1 HapMap 格式&lt;/h5&gt;
-
-&lt;p&gt;HapMap 格式 SNP 信息（染色体及位置）和每个 taxa 的基因型保存在一个文件中。
-具体格式自行 google
-例子
-&lt;code class=&quot;highlighter-rouge&quot;&gt;
-myG &amp;lt;- read.table(&quot;mdp_genotype_test.hmp.txt&quot;, head = FALSE)
-&lt;/code&gt;&lt;/p&gt;
-
-&lt;h5 id=&quot;numeric-&quot;&gt;3.2.2 numeric 格式&lt;/h5&gt;
-
-&lt;p&gt;numeric 格式有两个文件，一个包含基因型数据信息，一个包含 SNP 位置信息。
-两个文件的排序应该相同。
-例子
-&lt;code class=&quot;highlighter-rouge&quot;&gt;
-myGD &amp;lt;- read.table(&quot;mdp_numeric.txt&quot;, head = TRUE)
-myGM &amp;lt;- read.table(&quot;mdp_SNP_information.txt&quot;, head = TRUE)
-&lt;/code&gt;
-格式转换:HapMap -&amp;gt; numeric
-&lt;code class=&quot;highlighter-rouge&quot;&gt;
-myG &amp;lt;- read.table(&quot;mdp_genotype_test.hmp.txt&quot;, head = FALSE) myGAPIT &amp;lt;- GAPIT(G=myG, output.numerical=TRUE)
-myGD= myGAPIT$GD
-myGM= myGAPIT$GM
-&lt;/code&gt;&lt;/p&gt;
-
-&lt;h4 id=&quot;kinship&quot;&gt;3.3 Kinship&lt;/h4&gt;
-
-&lt;p&gt;K 矩阵在 GAPIT 中称之为 ’KI’。
-第一列为样本名，其余为相关矩阵，没有表头。
-例子：
-&lt;code class=&quot;highlighter-rouge&quot;&gt;
-myKI &amp;lt;- read.table(&quot;KSN.txt&quot;, head = FALSE)
-&lt;/code&gt;&lt;/p&gt;
-
-&lt;h4 id=&quot;section-9&quot;&gt;3.4 协变量&lt;/h4&gt;
-
-&lt;p&gt;在 GAPIT 中，协变量文件叫 ‘CV’，包含群体结构信息（Q 矩阵）或者 PCs。
-例子
-&lt;code class=&quot;highlighter-rouge&quot;&gt;
-myCV &amp;lt;- read.table(&quot;mdp_population_structure.txt&quot;, head = TRUE)
-&lt;/code&gt;&lt;/p&gt;
-
-&lt;h4 id=&quot;section-10&quot;&gt;3.5 通过文件名输入基因型文件&lt;/h4&gt;
-
-&lt;p&gt;见第二部分，多基因型文件&lt;/p&gt;
-
-&lt;h4 id=&quot;gapit--1&quot;&gt;3.6 其它 GAPIT 参数&lt;/h4&gt;
-
-&lt;h3 id=&quot;section-11&quot;&gt;4. 结果&lt;/h3&gt;
-
-&lt;p&gt;GAPIT 产生的结果保存为两种格式。
-所有的表格结果保存为 .csv 文件，所有的图形保存为 .pdf 文件。&lt;/p&gt;
-
-</description>
-        <pubDate>Wed, 19 Apr 2017 00:00:00 +0800</pubDate>
-        <link>http://liuqibao.me/2017/04/19/gapit-introdution/</link>
-        <guid isPermaLink="true">http://liuqibao.me/2017/04/19/gapit-introdution/</guid>
-        
-        <category>使用手册</category>
-        
-        
-        <category>bioinformatics</category>
-        
-      </item>
-    
-      <item>
-        <title>edgeR：用户使用手册</title>
-        <description>&lt;ul id=&quot;markdown-toc&quot;&gt;
-  &lt;li&gt;&lt;a href=&quot;#section&quot; id=&quot;markdown-toc-section&quot;&gt;第 一 章&lt;/a&gt;    &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;#section-1&quot; id=&quot;markdown-toc-section-1&quot;&gt;简介&lt;/a&gt;        &lt;ul&gt;
-          &lt;li&gt;&lt;a href=&quot;#section-2&quot; id=&quot;markdown-toc-section-2&quot;&gt;1.1 使用范围&lt;/a&gt;&lt;/li&gt;
-          &lt;li&gt;&lt;a href=&quot;#section-3&quot; id=&quot;markdown-toc-section-3&quot;&gt;1.2 引用&lt;/a&gt;&lt;/li&gt;
-          &lt;li&gt;&lt;a href=&quot;#section-4&quot; id=&quot;markdown-toc-section-4&quot;&gt;1.3 如何获得帮助&lt;/a&gt;&lt;/li&gt;
-          &lt;li&gt;&lt;a href=&quot;#quick-start&quot; id=&quot;markdown-toc-quick-start&quot;&gt;1.4 Quick start&lt;/a&gt;&lt;/li&gt;
-        &lt;/ul&gt;
-      &lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#section-5&quot; id=&quot;markdown-toc-section-5&quot;&gt;第 二 章&lt;/a&gt;    &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;#section-6&quot; id=&quot;markdown-toc-section-6&quot;&gt;功能概括&lt;/a&gt;        &lt;ul&gt;
-          &lt;li&gt;&lt;a href=&quot;#section-7&quot; id=&quot;markdown-toc-section-7&quot;&gt;2.1 术语&lt;/a&gt;&lt;/li&gt;
-          &lt;li&gt;&lt;a href=&quot;#read-&quot; id=&quot;markdown-toc-read-&quot;&gt;2.2 将 read 比对到基因组上&lt;/a&gt;&lt;/li&gt;
-          &lt;li&gt;&lt;a href=&quot;#read-counts-&quot; id=&quot;markdown-toc-read-counts-&quot;&gt;2.3 产生 read counts 的列表&lt;/a&gt;&lt;/li&gt;
-          &lt;li&gt;&lt;a href=&quot;#counts&quot; id=&quot;markdown-toc-counts&quot;&gt;2.4 从一个文件中读入 counts&lt;/a&gt;&lt;/li&gt;
-          &lt;li&gt;&lt;a href=&quot;#dgelist-&quot; id=&quot;markdown-toc-dgelist-&quot;&gt;2.5 DGEList 数据类&lt;/a&gt;&lt;/li&gt;
-          &lt;li&gt;&lt;a href=&quot;#section-8&quot; id=&quot;markdown-toc-section-8&quot;&gt;2.6 过滤&lt;/a&gt;&lt;/li&gt;
-          &lt;li&gt;&lt;a href=&quot;#section-9&quot; id=&quot;markdown-toc-section-9&quot;&gt;2.7 标准化&lt;/a&gt;            &lt;ul&gt;
-              &lt;li&gt;&lt;a href=&quot;#section-10&quot; id=&quot;markdown-toc-section-10&quot;&gt;2.7.1 标准化仅对样本特异化影响是必须的&lt;/a&gt;&lt;/li&gt;
-              &lt;li&gt;&lt;a href=&quot;#section-11&quot; id=&quot;markdown-toc-section-11&quot;&gt;2.7.2 测序深度&lt;/a&gt;&lt;/li&gt;
-              &lt;li&gt;&lt;a href=&quot;#rna-&quot; id=&quot;markdown-toc-rna-&quot;&gt;2.7.3 RNA 组成&lt;/a&gt;&lt;/li&gt;
-              &lt;li&gt;&lt;a href=&quot;#gc-&quot; id=&quot;markdown-toc-gc-&quot;&gt;2.7.4 GC 含量&lt;/a&gt;&lt;/li&gt;
-              &lt;li&gt;&lt;a href=&quot;#section-12&quot; id=&quot;markdown-toc-section-12&quot;&gt;2.7.4 基因长度&lt;/a&gt;&lt;/li&gt;
-              &lt;li&gt;&lt;a href=&quot;#section-13&quot; id=&quot;markdown-toc-section-13&quot;&gt;2.7.6 基于模型的标准化，而不是转化&lt;/a&gt;&lt;/li&gt;
-              &lt;li&gt;&lt;a href=&quot;#pseudo-counts&quot; id=&quot;markdown-toc-pseudo-counts&quot;&gt;2.7.7 Pseudo-counts&lt;/a&gt;&lt;/li&gt;
-            &lt;/ul&gt;
-          &lt;/li&gt;
-          &lt;li&gt;&lt;a href=&quot;#section-14&quot; id=&quot;markdown-toc-section-14&quot;&gt;2.8 负二项模型&lt;/a&gt;            &lt;ul&gt;
-              &lt;li&gt;&lt;a href=&quot;#section-15&quot; id=&quot;markdown-toc-section-15&quot;&gt;2.8.1 简介&lt;/a&gt;&lt;/li&gt;
-              &lt;li&gt;&lt;a href=&quot;#bcv&quot; id=&quot;markdown-toc-bcv&quot;&gt;2.8.2 生物变异的影响（BCV）&lt;/a&gt;&lt;/li&gt;
-              &lt;li&gt;&lt;a href=&quot;#bcvs&quot; id=&quot;markdown-toc-bcvs&quot;&gt;2.8.3 计算 BCVs&lt;/a&gt;&lt;/li&gt;
-              &lt;li&gt;&lt;a href=&quot;#quasi-negative-binomial&quot; id=&quot;markdown-toc-quasi-negative-binomial&quot;&gt;2.8.4 Quasi negative binomial&lt;/a&gt;&lt;/li&gt;
-            &lt;/ul&gt;
-          &lt;/li&gt;
-          &lt;li&gt;&lt;a href=&quot;#section-16&quot; id=&quot;markdown-toc-section-16&quot;&gt;2.9 两组或多组的成对比较（经典方法）&lt;/a&gt;            &lt;ul&gt;
-              &lt;li&gt;&lt;a href=&quot;#section-17&quot; id=&quot;markdown-toc-section-17&quot;&gt;2.9.1 计算离散度&lt;/a&gt;&lt;/li&gt;
-              &lt;li&gt;&lt;a href=&quot;#de-genes-&quot; id=&quot;markdown-toc-de-genes-&quot;&gt;2.9.2 DE genes 检测&lt;/a&gt;&lt;/li&gt;
-            &lt;/ul&gt;
-          &lt;/li&gt;
-          &lt;li&gt;&lt;a href=&quot;#glm-&quot; id=&quot;markdown-toc-glm-&quot;&gt;2.10 更复杂的实验（glm 功能）&lt;/a&gt;            &lt;ul&gt;
-              &lt;li&gt;&lt;a href=&quot;#glms&quot; id=&quot;markdown-toc-glms&quot;&gt;2.10.1 一般线性模型（GLMs）&lt;/a&gt;&lt;/li&gt;
-              &lt;li&gt;&lt;a href=&quot;#section-18&quot; id=&quot;markdown-toc-section-18&quot;&gt;2.10.2 计算离散度&lt;/a&gt;&lt;/li&gt;
-              &lt;li&gt;&lt;a href=&quot;#de-genes--1&quot; id=&quot;markdown-toc-de-genes--1&quot;&gt;2.10.3 DE genes 检验&lt;/a&gt;&lt;/li&gt;
-            &lt;/ul&gt;
-          &lt;/li&gt;
-          &lt;li&gt;&lt;a href=&quot;#section-19&quot; id=&quot;markdown-toc-section-19&quot;&gt;2.11 如果没有重复怎么办&lt;/a&gt;&lt;/li&gt;
-          &lt;li&gt;&lt;a href=&quot;#fold-change-&quot; id=&quot;markdown-toc-fold-change-&quot;&gt;2.12 表达差异高于 fold-change 阈值&lt;/a&gt;&lt;/li&gt;
-          &lt;li&gt;&lt;a href=&quot;#go--pathway-&quot; id=&quot;markdown-toc-go--pathway-&quot;&gt;2.13 GO 和 pathway 分析&lt;/a&gt;&lt;/li&gt;
-          &lt;li&gt;&lt;a href=&quot;#gene-set-testing&quot; id=&quot;markdown-toc-gene-set-testing&quot;&gt;2.14 Gene set testing&lt;/a&gt;&lt;/li&gt;
-          &lt;li&gt;&lt;a href=&quot;#clustering-heatmaps-&quot; id=&quot;markdown-toc-clustering-heatmaps-&quot;&gt;2.15 clustering, heatmaps 等&lt;/a&gt;&lt;/li&gt;
-          &lt;li&gt;&lt;a href=&quot;#section-20&quot; id=&quot;markdown-toc-section-20&quot;&gt;2.16 可变剪接&lt;/a&gt;&lt;/li&gt;
-          &lt;li&gt;&lt;a href=&quot;#crispr-cas9-tkg-shrna-seq-screen-&quot; id=&quot;markdown-toc-crispr-cas9-tkg-shrna-seq-screen-&quot;&gt;2.17 CRISPR-Cas9 tkg shRNA-seq screen 分析&lt;/a&gt;&lt;/li&gt;
-        &lt;/ul&gt;
-      &lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#section-21&quot; id=&quot;markdown-toc-section-21&quot;&gt;第 三 章 特异性实验设计&lt;/a&gt;    &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;#section-22&quot; id=&quot;markdown-toc-section-22&quot;&gt;3.1 简介&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#section-23&quot; id=&quot;markdown-toc-section-23&quot;&gt;3.2 两组或多组&lt;/a&gt;        &lt;ul&gt;
-          &lt;li&gt;&lt;a href=&quot;#section-24&quot; id=&quot;markdown-toc-section-24&quot;&gt;3.2.1 引言&lt;/a&gt;&lt;/li&gt;
-          &lt;li&gt;&lt;a href=&quot;#section-25&quot; id=&quot;markdown-toc-section-25&quot;&gt;3.2.2 经典方法&lt;/a&gt;&lt;/li&gt;
-        &lt;/ul&gt;
-      &lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#glm--1&quot; id=&quot;markdown-toc-glm--1&quot;&gt;GLM 方法&lt;/a&gt;&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;section&quot;&gt;第 一 章&lt;/h2&gt;
-
-&lt;h3 id=&quot;section-1&quot;&gt;简介&lt;/h3&gt;
-
-&lt;h4 id=&quot;section-2&quot;&gt;1.1 使用范围&lt;/h4&gt;
-
-&lt;p&gt;edgeR 主要用来分析 read 的表达差异，数据可以来自各个平台，如 RNA-seq、ChIP-seq、CRISR-Cas9 、SAGE-seq等。
-edgeR 提供两各方法进行统计分析：
-- 经典 edgeR：分析多组实验的精确统计方法
-- glm edgeR：适合任何复杂的多因子实验的一般线性模型方法（glm）；这部分功能的名字以 ’glm‘ 标识
-edgeR 的功能是基于经验贝叶斯方法的，它可以用于基因、外显子、转录本或者 tag 水平。&lt;/p&gt;
-
-&lt;h4 id=&quot;section-3&quot;&gt;1.2 引用&lt;/h4&gt;
-
-&lt;h4 id=&quot;section-4&quot;&gt;1.3 如何获得帮助&lt;/h4&gt;
-
-&lt;h4 id=&quot;quick-start&quot;&gt;1.4 Quick start&lt;/h4&gt;
-
-&lt;p&gt;edgeR 提供了很多分析方法。通常，建议使用 glm 流程，因为它非常灵活。
-在 glm 框架在有两种检测方法：似然比检测和准似然比 F-test。&lt;/p&gt;
-
-&lt;p&gt;这个例子用了 4 个RNA-seq 库，分为两组，counts 是排好序的，保存在文件中，基因符号位于一列，命名为 Symbol。&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;x &amp;lt;- read.delim(&quot;TableOfCounts.txt',row.names='Symbol') # 读入数据，也可以用 read.table 等，或者在 R 中手动构建数据框。
-group &amp;lt;- factor(c(1,1,2,2)) # 分组
-y &amp;lt;- DGEList(counts=x,group=group) # x 是包含 counts 的列，group 参数为分组；DGEList 是 edgeR 的数据结构
-y &amp;lt;- calcNormFactors（y）#标准化
-design &amp;lt;- model.matrix(~ group)
-y &amp;lt;- estimatedisp（y，design）
-
-&lt;/div&gt;
-
-&lt;p&gt;准似然比 F-test：
-&lt;code class=&quot;highlighter-rouge&quot;&gt;
-fit &amp;lt;- glmQLFit(y,design)
-qlf &amp;lt;- glmQLFTest(fit,coef=2)
-topTags(qlf)
-&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;似然比检测：
-&lt;code class=&quot;highlighter-rouge&quot;&gt;
-fit &amp;lt;- glmFit(y,design)
-lrt &amp;lt;- glmLRT(fit,coef=2)
-topTags(lrt)
-&lt;/code&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;section-5&quot;&gt;第 二 章&lt;/h2&gt;
-
-&lt;h3 id=&quot;section-6&quot;&gt;功能概括&lt;/h3&gt;
-
-&lt;h4 id=&quot;section-7&quot;&gt;2.1 术语&lt;/h4&gt;
-
-&lt;p&gt;为了简单起见，以下内容将基因组 feature 统称为 ’genes‘，其实它可以是转录本、外显子等等。&lt;/p&gt;
-
-&lt;h4 id=&quot;read-&quot;&gt;2.2 将 read 比对到基因组上&lt;/h4&gt;
-
-&lt;p&gt;featureCounts 和 htseq 都是可行的。&lt;/p&gt;
-
-&lt;h4 id=&quot;read-counts-&quot;&gt;2.3 产生 read counts 的列表&lt;/h4&gt;
-
-&lt;p&gt;edgeR 的输入文件要求是列表，每行是一个 genes ，每列是一个库（样本）。
-注意：edgeR 应该使用实际的 read counts ，不建议使用预测的转录本丰度（例如 RPKM、FPKM）&lt;/p&gt;
-
-&lt;h4 id=&quot;counts&quot;&gt;2.4 从一个文件中读入 counts&lt;/h4&gt;
-
-&lt;p&gt;如果 counts 列表已经在一个文件中，那么需要读入它。
-如果不同样本的数据存储在不同文件中，那么你需要单个读入并整合它们，readDGE 函数可以实现这个功能。这些文件需要两列，一列代表 gene 名字，一列代表 counts 数。&lt;/p&gt;
-
-&lt;h4 id=&quot;dgelist-&quot;&gt;2.5 DGEList 数据类&lt;/h4&gt;
-
-&lt;p&gt;edgeR 的数据存储在名为 DGEList 的对象中。
-可以用 readDGE 直接构造，如果 counts 列表已经作为矩阵或者数据框输入，用 x 表示，那么：
-&lt;code class=&quot;highlighter-rouge&quot;&gt;
-y &amp;lt;- DGEList(counts=x)
-&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;可以同时加入分组因子：
-&lt;code class=&quot;highlighter-rouge&quot;&gt;
-group &amp;lt;- c(1,1,2,2)
-y &amp;lt;- DGEList(coutns=x,group=group)
-&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;DGEList 对象的主要组成是一个 counts 矩阵，包括所有的 counts，一个 samples 信息的数据框，和一个可选的包含 genes 注释信息的数据框。&lt;/p&gt;
-
-&lt;h4 id=&quot;section-8&quot;&gt;2.6 过滤&lt;/h4&gt;
-
-&lt;p&gt;根据经验，如果 genes 在所有条件下的所有样本都没有表达，那么就应该过滤掉。
-通常一个基因的 counts 为 5——10 才认为它表达了。
-用户应该使用 count-per-million（CPM）指标过滤而不是直接过滤，因为直接过滤没有考虑库的大小。
-命令：
-&lt;code class=&quot;highlighter-rouge&quot;&gt;
-keep &amp;lt;- rowSums(cpm(y)&amp;gt;1) &amp;gt;= 2
-y &amp;lt;- y[keep,,keep.lib.sizes=FALSE]
-&lt;/code&gt;
-CPM 为 1 代表在最小的样本中，count 为 6——7。
-因为每组至少有两个样本，所以要求至少在 2 个库中表达（&amp;gt;=2）。
-这确保如果基因仅在 group 2 中的所有样本表达会保留下来。
-建议过滤后重新计算库的大小，尽管它的影响非常小。
-命令：
-&lt;code class=&quot;highlighter-rouge&quot;&gt;
-y$sample$lib.size &amp;lt;- colSums(y$counts)
-&lt;/code&gt;&lt;/p&gt;
-
-&lt;h4 id=&quot;section-9&quot;&gt;2.7 标准化&lt;/h4&gt;
-
-&lt;h5 id=&quot;section-10&quot;&gt;2.7.1 标准化仅对样本特异化影响是必须的&lt;/h5&gt;
-
-&lt;p&gt;edgeR 比较的两个环境下样本的表达水平的相关改变，而不是直接比较表达水平的绝对值。这简化了技术的影响。
-例如，edgeR 不会考虑 genes 长度的影响，因为它与每个样本的 read counts 的影响相关。（即，通过比较表达水平的改变，已经修正过了）&lt;/p&gt;
-
-&lt;h5 id=&quot;section-11&quot;&gt;2.7.2 测序深度&lt;/h5&gt;
-
-&lt;p&gt;edgeR 通过不同库的大小修正测序深度对差异表达分析的影响，这部分已经考虑进 fold-change 或者 P-value 中。&lt;/p&gt;
-
-&lt;h5 id=&quot;rna-&quot;&gt;2.7.3 RNA 组成&lt;/h5&gt;
-
-&lt;p&gt;RNA 组成是第二重要的技术因素。
-当少量的基因在一个样本中高差异表达，而在另一个样本中没有时，这个因素的影响会很大。
-通过寻找库大小的比例因子，它可以最小化样本基因的 log-fold changes，calcNormFactors 函数标准化 RNA组成。
-默认使用 TMM 方法估计比例因子。&lt;/p&gt;
-
-&lt;p&gt;当两两样本间差异表达的基因被确定不会超过一半时，TMM 方法是大多数 RNA-seq 推荐的方法。
-TMM 标准化的命令：
-&lt;code class=&quot;highlighter-rouge&quot;&gt;
-y &amp;lt;- calcNormFactors(y)
-&lt;/code&gt;&lt;/p&gt;
-
-&lt;h5 id=&quot;gc-&quot;&gt;2.7.4 GC 含量&lt;/h5&gt;
-
-&lt;h5 id=&quot;section-12&quot;&gt;2.7.4 基因长度&lt;/h5&gt;
-
-&lt;h5 id=&quot;section-13&quot;&gt;2.7.6 基于模型的标准化，而不是转化&lt;/h5&gt;
-
-&lt;p&gt;注意：edgeR 需要的的原始的 read counts，不是转化后的，如 RPKM 或者 FPKM 值。&lt;/p&gt;
-
-&lt;h5 id=&quot;pseudo-counts&quot;&gt;2.7.7 Pseudo-counts&lt;/h5&gt;
-
-&lt;p&gt;经典的 edgeR 函数 estimateCommonDisp 和 exactTest 产生一个 pseudo-counts 矩阵作为输出的一部分。&lt;/p&gt;
-
-&lt;h4 id=&quot;section-14&quot;&gt;2.8 负二项模型&lt;/h4&gt;
-
-&lt;h5 id=&quot;section-15&quot;&gt;2.8.1 简介&lt;/h5&gt;
-
-&lt;h5 id=&quot;bcv&quot;&gt;2.8.2 生物变异的影响（BCV）&lt;/h5&gt;
-
-&lt;h5 id=&quot;bcvs&quot;&gt;2.8.3 计算 BCVs&lt;/h5&gt;
-
-&lt;h5 id=&quot;quasi-negative-binomial&quot;&gt;2.8.4 Quasi negative binomial&lt;/h5&gt;
-
-&lt;h4 id=&quot;section-16&quot;&gt;2.9 两组或多组的成对比较（经典方法）&lt;/h4&gt;
-
-&lt;h5 id=&quot;section-17&quot;&gt;2.9.1 计算离散度&lt;/h5&gt;
-
-&lt;p&gt;离散度为生物变异系数（BCV）的平方。
-edgeR 对单因素实验使用 qCML（the quantile-adjusted conditional maximum likelihood）方法。&lt;/p&gt;
-
-&lt;p&gt;仅当是单因素实验设计的时候才能使用 qCML 方法，不适于多因素实验设计。&lt;/p&gt;
-
-&lt;p&gt;一次性计算 common dispersion 和 tagwise dispersion：
-&lt;code class=&quot;highlighter-rouge&quot;&gt;
-y &amp;lt;- estimateDisp（y）
-&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;计算 common dispersion：
-&lt;code class=&quot;highlighter-rouge&quot;&gt;
-y &amp;lt;- estimateCommaonDisp（y）
-&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;计算 tagwise disperson：
-&lt;code class=&quot;highlighter-rouge&quot;&gt;
-y &amp;lt;- estimateTagwiseDisp(y)
-&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;注意：如果独立计算，需要先计算 common dispersion，再计算 tagwise disperson。&lt;/p&gt;
-
-&lt;h5 id=&quot;de-genes-&quot;&gt;2.9.2 DE genes 检测&lt;/h5&gt;
-
-&lt;p&gt;精确检测是基于 qCML 方法的，仅适用于单因素实验。
-&lt;code class=&quot;highlighter-rouge&quot;&gt;
-et &amp;lt;- exactTest(y)
-topTags(et)
-&lt;/code&gt;&lt;/p&gt;
-
-&lt;h4 id=&quot;glm-&quot;&gt;2.10 更复杂的实验（glm 功能）&lt;/h4&gt;
-
-&lt;h5 id=&quot;glms&quot;&gt;2.10.1 一般线性模型（GLMs）&lt;/h5&gt;
-
-&lt;h5 id=&quot;section-18&quot;&gt;2.10.2 计算离散度&lt;/h5&gt;
-
-&lt;p&gt;对于多因素实验，edgeR CR 方法计算离散度，它通过一个设计矩阵拟合 GLM 模型来考虑多因素影响。&lt;/p&gt;
-
-&lt;p&gt;一次性计算 common dispersion、trended dispersion 和 tagwise dispersion 的命令：
-&lt;code class=&quot;highlighter-rouge&quot;&gt;
-y &amp;lt;- estimateDisp(y,design)
-&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;计算 common dispersion：
-&lt;code class=&quot;highlighter-rouge&quot;&gt;
-y &amp;lt;- estimateGLMCommonDisp(y, design)
-&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;计算 trendedDisp（y，design）
-&lt;code class=&quot;highlighter-rouge&quot;&gt;
-y &amp;lt;- estimateGLMTrendedDisp（y，design）
-&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;计算 tagwise dispersion：
-&lt;code class=&quot;highlighter-rouge&quot;&gt;
-y &amp;lt;- estimateGLMTagwiseDisp（y，design）
-&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;注意：需要先计算 common dispersion 或者 trended dispersion，再计算 tagwise dispersion。
-在多因素实验中，强烈建议使用 tagwise dispersion 方法。&lt;/p&gt;
-
-&lt;h5 id=&quot;de-genes--1&quot;&gt;2.10.3 DE genes 检验&lt;/h5&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;group &amp;lt;- factor（c（1，1，2，2，3，3））
-design &amp;lt;- model.matrix(~group)
-fit &amp;lt;- glmFit(y,design)
-&lt;/div&gt;
-
-&lt;p&gt;拟合函数有三个参数，第一个 group 1 扩基准水平。
-第二个和第三个是 2 vs 1 和 3 vs 1 差异&lt;/p&gt;
-
-&lt;p&gt;比较 2 vs 1:
-&lt;code class=&quot;highlighter-rouge&quot;&gt;
-lrt.2vs1 &amp;lt;- glmLRT(fit, coef=2)
-topTags(lrt.2vs1)
-&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;比较 3 vs 1:
-&lt;code class=&quot;highlighter-rouge&quot;&gt;
-lrt.3vs1 &amp;lt;- glmLRT(fit, coef=3)
-&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;比较 3 vs 2:
-&lt;code class=&quot;highlighter-rouge&quot;&gt;
-lrt.3vs2 &amp;lt;- glmLRT(fit, contrast=c(0,-1,1)) # contrast 参数需要一个零假设的统计检验，coefficient3——coefficient2 等于 0
-&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;寻找三个组都有的差异：
-&lt;code class=&quot;highlighter-rouge&quot;&gt;
-lrt &amp;lt;- glmLRT(fit,coef=2:3)
-topTags(lrt)
-&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;也可以用 QL F-test 检验。
-代码略。&lt;/p&gt;
-
-&lt;h4 id=&quot;section-19&quot;&gt;2.11 如果没有重复怎么办&lt;/h4&gt;
-
-&lt;p&gt;不推荐没有重复的实验，但是实在没有重复时，可以考虑以下选项：
-1. 用描述性统计分析，包括 MDS plot 和 fold changes 分析。
-2. 根据你的实验和相似数据，选择合适的离散度，用于 exactTest 或者 glmFit。对于人类等（可能是自由交配的物种）控制较好的实验，可以选择 BCV = 0.4；遗传上相同的模式生物（可能是指自交的生物，如植物）可以选择 BCV = 0.4；技术重复为 0.01.&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;bcv &amp;lt;- 0.2
-counts &amp;lt;- matrix(rnbinom(40,size=1/bcv^2),20,2)
-y &amp;lt;- DGEList(counts=counts,group=1:2)
-et &amp;lt;- exactTest(y,dispersion=bcv^2)
-&lt;/div&gt;
-
-&lt;p&gt;注意:P-value 和显著基因的数量对离散度的选择非常敏感，对于没有控制的数据、没有考虑批次影响等等，可以实际使用更大的离散度。
-然而，选择一个假设的离散度总比忽略生物学变异好。&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;通过从线性模型移除一个或更多因子，来创造残差自由度。具体见原文。&lt;/li&gt;
-  &lt;li&gt;如果存在大量的没有 DE 的转录本，可以用它们来检测离散度。
-例如，找一个在所有处理环境中都没有表达差异的基因作为 housekeeping （管家基因），通过它计算离散度。
-首先，创建一个数据的 copy ，将所有处理视为一个组：
-&lt;code class=&quot;highlighter-rouge&quot;&gt;
-y1 &amp;lt;- y
-y1$samples$grouop &amp;lt;- 1
-&lt;/code&gt;&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;然后计算来自 housekeeping 基因的离散度，所有的库视为一组：
-&lt;code class=&quot;highlighter-rouge&quot;&gt;
-y0 &amp;lt;- estimateCommonDisp(y1[housekeeping,1])
-&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;然后将它插入所有数据对象：
-&lt;code class=&quot;highlighter-rouge&quot;&gt;
-y$sommon.dispersion &amp;lt;- y0$common.dispersion
-et &amp;lt;- exactTest(y)
-&lt;/code&gt;
-注意：需要大量的控制转录本，至少有几十个，理想是数百个&lt;/p&gt;
-
-&lt;h4 id=&quot;fold-change-&quot;&gt;2.12 表达差异高于 fold-change 阈值&lt;/h4&gt;
-
-&lt;h4 id=&quot;go--pathway-&quot;&gt;2.13 GO 和 pathway 分析&lt;/h4&gt;
-
-&lt;h4 id=&quot;gene-set-testing&quot;&gt;2.14 Gene set testing&lt;/h4&gt;
-
-&lt;h4 id=&quot;clustering-heatmaps-&quot;&gt;2.15 clustering, heatmaps 等&lt;/h4&gt;
-
-&lt;h4 id=&quot;section-20&quot;&gt;2.16 可变剪接&lt;/h4&gt;
-
-&lt;h4 id=&quot;crispr-cas9-tkg-shrna-seq-screen-&quot;&gt;2.17 CRISPR-Cas9 tkg shRNA-seq screen 分析&lt;/h4&gt;
-
-&lt;h2 id=&quot;section-21&quot;&gt;第 三 章 特异性实验设计&lt;/h2&gt;
-
-&lt;h4 id=&quot;section-22&quot;&gt;3.1 简介&lt;/h4&gt;
-
-&lt;p&gt;本章主要概括设计矩阵，比较一些经典的实验设计&lt;/p&gt;
-
-&lt;h4 id=&quot;section-23&quot;&gt;3.2 两组或多组&lt;/h4&gt;
-
-&lt;h5 id=&quot;section-24&quot;&gt;3.2.1 引言&lt;/h5&gt;
-
-&lt;h5 id=&quot;section-25&quot;&gt;3.2.2 经典方法&lt;/h5&gt;
-
-&lt;p&gt;经典 edgeR 方法进行组间的成对比较。
-&lt;code class=&quot;highlighter-rouge&quot;&gt;
-group &amp;lt;- factor(c('A','A','B','B','C','C'))
-et &amp;lt;- exactTest(y,pair=c('A','B')) # B vs A
-topTags(et)
-et &amp;lt;- exactTest(y,pair=c('A','C')) # C vs A
-et &amp;lt;- exactTest(y, pair=c('C','B')) # B vs C
-et &amp;lt;- exactTest(y, pair=c(3,2)) # 用数字表示，等同于 B vs C
-&lt;/code&gt;
-具体细节见原文&lt;/p&gt;
-
-&lt;h4 id=&quot;glm--1&quot;&gt;GLM 方法&lt;/h4&gt;
-
-&lt;p&gt;GLM 方法允许多个组的比较。
-GLM 方法需要一个设计矩阵，可以用 model.matrix 函数构造，也可以手动构造。
-&lt;code class=&quot;highlighter-rouge&quot;&gt;
-design &amp;lt;- model.matrix(~0+group,data=y$samples)
-colnames(design) &amp;lt;- levels(y$samples$group)
-&lt;/code&gt;&lt;/p&gt;
-
-</description>
-        <pubDate>Mon, 10 Apr 2017 00:00:00 +0800</pubDate>
-        <link>http://liuqibao.me/2017/04/10/edgeR-introdution/</link>
-        <guid isPermaLink="true">http://liuqibao.me/2017/04/10/edgeR-introdution/</guid>
-        
-        <category>使用手册</category>
-        
-        
-        <category>bioinformatics</category>
-        
-      </item>
-    
-      <item>
-        <title>HTseq 简单使用</title>
-        <description>
-&lt;p&gt;HTseq 是进行基因 count 表达量分析的软件，可以根据来自多种比对软件的 SAM/BAM 比对结果文件和基因结构注释 GTF 文件计算基因水平的 Counts 表达量
-HTseq 安装需要 python2.7 以上，还需要几个 python 包，也建议用 pip 安装。
-注意：
-1. 若安装自己目录，运行：&lt;code class=&quot;highlighter-rouge&quot;&gt;python setup.py install --user
-2. 自动生成的 htseq 在 &lt;/code&gt;~/.local/bin` 中&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;htseq-count [options] input.sam/bam genome.gtf &amp;gt; counts_out.txt
-&lt;/div&gt;
-&lt;p&gt;options:
--f：输入文件的格式，SAM/BAM；默认 sam。
--r：输入文件的排序方式，name/pos；默认 name。（需要用 samtools 对输入文件排序）
--s：设置是否是链特异性的，yes/no；默认 yes。（反人类的选项，一般情况是 no）
--a：忽略比对质量低于此值的比对结果；默认 10
--t：对指定的 feature（gtf/gff 第三列）进行表达量计算，而且忽略其它 ffeature；默认 exon
--i：设置 feature ID，由 gtf/gff 文件第 9 列标签决定，一般 gtf 为 gene_id, gff 为 ID；默认 gene_id
--m：表达量计算模式，三种，一般真核生物用 union，详细请看说明书；默认 union
--o：输出 sam 文件&lt;/p&gt;
-
-&lt;p&gt;注意事项：
-1. 输入文件必须有 sam/bam 比对结果和 gtf/gff 参考基因
-2. gtf/gff 文件不能包含可变剪接信息，否则 HTSeq 会认为每个可变剪接都是单独的基因，导致计算结果为 ambiguous，对基因的 count 计算错误。&lt;/p&gt;
-
-</description>
-        <pubDate>Sun, 09 Apr 2017 00:00:00 +0800</pubDate>
-        <link>http://liuqibao.me/2017/04/09/HTseq-introdution/</link>
-        <guid isPermaLink="true">http://liuqibao.me/2017/04/09/HTseq-introdution/</guid>
-        
-        <category>使用手册</category>
-        
-        
-        <category>bioinformatics</category>
-        
-      </item>
-    
-      <item>
-        <title>SAM 格式简介及 samtools 工具的常用命令</title>
-        <description>&lt;ul id=&quot;markdown-toc&quot;&gt;
-  &lt;li&gt;&lt;a href=&quot;#sam-&quot; id=&quot;markdown-toc-sam-&quot;&gt;SAM 格式定义&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#samtools-&quot; id=&quot;markdown-toc-samtools-&quot;&gt;samtools 工具的常用命令&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;最近在做 RNA-seq 的时候，发现很多差异分析软件需要对 sam 文件进行排序，所以决定再研究一个 sam 格式。&lt;/p&gt;
-
-&lt;h4 id=&quot;sam-&quot;&gt;SAM 格式定义&lt;/h4&gt;
-
-&lt;p&gt;SAM  是序列比对的格式标准，是 sanger 制定的，它以制表符 &lt;code class=&quot;highlighter-rouge&quot;&gt;\t&lt;/code&gt; 为分割符。
-完整的 sam 文件分为两个主要部分，注释信息（header section）和比对结果部分（alignment），比对结果是必须的，而注释信息是可忽略的。
-注释信息以 &lt;code class=&quot;highlighter-rouge&quot;&gt;@&lt;/code&gt; 开头，用不同的标签（tag）表示不同的信息，例如： 
-- @HD：符合标准的版本、对比序列的排列顺序
-- @SQ：参考序列说明
-- @RG：比对上的 reads 说明
-- @PG：使用说明
-- @Co：任意的说明信息&lt;/p&gt;
-
-&lt;p&gt;比对结果，每行表示一个 segment 的比对信息，共被 &lt;code class=&quot;highlighter-rouge&quot;&gt;\t&lt;/code&gt; 分为 11 个字段和一个可靠字段，其顺序是固定的
-1. QNAME：比对片段或者基因的编号
-2. FLAG：平台比对情况的数字表示
-3. RNAM：参考序列的名字，即，染色体号，无法比对用 &lt;code class=&quot;highlighter-rouge&quot;&gt;*&lt;/code&gt; 表示
-4. position：read 比对到参考序列上，第一个碱基的位置，无法比对，则为 0
-5. 比对质量分数
-6. 匹配上的碱基数
-…&lt;/p&gt;
-
-&lt;h4 id=&quot;samtools-&quot;&gt;samtools 工具的常用命令&lt;/h4&gt;
-
-&lt;p&gt;samtools 的新旧版本用法有些不同，此处用的 V1.4。&lt;/p&gt;
-
-&lt;p&gt;一、view&lt;/p&gt;
-
-&lt;p&gt;view 命令主要用于将 sam 格式转换成 bam 格式，只有转换成 bam 后才能对文件进行操作，例如排序、提取。&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;samtools view [options] bam/sam
-&lt;/div&gt;
-&lt;p&gt;options：
--o：输出文件的名字
--b：输出 BAM 格式；默认输出 SAM 格式
--h：设定输出 sam 文件时带 header 信息；默认输出 sam 不带 header 信息
--H：仅输出头文件信息
--S：输入文件是 sam 文件；默认输入文件是 bam 文件，新版本自动检测，可忽略该参数
--u：耗费磁盘空间，节约时间；需要 -b 参数&lt;/p&gt;
-
-&lt;p&gt;例如：
-&lt;code class=&quot;highlighter-rouge&quot;&gt;
-samtools view -bS abc.sam &amp;gt; abc.bam #将 sam 转换成 bam
-samtools view -T genome.fasta -h input.sam &amp;gt; input.h.sam 根据 fasta 文件，将 header 加入到 sam 或 bam 文件
-samtools view -H input.bam &amp;gt; header.sam # 仅输出 header 文件
-&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;二、sort&lt;/p&gt;
-
-&lt;p&gt;sort 命令是对 bam 文件进行排序&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;samtools sort [options] input.bam 
-&lt;/div&gt;
-&lt;p&gt;options:
--@：线程数
--m：每个线程的最大内存
--n：根据 read 的名字（QNAME）排序，而不是染色体坐标排序；默认通过最左边的坐标排序。
--o：排序后的输出文件名；默认 samtools 基于 -o 文件的扩展名深度选择一个格式（如 .bam)；如果格式无法推测，则需要指定 -O
--O：指定输出格式 sam/bam/cram；&lt;/p&gt;
-
-&lt;p&gt;例如：
-&lt;code class=&quot;highlighter-rouge&quot;&gt;
-samtools sort -@ 8 -o output.sorted.bam input.sam #输入 sam 文件，输出排好序的 bam 文件。
-&lt;/code&gt;
-注意：旧版本无法排序的同时转换格式，所以需要先用 view 转换格式，再用 sort 排序&lt;/p&gt;
-
-&lt;p&gt;samtools 的命令还有很多，等用到的时候继续补充&lt;/p&gt;
-</description>
-        <pubDate>Sat, 08 Apr 2017 00:00:00 +0800</pubDate>
-        <link>http://liuqibao.me/2017/04/08/sam-format-and-samtool-v1.4/</link>
-        <guid isPermaLink="true">http://liuqibao.me/2017/04/08/sam-format-and-samtool-v1.4/</guid>
-        
-        <category>使用手册；数据格式</category>
-        
-        
-        <category>bioinformatics</category>
         
       </item>
     
