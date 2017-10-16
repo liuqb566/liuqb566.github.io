@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Cuffdiff v2.1.1 的简单使用</title>
+
+	<link rel="shortcut icon" href="/styles/images/favicon.jpg">
+	<link rel="icon" href="/styles/images/favicon.jpg">
+
+	<link rel="stylesheet" href="/styles/css/index.css">
+	<link rel="stylesheet" href="/styles/css/fontawesome/css/font-awesome.min.css">
+	<link rel="canonical" href="/2017/04/07/Cuffdiff-v2.1.1-introduction.unfinish/">
+	<link rel="alternate" type="application/rss+xml" title="Gossie's daily life" href="/feed.xml">
+	
+	<meta name="description" content="">
+
+	<script src="/styles/js/jquery.min.js"></script>
+	<!--[if lt IE 9]>
+    	<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  	<![endif]-->
+  	<script>
+		var _hmt = _hmt || [];
+		(function() {
+		  var hm = document.createElement("script");
+		  hm.src = "//hm.baidu.com/hm.js?94be4b0f9fc5d94cc0d0415ea6761ae9";
+		  var s = document.getElementsByTagName("script")[0]; 
+		  s.parentNode.insertBefore(hm, s);
+		})();
+	</script>
+  	<style type="text/css">
+	  	.docs-content{
+	  		margin-bottom: 10px;
+	  	}
+  	</style>
+</head>
+
+
+  <body class="index">
+
+    <header class="navbar navbar-inverse navbar-fixed-top docs-nav" role="banner">
+  <div class="container">
+    <div class="navbar-header">
+      <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".bs-navbar-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="/" class="navbar-brand">
+        <img src="/styles/images/logo.jpg">
+      </a>
+    </div>
+    <nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">
+      <ul class="nav navbar-nav">    
+        <li>
+          <a href="/">Home</a>
+        </li>
+        <li>
+          <a href="/categories/">分类</a>
+        </li>
+        <li>
+          <a href="/tag">标签</a>
+        </li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+          <a href="/donate/"><strong>打赏</strong></a>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">关于<b class="caret"></b></a>
+          <ul class="dropdown-menu">
+            <li><a rel="nofollow" target="_blank" href="https://github.com/liuqibao566">Github</a></li>
+            <li><a rel="nofollow" target="_blank" href="">关于作者</a></li>
+            <li><a rel="nofollow" href="/books">书架</a></li>
+            <li><a rel="nofollow" href="/reference">相关链接</a></li>
+            <li><a href="/feed.xml">RSS订阅</a></li>
+            <li class="divider"></li>
+            <li><a rel="nofollow" target="_blank" href="https://github.com/liuqb566/">本项目</a></li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+    <div class="docs-header" id="content">
+  <div class="container">
+  	
+  		<!--
+		    <h1>Cuffdiff v2.1.1 的简单使用</h1>
+		    <p>Post on Apr 07, 2017 by <a href="/about">Gossie</a></p>
+		-->
+		    <h1></h1>
+    
+  </div>
+</div>
+    
+      
+<div class="banner">
+  <div class="container">
+  	
+    	<a href="/categories/#bioinformatics-ref">bioinformatics</a>	/
+    	<a href="/tag/#使用手册-ref">使用手册</a>
+    
+  </div>
+</div>
+
+    
+
+    <div class="container docs-container">
+  <div class="row">
+    <div class="col-md-3">
+      <div class="sidebar hidden-print" role="complementary">
+        <div id="navigation">
+  <h1>目录</h1>
+  <ul class="nav sidenav">
+<!--
+    
+      
+      
+      
+      
+
+      
+        <li><a href="#year_2017">2017</a>
+          <ul class="nav">
+            <li><a href="#month_2017_May">May</a></li>
+      
+
+      
+            
+          
+              <li><a href="#month_2017_April">April</a></li>
+          
+        
+      
+    
+      
+      
+      
+      
+
+      
+
+      
+            
+          
+        
+      
+    
+      
+      
+      
+      
+
+      
+
+      
+            
+          
+        
+      
+    
+      
+      
+      
+      
+
+      
+
+      
+            
+          
+        
+      
+    
+      
+      
+      
+      
+
+      
+
+      
+            
+          
+        
+      
+    
+      
+      
+      
+      
+
+      
+
+      
+            
+          
+        
+      
+    
+      
+      
+      
+      
+
+      
+
+      
+            
+          
+        
+      
+    
+      
+      
+      
+      
+
+      
+
+      
+            
+          
+        
+      
+    
+      
+      
+      
+      
+
+      
+
+      
+            
+          
+        
+      
+    
+      
+      
+      
+      
+
+      
+
+      
+            
+          
+        
+      
+    
+      
+      
+      
+      
+
+      
+
+      
+            
+          
+        
+      
+    
+      
+      
+      
+      
+
+      
+
+      
+            
+          
+        
+      
+    
+      
+      
+      
+      
+
+      
+
+      
+            
+          
+              <li><a href="#month_2017_March">March</a></li>
+          
+        
+      
+    
+      
+      
+      
+      
+
+      
+
+      
+            
+          
+              <li><a href="#month_2017_February">February</a></li>
+          
+        
+      
+    
+      
+      
+      
+      
+
+      
+
+      
+            
+          
+              <li><a href="#month_2017_January">January</a></li>
+          
+        
+      
+    
+      
+      
+      
+      
+
+      
+
+      
+            
+          
+        
+      
+    
+      
+      
+      
+      
+
+      
+
+      
+            
+          
+        
+      
+    
+      
+      
+      
+      
+
+      
+
+      
+            
+          
+        
+      
+    
+      
+      
+      
+      
+
+      
+
+      
+            
+          
+        
+      
+    
+      
+      
+      
+      
+
+      
+
+      
+            
+          
+        
+      
+    
+      
+      
+      
+      
+
+      
+
+      
+        
+            </ul>
+          </li>
+          <li><a href="#year_2016">2016</a>
+            <ul class="nav">
+              <li><a href="#month_2016_December">December</a></li>
+        
+      
+    
+      
+      
+      
+      
+
+      
+
+      
+            
+          
+        
+      
+    
+      
+      
+      
+      
+
+      
+
+      
+            
+          
+        
+      
+    
+      
+      
+      
+      
+
+      
+
+      
+            
+          
+        
+      
+    
+      
+      
+      
+      
+
+      
+
+      
+            
+          
+        
+      
+    
+      
+      
+      
+      
+
+      
+
+      
+            
+          
+              <li><a href="#month_2016_November">November</a></li>
+          
+        
+      
+    
+      
+      
+      
+      
+
+      
+
+      
+            
+          
+        
+      
+    
+      
+      
+      
+      
+
+      
+
+      
+            
+          
+        
+      
+    
+      
+      
+      
+      
+
+      
+
+      
+            </ul>
+          </li>
+      
+    
+-->
+  </ul>
+</div> 
+      </div>
+    </div>
+    <div class="col-md-9" role="main">
+      <div class="panel docs-content">
+        <div class="wrapper">
+            <header class="post-header">
+              <h1 class="post-title">Cuffdiff v2.1.1 的简单使用</h1>
+              <!--
+                <p class="post-meta">Apr 7, 2017</p>
+              -->
+              <div class="meta">Posted on <span class="postdate">Apr 07, 2017</span> By <a target="_blank" href="http://liuqibao.me">Gossie</a></div>
+              <br />
+            </header>
+            <article class="post-content">
+              
+<p>Cuffdiff 是 Cufflinks 组装套件里的一个程序，用于 RNA-seq 的表达差异分析。
+Cuffdiff 对误差的矫正使用 β 负二项分布 = 泊松分布（技术误差）+ γ 分布（生物学重复误差）+ β 分布（多重比较分配误差）
+Cuffdiff 2.0及之前与之后的版本差别较大，本次用的版本是 V 2.1.1</p>
+
+<p>cufflinks 的输入文件是 sam/bam 格式，并且要求文件格式必须排好序。
+cuffdiff 的输入文件要求:
+如果有 header 信息，aligment 的染色体排序要与 header 中一致。（header 好像是按 位置信息进行排序的）；如果没有 SQ record 或没有 header 信息，需要按先按染色体排序，再按位置排序。</p>
+
+<p>实例：
+我用 hisat2 –dta-cufflinks 比对，用 cuffdiff 分析，遇到的排序错误。虽然产生的文件里有 header 信息，但是 header 信息与 aligment 的染色体排序不一致。我想到两种解决办法，
+一个是对 sam 重新按位置排序
+<code class="highlighter-rouge">
+samtools sort -o sorted.bam input.sam # 不要 `-n` 参数，它是按 read name 排序
+</code>
+另一个方法是直接删除 header 信息，进行排序，它的好处是可以用 shell 的 sort 命令进行排序
+<code class="highlighter-rouge">
+sort -k 3,3 -k 4,4n input.sam &gt; sorted.sam
+或
+sort -nk 4 input.sam &gt; sorted.sam
+</code></p>
+
+<div class="highlighter-rouge">cuffdiff [options]*
+</div>
+
+<p>options:
+-o：输出文件夹目录
+-L：给每个样本或环境一个标签，用逗号隔开；默认：q1，q2，….
+-T：按样品顺序比对，而不是两两比对；即 第二个和第一个比，第三个和第二个比
+-b：后跟 genome.fa 文件
+-u：使比对 multi-reads 使更精确</p>
+
+<p>例如：
+<code class="highlighter-rouge">
+cuffdiff -p 8 -o diff.out -b genome.fa -u gene.gtf/gff -L lable1,lable2,lable3... sample1.sam sample2.sam sample3.sam...
+# 样本组数应与标签数一致，不同组用空格分隔，同一组内重复样本用逗号分隔
+</code>
+cuffdiff v2 也可以分析无生物学重复的实验，参数是 <code class="highlighter-rouge">--dispersion-method blind</code>，不过即使不加，如果没有设置重复，软件自己也会检测。一个问题是，只有当差异基因比较少时可以使用，如果差异基因比较多就检测不到差异了，因为它会使用所有的样本的平均值做离散度分析</p>
+
+
+            </article>
+        </div>
+      </div>
+      <div class="panel docs-content">
+        <article class="post-content">
+          <div class="wrapper">
+            
+
+
+  <div class="ds-thread" data-thread-key="/2017/04/07/Cuffdiff-v2.1.1-introduction.unfinish/" data-title="Cuffdiff v2.1.1 的简单使用" data-url="http://liuqibao.me/2017/04/07/Cuffdiff-v2.1.1-introduction.unfinish/"></div>
+
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"Gossie"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+</script>
+
+
+ 
+          </div>
+        </article>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+    <footer class="footer" role="contentinfo">
+	<div class="container">
+		<p class="copyright">Copyright &copy; 2014-2017 <a href=""><code>Gossie</code></a>.</p>
+		<p>Site powered by <a href="http://jekyllrb.com">Jekyll</a> && <a href="http://www.github.com">Github</a></p>
+	</div>
+</footer>
+
+<script src="/styles/js/jquery.min.js"></script>
+<script src="/styles/js/bootstrap.min.js"></script>
+<script src="/styles/js/holder.min.js"></script>
+<script src="/styles/js/application.js"></script>
+<script src="/styles/js/lessismore.js"></script>
+
+
+  </body>
+</html>

@@ -1,0 +1,690 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Variant Call Format (VCF) 简单介绍</title>
+
+	<link rel="shortcut icon" href="/styles/images/favicon.jpg">
+	<link rel="icon" href="/styles/images/favicon.jpg">
+
+	<link rel="stylesheet" href="/styles/css/index.css">
+	<link rel="stylesheet" href="/styles/css/fontawesome/css/font-awesome.min.css">
+	<link rel="canonical" href="/2017/02/24/VCF-format-introduction/">
+	<link rel="alternate" type="application/rss+xml" title="Gossie's daily life" href="/feed.xml">
+	
+	<meta name="description" content="">
+
+	<script src="/styles/js/jquery.min.js"></script>
+	<!--[if lt IE 9]>
+    	<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  	<![endif]-->
+  	<script>
+		var _hmt = _hmt || [];
+		(function() {
+		  var hm = document.createElement("script");
+		  hm.src = "//hm.baidu.com/hm.js?94be4b0f9fc5d94cc0d0415ea6761ae9";
+		  var s = document.getElementsByTagName("script")[0]; 
+		  s.parentNode.insertBefore(hm, s);
+		})();
+	</script>
+  	<style type="text/css">
+	  	.docs-content{
+	  		margin-bottom: 10px;
+	  	}
+  	</style>
+</head>
+
+
+  <body class="index">
+
+    <header class="navbar navbar-inverse navbar-fixed-top docs-nav" role="banner">
+  <div class="container">
+    <div class="navbar-header">
+      <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".bs-navbar-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="/" class="navbar-brand">
+        <img src="/styles/images/logo.jpg">
+      </a>
+    </div>
+    <nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">
+      <ul class="nav navbar-nav">    
+        <li>
+          <a href="/">Home</a>
+        </li>
+        <li>
+          <a href="/categories/">分类</a>
+        </li>
+        <li>
+          <a href="/tag">标签</a>
+        </li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+          <a href="/donate/"><strong>打赏</strong></a>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">关于<b class="caret"></b></a>
+          <ul class="dropdown-menu">
+            <li><a rel="nofollow" target="_blank" href="https://github.com/liuqibao566">Github</a></li>
+            <li><a rel="nofollow" target="_blank" href="">关于作者</a></li>
+            <li><a rel="nofollow" href="/books">书架</a></li>
+            <li><a rel="nofollow" href="/reference">相关链接</a></li>
+            <li><a href="/feed.xml">RSS订阅</a></li>
+            <li class="divider"></li>
+            <li><a rel="nofollow" target="_blank" href="https://github.com/liuqb566/">本项目</a></li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+    <div class="docs-header" id="content">
+  <div class="container">
+  	
+  		<!--
+		    <h1>Variant Call Format (VCF) 简单介绍</h1>
+		    <p>Post on Feb 24, 2017 by <a href="/about">Gossie</a></p>
+		-->
+		    <h1></h1>
+    
+  </div>
+</div>
+    
+      
+<div class="banner">
+  <div class="container">
+  	
+    	<a href="/categories/#bioinformatics-ref">bioinformatics</a>	/
+    	<a href="/tag/#数据格式-ref">数据格式</a>
+    
+  </div>
+</div>
+
+    
+
+    <div class="container docs-container">
+  <div class="row">
+    <div class="col-md-3">
+      <div class="sidebar hidden-print" role="complementary">
+        <div id="navigation">
+  <h1>目录</h1>
+  <ul class="nav sidenav">
+<!--
+    
+      
+      
+      
+      
+
+      
+        <li><a href="#year_2017">2017</a>
+          <ul class="nav">
+            <li><a href="#month_2017_May">May</a></li>
+      
+
+      
+            
+          
+              <li><a href="#month_2017_April">April</a></li>
+          
+        
+      
+    
+      
+      
+      
+      
+
+      
+
+      
+            
+          
+        
+      
+    
+      
+      
+      
+      
+
+      
+
+      
+            
+          
+        
+      
+    
+      
+      
+      
+      
+
+      
+
+      
+            
+          
+        
+      
+    
+      
+      
+      
+      
+
+      
+
+      
+            
+          
+        
+      
+    
+      
+      
+      
+      
+
+      
+
+      
+            
+          
+        
+      
+    
+      
+      
+      
+      
+
+      
+
+      
+            
+          
+        
+      
+    
+      
+      
+      
+      
+
+      
+
+      
+            
+          
+        
+      
+    
+      
+      
+      
+      
+
+      
+
+      
+            
+          
+        
+      
+    
+      
+      
+      
+      
+
+      
+
+      
+            
+          
+        
+      
+    
+      
+      
+      
+      
+
+      
+
+      
+            
+          
+        
+      
+    
+      
+      
+      
+      
+
+      
+
+      
+            
+          
+        
+      
+    
+      
+      
+      
+      
+
+      
+
+      
+            
+          
+              <li><a href="#month_2017_March">March</a></li>
+          
+        
+      
+    
+      
+      
+      
+      
+
+      
+
+      
+            
+          
+              <li><a href="#month_2017_February">February</a></li>
+          
+        
+      
+    
+      
+      
+      
+      
+
+      
+
+      
+            
+          
+              <li><a href="#month_2017_January">January</a></li>
+          
+        
+      
+    
+      
+      
+      
+      
+
+      
+
+      
+            
+          
+        
+      
+    
+      
+      
+      
+      
+
+      
+
+      
+            
+          
+        
+      
+    
+      
+      
+      
+      
+
+      
+
+      
+            
+          
+        
+      
+    
+      
+      
+      
+      
+
+      
+
+      
+            
+          
+        
+      
+    
+      
+      
+      
+      
+
+      
+
+      
+            
+          
+        
+      
+    
+      
+      
+      
+      
+
+      
+
+      
+        
+            </ul>
+          </li>
+          <li><a href="#year_2016">2016</a>
+            <ul class="nav">
+              <li><a href="#month_2016_December">December</a></li>
+        
+      
+    
+      
+      
+      
+      
+
+      
+
+      
+            
+          
+        
+      
+    
+      
+      
+      
+      
+
+      
+
+      
+            
+          
+        
+      
+    
+      
+      
+      
+      
+
+      
+
+      
+            
+          
+        
+      
+    
+      
+      
+      
+      
+
+      
+
+      
+            
+          
+        
+      
+    
+      
+      
+      
+      
+
+      
+
+      
+            
+          
+              <li><a href="#month_2016_November">November</a></li>
+          
+        
+      
+    
+      
+      
+      
+      
+
+      
+
+      
+            
+          
+        
+      
+    
+      
+      
+      
+      
+
+      
+
+      
+            
+          
+        
+      
+    
+      
+      
+      
+      
+
+      
+
+      
+            </ul>
+          </li>
+      
+    
+-->
+  </ul>
+</div> 
+      </div>
+    </div>
+    <div class="col-md-9" role="main">
+      <div class="panel docs-content">
+        <div class="wrapper">
+            <header class="post-header">
+              <h1 class="post-title">Variant Call Format (VCF) 简单介绍</h1>
+              <!--
+                <p class="post-meta">Feb 24, 2017</p>
+              -->
+              <div class="meta">Posted on <span class="postdate">Feb 24, 2017</span> By <a target="_blank" href="http://liuqibao.me">Gossie</a></div>
+              <br />
+            </header>
+            <article class="post-content">
+              <p>VCF 格式是目前最常用的基因组变异信息存储格式。常见的VCF文件包括了DNA变异位点在基因组的位置，变异位点基因型，对应位点和等位基因的深度等信息。
+一个例子：
+<code class="highlighter-rouge">
+##fileformat=VCFv4.2
+##fileDate=20090805
+##source=myImputationProgramV3.1
+##reference=file:///seq/references/1000GenomesPilot-NCBI36.fasta
+##contig=&lt;ID=20,length=62435964,assembly=B36,md5=f126cdf8a6e0c7f379d618ff66beb2da,species="Homo sapiens",taxonomy=x&gt;
+##phasing=partial
+##INFO=&lt;ID=NS,Number=1,Type=Integer,Description="Number of Samples With Data"&gt;
+##INFO=&lt;ID=DP,Number=1,Type=Integer,Description="Total Depth"&gt;
+##INFO=&lt;ID=AF,Number=A,Type=Float,Description="Allele Frequency"&gt;
+##INFO=&lt;ID=AA,Number=1,Type=String,Description="Ancestral Allele"&gt;
+##INFO=&lt;ID=DB,Number=0,Type=Flag,Description="dbSNP membership, build 129"&gt;
+##INFO=&lt;ID=H2,Number=0,Type=Flag,Description="HapMap2 membership"&gt;
+##FILTER=&lt;ID=q10,Description="Quality below 10"&gt;
+##FILTER=&lt;ID=s50,Description="Less than 50% of samples have data"&gt;
+##FORMAT=&lt;ID=GT,Number=1,Type=String,Description="Genotype"&gt;
+##FORMAT=&lt;ID=GQ,Number=1,Type=Integer,Description="Genotype Quality"&gt;
+##FORMAT=&lt;ID=DP,Number=1,Type=Integer,Description="Read Depth"&gt;
+##FORMAT=&lt;ID=HQ,Number=2,Type=Integer,Description="Haplotype Quality"&gt;
+#CHROM POS ID REF ALT QUAL FILTER INFO FORMAT NA00001 NA00002 NA00003
+20 14370 rs6054257 G A 29 PASS NS=3;DP=14;AF=0.5;DB;H2 GT:GQ:DP:HQ 0|0:48:1:51,51 1|0:48:8:51,51 1/1:43:5:.,.
+20 17330 . T A 3 q10 NS=3;DP=11;AF=0.017 GT:GQ:DP:HQ 0|0:49:3:58,50 0|1:3:5:65,3 0/0:41:3
+20 1110696 rs6040355 A G,T 67 PASS NS=2;DP=10;AF=0.333,0.667;AA=T;DB GT:GQ:DP:HQ 1|2:21:6:23,27 2|1:2:0:18,2 2/2:35:4
+20 1230237 . T . 47 PASS NS=3;DP=13;AA=T GT:GQ:DP:HQ 0|0:54:7:56,60 0|0:48:4:51,51 0/0:61:2
+20 1234567 microsat1 GTC G,GTCT 50 PASS NS=3;DP=9;AA=G GT:GQ:DP 0/1:35:4 0/2:17:2 1/1:40:3
+</code></p>
+
+<p>header出现在VCF文件的开始部分，每行以“＃”符开始。header部分除最后一行为一个#起始外，其余各行均为两个#开始，即##。</p>
+
+<p>body部分记录了变异数据的所有信息，每行对应一个位点，根据程序输出不同也会出现同一位置不同变异类型出现在多行的情况。
+不同版本的注释信息可能不同，本例子是来自 VCFv4.2</p>
+
+<p>CHROM(chromosome):染色体</p>
+
+<p>POS - position:参考基因组variant碱基位置，如果是INDEL（插入缺失），位置是INDEL的第一个碱基位置</p>
+
+<p>ID - identifier: variant的ID。比如在dbSNP中有该SNP的id，则会在此行给出；若没有，则用’.’表示其为一个novel variant。</p>
+
+<p>REF - reference base(s):参考碱基，染色体上面的碱基，必须是ATCGN中的一个，N表示不确定碱基</p>
+
+<p>ALT - alternate base(s):与参考序列比较发生突变的碱基</p>
+
+<p>QUAL - quality: Phred格式(Phred_scaled)的质量值，表 示在该位点存在variant的可能性；该值越高，则variant的可能性越大；计算方法：Phred值 = -10 * log (1-p) p为variant存在的概率; 通过计算公式可以看出值为10的表示错误概率为0.1，该位点为variant的概率为90%。</p>
+
+<p>FILTER - _filter status: 使用上一个QUAL值来进行过滤的话，是不够的。GATK能使用其它的方法来进行过滤，过滤结果中通过则该值为”PASS”;若variant不可靠，则该项不为”PASS”或”.”。</p>
+
+<p>INFO - additional information:  这一行是variant的详细信息，具体如下：</p>
+
+<p>DP-read depth：样本在这个位置的reads覆盖度。是一些reads被过滤掉后的覆盖度。          DP4:高质量测序碱基，位于REF或者ALT前后</p>
+
+<p>MQ：表示覆盖序列质量的均方值RMS Mapping Quality</p>
+
+<p>FQ：phred值关于所有样本相似的可能性</p>
+
+<p>AF1： AF(Allele Frequency) 表示Allele的频率，AF1为第一个ALT allele 发生频率的可能性评估</p>
+
+<p>AC1：AC表示Allele（等位基因）的数目,AC1为对第一个ALT allele count的最大可能性评估</p>
+
+<p>AN：AN(Allele Number) 表示Allele的总数目</p>
+
+<p>IS：插入缺失或部分插入缺失的reads允许的最大数量</p>
+
+<p>AC：AC(Allele Count) 表示该Allele的数目</p>
+
+<p>G3：ML 评估基因型出现的频率</p>
+
+<p>HWE：chi^2基于HWE的测试p值和G3</p>
+
+<p>CLR：在受到或者不受限制的情况下基因型出现可能性log值</p>
+
+<p>UGT：最可能不受限制的三种基因型结构</p>
+
+<p>CGT：最可能受限制三种基因型的结构</p>
+
+<p>PV4：四种P值得误差，分别是（strand、baseQ、mapQ、tail distance bias）</p>
+
+<p>INDEL：表示该位置的变异是插入缺失</p>
+
+<p>PC2：非参考等位基因的phred（变异的可能性）值在两个分组中大小不同</p>
+
+<p>PCHI2：后加权chi^2，根据p值来测试两组样本之间的联系</p>
+
+<p>QCHI2：Phred scaled PCHI2.</p>
+
+<p>PR：置换产生的一个较小的PCHI2</p>
+
+<p>QBD：Quality by Depth，测序深度对质量的影响</p>
+
+<p>RPB：序列的误差位置（Read Position Bias）</p>
+
+<p>MDV：样本中高质量非参考序列的最大数目</p>
+
+<p>VDB：Variant Distance Bias，RNA序列中过滤人工拼接序列的变异误差范围</p>
+
+<p>GT：样品的基因型（genotype）。两个数字中间用’/’分 开，这两个数字表示双倍体的sample的基因型。0 表示样品中有ref的allele； 1 表示样品中variant的allele； 2表示有第二个variant的allele。因此： 0/0 表示sample中该位点为纯合的，和ref一致； 0/1 表示sample中该位点为杂合的，有ref和variant两个基因型； 1/1 表示sample中该位点为纯合的，和variant一致。</p>
+
+<p>GQ：基因型的质量值(Genotype Quality)。Phred格式(Phred_scaled)的质量值，表示在该位点该基因型存在的可能性；该值越高，则Genotype的可能性越 大；计算方法：Phred值 = -10 * log (1-p) p为基因型存在的概率。</p>
+
+<p>GL：三种基因型（RR RA AA）出现的可能性，R表示参考碱基，A表示变异碱基</p>
+
+<p>DV：高质量的非参考碱基</p>
+
+<p>SP：phred的p值误差线</p>
+
+<p>PL：指定的三种基因型的质量值(provieds the likelihoods of the given genotypes)。这三种指定的基因型为(0/0,0/1,1/1)，这三种基因型的概率总和为1。和之前不一致，该值越大，表明为该种基因型的可能 性越小。 Phred值 = -10 * log (p) p为基因型存在的概率。</p>
+
+<p>FORMAT 和 BC1-1-base.sorted.bam：这两行合起来提供了’ BC1-1-base′这个sample的基因型的信息。’ BC1-1-base′代表这该名称的样品，是由BAM文件中的@RG下的 SM 标签决定的</p>
+
+            </article>
+        </div>
+      </div>
+      <div class="panel docs-content">
+        <article class="post-content">
+          <div class="wrapper">
+            
+
+
+  <div class="ds-thread" data-thread-key="/2017/02/24/VCF-format-introduction/" data-title="Variant Call Format (VCF) 简单介绍" data-url="http://liuqibao.me/2017/02/24/VCF-format-introduction/"></div>
+
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"Gossie"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+</script>
+
+
+ 
+          </div>
+        </article>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+    <footer class="footer" role="contentinfo">
+	<div class="container">
+		<p class="copyright">Copyright &copy; 2014-2017 <a href=""><code>Gossie</code></a>.</p>
+		<p>Site powered by <a href="http://jekyllrb.com">Jekyll</a> && <a href="http://www.github.com">Github</a></p>
+	</div>
+</footer>
+
+<script src="/styles/js/jquery.min.js"></script>
+<script src="/styles/js/bootstrap.min.js"></script>
+<script src="/styles/js/holder.min.js"></script>
+<script src="/styles/js/application.js"></script>
+<script src="/styles/js/lessismore.js"></script>
+
+
+  </body>
+</html>

@@ -1,0 +1,101 @@
+<p>layout:post
+title:”HISAT2 + Stringtie 的简单使用”
+date:2017-3-31
+categories:bioinformatics
+tag:hisat2
+—</p>
+
+<ul id="markdown-toc">
+  <li><a href="#rna-seq--hisat2" id="markdown-toc-rna-seq--hisat2">RNA-seq 比对工具 HISAT2</a>    <ul>
+      <li><a href="#section" id="markdown-toc-section">一、构建陆地棉基因组索引</a></li>
+      <li><a href="#reads-" id="markdown-toc-reads-">二、reads 比对</a></li>
+      <li><a href="#section-1" id="markdown-toc-section-1">三、格式转换及排序</a></li>
+      <li><a href="#stringtie" id="markdown-toc-stringtie">三、StringTie</a></li>
+      <li><a href="#stringtie---merge" id="markdown-toc-stringtie---merge">四、StringTie –merge</a></li>
+      <li><a href="#stringtie-1" id="markdown-toc-stringtie-1">五、再来一次 StringTie</a></li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="rna-seq--hisat2">RNA-seq 比对工具 HISAT2</h3>
+
+<p>本文使用 hisat2 构建陆地棉基因组的索引，并对转录组数据进行比对。陆地棉基因组及其注释文件请到相关网站下载。</p>
+
+<h4 id="section">一、构建陆地棉基因组索引</h4>
+
+<div class="highlighter-rouge">hisat2-build –p 8 --ss genome.ss --exon genome.exon  genome.fa genome_tran
+</div>
+<p>genome.ss：剪接位点信息
+<code class="highlighter-rouge">
+extract_splice_sites.py annotation.gtf genome.ss
+</code></p>
+
+<p>genome.exon: 外显子信息
+<code class="highlighter-rouge">
+extract_exons.py annotation.gtf genome.exon
+</code></p>
+
+<p>注意：1）extract_splice_sies.py 和 extract_exons.py 这两个脚本需要至少 pyton2.7 的版本，所以如果默认版本不合适，需要自己更改执行程序；不清楚是否支持 python3，请自行尝试。
+2）注释文件 annotation 需为 gtf 格式，我的注释文件是 gff3 格式，需要转换。
+3）–ss 和 –exon 的顺序不能颠倒。</p>
+
+<p>格式转换方法：gffread
+<code class="highlighter-rouge">
+gffread annotation.gff3 -T -o annotation.gtf
+</code>
+详细参数请查看<code class="highlighter-rouge">gffread -h</code>
+```
+————–
+用 hisat2 建立索引可以提前加入注释信息，当然这是极好的，但是一定要记住，加入注释信息在建索引的时候非常非常非常耗内存！！！！建人的基因组索引需要 200 G 内存，大约 2h。所以一定要量力而行。
+由于内存问题，本次没有加入注释信息：<code class="highlighter-rouge">hisat2-build -p 8 genome.fa genome_tran</code>
+————–</p>
+
+<h4 id="reads-">二、reads 比对</h4>
+
+<p>命令
+<code class="highlighter-rouge">
+hisat2 -p 8 --dta -x genome_tran -1 read1.fastq.gz -2 read2.fastq.gz -S sample.sam
+</code>
+-x：后接索引文件
+-S：输出为 sam 文件</p>
+
+<h4 id="section-1">三、格式转换及排序</h4>
+
+<p>由于 hisat2 输出为 sam 文件，需要用 samtools 工具转换为 bam 文件并排序</p>
+
+<div class="highlighter-rouge">samtools sort -@ 8 -o sample.sorted.bam sample.sam
+</div>
+<p>本流程用的 samtools 为 1.4 版，老版本（&lt;1.3）需要先转换成 bam 文件，然后再进行排序</p>
+
+<h4 id="stringtie">三、StringTie</h4>
+
+<ol>
+  <li>使用 StringTie 收集各个样本的转录信息
+<code class="highlighter-rouge">
+stringtie -p 8 -G annotation.gtf -o sample.string.gtf -l sample sample.gtf
+</code>
+-G：使用注释文件，可选项，有就用上
+-o：输出文件名
+-l：输出转录本的前缀</li>
+</ol>
+
+<h4 id="stringtie---merge">四、StringTie –merge</h4>
+
+<p>重新整合上一步的转录本
+<code class="highlighter-rouge">
+stringtie --merge -p 8 -G annotation.gtf -o merge.gtf mergelist.txt
+</code>
+mergelist.txt：包含上一步的 sample.gtf 列表</p>
+
+<h4 id="stringtie-1">五、再来一次 StringTie</h4>
+
+<div class="highlighter-rouge">stringtie -B -e -p 8 -G merge.gtf -o ballgown/sample/sample.gtf sample.bam
+</div>
+<p>-B：生成 ballgown 的格式文件
+-e：让程序只统计与参考基因重叠的 read 的比对信息，建议使用</p>
+
+<p>第四到第五步是为了发现新的可变切，如果只关注基因表达量，可只做第三步
+<code class="highlighter-rouge">
+stringtie -B -e -p 8 -G annotation.gtf -o sample.string.gtf -l sample sample.gtf
+</code>
+之后得到的结果就可以用 ballwgon 进行分析了</p>

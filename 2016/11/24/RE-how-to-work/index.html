@@ -1,0 +1,741 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>第四章 正则表达式的匹配原理</title>
+
+	<link rel="shortcut icon" href="/styles/images/favicon.jpg">
+	<link rel="icon" href="/styles/images/favicon.jpg">
+
+	<link rel="stylesheet" href="/styles/css/index.css">
+	<link rel="stylesheet" href="/styles/css/fontawesome/css/font-awesome.min.css">
+	<link rel="canonical" href="/2016/11/24/RE-how-to-work/">
+	<link rel="alternate" type="application/rss+xml" title="Gossie's daily life" href="/feed.xml">
+	
+	<meta name="description" content="">
+
+	<script src="/styles/js/jquery.min.js"></script>
+	<!--[if lt IE 9]>
+    	<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  	<![endif]-->
+  	<script>
+		var _hmt = _hmt || [];
+		(function() {
+		  var hm = document.createElement("script");
+		  hm.src = "//hm.baidu.com/hm.js?94be4b0f9fc5d94cc0d0415ea6761ae9";
+		  var s = document.getElementsByTagName("script")[0]; 
+		  s.parentNode.insertBefore(hm, s);
+		})();
+	</script>
+  	<style type="text/css">
+	  	.docs-content{
+	  		margin-bottom: 10px;
+	  	}
+  	</style>
+</head>
+
+
+  <body class="index">
+
+    <header class="navbar navbar-inverse navbar-fixed-top docs-nav" role="banner">
+  <div class="container">
+    <div class="navbar-header">
+      <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".bs-navbar-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="/" class="navbar-brand">
+        <img src="/styles/images/logo.jpg">
+      </a>
+    </div>
+    <nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">
+      <ul class="nav navbar-nav">    
+        <li>
+          <a href="/">Home</a>
+        </li>
+        <li>
+          <a href="/categories/">分类</a>
+        </li>
+        <li>
+          <a href="/tag">标签</a>
+        </li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+          <a href="/donate/"><strong>打赏</strong></a>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">关于<b class="caret"></b></a>
+          <ul class="dropdown-menu">
+            <li><a rel="nofollow" target="_blank" href="https://github.com/liuqibao566">Github</a></li>
+            <li><a rel="nofollow" target="_blank" href="">关于作者</a></li>
+            <li><a rel="nofollow" href="/books">书架</a></li>
+            <li><a rel="nofollow" href="/reference">相关链接</a></li>
+            <li><a href="/feed.xml">RSS订阅</a></li>
+            <li class="divider"></li>
+            <li><a rel="nofollow" target="_blank" href="https://github.com/liuqb566/">本项目</a></li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+    <div class="docs-header" id="content">
+  <div class="container">
+  	
+  		<!--
+		    <h1>第四章 正则表达式的匹配原理</h1>
+		    <p>Post on Nov 24, 2016 by <a href="/about">Gossie</a></p>
+		-->
+		    <h1></h1>
+    
+  </div>
+</div>
+    
+      
+<div class="banner">
+  <div class="container">
+  	
+    	<a href="/categories/#文本编辑-ref">文本编辑</a>	/
+    	<a href="/tag/#正则表达式-ref">正则表达式</a>
+    
+  </div>
+</div>
+
+    
+
+    <div class="container docs-container">
+  <div class="row">
+    <div class="col-md-3">
+      <div class="sidebar hidden-print" role="complementary">
+        <div id="navigation">
+  <h1>目录</h1>
+  <ul class="nav sidenav">
+<!--
+    
+      
+      
+      
+      
+
+      
+        <li><a href="#year_2017">2017</a>
+          <ul class="nav">
+            <li><a href="#month_2017_May">May</a></li>
+      
+
+      
+            
+          
+              <li><a href="#month_2017_April">April</a></li>
+          
+        
+      
+    
+      
+      
+      
+      
+
+      
+
+      
+            
+          
+        
+      
+    
+      
+      
+      
+      
+
+      
+
+      
+            
+          
+        
+      
+    
+      
+      
+      
+      
+
+      
+
+      
+            
+          
+        
+      
+    
+      
+      
+      
+      
+
+      
+
+      
+            
+          
+        
+      
+    
+      
+      
+      
+      
+
+      
+
+      
+            
+          
+        
+      
+    
+      
+      
+      
+      
+
+      
+
+      
+            
+          
+        
+      
+    
+      
+      
+      
+      
+
+      
+
+      
+            
+          
+        
+      
+    
+      
+      
+      
+      
+
+      
+
+      
+            
+          
+        
+      
+    
+      
+      
+      
+      
+
+      
+
+      
+            
+          
+        
+      
+    
+      
+      
+      
+      
+
+      
+
+      
+            
+          
+        
+      
+    
+      
+      
+      
+      
+
+      
+
+      
+            
+          
+        
+      
+    
+      
+      
+      
+      
+
+      
+
+      
+            
+          
+              <li><a href="#month_2017_March">March</a></li>
+          
+        
+      
+    
+      
+      
+      
+      
+
+      
+
+      
+            
+          
+              <li><a href="#month_2017_February">February</a></li>
+          
+        
+      
+    
+      
+      
+      
+      
+
+      
+
+      
+            
+          
+              <li><a href="#month_2017_January">January</a></li>
+          
+        
+      
+    
+      
+      
+      
+      
+
+      
+
+      
+            
+          
+        
+      
+    
+      
+      
+      
+      
+
+      
+
+      
+            
+          
+        
+      
+    
+      
+      
+      
+      
+
+      
+
+      
+            
+          
+        
+      
+    
+      
+      
+      
+      
+
+      
+
+      
+            
+          
+        
+      
+    
+      
+      
+      
+      
+
+      
+
+      
+            
+          
+        
+      
+    
+      
+      
+      
+      
+
+      
+
+      
+        
+            </ul>
+          </li>
+          <li><a href="#year_2016">2016</a>
+            <ul class="nav">
+              <li><a href="#month_2016_December">December</a></li>
+        
+      
+    
+      
+      
+      
+      
+
+      
+
+      
+            
+          
+        
+      
+    
+      
+      
+      
+      
+
+      
+
+      
+            
+          
+        
+      
+    
+      
+      
+      
+      
+
+      
+
+      
+            
+          
+        
+      
+    
+      
+      
+      
+      
+
+      
+
+      
+            
+          
+        
+      
+    
+      
+      
+      
+      
+
+      
+
+      
+            
+          
+              <li><a href="#month_2016_November">November</a></li>
+          
+        
+      
+    
+      
+      
+      
+      
+
+      
+
+      
+            
+          
+        
+      
+    
+      
+      
+      
+      
+
+      
+
+      
+            
+          
+        
+      
+    
+      
+      
+      
+      
+
+      
+
+      
+            </ul>
+          </li>
+      
+    
+-->
+  </ul>
+</div> 
+      </div>
+    </div>
+    <div class="col-md-9" role="main">
+      <div class="panel docs-content">
+        <div class="wrapper">
+            <header class="post-header">
+              <h1 class="post-title">第四章 正则表达式的匹配原理</h1>
+              <!--
+                <p class="post-meta">Nov 24, 2016</p>
+              -->
+              <div class="meta">Posted on <span class="postdate">Nov 24, 2016</span> By <a target="_blank" href="http://liuqibao.me">Gossie</a></div>
+              <br />
+            </header>
+            <article class="post-content">
+              <ul id="markdown-toc">
+  <li><a href="#section" id="markdown-toc-section">正则引擎的分类</a></li>
+  <li><a href="#section-1" id="markdown-toc-section-1">匹配的基础</a>    <ul>
+      <li><a href="#section-2" id="markdown-toc-section-2">规则1：优先选择最左端的匹配结果</a></li>
+      <li><a href="#section-3" id="markdown-toc-section-3">规则2: 标准量词是匹配优先</a></li>
+    </ul>
+  </li>
+  <li><a href="#section-4" id="markdown-toc-section-4">表达式主导与文本主导</a>    <ul>
+      <li><a href="#nfa-" id="markdown-toc-nfa-">NFA 引擎：表达式主导</a></li>
+      <li><a href="#dfa-" id="markdown-toc-dfa-">DFA 引擎：文本主导</a></li>
+    </ul>
+  </li>
+  <li><a href="#section-5" id="markdown-toc-section-5">回溯</a>    <ul>
+      <li><a href="#section-6" id="markdown-toc-section-6">回溯的两个要点</a></li>
+    </ul>
+  </li>
+  <li><a href="#section-7" id="markdown-toc-section-7">关于匹配优先和回溯的更多内容</a>    <ul>
+      <li><a href="#section-8" id="markdown-toc-section-8">匹配优先的问题</a></li>
+      <li><a href="#section-9" id="markdown-toc-section-9">使用忽略优先量词</a></li>
+      <li><a href="#mn" id="markdown-toc-mn">占有优先量词，?+ *+ ++ {m,n}+</a></li>
+      <li><a href="#section-10" id="markdown-toc-section-10">环视中的回溯</a></li>
+      <li><a href="#section-11" id="markdown-toc-section-11">多选结构</a></li>
+    </ul>
+  </li>
+  <li><a href="#nfadfaposix" id="markdown-toc-nfadfaposix">NFA、DFA和POSIX</a>    <ul>
+      <li><a href="#section-12" id="markdown-toc-section-12">最左最长规则</a></li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="section">正则引擎的分类</h3>
+
+<ul>
+  <li>
+    <p>DFA：确定型有穷自动机
+  awk egrep flex lex MySQL Procmail</p>
+  </li>
+  <li>
+    <p>NFA：非确定型有穷自动机</p>
+
+    <ul>
+      <li>
+        <p>传统型NFA：GNU Emacs、Java grep less more .NET Per PHP Pthon Ruby sed vi</p>
+      </li>
+      <li>
+        <p>POSIX NFA: mawk GNU Emacs</p>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="section-1">匹配的基础</h3>
+
+<h4 id="section-2">规则1：优先选择最左端的匹配结果</h4>
+
+<hr />
+
+<p>引擎的构造</p>
+
+<ul>
+  <li>文字文本</li>
+  <li>字符组、点号、Unicode属性及其他</li>
+  <li>捕获型括号</li>
+  <li>锚点</li>
+</ul>
+
+<hr />
+
+<h4 id="section-3">规则2: 标准量词是匹配优先</h4>
+
+<ul>
+  <li>标准匹配量词：? * + {min,max} 都是匹配优先</li>
+</ul>
+
+<h3 id="section-4">表达式主导与文本主导</h3>
+
+<ul>
+  <li>
+    <h4 id="nfa-">NFA 引擎：表达式主导</h4>
+  </li>
+  <li>
+    <h4 id="dfa-">DFA 引擎：文本主导</h4>
+  </li>
+</ul>
+
+<h3 id="section-5">回溯</h3>
+
+<p><strong>NFA 引擎最重要的性质:</strong> 依次处理各个子表达式或组成元素，遇到需要在两个可能成功的可能中进行选择的时候，它发会选择其一，同时记住另一个，以备稍后可能的需要。</p>
+
+<p><strong>需要做出选择的情形包括量词（决定是否尝试另一次匹配）和多选结构（决定选择哪个多选分支，留下哪个稍后尝试）。</strong></p>
+
+<h4 id="section-6">回溯的两个要点</h4>
+
+<ul>
+  <li>
+    <p>面对众多选择时，哪个分支应当首先选择？</p>
+
+    <p><strong>如果需要在“进行尝试”和“跳过尝试”之间选择，对于匹配优先量词，引擎会优先选择“进行尝试”，而对于忽略优先量词，会选择“跳过尝试”。</strong></p>
+  </li>
+  <li>
+    <p>回溯时使用的是哪个之前保存的分支？
+  <strong>距离当前最近储存的选项就是当本地失败强制回溯时返回的。使用的原则是LIFO（last in first out，后进先出）。</strong></p>
+  </li>
+</ul>
+
+<h3 id="section-7">关于匹配优先和回溯的更多内容</h3>
+
+<h4 id="section-8">匹配优先的问题</h4>
+
+<p>匹配“McDonald’s”？</p>
+
+<div class="highlighter-rouge">**关键：我们希望匹配的不是双引号之间的“任何文本”，而是“除双引号以外的任何文本”。
+
+用` "[^"]*" `取代` ".*" `
+</div>
+
+<h4 id="section-9">使用忽略优先量词</h4>
+
+<ul>
+  <li>？？</li>
+  <li>*？</li>
+  <li>…</li>
+  <li>排除环视</li>
+</ul>
+
+<p>####　匹配优先、忽略优先和回溯的要旨</p>
+
+<ul>
+  <li>
+    <p>无论是匹配优先还是忽略优先，只要引擎报告匹配失败，它就必然尝试了所有的可能。</p>
+  </li>
+  <li>
+    <p>匹配优先和忽略优先都不会影响需要检测路径的本身，而只会影响检测的顺序。</p>
+  </li>
+</ul>
+
+<p>####　占有优先量词和固化分组</p>
+
+<ul>
+  <li>
+    <p>用（？〉…）实现固化分组</p>
+
+    <p>固化分组的要旨：固化分组会放弃某些可能的路径。</p>
+  </li>
+</ul>
+
+<h4 id="mn">占有优先量词，?+ *+ ++ {m,n}+</h4>
+
+<h4 id="section-10">环视中的回溯</h4>
+
+<p>环视分为4种：肯定型、否定型、顺序环视与逆序环视</p>
+
+<h4 id="section-11">多选结构</h4>
+
+<p><strong>多选结构既不是匹配优先的，也不是忽略优先的，而是按顺序排列的。</strong></p>
+
+<h3 id="nfadfaposix">NFA、DFA和POSIX</h3>
+
+<h4 id="section-12">最左最长规则</h4>
+
+
+            </article>
+        </div>
+      </div>
+      <div class="panel docs-content">
+        <article class="post-content">
+          <div class="wrapper">
+            
+
+
+  <div class="ds-thread" data-thread-key="/2016/11/24/RE-how-to-work/" data-title="第四章 正则表达式的匹配原理" data-url="http://liuqibao.me/2016/11/24/RE-how-to-work/"></div>
+
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"Gossie"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+</script>
+
+
+ 
+          </div>
+        </article>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+    <footer class="footer" role="contentinfo">
+	<div class="container">
+		<p class="copyright">Copyright &copy; 2014-2017 <a href=""><code>Gossie</code></a>.</p>
+		<p>Site powered by <a href="http://jekyllrb.com">Jekyll</a> && <a href="http://www.github.com">Github</a></p>
+	</div>
+</footer>
+
+<script src="/styles/js/jquery.min.js"></script>
+<script src="/styles/js/bootstrap.min.js"></script>
+<script src="/styles/js/holder.min.js"></script>
+<script src="/styles/js/application.js"></script>
+<script src="/styles/js/lessismore.js"></script>
+
+
+  </body>
+</html>
