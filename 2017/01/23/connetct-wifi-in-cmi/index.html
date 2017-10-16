@@ -5,14 +5,14 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>组学分析中的阈值问题</title>
+	<title>Ubuntu通过用wifi上网</title>
 
 	<link rel="shortcut icon" href="/styles/images/favicon.jpg">
 	<link rel="icon" href="/styles/images/favicon.jpg">
 
 	<link rel="stylesheet" href="/styles/css/index.css">
 	<link rel="stylesheet" href="/styles/css/fontawesome/css/font-awesome.min.css">
-	<link rel="canonical" href="/2017/04/06/RNA-seq-GWAS-P-value-DENOVO/">
+	<link rel="canonical" href="/2017/01/23/connetct-wifi-in-cmi/">
 	<link rel="alternate" type="application/rss+xml" title="Gossie's daily life" href="/feed.xml">
 	
 	<meta name="description" content="">
@@ -89,8 +89,8 @@
   <div class="container">
   	
   		<!--
-		    <h1>组学分析中的阈值问题</h1>
-		    <p>Post on Apr 06, 2017 by <a href="/about">Gossie</a></p>
+		    <h1>Ubuntu通过用wifi上网</h1>
+		    <p>Post on Jan 23, 2017 by <a href="/about">Gossie</a></p>
 		-->
 		    <h1></h1>
     
@@ -101,8 +101,8 @@
 <div class="banner">
   <div class="container">
   	
-    	<a href="/categories/#bioinformatics-ref">bioinformatics</a>	/
-    	<a href="/tag/#阈值-ref">阈值</a>
+    	<a href="/categories/#Linux-ref">Linux</a>	/
+    	<a href="/tag/#-ref"></a>
     
   </div>
 </div>
@@ -627,45 +627,64 @@
       <div class="panel docs-content">
         <div class="wrapper">
             <header class="post-header">
-              <h1 class="post-title">组学分析中的阈值问题</h1>
+              <h1 class="post-title">Ubuntu通过用wifi上网</h1>
               <!--
-                <p class="post-meta">Apr 6, 2017</p>
+                <p class="post-meta">Jan 23, 2017</p>
               -->
-              <div class="meta">Posted on <span class="postdate">Apr 06, 2017</span> By <a target="_blank" href="http://liuqibao.me">Gossie</a></div>
+              <div class="meta">Posted on <span class="postdate">Jan 23, 2017</span> By <a target="_blank" href="http://liuqibao.me">Gossie</a></div>
               <br />
             </header>
             <article class="post-content">
-              <ol>
-  <li>关键问题：如何正确估计误差方差的范围？</li>
-  <li>预期数量是多少？符合什么分布？标准差是多少？</li>
-  <li>多重检验矫正方法</li>
+              <p>最近折腾了一下用命令行在Ubuntu上连接wifi。网上基本有三种方法（工具）：ifconfig、wpa_supplicant、nmcli。我推荐用nmcli，因为这个最简单嘛。。。</p>
+
+<ul>
+  <li>
+    <p>ifconfig  ps:WPE加密可用</p>
+  </li>
+  <li>
+    <p>wpa_supplicant  ps: WPA/WPA2 加密可用</p>
+  </li>
+  <li>
+    <p>nmcli</p>
+  </li>
+</ul>
+
+<p>nmcli 是NetworkManager自带的命令行工具,以下命令是基于”nmcli tool, version 1.2.4”.</p>
+
+<ol>
+  <li>重启`sudo service network-manager restart</li>
+  <li>管理wifi</li>
 </ol>
 
-<ul>
-  <li>Bonferroni 法，最简单、严厉。– Pvale</li>
-  <li>FDR：比较宽松，将假/真阳性比例控制在一定范围。– q value ，也叫 adjust p value</li>
-  <li>P value：对一次检验负责，一次假阳性率</li>
-  <li>Q value：对所有检验区别，假阳性所占比例</li>
-  <li>p value –&gt; Q value：BH 算法</li>
-</ul>
+<div class="highlighter-rouge"># 打开/关闭wifi
 
-<p>FDR 的取值</p>
+$ sudo nmcli networking on/off
 
-<ul>
-  <li>常见 0.1%、1%、5%等</li>
-  <li>最宽松为 25%</li>
-</ul>
+# 列出可用的热点
 
-<p>eg. 接受 Q value = 0.24，对应原始 P = 0.08</p>
+$ sudo nmcli device wifi
 
-<ul>
-  <li>P value，对单次检测负责
-对于该 pathway，假阳性的概率仍为 8%</li>
-  <li>Q value，对所有检验负责
-若接受该 pathway，以及比这个 pathway 阈值更低的所有 pathway（共 84 个），则所有 判断为阳性的 pathway 中有 20 个是错误的，但是我们知道到底哪个是错误的，当然 P 值越高，错误的概率越大。
-PDR 计算：R 语言：P.adjsut
-Storey：更精确估计的方法</li>
-</ul>
+*  SSID           MODE   CHAN  RATE       SIGNAL  BARS  SECURITY
+*  B-LINK_B639A8  Infra  1     54 Mbit/s  56      ▂▄▆_  WPA2
+   NR-DEBUG       Infra  1     54 Mbit/s  14      ▂___  WPA2
+
+# 连接热点
+$ sudo nmcli device wifi connect B-LINK_B639A8 password ...... ifname wlp8so    ps: nmcli最贴心的一点就是可以自动补全，所以你不必亲自输入全部名称
+
+# 断开热点
+$ sudo nmcli device disconnect wlp8s0
+
+# 查看状态
+$ sudo nmcli device status
+
+DEVICE  TYPE      STATE        CONNECTION
+wlp8s0  wifi      connected    B-LINK_B639A8 4
+enp7s0  ethernet  unavailable  --
+lo      loopback  unmanaged    --
+
+# 查看连接信息
+$ sudo nmcli device show wlp8so
+</div>
 
             </article>
         </div>
@@ -676,7 +695,7 @@ Storey：更精确估计的方法</li>
             
 
 
-  <div class="ds-thread" data-thread-key="/2017/04/06/RNA-seq-GWAS-P-value-DENOVO/" data-title="组学分析中的阈值问题" data-url="http://liuqibao.me/2017/04/06/RNA-seq-GWAS-P-value-DENOVO/"></div>
+  <div class="ds-thread" data-thread-key="/2017/01/23/connetct-wifi-in-cmi/" data-title="Ubuntu通过用wifi上网" data-url="http://liuqibao.me/2017/01/23/connetct-wifi-in-cmi/"></div>
 
 <script type="text/javascript">
 var duoshuoQuery = {short_name:"Gossie"};

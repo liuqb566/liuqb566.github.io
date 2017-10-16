@@ -5,14 +5,14 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>组学分析中的阈值问题</title>
+	<title>用shadowsocks5科学上网</title>
 
 	<link rel="shortcut icon" href="/styles/images/favicon.jpg">
 	<link rel="icon" href="/styles/images/favicon.jpg">
 
 	<link rel="stylesheet" href="/styles/css/index.css">
 	<link rel="stylesheet" href="/styles/css/fontawesome/css/font-awesome.min.css">
-	<link rel="canonical" href="/2017/04/06/RNA-seq-GWAS-P-value-DENOVO/">
+	<link rel="canonical" href="/2017/01/23/linux-shadowsocks-qt5-chrome-proxy/">
 	<link rel="alternate" type="application/rss+xml" title="Gossie's daily life" href="/feed.xml">
 	
 	<meta name="description" content="">
@@ -89,8 +89,8 @@
   <div class="container">
   	
   		<!--
-		    <h1>组学分析中的阈值问题</h1>
-		    <p>Post on Apr 06, 2017 by <a href="/about">Gossie</a></p>
+		    <h1>用shadowsocks5科学上网</h1>
+		    <p>Post on Jan 23, 2017 by <a href="/about">Gossie</a></p>
 		-->
 		    <h1></h1>
     
@@ -101,8 +101,8 @@
 <div class="banner">
   <div class="container">
   	
-    	<a href="/categories/#bioinformatics-ref">bioinformatics</a>	/
-    	<a href="/tag/#阈值-ref">阈值</a>
+    	<a href="/categories/#Linux-ref">Linux</a>	/
+    	<a href="/tag/#internet-ref">internet</a>
     
   </div>
 </div>
@@ -627,45 +627,55 @@
       <div class="panel docs-content">
         <div class="wrapper">
             <header class="post-header">
-              <h1 class="post-title">组学分析中的阈值问题</h1>
+              <h1 class="post-title">用shadowsocks5科学上网</h1>
               <!--
-                <p class="post-meta">Apr 6, 2017</p>
+                <p class="post-meta">Jan 23, 2017</p>
               -->
-              <div class="meta">Posted on <span class="postdate">Apr 06, 2017</span> By <a target="_blank" href="http://liuqibao.me">Gossie</a></div>
+              <div class="meta">Posted on <span class="postdate">Jan 23, 2017</span> By <a target="_blank" href="http://liuqibao.me">Gossie</a></div>
               <br />
             </header>
             <article class="post-content">
-              <ol>
-  <li>关键问题：如何正确估计误差方差的范围？</li>
-  <li>预期数量是多少？符合什么分布？标准差是多少？</li>
-  <li>多重检验矫正方法</li>
+              <p>为了在linux下实现chromium的翻墙，折腾的快崩溃了。</p>
+
+<p>linux版本：Xubuntu 16.10
+WM：awesome</p>
+
+<ol>
+  <li>安装shadowsocks-qt5,一个界面版shadowsocks.</li>
 </ol>
 
-<ul>
-  <li>Bonferroni 法，最简单、严厉。– Pvale</li>
-  <li>FDR：比较宽松，将假/真阳性比例控制在一定范围。– q value ，也叫 adjust p value</li>
-  <li>P value：对一次检验负责，一次假阳性率</li>
-  <li>Q value：对所有检验区别，假阳性所占比例</li>
-  <li>p value –&gt; Q value：BH 算法</li>
-</ul>
+<div class="highlighter-rouge">官方源没有，就安作者的吧
+sudo add-apt-repository ppa:hzwhuang/ss-qt5
+sudo apt-get update
+sudo apt-get install shadowsocks-qt5
+</div>
 
-<p>FDR 的取值</p>
+<h2 id="ps-local-server-type-httpssocks5chromium">ps：很容易安选项添好，要注意的是 local server type: 要选http（s）而不是socks5，因为chromium的代理不支持（任性。。。）</h2>
 
-<ul>
-  <li>常见 0.1%、1%、5%等</li>
-  <li>最宽松为 25%</li>
-</ul>
+<ol>
+  <li>
+    <p>命令行启动chromium，因为谷歌浏览器在linux上不支持图形界面设置代理
+<code class="highlighter-rouge">
+chromium-browser --proxy-server="http://127.0.0.1:1080"
+</code></p>
+  </li>
+  <li>
+    <p>为了以后方便还可以将这条命令改个别名
+<code class="highlighter-rouge">
+vim .bashrc
+alias gg='chromium-browser --proxy-server="http://127.0.0.1:1080"'
+source .bashrc
+</code>
+现在就可以用chromium浏览google了。</p>
+  </li>
+  <li>
+    <p>还有一个办法是为chromium装插件（等有精力再折腾吧）</p>
+  </li>
+  <li>
+    <p>为terminal设置全局代理要到genpac等工具，以后再说吧</p>
+  </li>
+</ol>
 
-<p>eg. 接受 Q value = 0.24，对应原始 P = 0.08</p>
-
-<ul>
-  <li>P value，对单次检测负责
-对于该 pathway，假阳性的概率仍为 8%</li>
-  <li>Q value，对所有检验负责
-若接受该 pathway，以及比这个 pathway 阈值更低的所有 pathway（共 84 个），则所有 判断为阳性的 pathway 中有 20 个是错误的，但是我们知道到底哪个是错误的，当然 P 值越高，错误的概率越大。
-PDR 计算：R 语言：P.adjsut
-Storey：更精确估计的方法</li>
-</ul>
 
             </article>
         </div>
@@ -676,7 +686,7 @@ Storey：更精确估计的方法</li>
             
 
 
-  <div class="ds-thread" data-thread-key="/2017/04/06/RNA-seq-GWAS-P-value-DENOVO/" data-title="组学分析中的阈值问题" data-url="http://liuqibao.me/2017/04/06/RNA-seq-GWAS-P-value-DENOVO/"></div>
+  <div class="ds-thread" data-thread-key="/2017/01/23/linux-shadowsocks-qt5-chrome-proxy/" data-title="用shadowsocks5科学上网" data-url="http://liuqibao.me/2017/01/23/linux-shadowsocks-qt5-chrome-proxy/"></div>
 
 <script type="text/javascript">
 var duoshuoQuery = {short_name:"Gossie"};

@@ -5,14 +5,14 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>组学分析中的阈值问题</title>
+	<title>linux下通过校园网认证</title>
 
 	<link rel="shortcut icon" href="/styles/images/favicon.jpg">
 	<link rel="icon" href="/styles/images/favicon.jpg">
 
 	<link rel="stylesheet" href="/styles/css/index.css">
 	<link rel="stylesheet" href="/styles/css/fontawesome/css/font-awesome.min.css">
-	<link rel="canonical" href="/2017/04/06/RNA-seq-GWAS-P-value-DENOVO/">
+	<link rel="canonical" href="/2017/05/01/web-authentication-by-wget-or-curl-in-linux/">
 	<link rel="alternate" type="application/rss+xml" title="Gossie's daily life" href="/feed.xml">
 	
 	<meta name="description" content="">
@@ -89,8 +89,8 @@
   <div class="container">
   	
   		<!--
-		    <h1>组学分析中的阈值问题</h1>
-		    <p>Post on Apr 06, 2017 by <a href="/about">Gossie</a></p>
+		    <h1>linux下通过校园网认证</h1>
+		    <p>Post on May 01, 2017 by <a href="/about">Gossie</a></p>
 		-->
 		    <h1></h1>
     
@@ -101,8 +101,8 @@
 <div class="banner">
   <div class="container">
   	
-    	<a href="/categories/#bioinformatics-ref">bioinformatics</a>	/
-    	<a href="/tag/#阈值-ref">阈值</a>
+    	<a href="/categories/#Linux-ref">Linux</a>	/
+    	<a href="/tag/#-ref"></a>
     
   </div>
 </div>
@@ -627,45 +627,45 @@
       <div class="panel docs-content">
         <div class="wrapper">
             <header class="post-header">
-              <h1 class="post-title">组学分析中的阈值问题</h1>
+              <h1 class="post-title">linux下通过校园网认证</h1>
               <!--
-                <p class="post-meta">Apr 6, 2017</p>
+                <p class="post-meta">May 1, 2017</p>
               -->
-              <div class="meta">Posted on <span class="postdate">Apr 06, 2017</span> By <a target="_blank" href="http://liuqibao.me">Gossie</a></div>
+              <div class="meta">Posted on <span class="postdate">May 01, 2017</span> By <a target="_blank" href="http://liuqibao.me">Gossie</a></div>
               <br />
             </header>
             <article class="post-content">
-              <ol>
-  <li>关键问题：如何正确估计误差方差的范围？</li>
-  <li>预期数量是多少？符合什么分布？标准差是多少？</li>
-  <li>多重检验矫正方法</li>
+              <h2 id="wget--curl--linux--web-">用 wget 或者 curl 在 linux 上通过 web 认证</h2>
+
+<p>一般校园网都会设置网关，每个人用帐号密码通过 web 认证进行上网。这在图形界面很容易，因为网页会自动跳转到认证界面。但是，如果在服务器的纯命令行界面，该如何通过 web 认证呢？这里推荐两种方法：curl 和 wget。</p>
+
+<h3 id="section">1. 查看完整的认证过程</h3>
+
+<p>这是最重要的一步！！！
+大部分的 web 认证都是基于 form 的认证方式，也就是你浏览器通过一个 form ，把用户名和密码 post 给服务器。
+所以 form 的格式是最重要的，不同的学校，可能会有所不同，因此，你应该先通过查看登陆界面的源码，了解你的 form data 和 Request URL。</p>
+
+<h3 id="section-1">2. 认证</h3>
+
+<ol>
+  <li>wget 方式
+<code class="highlighter-rouge">
+wget --post-data="username=abc&amp;password=123456&amp;pwd=123456&amp;secret=true" --save-cookies=webcookie.txt --keep-session-cookies http://10.0.0.252/webAuth/ # 将登陆信息存储成 cookies，以便下次使用
+wget --load-cookies=webcookie.txt http://10.0.0.252/webAuth # 直接用载入 cookies，进行认证
+wget --post-data="username=abc&amp;password=123456&amp;pwd=123456&amp;secret=true" http://10.0.0.252/webAuth/ # 直接使用帐号密码登陆
+</code></li>
 </ol>
 
-<ul>
-  <li>Bonferroni 法，最简单、严厉。– Pvale</li>
-  <li>FDR：比较宽松，将假/真阳性比例控制在一定范围。– q value ，也叫 adjust p value</li>
-  <li>P value：对一次检验负责，一次假阳性率</li>
-  <li>Q value：对所有检验区别，假阳性所占比例</li>
-  <li>p value –&gt; Q value：BH 算法</li>
-</ul>
+<p>如时登陆不成功，请先检查 form data 和 URL 是否格式正确！！！</p>
 
-<p>FDR 的取值</p>
+<ol>
+  <li>curl 方式</li>
+</ol>
 
-<ul>
-  <li>常见 0.1%、1%、5%等</li>
-  <li>最宽松为 25%</li>
-</ul>
+<div class="highlighter-rouge">curl --data "username=liuqibao&amp;password=666666&amp;pwd=666666&amp;secret=true" http://10.0.0.252/webAuth/
+</div>
 
-<p>eg. 接受 Q value = 0.24，对应原始 P = 0.08</p>
-
-<ul>
-  <li>P value，对单次检测负责
-对于该 pathway，假阳性的概率仍为 8%</li>
-  <li>Q value，对所有检验负责
-若接受该 pathway，以及比这个 pathway 阈值更低的所有 pathway（共 84 个），则所有 判断为阳性的 pathway 中有 20 个是错误的，但是我们知道到底哪个是错误的，当然 P 值越高，错误的概率越大。
-PDR 计算：R 语言：P.adjsut
-Storey：更精确估计的方法</li>
-</ul>
+<p>最后再说一遍，一定要看清 form data 和 Request URL 的格式！！！</p>
 
             </article>
         </div>
@@ -676,7 +676,7 @@ Storey：更精确估计的方法</li>
             
 
 
-  <div class="ds-thread" data-thread-key="/2017/04/06/RNA-seq-GWAS-P-value-DENOVO/" data-title="组学分析中的阈值问题" data-url="http://liuqibao.me/2017/04/06/RNA-seq-GWAS-P-value-DENOVO/"></div>
+  <div class="ds-thread" data-thread-key="/2017/05/01/web-authentication-by-wget-or-curl-in-linux/" data-title="linux下通过校园网认证" data-url="http://liuqibao.me/2017/05/01/web-authentication-by-wget-or-curl-in-linux/"></div>
 
 <script type="text/javascript">
 var duoshuoQuery = {short_name:"Gossie"};

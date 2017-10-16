@@ -5,14 +5,14 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>组学分析中的阈值问题</title>
+	<title>linux下的格式问题</title>
 
 	<link rel="shortcut icon" href="/styles/images/favicon.jpg">
 	<link rel="icon" href="/styles/images/favicon.jpg">
 
 	<link rel="stylesheet" href="/styles/css/index.css">
 	<link rel="stylesheet" href="/styles/css/fontawesome/css/font-awesome.min.css">
-	<link rel="canonical" href="/2017/04/06/RNA-seq-GWAS-P-value-DENOVO/">
+	<link rel="canonical" href="/2017/03/18/linux-file-format/">
 	<link rel="alternate" type="application/rss+xml" title="Gossie's daily life" href="/feed.xml">
 	
 	<meta name="description" content="">
@@ -89,8 +89,8 @@
   <div class="container">
   	
   		<!--
-		    <h1>组学分析中的阈值问题</h1>
-		    <p>Post on Apr 06, 2017 by <a href="/about">Gossie</a></p>
+		    <h1>linux下的格式问题</h1>
+		    <p>Post on Mar 18, 2017 by <a href="/about">Gossie</a></p>
 		-->
 		    <h1></h1>
     
@@ -101,8 +101,8 @@
 <div class="banner">
   <div class="container">
   	
-    	<a href="/categories/#bioinformatics-ref">bioinformatics</a>	/
-    	<a href="/tag/#阈值-ref">阈值</a>
+    	<a href="/categories/#Linux-ref">Linux</a>	/
+    	<a href="/tag/#-ref"></a>
     
   </div>
 </div>
@@ -627,45 +627,33 @@
       <div class="panel docs-content">
         <div class="wrapper">
             <header class="post-header">
-              <h1 class="post-title">组学分析中的阈值问题</h1>
+              <h1 class="post-title">linux下的格式问题</h1>
               <!--
-                <p class="post-meta">Apr 6, 2017</p>
+                <p class="post-meta">Mar 18, 2017</p>
               -->
-              <div class="meta">Posted on <span class="postdate">Apr 06, 2017</span> By <a target="_blank" href="http://liuqibao.me">Gossie</a></div>
+              <div class="meta">Posted on <span class="postdate">Mar 18, 2017</span> By <a target="_blank" href="http://liuqibao.me">Gossie</a></div>
               <br />
             </header>
             <article class="post-content">
-              <ol>
-  <li>关键问题：如何正确估计误差方差的范围？</li>
-  <li>预期数量是多少？符合什么分布？标准差是多少？</li>
-  <li>多重检验矫正方法</li>
+              <p>由于 unix 和 windos 使用的换行符不同，所以从 windos 上拷贝文件到 unix 系统时可能会出现问题，例如用 <code class="highlighter-rouge">cat</code> 命令循环文件的每行时，由于换行符的原因，会使变量拼接出现问题，而这通常用<code class="highlighter-rouge">echo $i</code>发现不了。</p>
+
+<p>有几个办法可以对来自 windos 的文件进行格式处理：
+1. fileformats 命令</p>
+
+<p>通过有两种文件格式 dos 和 unix
+<code class="highlighter-rouge">
+vim test.txt 
+:set fileformat?  #查看文件格式
+:set fileformat=unix #转换文件格式为 unix 格式
+:set fileformats=unix,dos #将 dos 作为第二选择
+</code></p>
+
+<ol>
+  <li>使用正则表达式删除换行符
+<code class="highlighter-rouge">
+：%s/\n//g
+</code></li>
 </ol>
-
-<ul>
-  <li>Bonferroni 法，最简单、严厉。– Pvale</li>
-  <li>FDR：比较宽松，将假/真阳性比例控制在一定范围。– q value ，也叫 adjust p value</li>
-  <li>P value：对一次检验负责，一次假阳性率</li>
-  <li>Q value：对所有检验区别，假阳性所占比例</li>
-  <li>p value –&gt; Q value：BH 算法</li>
-</ul>
-
-<p>FDR 的取值</p>
-
-<ul>
-  <li>常见 0.1%、1%、5%等</li>
-  <li>最宽松为 25%</li>
-</ul>
-
-<p>eg. 接受 Q value = 0.24，对应原始 P = 0.08</p>
-
-<ul>
-  <li>P value，对单次检测负责
-对于该 pathway，假阳性的概率仍为 8%</li>
-  <li>Q value，对所有检验负责
-若接受该 pathway，以及比这个 pathway 阈值更低的所有 pathway（共 84 个），则所有 判断为阳性的 pathway 中有 20 个是错误的，但是我们知道到底哪个是错误的，当然 P 值越高，错误的概率越大。
-PDR 计算：R 语言：P.adjsut
-Storey：更精确估计的方法</li>
-</ul>
 
             </article>
         </div>
@@ -676,7 +664,7 @@ Storey：更精确估计的方法</li>
             
 
 
-  <div class="ds-thread" data-thread-key="/2017/04/06/RNA-seq-GWAS-P-value-DENOVO/" data-title="组学分析中的阈值问题" data-url="http://liuqibao.me/2017/04/06/RNA-seq-GWAS-P-value-DENOVO/"></div>
+  <div class="ds-thread" data-thread-key="/2017/03/18/linux-file-format/" data-title="linux下的格式问题" data-url="http://liuqibao.me/2017/03/18/linux-file-format/"></div>
 
 <script type="text/javascript">
 var duoshuoQuery = {short_name:"Gossie"};

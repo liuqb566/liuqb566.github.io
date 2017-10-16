@@ -5,14 +5,14 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>组学分析中的阈值问题</title>
+	<title>Ubuntu设置静态IP</title>
 
 	<link rel="shortcut icon" href="/styles/images/favicon.jpg">
 	<link rel="icon" href="/styles/images/favicon.jpg">
 
 	<link rel="stylesheet" href="/styles/css/index.css">
 	<link rel="stylesheet" href="/styles/css/fontawesome/css/font-awesome.min.css">
-	<link rel="canonical" href="/2017/04/06/RNA-seq-GWAS-P-value-DENOVO/">
+	<link rel="canonical" href="/2017/05/10/set-static-ip-ubuntu16/">
 	<link rel="alternate" type="application/rss+xml" title="Gossie's daily life" href="/feed.xml">
 	
 	<meta name="description" content="">
@@ -89,8 +89,8 @@
   <div class="container">
   	
   		<!--
-		    <h1>组学分析中的阈值问题</h1>
-		    <p>Post on Apr 06, 2017 by <a href="/about">Gossie</a></p>
+		    <h1>Ubuntu设置静态IP</h1>
+		    <p>Post on May 10, 2017 by <a href="/about">Gossie</a></p>
 		-->
 		    <h1></h1>
     
@@ -101,8 +101,8 @@
 <div class="banner">
   <div class="container">
   	
-    	<a href="/categories/#bioinformatics-ref">bioinformatics</a>	/
-    	<a href="/tag/#阈值-ref">阈值</a>
+    	<a href="/categories/#Linux-ref">Linux</a>	/
+    	<a href="/tag/#-ref"></a>
     
   </div>
 </div>
@@ -627,45 +627,90 @@
       <div class="panel docs-content">
         <div class="wrapper">
             <header class="post-header">
-              <h1 class="post-title">组学分析中的阈值问题</h1>
+              <h1 class="post-title">Ubuntu设置静态IP</h1>
               <!--
-                <p class="post-meta">Apr 6, 2017</p>
+                <p class="post-meta">May 10, 2017</p>
               -->
-              <div class="meta">Posted on <span class="postdate">Apr 06, 2017</span> By <a target="_blank" href="http://liuqibao.me">Gossie</a></div>
+              <div class="meta">Posted on <span class="postdate">May 10, 2017</span> By <a target="_blank" href="http://liuqibao.me">Gossie</a></div>
               <br />
             </header>
             <article class="post-content">
-              <ol>
-  <li>关键问题：如何正确估计误差方差的范围？</li>
-  <li>预期数量是多少？符合什么分布？标准差是多少？</li>
-  <li>多重检验矫正方法</li>
+              <h2 id="ubuntu-1610-">手动设置 Ubuntu 16.10 的网卡</h2>
+
+<p>最近新换了一个环境，需要手动设置 ip 地址上网，所以搞了一下！</p>
+
+<ol>
+  <li>查看网卡名</li>
 </ol>
 
-<ul>
-  <li>Bonferroni 法，最简单、严厉。– Pvale</li>
-  <li>FDR：比较宽松，将假/真阳性比例控制在一定范围。– q value ，也叫 adjust p value</li>
-  <li>P value：对一次检验负责，一次假阳性率</li>
-  <li>Q value：对所有检验区别，假阳性所占比例</li>
-  <li>p value –&gt; Q value：BH 算法</li>
-</ul>
+<div class="highlighter-rouge">ip addr
+</div>
+<p>我的有线网卡为：enp7s0
+无线网卡为：wlp8s0
+<strong>一定要看好网卡名字！！！</strong></p>
 
-<p>FDR 的取值</p>
+<ol>
+  <li>手动设置 ip
+```
+sudo vi /etc/network/interfaces</li>
+</ol>
 
-<ul>
-  <li>常见 0.1%、1%、5%等</li>
-  <li>最宽松为 25%</li>
-</ul>
+<p>以下为输出</p>
 
-<p>eg. 接受 Q value = 0.24，对应原始 P = 0.08</p>
+<h1 id="interfaces5-file-used-by-ifup8-and-ifdown8">interfaces(5) file used by ifup(8) and ifdown(8)</h1>
+<p>auto lo
+iface lo inet loopback</p>
 
-<ul>
-  <li>P value，对单次检测负责
-对于该 pathway，假阳性的概率仍为 8%</li>
-  <li>Q value，对所有检验负责
-若接受该 pathway，以及比这个 pathway 阈值更低的所有 pathway（共 84 个），则所有 判断为阳性的 pathway 中有 20 个是错误的，但是我们知道到底哪个是错误的，当然 P 值越高，错误的概率越大。
-PDR 计算：R 语言：P.adjsut
-Storey：更精确估计的方法</li>
-</ul>
+<h1 id="section">以下为后来添加</h1>
+<p>auto enp7s0
+iface enp7s0 inet static
+address 192.168.56.42
+netmask 255.255.255.0
+gateway 192.168.56.254</p>
+
+<h1 id="dns-nameserver-21033601">dns-nameserver 210.33.60.1</h1>
+<p>dns-nameserver 202.107.200.69
+```</p>
+
+<ol>
+  <li>
+    <p>重启
+<code class="highlighter-rouge">
+sudo /etc/init.d/networking restart
+sudo resolvconf -u    #重启 dns，否则无法解析域名
+</code></p>
+  </li>
+  <li>
+    <p>备用
+如果还是无法解析域名，可以试试：
+```
+vi /etc/resolvconf/resolv.conf.d/base</p>
+  </li>
+</ol>
+
+<p>以下为输出</p>
+
+<p>nameserver 210.33.60.1
+nameserver 202.107.200.69</p>
+
+<div class="highlighter-rouge">刷新配置文件
+</div>
+<p>sudo resolvconf -u
+```</p>
+
+<p>补：
+用了几天突然 DNS 又不行了，做了以下修改：
+```
+sudo vi /etc/resolv.conf</p>
+
+<h1 id="section-1">添加以下内容：</h1>
+<p>nameserver 210.33.60.1 #或者其它 DNS 地址
+<code class="highlighter-rouge">
+重启
+</code>
+sudo /etc/init.d/networking restart
+sudo resolvconf -u    #重启 dns，否则无法解析域名
+```</p>
 
             </article>
         </div>
@@ -676,7 +721,7 @@ Storey：更精确估计的方法</li>
             
 
 
-  <div class="ds-thread" data-thread-key="/2017/04/06/RNA-seq-GWAS-P-value-DENOVO/" data-title="组学分析中的阈值问题" data-url="http://liuqibao.me/2017/04/06/RNA-seq-GWAS-P-value-DENOVO/"></div>
+  <div class="ds-thread" data-thread-key="/2017/05/10/set-static-ip-ubuntu16/" data-title="Ubuntu设置静态IP" data-url="http://liuqibao.me/2017/05/10/set-static-ip-ubuntu16/"></div>
 
 <script type="text/javascript">
 var duoshuoQuery = {short_name:"Gossie"};

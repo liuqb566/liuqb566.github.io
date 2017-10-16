@@ -5,14 +5,14 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>组学分析中的阈值问题</title>
+	<title>在linux下添加用户</title>
 
 	<link rel="shortcut icon" href="/styles/images/favicon.jpg">
 	<link rel="icon" href="/styles/images/favicon.jpg">
 
 	<link rel="stylesheet" href="/styles/css/index.css">
 	<link rel="stylesheet" href="/styles/css/fontawesome/css/font-awesome.min.css">
-	<link rel="canonical" href="/2017/04/06/RNA-seq-GWAS-P-value-DENOVO/">
+	<link rel="canonical" href="/2017/05/16/problem-when-use-useradd-command/">
 	<link rel="alternate" type="application/rss+xml" title="Gossie's daily life" href="/feed.xml">
 	
 	<meta name="description" content="">
@@ -89,8 +89,8 @@
   <div class="container">
   	
   		<!--
-		    <h1>组学分析中的阈值问题</h1>
-		    <p>Post on Apr 06, 2017 by <a href="/about">Gossie</a></p>
+		    <h1>在linux下添加用户</h1>
+		    <p>Post on May 16, 2017 by <a href="/about">Gossie</a></p>
 		-->
 		    <h1></h1>
     
@@ -101,8 +101,8 @@
 <div class="banner">
   <div class="container">
   	
-    	<a href="/categories/#bioinformatics-ref">bioinformatics</a>	/
-    	<a href="/tag/#阈值-ref">阈值</a>
+    	<a href="/categories/#Linux-ref">Linux</a>	/
+    	<a href="/tag/#-ref"></a>
     
   </div>
 </div>
@@ -627,45 +627,40 @@
       <div class="panel docs-content">
         <div class="wrapper">
             <header class="post-header">
-              <h1 class="post-title">组学分析中的阈值问题</h1>
+              <h1 class="post-title">在linux下添加用户</h1>
               <!--
-                <p class="post-meta">Apr 6, 2017</p>
+                <p class="post-meta">May 16, 2017</p>
               -->
-              <div class="meta">Posted on <span class="postdate">Apr 06, 2017</span> By <a target="_blank" href="http://liuqibao.me">Gossie</a></div>
+              <div class="meta">Posted on <span class="postdate">May 16, 2017</span> By <a target="_blank" href="http://liuqibao.me">Gossie</a></div>
               <br />
             </header>
             <article class="post-content">
-              <ol>
-  <li>关键问题：如何正确估计误差方差的范围？</li>
-  <li>预期数量是多少？符合什么分布？标准差是多少？</li>
-  <li>多重检验矫正方法</li>
-</ol>
+              <h2 id="useradd-">在使用 useradd 命令时遇到的问题</h2>
 
-<ul>
-  <li>Bonferroni 法，最简单、严厉。– Pvale</li>
-  <li>FDR：比较宽松，将假/真阳性比例控制在一定范围。– q value ，也叫 adjust p value</li>
-  <li>P value：对一次检验负责，一次假阳性率</li>
-  <li>Q value：对所有检验区别，假阳性所占比例</li>
-  <li>p value –&gt; Q value：BH 算法</li>
-</ul>
+<p>useradd 是添加新用户的命令，具体参数不再详述。
+这里主要记录一下遇到的一个小问题。
+linux 版本：Ubuntu 16.04</p>
 
-<p>FDR 的取值</p>
+<h3 id="section">问题1：没有家目录</h3>
 
-<ul>
-  <li>常见 0.1%、1%、5%等</li>
-  <li>最宽松为 25%</li>
-</ul>
+<p>原因：Ubuntu 系统中，使用 useradd 添加新用户需要使用 <code class="highlighter-rouge">-d</code> 参数指定用户目录，若用户目录不存在，同时用 <code class="highlighter-rouge">-m</code> 参数创建主目录。推测添加用户的老师当时没有加参数。
+解决办法：没办法，找他新建主目录。</p>
 
-<p>eg. 接受 Q value = 0.24，对应原始 P = 0.08</p>
+<h3 id="bashrc-">问题2：家目录下没有 .bashrc 文件</h3>
 
-<ul>
-  <li>P value，对单次检测负责
-对于该 pathway，假阳性的概率仍为 8%</li>
-  <li>Q value，对所有检验负责
-若接受该 pathway，以及比这个 pathway 阈值更低的所有 pathway（共 84 个），则所有 判断为阳性的 pathway 中有 20 个是错误的，但是我们知道到底哪个是错误的，当然 P 值越高，错误的概率越大。
-PDR 计算：R 语言：P.adjsut
-Storey：更精确估计的方法</li>
-</ul>
+<p>原因：不清楚
+解决办法：从 <code class="highlighter-rouge">/etc/skel/</code> 中复制 <code class="highlighter-rouge">.bashrc</code> 和 <code class="highlighter-rouge">.profile</code> 到家目录</p>
+
+<h3 id="source-">问题3：source 命令不管用，提示找不到文件</h3>
+
+<p>原因：没有使用完整路径，但是在大多数系统不需要完整路径就能用，不清楚具体原因。（让我想起了 aspera 也是这毛病，linux 就是任性）
+解决办法：使用完整路径 <code class="highlighter-rouge">source ./.bashrc</code></p>
+
+<hr />
+<p>ps：
+exec bash 命令会重启 shell，也就是你当前的 shell 正执行的命令会终止。
+source .bashrc 可以在当前 shell 上更改配置。</p>
+
 
             </article>
         </div>
@@ -676,7 +671,7 @@ Storey：更精确估计的方法</li>
             
 
 
-  <div class="ds-thread" data-thread-key="/2017/04/06/RNA-seq-GWAS-P-value-DENOVO/" data-title="组学分析中的阈值问题" data-url="http://liuqibao.me/2017/04/06/RNA-seq-GWAS-P-value-DENOVO/"></div>
+  <div class="ds-thread" data-thread-key="/2017/05/16/problem-when-use-useradd-command/" data-title="在linux下添加用户" data-url="http://liuqibao.me/2017/05/16/problem-when-use-useradd-command/"></div>
 
 <script type="text/javascript">
 var duoshuoQuery = {short_name:"Gossie"};
