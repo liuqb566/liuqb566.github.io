@@ -5,8 +5,8 @@
     <description>好记性不如写博文！</description>
     <link>http://liuqibao.me/</link>
     <atom:link href="http://liuqibao.me/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Mon, 16 Oct 2017 22:44:38 +0800</pubDate>
-    <lastBuildDate>Mon, 16 Oct 2017 22:44:38 +0800</lastBuildDate>
+    <pubDate>Mon, 16 Oct 2017 22:50:02 +0800</pubDate>
+    <lastBuildDate>Mon, 16 Oct 2017 22:50:02 +0800</lastBuildDate>
     <generator>Jekyll v3.6.0</generator>
     
       <item>
@@ -36,6 +36,110 @@ export QT_IM_MODULE=&quot;fcitx&quot;
         
         
         <category>Linux</category>
+        
+      </item>
+    
+      <item>
+        <title>faststructure 的简单使用</title>
+        <description>&lt;p&gt;*content&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://rajanil.github.io/fastStructure/&quot;&gt;faststructure&lt;/a&gt; 比 structure 的计算速度更快，适合数据量较大的群体结构计算。&lt;/p&gt;
+
+&lt;h3 id=&quot;section&quot;&gt;1. 安装&lt;/h3&gt;
+
+&lt;p&gt;faststructure 是基于 python 的脚本软件，首先需要一些 python 包
+1. Numpy
+2. Scipy
+3. Cython
+4. GNU Scientific Library&lt;/p&gt;
+
+&lt;p&gt;前 3 建议用 pip 安装。
+gsl（GNU Scientific Library）需要下载安装：
+&lt;code class=&quot;highlighter-rouge&quot;&gt;
+wget http://mirrors.ustc.edu.cn/gnu/gsl/gsl-latest.tar.gz
+cd gsl-2.4
+sudo ./configure
+sudo make 
+sudo make install
+&lt;/code&gt;
+fastStruce 的安装按官网步骤，没难点。&lt;/p&gt;
+
+&lt;h3 id=&quot;section-1&quot;&gt;2. 使用&lt;/h3&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;血缘关系计算
+```
+python structure.py&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Here is how you can use this script&lt;/p&gt;
+
+&lt;p&gt;Usage: python structure.py
+-K &lt;int&gt;   (number of populations) # 注意 K 是大写
+--input=&lt;file&gt;   (/path/to/input/file)
+--output=&lt;file&gt;   (/path/to/output/file)
+--tol=&lt;float&gt;   (convergence criterion; default: 10e-6)
+--prior={simple,logistic}   (choice of prior; default: simple)
+--cv=&lt;int&gt;   (number of test sets for cross-validation, 0 implies no CV step; default: 0)
+--format={bed,str} (format of input file; default: bed)
+--full   (to output all variational parameters; optional)
+--seed=&lt;int&gt;   (manually specify seed for random number generator; optional)
+```&lt;/int&gt;&lt;/int&gt;&lt;/float&gt;&lt;/file&gt;&lt;/file&gt;&lt;/int&gt;&lt;/p&gt;
+
+&lt;p&gt;最主要的参数有三个：
+- -K：手动设定群体数
+- –input：plink bed格式
+- –output：输出文件名&lt;/p&gt;
+
+&lt;p&gt;例：&lt;code class=&quot;highlighter-rouge&quot;&gt;python structure.py -K 3 --input=genotypes --output=genotypes_output&lt;/code&gt;&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;选择合适的 K 值&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;chooseK.py 脚本用于选择合适的 K 值。
+首先自己写循环计算 K=1~10，输出文件前缀假设为 testout_simple
+命令：
+&lt;code class=&quot;highlighter-rouge&quot;&gt;
+$ python chooseK.py --input=test/testoutput_simple
+&lt;/code&gt;&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;可视化&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;distruct.py 脚本用于可视化&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt; python distruct.py
+
+ Here is how you can use this script
+
+ Usage: python distruct.py
+-K &amp;lt;int&amp;gt;  (number of populations)
+--input=&amp;lt;file&amp;gt;  (/path/to/input/file; same as output flag passed to structure.py)
+--output=&amp;lt;file&amp;gt;   (/path/to/output/file)
+--popfile=&amp;lt;file&amp;gt;  (file with known categorical labels; optional)
+--title=&amp;lt;figure title&amp;gt;  (a title for the figure; optional)
+&lt;/div&gt;
+&lt;p&gt;参数：
+- -K：合适的 K 值
+- –input：structure.py 的输出文件位置
+- –output：输出文件，格式可以为.svg .pdf .jpg等
+- –popfile：可以对分组使用不同的标签，每个样本一个标签，样本顺序要与 map 文件中的样本顺序相同。&lt;/p&gt;
+
+&lt;p&gt;例：
+&lt;code class=&quot;highlighter-rouge&quot;&gt;
+python distruct.py -K 5 --input=test/testoutput_simple --output=test/testoutput_simple_distruct.svg
+&lt;/code&gt;&lt;/p&gt;
+</description>
+        <pubDate>Wed, 21 Jun 2017 00:00:00 +0800</pubDate>
+        <link>http://liuqibao.me/2017/06/21/faststructure-introduction/</link>
+        <guid isPermaLink="true">http://liuqibao.me/2017/06/21/faststructure-introduction/</guid>
+        
+        <category>使用手册</category>
+        
+        
+        <category>bioinformatics</category>
         
       </item>
     
@@ -1313,98 +1417,6 @@ fastq-dump [options] &amp;lt;accession&amp;gt;
         
         
         <category>bioinformatics</category>
-        
-      </item>
-    
-      <item>
-        <title>从 NCBI 或者 EBI 下载数据</title>
-        <description>&lt;ul id=&quot;markdown-toc&quot;&gt;
-  &lt;li&gt;&lt;a href=&quot;#section&quot; id=&quot;markdown-toc-section&quot;&gt;1. 用迅雷下载（慢）&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#wget-&quot; id=&quot;markdown-toc-wget-&quot;&gt;2. 用 wget 下载（慢）&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#aspera-&quot; id=&quot;markdown-toc-aspera-&quot;&gt;3. 用 aspera 下载（推荐）&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#aspera--1&quot; id=&quot;markdown-toc-aspera--1&quot;&gt;aspera 批量下载&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;section&quot;&gt;1. 用迅雷下载（慢）&lt;/h3&gt;
-
-&lt;p&gt;不会迅雷的请百度&lt;/p&gt;
-
-&lt;h3 id=&quot;wget-&quot;&gt;2. 用 wget 下载（慢）&lt;/h3&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;NCBI
-在 NCBI 中双端测序和单端测序都是一个压缩的 ’.sra’ 文件
-&lt;code class=&quot;highlighter-rouge&quot;&gt;
-for i in $(cat list.txt);do wget ftp://ftp-trace.ncbi.nih.gov/sra/sra-instant/reads/ByRun/sra/SRR/`echo $i | cut -c 1-6`/$i/$i.sra;done
-&lt;/code&gt;&lt;/li&gt;
-  &lt;li&gt;EBI&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;EBI 的目录结构比较特别，注意匹配
-EBI 的双端测序是两个 ‘.gzipp’ 文件
-&lt;code class=&quot;highlighter-rouge&quot;&gt;
-for i in $(cat list.txt);do wget ftp://fasp.sra.ebi.ac.uk:/vol1/fastq/`echo $i | cut -c 1-6`/00`echo $i|cut -c 10`/$i/* ;done
-&lt;/code&gt;&lt;/p&gt;
-
-&lt;h3 id=&quot;aspera-&quot;&gt;3. 用 aspera 下载（推荐）&lt;/h3&gt;
-
-&lt;p&gt;aspera 的下载速度非常快，能达到几十上百兆/秒&lt;/p&gt;
-
-&lt;p&gt;Aspera的用法：
-ascp [参数] 目标文件 目的地址&lt;/p&gt;
-
-&lt;p&gt;Aspera的常用参数：
--T
-不进行加密。若不添加此参数，可能会下载不了。
--i string
-输入私钥，安装 aspera 后有在目录 ~/.aspera/connect/etc/ 下有几个私钥，使用 linux 服务器的时候一般使用 asperaweb_id_dsa.openssh 文件作为私钥。
-–host=string
-ftp的host名，NCBI的为ftp-private.ncbi.nlm.nih.gov；EBI的为fasp.sra.ebi.ac.uk。
-–user=string
-用户名，NCBI的为anonftp，EBI的为era-fasp。
-–mode=string
-选择模式，上传为 send，下载为 recv。
--l string
-设置最大传输速度，比如设置为 200M 则表示最大传输速度为 200m/s。若不设置该参数，则一般可达到10m/s的速度，而设置了，传输速度可以更高。
--L /dir
-生成报告
--K2
-错误后重新启动&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;NCBI&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;~/ascp -QT -l 300m -i ~/asperaweb_id_dsa.openssh anonftp@ftp-private.ncbi.nlm.nih.gov:/sra/sra-instant/reads/ByRun/sra/SRR/SRR169/SRR169$i/SRR169$i.sra ./
-&lt;/div&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;EBI
-&lt;code class=&quot;highlighter-rouge&quot;&gt;
-~/ascp -QT -l 300m -i /home/liuqibao/asperaweb_id_dsa.openssh era-fasp@fasp.sra.ebi.ac.uk:/vol1/fastq/SRR158/005/SRR1580695/SRR1580695_1.fastq.gz ./
-&lt;/code&gt;
-注意：可能需要加绝对路径，前面&lt;code class=&quot;highlighter-rouge&quot;&gt;~/&lt;/code&gt;不能少，否则会报错：key passpares&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h1 id=&quot;aspera--1&quot;&gt;aspera 批量下载&lt;/h1&gt;
-&lt;p&gt;批量下载：整理成下面的格式黏贴在文本SRR_Download_List_file_list.txt 中：&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;/sra/sra-instant/reads/ByRun/sra/SRR/SRR689/SRR689250/SRR689250.sra
-
-/sra/sra-instant/reads/ByRun/sra/SRR/SRR893/SRR893046/SRR893046.sra
-
-nohup ~/ascp  -i  ~/asperaweb_id_dsa.putty --mode recv --host ftp-private.ncbi.nlm.nih.gov --user anonftp   --file-list  SRR_Download_List_file_list.txt ./ &amp;amp;
-&lt;/div&gt;
-&lt;p&gt;### 4. prefech 下载&lt;/p&gt;
-
-&lt;p&gt;NCBI 的 sratoolkit 中的 prefech 也可以下载 sra， 不过我没用过。&lt;/p&gt;
-</description>
-        <pubDate>Mon, 24 Apr 2017 00:00:00 +0800</pubDate>
-        <link>http://liuqibao.me/2017/04/24/download-SRR/</link>
-        <guid isPermaLink="true">http://liuqibao.me/2017/04/24/download-SRR/</guid>
-        
-        <category>数据上传下载</category>
-        
         
       </item>
     
