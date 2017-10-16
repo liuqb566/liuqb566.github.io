@@ -5,2093 +5,2455 @@
     <description>好记性不如写博文！</description>
     <link>http://liuqibao.me/</link>
     <atom:link href="http://liuqibao.me/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sun, 11 Dec 2016 01:04:40 -0500</pubDate>
-    <lastBuildDate>Sun, 11 Dec 2016 01:04:40 -0500</lastBuildDate>
-    <generator>Jekyll v3.3.1</generator>
+    <pubDate>Mon, 16 Oct 2017 19:52:43 +0800</pubDate>
+    <lastBuildDate>Mon, 16 Oct 2017 19:52:43 +0800</lastBuildDate>
+    <generator>Jekyll v3.6.0</generator>
     
       <item>
-        <title>元组和文件</title>
-        <description>&lt;ul id=&quot;markdown-toc&quot;&gt;
-  &lt;li&gt;&lt;a href=&quot;#元组&quot; id=&quot;markdown-toc-元组&quot;&gt;元组&lt;/a&gt;    &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;#实际应用中的元组&quot; id=&quot;markdown-toc-实际应用中的元组&quot;&gt;实际应用中的元组&lt;/a&gt;        &lt;ul&gt;
-          &lt;li&gt;&lt;a href=&quot;#元组的特殊语法逗号和圆括号&quot; id=&quot;markdown-toc-元组的特殊语法逗号和圆括号&quot;&gt;元组的特殊语法：逗号和圆括号&lt;/a&gt;&lt;/li&gt;
-          &lt;li&gt;&lt;a href=&quot;#转换方法以及不可变性&quot; id=&quot;markdown-toc-转换方法以及不可变性&quot;&gt;转换、方法以及不可变性&lt;/a&gt;&lt;/li&gt;
-        &lt;/ul&gt;
-      &lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#文件&quot; id=&quot;markdown-toc-文件&quot;&gt;文件&lt;/a&gt;    &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;#打开文件&quot; id=&quot;markdown-toc-打开文件&quot;&gt;打开文件&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#使用文件&quot; id=&quot;markdown-toc-使用文件&quot;&gt;使用文件&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#实际应用中的文件&quot; id=&quot;markdown-toc-实际应用中的文件&quot;&gt;实际应用中的文件&lt;/a&gt;        &lt;ul&gt;
-          &lt;li&gt;&lt;a href=&quot;#python-30中的文本和二进制文件&quot; id=&quot;markdown-toc-python-30中的文本和二进制文件&quot;&gt;Python 3.0中的文本和二进制文件&lt;/a&gt;&lt;/li&gt;
-          &lt;li&gt;&lt;a href=&quot;#在文件中存储并解析python对象&quot; id=&quot;markdown-toc-在文件中存储并解析python对象&quot;&gt;在文件中存储并解析Python对象&lt;/a&gt;&lt;/li&gt;
-          &lt;li&gt;&lt;a href=&quot;#用pickle存储python的原生对象&quot; id=&quot;markdown-toc-用pickle存储python的原生对象&quot;&gt;用pickle存储Python的原生对象&lt;/a&gt;&lt;/li&gt;
-          &lt;li&gt;&lt;a href=&quot;#文件中打包二进制数据的存储与解析&quot; id=&quot;markdown-toc-文件中打包二进制数据的存储与解析&quot;&gt;文件中打包二进制数据的存储与解析&lt;/a&gt;&lt;/li&gt;
-          &lt;li&gt;&lt;a href=&quot;#文件上下文管理器&quot; id=&quot;markdown-toc-文件上下文管理器&quot;&gt;文件上下文管理器&lt;/a&gt;&lt;/li&gt;
-          &lt;li&gt;&lt;a href=&quot;#其他文件工具&quot; id=&quot;markdown-toc-其他文件工具&quot;&gt;其他文件工具&lt;/a&gt;&lt;/li&gt;
-        &lt;/ul&gt;
-      &lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#对象灵活性&quot; id=&quot;markdown-toc-对象灵活性&quot;&gt;对象灵活性&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#引用vs拷贝&quot; id=&quot;markdown-toc-引用vs拷贝&quot;&gt;引用VS拷贝&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#比较相等性和真值&quot; id=&quot;markdown-toc-比较相等性和真值&quot;&gt;比较、相等性和真值&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#python中真和假的含义&quot; id=&quot;markdown-toc-python中真和假的含义&quot;&gt;Python中真和假的含义&lt;/a&gt;        &lt;ul&gt;
-          &lt;li&gt;&lt;a href=&quot;#none对象&quot; id=&quot;markdown-toc-none对象&quot;&gt;None对象&lt;/a&gt;&lt;/li&gt;
-          &lt;li&gt;&lt;a href=&quot;#bool类型&quot; id=&quot;markdown-toc-bool类型&quot;&gt;bool类型&lt;/a&gt;&lt;/li&gt;
-        &lt;/ul&gt;
-      &lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#python的类型层次&quot; id=&quot;markdown-toc-python的类型层次&quot;&gt;Python的类型层次&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#type-对象&quot; id=&quot;markdown-toc-type-对象&quot;&gt;Type 对象&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#python中的其他类型&quot; id=&quot;markdown-toc-python中的其他类型&quot;&gt;Python中的其他类型&lt;/a&gt;        &lt;ul&gt;
-          &lt;li&gt;&lt;a href=&quot;#内置类型陷阱&quot; id=&quot;markdown-toc-内置类型陷阱&quot;&gt;内置类型陷阱&lt;/a&gt;&lt;/li&gt;
-          &lt;li&gt;&lt;a href=&quot;#赋值生成引用而不是拷贝&quot; id=&quot;markdown-toc-赋值生成引用而不是拷贝&quot;&gt;赋值生成引用，而不是拷贝&lt;/a&gt;&lt;/li&gt;
-          &lt;li&gt;&lt;a href=&quot;#重复能够增加层次深度&quot; id=&quot;markdown-toc-重复能够增加层次深度&quot;&gt;重复能够增加层次深度&lt;/a&gt;&lt;/li&gt;
-          &lt;li&gt;&lt;a href=&quot;#留意循环数据结构&quot; id=&quot;markdown-toc-留意循环数据结构&quot;&gt;留意循环数据结构&lt;/a&gt;&lt;/li&gt;
-          &lt;li&gt;&lt;a href=&quot;#不可变类型不可以在原处改变&quot; id=&quot;markdown-toc-不可变类型不可以在原处改变&quot;&gt;不可变类型不可以在原处改变&lt;/a&gt;&lt;/li&gt;
-        &lt;/ul&gt;
-      &lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
+        <title>Parameter About Gragh In R</title>
+        <description>&lt;h2 id=&quot;r-&quot;&gt;R 语言基础作图函数画图常用的参数&lt;/h2&gt;
 
-&lt;h3 id=&quot;元组&quot;&gt;元组&lt;/h3&gt;
+&lt;p&gt;在 linux 上修图比较麻烦，因为没有 PS，没有 AI，而且 GIMP 又不会用，所以决定尝试直接用 R 生成最终的图片，所幸结果还可以。
+图片格式、大小、分辨率都可以在 png、tiff、jpep 等指定。&lt;/p&gt;
 
-&lt;p&gt;元组不支持任何方法调用，但元组具有列表的大多数属性：&lt;/p&gt;
+&lt;h3 id=&quot;par&quot;&gt;图片布局用 par（）函数&lt;/h3&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;任意对象的有序集合&lt;/li&gt;
-  &lt;li&gt;通过偏移存取&lt;/li&gt;
-  &lt;li&gt;属于不可变序列类型&lt;/li&gt;
-  &lt;li&gt;固定长度、异构、任意嵌套&lt;/li&gt;
-  &lt;li&gt;对象引用的数组&lt;/li&gt;
+  &lt;li&gt;mfrow/mfcol：设定图片的填充顺序，行/列，例如，mfrow=c（2，3），表示按行填充，两行三列&lt;/li&gt;
+  &lt;li&gt;mgp：mgp=c（2.5,1,0）,第一个参数是坐标轴（边框）到轴标签的距离，单位是标签字符的大小；第二个参数是坐标轴到刻度的距离，第三个参数是与实际坐标轴的距离。&lt;/li&gt;
+  &lt;li&gt;mar：mar=c（6，6，3，3），分别为下左上右的边距&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h4 id=&quot;实际应用中的元组&quot;&gt;实际应用中的元组&lt;/h4&gt;
+&lt;p&gt;如果需要调整标签大小，最好同时调整 mgp 和 mar 参数，否则标签太大会显示不完整；一般标签在 x 轴和 y 轴，所以下左可以稍大些。
+这些参数也可以用在 png（）、jpeg（）等函数中&lt;/p&gt;
 
-&lt;p&gt;元组没有方法，但支持字符串和列表的一般序列操作，如&lt;code class=&quot;highlighter-rouge&quot;&gt;+&lt;/code&gt;，&lt;code class=&quot;highlighter-rouge&quot;&gt;*&lt;/code&gt;&lt;/p&gt;
-
-&lt;h5 id=&quot;元组的特殊语法逗号和圆括号&quot;&gt;元组的特殊语法：逗号和圆括号&lt;/h5&gt;
-
-&lt;h5 id=&quot;转换方法以及不可变性&quot;&gt;转换、方法以及不可变性&lt;/h5&gt;
-
-&lt;p&gt;元组的不可变性只适用于元组本身顶层而并非其内容。&lt;/p&gt;
-
-&lt;h3 id=&quot;文件&quot;&gt;文件&lt;/h3&gt;
-
-&lt;p&gt;内置open函数会创建一个Python文件对象，可以作为计算机上的一个文件链接。在调用open函数之后，你可以通过调用和返回文件对象的方法来读写相关外部文件。&lt;/p&gt;
-
-&lt;h4 id=&quot;打开文件&quot;&gt;打开文件&lt;/h4&gt;
-
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt; file=open（r‘路径’，‘处理模式’）&lt;/code&gt;&lt;/p&gt;
+&lt;h3 id=&quot;section&quot;&gt;图片坐标轴和文字属性都有参数可以设定，如：&lt;/h3&gt;
 &lt;ul&gt;
-  &lt;li&gt;‘r’:默认值，输入打开文件&lt;/li&gt;
-  &lt;li&gt;‘w’:输出生成并打开文件&lt;/li&gt;
-  &lt;li&gt;‘a’：为在文件尾部追加内容而打开文件&lt;/li&gt;
-  &lt;li&gt;’+’: 同时输入和输出，即可对相同的文件读写&lt;/li&gt;
+  &lt;li&gt;xlim、ylim&lt;/li&gt;
+  &lt;li&gt;title&lt;/li&gt;
+  &lt;li&gt;xlab&lt;/li&gt;
+  &lt;li&gt;ylab&lt;/li&gt;
+  &lt;li&gt;bty：设定边框&lt;/li&gt;
+  &lt;li&gt;cex：点或线的大小&lt;/li&gt;
+  &lt;li&gt;cex.axis：刻度大小&lt;/li&gt;
+  &lt;li&gt;cex.lab：轴标签的大小&lt;/li&gt;
+  &lt;li&gt;col&lt;/li&gt;
+  &lt;li&gt;las：坐标方向（垂直或平行于坐标轴，0 或 1）
+…
+这里主要介绍 mtext，它可以向生成后的图片添加文本
+&lt;code class=&quot;highlighter-rouge&quot;&gt;
+mtext(text, side = 3, line = 0, outer = FALSE, at = NA,
+    adj = NA, padj = NA, cex = NA, col = NA, font = NA, ...）
+&lt;/code&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h4 id=&quot;使用文件&quot;&gt;使用文件&lt;/h4&gt;
+&lt;p&gt;几个常用参数
+- text：要添加的文本，用 “” 引起来
+- side：在哪边输出文本，1234，代表下左上右
+- line：在距边框的距离，负数为向内
+- adj：0 表示左对齐或下对齐，1 表示右对齐或上对齐
+- at: 指定字符串的起始位置，例如 at=0.5，起始字符串与 x 轴 0.5 刻度对应，可以与 adj 搭配使用
+- cex：字体大小
+…&lt;/p&gt;
 
-&lt;ul&gt;
-  &lt;li&gt;文件迭代器是最好的读取工具&lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;内容是字符串，不是对象&lt;br /&gt;
-若想转换格式，需自己转换&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;close是通常选项&lt;/li&gt;
-&lt;/ul&gt;
+&lt;p&gt;需要注意的是，字符串大小不会与图片的大小同步调节，所以要多次尝试，找一个合适的大小。&lt;/p&gt;
 
-&lt;p&gt;默认怀部下，输出文件总是&lt;strong&gt;缓冲&lt;/strong&gt;的，这意味着写入的文本可能不会立即自动从内存转换到硬盘；&lt;strong&gt;关闭一个文件&lt;/strong&gt;，或者运行其&lt;strong&gt;flush方法&lt;/strong&gt;，迫使缓存的数据进入硬盘。&lt;/p&gt;
-
-&lt;h4 id=&quot;实际应用中的文件&quot;&gt;实际应用中的文件&lt;/h4&gt;
-
-&lt;h5 id=&quot;python-30中的文本和二进制文件&quot;&gt;Python 3.0中的文本和二进制文件&lt;/h5&gt;
-
-&lt;p&gt;文本和二进制文件在Python3.0中有区别；&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;文本文件把内容表示为常规的str字符串&lt;/li&gt;
-  &lt;li&gt;二进制文件把内容表示为一个特殊的bytes字符串类型，所以必须用bytets字符串处理二进制文件。&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h5 id=&quot;在文件中存储并解析python对象&quot;&gt;在文件中存储并解析Python对象&lt;/h5&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;输入后需将字符串转换成自己需要的格式。&lt;/li&gt;
-  &lt;li&gt;输出时需自己对字符串格式进行转换（字符串格式化），并加&lt;strong&gt;终止符&lt;/strong&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;\n&lt;/code&gt;&lt;/li&gt;
-  &lt;li&gt;文件是缓冲的并且是可查找的&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h5 id=&quot;用pickle存储python的原生对象&quot;&gt;用pickle存储Python的原生对象&lt;/h5&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;pickle.dump()&lt;/li&gt;
-  &lt;li&gt;pickle.load(0&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h5 id=&quot;文件中打包二进制数据的存储与解析&quot;&gt;文件中打包二进制数据的存储与解析&lt;/h5&gt;
-
-&lt;p&gt;struct模块；能够构造并解析打包的二进制数据。&lt;/p&gt;
-
-&lt;h5 id=&quot;文件上下文管理器&quot;&gt;文件上下文管理器&lt;/h5&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;with….as…&lt;/li&gt;
-  &lt;li&gt;try:….finally:…&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h5 id=&quot;其他文件工具&quot;&gt;其他文件工具&lt;/h5&gt;
-
-&lt;p&gt;除open外，还有：&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;标准流：sys模块预先打开的文件对象&lt;/li&gt;
-  &lt;li&gt;os模块中的描述文件&lt;/li&gt;
-  &lt;li&gt;sockets、pipes和FIFO文件&lt;/li&gt;
-  &lt;li&gt;通过键来存取的文件&lt;/li&gt;
-  &lt;li&gt;Shell命令流：eg。os.popen,subprocess.Popen&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h4 id=&quot;对象灵活性&quot;&gt;对象灵活性&lt;/h4&gt;
-
-&lt;h4 id=&quot;引用vs拷贝&quot;&gt;引用VS拷贝&lt;/h4&gt;
-
-&lt;p&gt;&lt;strong&gt;赋值操作储存对象的引用，而不是这些对象的拷贝。&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;列表是可变的，修改一个列表可能会引起其它引用该对象的变量的改变。&lt;/p&gt;
-
-&lt;p&gt;拷贝的方法：&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;分片表达式，&lt;strong&gt;仅顶层复制，不能复制嵌套的数据结构。&lt;/strong&gt;&lt;/li&gt;
-  &lt;li&gt;字典copy方法，&lt;strong&gt;仅顶层复制，不能复制嵌套的数据结构。&lt;/strong&gt;&lt;/li&gt;
-  &lt;li&gt;内置函数，如list&lt;/li&gt;
-  &lt;li&gt;copy标准库，可以完整复制&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h4 id=&quot;比较相等性和真值&quot;&gt;比较、相等性和真值&lt;/h4&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;==&lt;/code&gt; 操作符测试值的相等性&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;is&lt;/code&gt; 表达式测试对象的一致性&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h4 id=&quot;python中真和假的含义&quot;&gt;Python中真和假的含义&lt;/h4&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;数字非零，为真&lt;/li&gt;
-  &lt;li&gt;其他对象如果非空，为真&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h5 id=&quot;none对象&quot;&gt;None对象&lt;/h5&gt;
-
-&lt;p&gt;&lt;strong&gt;None为真对象，有一块内存&lt;/strong&gt;&lt;/p&gt;
-
-&lt;h5 id=&quot;bool类型&quot;&gt;bool类型&lt;/h5&gt;
-
-&lt;h4 id=&quot;python的类型层次&quot;&gt;Python的类型层次&lt;/h4&gt;
-
-&lt;h4 id=&quot;type-对象&quot;&gt;Type 对象&lt;/h4&gt;
-
-&lt;p&gt;&lt;strong&gt;类型&lt;/strong&gt;本身在Python中也是&lt;strong&gt;对象类型&lt;/strong&gt;。（比较抽象）&lt;/p&gt;
-
-&lt;h4 id=&quot;python中的其他类型&quot;&gt;Python中的其他类型&lt;/h4&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;正则表达式对象&lt;/li&gt;
-  &lt;li&gt;DBM文件&lt;/li&gt;
-  &lt;li&gt;GUI组件&lt;/li&gt;
-  &lt;li&gt;网络套接字&lt;/li&gt;
-  &lt;li&gt;…&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h5 id=&quot;内置类型陷阱&quot;&gt;内置类型陷阱&lt;/h5&gt;
-
-&lt;h5 id=&quot;赋值生成引用而不是拷贝&quot;&gt;赋值生成引用，而不是拷贝&lt;/h5&gt;
-
-&lt;h5 id=&quot;重复能够增加层次深度&quot;&gt;重复能够增加层次深度&lt;/h5&gt;
-
-&lt;h5 id=&quot;留意循环数据结构&quot;&gt;留意循环数据结构&lt;/h5&gt;
-
-&lt;h5 id=&quot;不可变类型不可以在原处改变&quot;&gt;不可变类型不可以在原处改变&lt;/h5&gt;
 </description>
-        <pubDate>Thu, 08 Dec 2016 00:00:00 -0500</pubDate>
-        <link>http://liuqibao.me/2016/12/08/tuple-and-file/</link>
-        <guid isPermaLink="true">http://liuqibao.me/2016/12/08/tuple-and-file/</guid>
+        <pubDate>Tue, 16 May 2017 00:00:00 +0800</pubDate>
+        <link>http://liuqibao.me/2017/05/16/parameter-about-gragh-in-R/</link>
+        <guid isPermaLink="true">http://liuqibao.me/2017/05/16/parameter-about-gragh-in-R/</guid>
         
-        <category>Python学习手册</category>
-        
-        
-        <category>Python</category>
         
       </item>
     
       <item>
-        <title>第8章 列表与字典</title>
+        <title>fastqc 软件的简单使用和结果解读</title>
         <description>&lt;ul id=&quot;markdown-toc&quot;&gt;
-  &lt;li&gt;&lt;a href=&quot;#列表&quot; id=&quot;markdown-toc-列表&quot;&gt;列表&lt;/a&gt;    &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;#实际应用中的列表&quot; id=&quot;markdown-toc-实际应用中的列表&quot;&gt;实际应用中的列表&lt;/a&gt;        &lt;ul&gt;
-          &lt;li&gt;&lt;a href=&quot;#基本列表操作&quot; id=&quot;markdown-toc-基本列表操作&quot;&gt;基本列表操作&lt;/a&gt;&lt;/li&gt;
-          &lt;li&gt;&lt;a href=&quot;#列表迭代和解析&quot; id=&quot;markdown-toc-列表迭代和解析&quot;&gt;列表迭代和解析&lt;/a&gt;&lt;/li&gt;
-          &lt;li&gt;&lt;a href=&quot;#索引分片和矩阵&quot; id=&quot;markdown-toc-索引分片和矩阵&quot;&gt;索引、分片和矩阵&lt;/a&gt;&lt;/li&gt;
-          &lt;li&gt;&lt;a href=&quot;#原处修改列表&quot; id=&quot;markdown-toc-原处修改列表&quot;&gt;原处修改列表&lt;/a&gt;            &lt;ul&gt;
-              &lt;li&gt;&lt;a href=&quot;#索引与分片的赋值&quot; id=&quot;markdown-toc-索引与分片的赋值&quot;&gt;索引与分片的赋值&lt;/a&gt;&lt;/li&gt;
-              &lt;li&gt;&lt;a href=&quot;#列表方法调用&quot; id=&quot;markdown-toc-列表方法调用&quot;&gt;列表方法调用&lt;/a&gt;&lt;/li&gt;
-              &lt;li&gt;&lt;a href=&quot;#其他常见列表操作&quot; id=&quot;markdown-toc-其他常见列表操作&quot;&gt;其他常见列表操作&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#section&quot; id=&quot;markdown-toc-section&quot;&gt;简单使用&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#section-1&quot; id=&quot;markdown-toc-section-1&quot;&gt;结果&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#section-2&quot; id=&quot;markdown-toc-section-2&quot;&gt;基础统计&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#section-3&quot; id=&quot;markdown-toc-section-3&quot;&gt;每个碱基的测序质量&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#per-sequence-quality-scores&quot; id=&quot;markdown-toc-per-sequence-quality-scores&quot;&gt;Per Sequence Quality Scores&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#per-base-sequence-content&quot; id=&quot;markdown-toc-per-base-sequence-content&quot;&gt;Per Base Sequence Content&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#per-sequence-gc-&quot; id=&quot;markdown-toc-per-sequence-gc-&quot;&gt;Per Sequence GC 含量&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#per-base-n-content&quot; id=&quot;markdown-toc-per-base-n-content&quot;&gt;Per Base N Content&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#sequence-length-distribution&quot; id=&quot;markdown-toc-sequence-length-distribution&quot;&gt;Sequence Length Distribution&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#duplicate-sequences&quot; id=&quot;markdown-toc-duplicate-sequences&quot;&gt;Duplicate Sequences&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#overrepresented-sequences&quot; id=&quot;markdown-toc-overrepresented-sequences&quot;&gt;Overrepresented Sequences&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#adapter-content&quot; id=&quot;markdown-toc-adapter-content&quot;&gt;Adapter Content&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#kmer-content&quot; id=&quot;markdown-toc-kmer-content&quot;&gt;Kmer Content&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#per-tile-sequence-quality&quot; id=&quot;markdown-toc-per-tile-sequence-quality&quot;&gt;Per Tile Sequence Quality&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;section&quot;&gt;简单使用&lt;/h3&gt;
+
+&lt;p&gt;fastqc 是一个高能量测序数据 QC 分析工具。
+作用命令：
+&lt;code class=&quot;highlighter-rouge&quot;&gt;
+fastqc seqfile1 seqfile2 ... seqfileN
+fastqc fastqc [-o output dir] [--(no)extract] [-f fastq|bam|sam] [-c contaminant file] seqfile1 .. seqfileN
+&lt;/code&gt;
+options：
+-o：将结果输出到指定文件夹。注意，文件夹必须已存在，程序不会自己创建文件夹。
+–casava：输入数据为 casava 数据
+–nano：输入数据为 naopore 序列数据，fast5 格式。
+–extract：输出文件不压缩，默认为压缩
+–noextract：压缩输出文件，如果在非交互式界面建议这样做。
+-f：强制指定输入文件格式，默认自动识别。可用格式有：bam,sam,bam_mapped,sam_mapped,fastq
+-t：多线程控制。注意，每个线程需要 250M 内存，请合理使用。32 位的系统不能多于 6 个线程。
+-c：污染物选项，非默认选项
+-a：接头文件，非默认选项
+-l：自定义评估标准，也可以删除某些评估项目。
+-k: 调节 kmers 设定某特定短序列的长度，范围 2-10，默认 7.
+-q：沉默模式，仅报告错误，不输出标准输出
+-d：设置存储产生图片时的临时文件的文件夹，默认 /temp&lt;/p&gt;
+
+&lt;h3 id=&quot;section-1&quot;&gt;结果&lt;/h3&gt;
+
+&lt;h4 id=&quot;section-2&quot;&gt;基础统计&lt;/h4&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Filename&lt;/li&gt;
+  &lt;li&gt;File type：常规碱基还是 colorspace 序列，后者需要转换为常规碱基。&lt;/li&gt;
+  &lt;li&gt;Encoding：Q 值的 ASCII 编码版本&lt;/li&gt;
+  &lt;li&gt;Total Sequences：有两个值，一个实际值，一个估计值，目前来说一样，软件还没找到好的估计方法。&lt;/li&gt;
+  &lt;li&gt;Filtered Sequences：在 Casava 模式下运行时过滤的 flag 序列数，这项结果不在上一项 Total Sequences中，也不在以后的分析中&lt;/li&gt;
+  &lt;li&gt;Sequence Length：显示最长和最短 read 长度，如果所有长度一致，只显示一个值。&lt;/li&gt;
+  &lt;li&gt;%GC：所有序列所有碱基的 %GC。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;section-3&quot;&gt;每个碱基的测序质量&lt;/h4&gt;
+
+&lt;p&gt;&lt;img src=&quot;../image/fastqc_image/per_base_sequence_content.png&quot; alt=&quot;&quot; /&gt;
+1. Summary
+展示 FastQ 文件每个位置每个碱基的质量范围。箱线图
+- 中间的红线是中位数
+- 蓝线是平均数&lt;/p&gt;
+
+&lt;p&gt;y 轴代表质量分数，前景分为不同的颜色：
+- 绿色：非常好
+- 橘色：合格
+- 红色：很差。
+一般测序的质量会随测序长度逐渐降低。&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;Warning
+碱基下四分位数小于 10，或者中位数小于 25.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Failure&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;碱基下四分位数质量小于 5，或者中位数小于 20.&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;揭示 warnings 的常见原因&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;最常见的原因是随测序的进行，质量逐渐下降。
+通常可以通过软件剪掉一部分碱基。
+没有去接头。
+另一个原因有可能是因为测序过程中，run 短暂的出现问题，可以通过比较每个 tile 的质量图查看错误类型。可以考虑先 amsking 碱基，再比对。
+如果 read 长度不一，可能会报错，因为某个碱基的覆盖度可能很低，下一步分析前，你需要查看哪些序列出了问题。&lt;/p&gt;
+
+&lt;h3 id=&quot;per-sequence-quality-scores&quot;&gt;Per Sequence Quality Scores&lt;/h3&gt;
+
+&lt;p&gt;&lt;img src=&quot;../image/fastqc_image/per_sequence_quality.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Summary
+每条 read 的质量分数。通常由于测序机器原因，总有部分 reads 质量不好，但应该只占一小部分。
+如果一个 run 中的测序结果有明显的一部分质量较低，可能是系统原因，可能是某个 flowcell 的问题。&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;y 轴：reads 数
+x 轴：质量&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Warning&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;平均值小于 27（=0.2% 错误率）&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Failure&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;均值小于 20（=1% 错误率）&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;常见原因&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;This module is generally fairly robust and errors here usually indicate a general loss of quality within a run. For long runs this may be alleviated through quality trimming. If a bi-modal, or complex distribution is seen then the results should be evaluated in concert with the per-tile qualities (if available) since this might indicate the reason for the loss in quality of a subset of sequences.&lt;/p&gt;
+
+&lt;h3 id=&quot;per-base-sequence-content&quot;&gt;Per Base Sequence Content&lt;/h3&gt;
+
+&lt;p&gt;&lt;img src=&quot;../image/fastqc_image/per_base_sequence_content.pn&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Summary&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;reads 的每个位置的每种碱基比例。
+y 轴：百分比
+x 轴：read 位置&lt;/p&gt;
+
+&lt;p&gt;在随机库中，理想结果为 4 各碱基比率相同（25%），为一条直线。
+值得注意的是，一些类型的库碱基比例会出现偏差，通常是在 read 的开始位置。这是由于系统原因造成的，包括 RNA-seq。虽然这是一个技术偏差，而且也不会对下游分析造成影响，但是，本模块还是会给出警告。&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Warnning&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;任何位置 A 和 T，或者 G 和 C 的差异大于 10%&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Failure&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;任何位置 A 和 T，或者 G 和 C 的差异大小 20%&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;常见原因&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;有以下几个常见原因：
+1&amp;gt; Overrepresented sequences：如接头或者 rRNA
+2&amp;gt; Biased fragmentation：由于系统的随机选择偏差，导致每个 run 的前 12bp 可能有偏差。
+3&amp;gt; Biased composition libraries: 一些库的组成有偏差，比如经过了亚硫酸钠处理等，虽然对这个库很正常，但是模块会给出警告。
+4&amp;gt; 如果库已过了去接头处理，可能会引起虚假的偏差，因为已经比对需要的接头已经去除了。&lt;/p&gt;
+
+&lt;h3 id=&quot;per-sequence-gc-&quot;&gt;Per Sequence GC 含量&lt;/h3&gt;
+&lt;p&gt;&lt;img src=&quot;../image/fastqc_image/per_sequence_gc_content.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;Summary
+每条 read 的 GC 含量分布与正常分布的比较
+y 轴：read 数
+x 轴：GC%&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Warning&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;15% reads 有偏差&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Failure&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;30% 的 reads 有偏差。&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;常见原因&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;由于污染或者系统误差造成。&lt;/p&gt;
+
+&lt;h3 id=&quot;per-base-n-content&quot;&gt;Per Base N Content&lt;/h3&gt;
+
+&lt;p&gt;&lt;img src=&quot;../image/fastqc_image/per_base_n_content.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Summary&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;如果不能识别某位置是什么碱基，会标为 N
+该模块统计每个位置 N 的比例
+y 轴：位置
+x 轴：N 比例
+正常情况下为一条直线，可能在末端有时会有突起。&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Warning&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;5%&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Failure&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;20%&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;常见原因&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;一个最可能的原因是某个位置的覆盖度比较低。
+在测序质量很好的背景下有少部分位置发生高的 N 含量，可能是因为序列的组成有偏差，可以在 per-base-sequence-content 结果中查看。&lt;/p&gt;
+
+&lt;h3 id=&quot;sequence-length-distribution&quot;&gt;Sequence Length Distribution&lt;/h3&gt;
+&lt;p&gt;![../image/fastqc_image/sequence_length_distribution.png]
+1. Summary
+x 轴：reads 长度
+y 轴：reads 数&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Warning
+长度不一&lt;/li&gt;
+  &lt;li&gt;Failure
+有长度为 0&lt;/li&gt;
+  &lt;li&gt;常见原因
+有些平台的 reads 长度就量不一样，不用管它。&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;duplicate-sequences&quot;&gt;Duplicate Sequences&lt;/h3&gt;
+&lt;p&gt;1&lt;a href=&quot;../image/fastqc_image/duplication_levels.png&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;Summary
+一个低的 duplication 表明覆盖度较高，但是过高的 duplication 表明有富集偏差（如，PCR 过量扩增）。
+y 轴：duplicated reads 数
+x 轴：duplication 次数
+无重复 reads 数为 100%
+为了减少内存占用，仅对前100,000条不重复序列进行统计。
+为了简化结果形式，对于多于10次重复的序列会人为地将其重复次数设定为10，因此结果图像上曲线会显示一个小的翘尾。
+对于&amp;gt;75bp的序列，将其截短为前50bp进行统计，因相对而言长序列会包含较多测序错误而倾向于产生过多的统计重复。&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Warning
+非唯一序列大于 20%&lt;/li&gt;
+  &lt;li&gt;Failure
+非唯一序列大于 50%&lt;/li&gt;
+  &lt;li&gt;常见原因
+一般有两个原因：技术重复（PCR 扩增）、生物重复（不同拷贝）&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;overrepresented-sequences&quot;&gt;Overrepresented Sequences&lt;/h3&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Summary
+为了优化运算仅对前100,000条序列进行运算，将重复比例在所有序列中的占比&amp;gt;0.1%的结果进行列表输出，并且对其与常见的测序实验中使用的adapter等序列进行比对，比对时要求一致性长度&amp;gt;20p且无任何错配。&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;对于&amp;gt;75bp的序列，将其截短为前50bp进行比对
+2. Warning
+重复序列大于 0.1%
+3. Failure
+重复序列大于 1%
+4. 常见原因&lt;/p&gt;
+
+&lt;h3 id=&quot;adapter-content&quot;&gt;Adapter Content&lt;/h3&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Summary&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;接头序列统计
+2. Warning
+任何序列出现在 5% 的 reads 中
+3. Failure
+任何序列出现在 10% 的 reads 中&lt;/p&gt;
+
+&lt;h3 id=&quot;kmer-content&quot;&gt;Kmer Content&lt;/h3&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Summary
+overrepresented sequence 并不总是有效，例如：
+1）如低质量的长 reads，由于随机的测序错误会降低过表达序列统计数
+2）如果小片段序列在不同的位置出现也不会以被统计到&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Kmer意为连指定长度为K的连续碱基
+此部分的Kmer默认为连续7个碱基组成的一个单元，即任意一个碱基与其后相连的六个碱基构成了一个Kmer。
+按read的位点逐一统计每一个位点的所有Kmer的情况，并在结果图中给出了前六个过表达的Kmer及其在read上的位点分布情况。
+如果某k个bp的短序列在reads中大量出现，其频率高于统计期望的话，fastqc将其记为over-represente&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Warninn&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;p &amp;lt; 0.01&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Failure&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;P &amp;lt; 10^5&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;常见原因&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;per-tile-sequence-quality&quot;&gt;Per Tile Sequence Quality&lt;/h3&gt;
+&lt;p&gt;&lt;img src=&quot;../image/fastqc_image/per_tile_quality.png&quot; alt=&quot;&quot; /&gt;
+1. Summary
+该模块展示 Illumina 测序的每个 flowcell tile 的结果，这样就可以直接看到是哪个 tile 的测序有问题。
+冷色表示该 tile 的质量大于等于相应 run 的平均质量，热色系表示小于平均质量。总之，越蓝越好，越红越差。
+y 轴：tile 编号
+x 轴：read 位置&lt;/p&gt;
+
+&lt;p&gt;产生的问题可能是由于暂时性问题，如有气泡，或者长时间的问题，如 flowcell 的壁上有污迹。&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Warning
+Phred score 低于均值的有 2 个&lt;/li&gt;
+  &lt;li&gt;Failure
+Phred score 低于均值的有 5 个&lt;/li&gt;
+  &lt;li&gt;常见原因&lt;/li&gt;
+&lt;/ol&gt;
+
+</description>
+        <pubDate>Wed, 26 Apr 2017 00:00:00 +0800</pubDate>
+        <link>http://liuqibao.me/2017/04/26/fastqc-introdution-and-result/</link>
+        <guid isPermaLink="true">http://liuqibao.me/2017/04/26/fastqc-introdution-and-result/</guid>
+        
+        <category>使用手册</category>
+        
+        
+        <category>bioinformatics</category>
+        
+      </item>
+    
+      <item>
+        <title>## vcftools 的简单使用</title>
+        <description>&lt;ul id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#section&quot; id=&quot;markdown-toc-section&quot;&gt;1. 安装&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#section-1&quot; id=&quot;markdown-toc-section-1&quot;&gt;2. 使用&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#section-2&quot; id=&quot;markdown-toc-section-2&quot;&gt;2.2. 位点过滤参数：&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#section-3&quot; id=&quot;markdown-toc-section-3&quot;&gt;2.3. 样本过滤参数&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#section-4&quot; id=&quot;markdown-toc-section-4&quot;&gt;2.4. 基因型过滤参数&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#section-5&quot; id=&quot;markdown-toc-section-5&quot;&gt;2.5. 输出参数&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#section-6&quot; id=&quot;markdown-toc-section-6&quot;&gt;2.6. 比较参数&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;vcftools 是用于 VCF 和 BCF 格式的遗传变异数据的工具包。
+它的功能主要有数据统计、运行数据计算、数据过滤、数据转换。&lt;/p&gt;
+
+&lt;h3 id=&quot;section&quot;&gt;1. 安装&lt;/h3&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;git clone https://github.com/vcftools/vcftools.git
+cd vcftools
+./autogen.sh
+./configure
+make
+make install
+&lt;/div&gt;
+&lt;p&gt;如果是非 root 用户，可以使用：`./configure prefix=’Your path’&lt;/p&gt;
+
+&lt;h3 id=&quot;section-1&quot;&gt;2. 使用&lt;/h3&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;vcftools [ --vcf FILE | --gzvcf FILE | --bcf FILE] [ --out OUTPUT PREFIX ] [ FILTERING OPTIONS ] [ OUTPUT OPTIONS ]
+&lt;/div&gt;
+&lt;p&gt;#### 2.1. 基本参数：
+- 输入文件参数：
+–vcf &lt;输入文件&gt;：输入文件可以是 VCF 格式 v4.0、v4.1 和 v4.2。’-‘ 用于标准输入
+--gzvcf &lt;输入文件&gt;： 读入 gzipped 压缩文件
+--bcf &lt;输入文件&gt;：读入 BCF2 文件。
+- 输出文件参数：
+--out &lt;输出文件&gt;：所有输出文件的文件名前缀。如果忽略，默认为 ’out.'
+--stdout
+-c：输出为标准输出
+-temp &lt;temp_文件&gt;：将 vcftools 产生的所有临时文件输入到指定目录。&lt;/temp_文件&gt;&lt;/输出文件&gt;&lt;/输入文件&gt;&lt;/输入文件&gt;&lt;/输入文件&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;section-2&quot;&gt;2.2. 位点过滤参数：&lt;/h4&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;位置过滤
+–chr &lt;chromosome&gt; 
+--not-chr &lt;chromosome&gt;&lt;/chromosome&gt;&lt;/chromosome&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;匹配或者不匹配某条染色体。可能多次使用该参数，以设定多条染色体。&lt;/p&gt;
+
+&lt;p&gt;–from-bp &lt;integer&gt; 
+--to-bp &lt;integer&gt;&lt;/integer&gt;&lt;/integer&gt;&lt;/p&gt;
+
+&lt;p&gt;设定碱基的位置范围，仅与 &lt;code class=&quot;highlighter-rouge&quot;&gt;--chr&lt;/code&gt; 结合使用。可以只使用一个。&lt;/p&gt;
+
+&lt;p&gt;–positions &lt;filename&gt; 
+--exclude-positions &lt;filename&gt;&lt;/filename&gt;&lt;/filename&gt;&lt;/p&gt;
+
+&lt;p&gt;使用或者不使用文件中的某些位置的碱基。输入文件的每行用 &lt;code class=&quot;highlighter-rouge&quot;&gt;\t&lt;/code&gt; 制表符分隔，允许加注释行，用 ‘#’ 开头。&lt;/p&gt;
+
+&lt;p&gt;–positions-overlap &lt;filename&gt; 
+--exclude-positions-overlap &lt;filename&gt;&lt;/filename&gt;&lt;/filename&gt;&lt;/p&gt;
+
+&lt;p&gt;排除或者不排除文件中与参考等位基因重叠的碱基。&lt;/p&gt;
+
+&lt;p&gt;–bed &lt;filename&gt; 
+--exclude-bed &lt;filename&gt;&lt;/filename&gt;&lt;/filename&gt;&lt;/p&gt;
+
+&lt;p&gt;Include or exclude a set of sites on the basis of a BED file. Only the first three columns (chrom, chromStart and chromEnd) are required. The BED file is expected to have a header line. A site will be kept or excluded if any part of any allele (REF or ALT) at a site is within the range of one of the BED entries.&lt;/p&gt;
+
+&lt;p&gt;–thin &lt;integer&gt;&lt;/integer&gt;&lt;/p&gt;
+
+&lt;p&gt;Thin sites so that no two sites are within the specified distance from one another.&lt;/p&gt;
+
+&lt;p&gt;–mask &lt;filename&gt; 
+--invert-mask &lt;filename&gt; 
+--mask-min &lt;integer&gt;&lt;/integer&gt;&lt;/filename&gt;&lt;/filename&gt;&lt;/p&gt;
+
+&lt;p&gt;These options are used to specify a FASTA-like mask file to filter with. The mask file contains a sequence of integer digits (between 0 and 9) for each position on a chromosome that specify if a site at that position should be filtered or not. 
+An example mask file would look like:
+&lt;code class=&quot;highlighter-rouge&quot;&gt;
+&amp;gt;1 
+0000011111222... 
+&amp;gt;2 
+2222211111000...
+&lt;/code&gt;
+In this example, sites in the VCF file located within the first 5 bases of the start of chromosome 1 would be kept, whereas sites at position 6 onwards would be filtered out. And sites after the 11th position on chromosome 2 would be filtered out as well. 
+The “–invert-mask” option takes the same format mask file as the “–mask” option, however it inverts the mask file before filtering with it. 
+And the “–mask-min” option specifies a threshold mask value between 0 and 9 to filter positions by. The default threshold is 0, meaning only sites with that value or lower will be kept.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;位点过滤&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;–snp &lt;string&gt;&lt;/string&gt;&lt;/p&gt;
+
+&lt;p&gt;包含一个 SNP 位点，如 dbSNP 的 rsID。可以使用多次。&lt;/p&gt;
+
+&lt;p&gt;–snps &lt;filename&gt; 
+--exclude &lt;filename&gt;&lt;/filename&gt;&lt;/filename&gt;&lt;/p&gt;
+
+&lt;p&gt;使用或者不使用文件中给出的 SNPs。文件包含一列 SNP IDs （如 dbSNP rsIDs），每行一个，不需要表头。&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;变异类型过滤
+–keep-only-indels 
+–remove-indels&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;使用或者不使用一个 indel。indel 表示任何与参考等位基因长度不同的变异。&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;FILTER flag 过滤
+–remove-filtered-all&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;根据 vcf 文件中的 FILTER flag 过滤，除了 PASS。&lt;/p&gt;
+
+&lt;p&gt;–keep-filtered &lt;string&gt; 
+--remove-filtered &lt;string&gt;&lt;/string&gt;&lt;/string&gt;&lt;/p&gt;
+
+&lt;p&gt;使用或者不使用 FILTER flag 标记的所有位点。可以多次使用该参数。&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;根据 INFO 过滤&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;–keep-INFO &lt;string&gt; 
+--remove-INFO &lt;string&gt;&lt;/string&gt;&lt;/string&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;根据 ALLELE 过虑&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;–maf &lt;float&gt; ：过滤大于等于该 MAF 的位点
+--max-maf &lt;float&gt;：过滤小于等于该 MAF 的位点。&lt;/float&gt;&lt;/float&gt;&lt;/p&gt;
+
+&lt;p&gt;–non-ref-af &lt;float&gt; 
+--max-non-ref-af &lt;float&gt; 
+--non-ref-ac &lt;integer&gt; 
+--max-non-ref-ac &lt;integer&gt;&lt;/integer&gt;&lt;/integer&gt;&lt;/float&gt;&lt;/float&gt;&lt;/p&gt;
+
+&lt;p&gt;–non-ref-af-any &lt;float&gt; 
+--max-non-ref-af-any &lt;float&gt; 
+--non-ref-ac-any &lt;integer&gt; 
+--max-non-ref-ac-any &lt;integer&gt;&lt;/integer&gt;&lt;/integer&gt;&lt;/float&gt;&lt;/float&gt;&lt;/p&gt;
+
+&lt;p&gt;–mac &lt;integer&gt; ：过滤最小等位基因 count 数大于等位该参数的位点
+--max-mac &lt;integer&gt;：过滤最小等位基因 count 数小于等于该参数的位点&lt;/integer&gt;&lt;/integer&gt;&lt;/p&gt;
+
+&lt;p&gt;–min-alleles &lt;integer&gt; 
+--max-alleles &lt;integer&gt;&lt;/integer&gt;&lt;/integer&gt;&lt;/p&gt;
+
+&lt;p&gt;过滤等位基因数小于或者大于该参数的位点，可以结合使用，例如，&lt;code class=&quot;highlighter-rouge&quot;&gt;vcftools --vcf file1.vcf --min-alleles 2 --max-alleles 2&lt;/code&gt; 过滤只有两个等位基因的位点。&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;根据基因型数值过滤&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;–min-meanDP &lt;float&gt; 
+--max-meanDP &lt;float&gt;&lt;/float&gt;&lt;/float&gt;&lt;/p&gt;
+
+&lt;p&gt;根据测序深度过滤&lt;/p&gt;
+
+&lt;p&gt;–hwe &lt;float&gt;：哈迪-温伯格平衡&lt;/float&gt;&lt;/p&gt;
+
+&lt;p&gt;Assesses sites for Hardy-Weinberg Equilibrium using an exact test, as defined by Wigginton, Cutler and Abecasis (2005). Sites with a p-value below the threshold defined by this option are taken to be out of HWE, and therefore excluded.&lt;/p&gt;
+
+&lt;p&gt;–max-missing &lt;float&gt;：根据缺失数据比例过滤&lt;/float&gt;&lt;/p&gt;
+
+&lt;p&gt;Exclude sites on the basis of the proportion of missing data (defined to be between 0 and 1, where 0 allows sites that are completely missing and 1 indicates no missing data allowed).&lt;/p&gt;
+
+&lt;p&gt;–max-missing-count &lt;integer&gt;&lt;/integer&gt;&lt;/p&gt;
+
+&lt;p&gt;Exclude sites with more than this number of missing genotypes over all individuals.&lt;/p&gt;
+
+&lt;p&gt;–phased&lt;/p&gt;
+
+&lt;p&gt;Excludes all sites that contain unphased genotypes.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;杂项过滤
+–minQ &lt;float&gt;：根据 Quality 值过滤&lt;/float&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;section-3&quot;&gt;2.3. 样本过滤参数&lt;/h4&gt;
+
+&lt;p&gt;–indv &lt;string&gt; 
+--remove-indv &lt;string&gt;&lt;/string&gt;&lt;/string&gt;&lt;/p&gt;
+
+&lt;p&gt;使用或者不使用某样本，可以多次使用该参数。&lt;/p&gt;
+
+&lt;p&gt;–keep &lt;filename&gt; 
+--remove &lt;filename&gt;&lt;/filename&gt;&lt;/filename&gt;&lt;/p&gt;
+
+&lt;p&gt;使用或者移除的文件中所列的本亲。样本 ID （与 VCF 表头相同）每个一行。如果同时使用两参数，&lt;code class=&quot;highlighter-rouge&quot;&gt;--keep&lt;/code&gt; 先于 &lt;code class=&quot;highlighter-rouge&quot;&gt;--remove&lt;/code&gt; 运行。如果使用了多个文件，先保留所有 ’–keep‘ 文件中的样本，再删除其中 ’–remove‘ 所有文件中的样本。&lt;/p&gt;
+
+&lt;p&gt;–max-indv &lt;integer&gt;: Randomly thins individuals so that only the specified number are retained.&lt;/integer&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;section-4&quot;&gt;2.4. 基因型过滤参数&lt;/h4&gt;
+
+&lt;p&gt;–remove-filtered-geno-all&lt;/p&gt;
+
+&lt;p&gt;Excludes all genotypes with a FILTER flag not equal to “.” (a missing value) or PASS.&lt;/p&gt;
+
+&lt;p&gt;–remove-filtered-geno &lt;string&gt;&lt;/string&gt;&lt;/p&gt;
+
+&lt;p&gt;Excludes genotypes with a specific FILTER flag.&lt;/p&gt;
+
+&lt;p&gt;–minGQ &lt;float&gt;&lt;/float&gt;&lt;/p&gt;
+
+&lt;p&gt;Exclude all genotypes with a quality below the threshold specified. This option requires that the “GQ” FORMAT tag is specified for all sites.&lt;/p&gt;
+
+&lt;p&gt;–minDP &lt;float&gt; 
+--maxDP &lt;float&gt;&lt;/float&gt;&lt;/float&gt;&lt;/p&gt;
+
+&lt;p&gt;Includes only genotypes greater than or equal to the “–minDP” value and less than or equal to the “–maxDP” value. This option requires that the “DP” FORMAT tag is specified for all sites.&lt;/p&gt;
+
+&lt;h4 id=&quot;section-5&quot;&gt;2.5. 输出参数&lt;/h4&gt;
+&lt;ul&gt;
+  &lt;li&gt;输出等位基因统计
+-freq 
+–freq2&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;输出带有后缀 ’.frq‘ 文件中的每个位点的等位基因频率。第二选项禁止所有关于等位基因信息的输出。&lt;/p&gt;
+
+&lt;p&gt;–counts 
+–counts2&lt;/p&gt;
+
+&lt;p&gt;输出带有后缀 ‘.frq.count’ 文件中的原始等位基因 counts 数。第二个选项禁止所有关于等位基因信息的输出。&lt;/p&gt;
+
+&lt;p&gt;–derived&lt;/p&gt;
+
+&lt;p&gt;For use with the previous four frequency and count options only. Re-orders the output file columns so that the ancestral allele appears first. This option relies on the ancestral allele being specified in the VCF file using the AA tag in the INFO field.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;输出深度统计&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;–depth&lt;/p&gt;
+
+&lt;p&gt;Generates a file containing the mean depth per individual. This file has the suffix “.idepth”.&lt;/p&gt;
+
+&lt;p&gt;–site-depth&lt;/p&gt;
+
+&lt;p&gt;Generates a file containing the depth per site summed across all individuals. This output file has the suffix “.ldepth”.&lt;/p&gt;
+
+&lt;p&gt;–site-mean-depth&lt;/p&gt;
+
+&lt;p&gt;Generates a file containing the mean depth per site averaged across all individuals. This output file has the suffix “.ldepth.mean”.&lt;/p&gt;
+
+&lt;p&gt;–geno-depth&lt;/p&gt;
+
+&lt;p&gt;Generates a (possibly very large) file containing the depth for each genotype in the VCF file. Missing entries are given the value -1. The file has the suffix “.gdepth”.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;输出 LD 统计&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;–hap-r2&lt;/p&gt;
+
+&lt;p&gt;Outputs a file reporting the r2, D, and D’ statistics using phased haplotypes. These are the traditional measures of LD often reported in the population genetics literature. The output file has the suffix “.hap.ld”. This option assumes that the VCF input file has phased haplotypes.&lt;/p&gt;
+
+&lt;p&gt;–geno-r2&lt;/p&gt;
+
+&lt;p&gt;Calculates the squared correlation coefficient between genotypes encoded as 0, 1 and 2 to represent the number of non-reference alleles in each individual. This is the same as the LD measure reported by PLINK. The D and D’ statistics are only available for phased genotypes. The output file has the suffix “.geno.ld”.&lt;/p&gt;
+
+&lt;p&gt;–geno-chisq&lt;/p&gt;
+
+&lt;p&gt;If your data contains sites with more than two alleles, then this option can be used to test for genotype independence via the chi-squared statistic. The output file has the suffix “.geno.chisq”.&lt;/p&gt;
+
+&lt;p&gt;–hap-r2-positions &lt;positions list=&quot;&quot; file=&quot;&quot;&gt; 
+--geno-r2-positions &lt;positions list=&quot;&quot; file=&quot;&quot;&gt;&lt;/positions&gt;&lt;/positions&gt;&lt;/p&gt;
+
+&lt;p&gt;Outputs a file reporting the r2 statistics of the sites contained in the provided file verses all other sites. The output files have the suffix “.list.hap.ld” or “.list.geno.ld”, depending on which option is used.&lt;/p&gt;
+
+&lt;p&gt;–ld-window &lt;integer&gt;&lt;/integer&gt;&lt;/p&gt;
+
+&lt;p&gt;This optional parameter defines the maximum number of SNPs between the SNPs being tested for LD in the “–hap-r2”, “–geno-r2”, and “–geno-chisq” functions.&lt;/p&gt;
+
+&lt;p&gt;–ld-window-bp &lt;integer&gt;&lt;/integer&gt;&lt;/p&gt;
+
+&lt;p&gt;This optional parameter defines the maximum number of physical bases between the SNPs being tested for LD in the “–hap-r2”, “–geno-r2”, and “–geno-chisq” functions.&lt;/p&gt;
+
+&lt;p&gt;–ld-window-min &lt;integer&gt;&lt;/integer&gt;&lt;/p&gt;
+
+&lt;p&gt;This optional parameter defines the minimum number of SNPs between the SNPs being tested for LD in the “–hap-r2”, “–geno-r2”, and “–geno-chisq” functions.&lt;/p&gt;
+
+&lt;p&gt;–ld-window-bp-min &lt;integer&gt;&lt;/integer&gt;&lt;/p&gt;
+
+&lt;p&gt;This optional parameter defines the minimum number of physical bases between the SNPs being tested for LD in the “–hap-r2”, “–geno-r2”, and “–geno-chisq” functions.&lt;/p&gt;
+
+&lt;p&gt;–min-r2 &lt;float&gt;&lt;/float&gt;&lt;/p&gt;
+
+&lt;p&gt;This optional parameter sets a minimum value for r2, below which the LD statistic is not reported by the “–hap-r2”, “–geno-r2”, and “–geno-chisq” functions.&lt;/p&gt;
+
+&lt;p&gt;–interchrom-hap-r2 
+–interchrom-geno-r2&lt;/p&gt;
+
+&lt;p&gt;Outputs a file reporting the r2 statistics for sites on different chromosomes. The output files have the suffix “.interchrom.hap.ld” or “.interchrom.geno.ld”, depending on the option used.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;OUTPUT TRANSITION/TRANSVERSION STATISTICS&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;–TsTv &lt;integer&gt;&lt;/integer&gt;&lt;/p&gt;
+
+&lt;p&gt;Calculates the Transition / Transversion ratio in bins of size defined by this option. Only uses bi-allelic SNPs. The resulting output file has the suffix “.TsTv”.&lt;/p&gt;
+
+&lt;p&gt;–TsTv-summary&lt;/p&gt;
+
+&lt;p&gt;Calculates a simple summary of all Transitions and Transversions. The output file has the suffix “.TsTv.summary”.&lt;/p&gt;
+
+&lt;p&gt;–TsTv-by-count&lt;/p&gt;
+
+&lt;p&gt;Calculates the Transition / Transversion ratio as a function of alternative allele count. Only uses bi-allelic SNPs. The resulting output file has the suffix “.TsTv.count”.&lt;/p&gt;
+
+&lt;p&gt;–TsTv-by-qual&lt;/p&gt;
+
+&lt;p&gt;Calculates the Transition / Transversion ratio as a function of SNP quality threshold. Only uses bi-allelic SNPs. The resulting output file has the suffix “.TsTv.qual”.&lt;/p&gt;
+
+&lt;p&gt;–FILTER-summary&lt;/p&gt;
+
+&lt;p&gt;Generates a summary of the number of SNPs and Ts/Tv ratio for each FILTER category. The output file has the suffix “.FILTER.summary”.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;输出核酸多态性统计&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;–site-pi&lt;/p&gt;
+
+&lt;p&gt;Measures nucleotide divergency on a per-site basis. The output file has the suffix “.sites.pi”.&lt;/p&gt;
+
+&lt;p&gt;–window-pi &lt;integer&gt; 
+--window-pi-step &lt;integer&gt;&lt;/integer&gt;&lt;/integer&gt;&lt;/p&gt;
+
+&lt;p&gt;Measures the nucleotide diversity in windows, with the number provided as the window size. The output file has the suffix “.windowed.pi”. The latter is an optional argument used to specify the step size in between windows.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;输出 FST 统计&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;–weir-fst-pop &lt;filename&gt;&lt;/filename&gt;&lt;/p&gt;
+
+&lt;p&gt;This option is used to calculate an Fst estimate from Weir and Cockerham’s 1984 paper. This is the preferred calculation of Fst. The provided file must contain a list of individuals (one individual per line) from the VCF file that correspond to one population. This option can be used multiple times to calculate Fst for more than two populations. These files will also be included as “–keep” options. By default, calculations are done on a per-site basis. The output file has the suffix “.weir.fst”.&lt;/p&gt;
+
+&lt;p&gt;–fst-window-size &lt;integer&gt; 
+--fst-window-step &lt;integer&gt;&lt;/integer&gt;&lt;/integer&gt;&lt;/p&gt;
+
+&lt;p&gt;These options can be used with “–weir-fst-pop” to do the Fst calculations on a windowed basis instead of a per-site basis. These arguments specify the desired window size and the desired step size between windows.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;输出其它统计&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;–het&lt;/p&gt;
+
+&lt;p&gt;Calculates a measure of heterozygosity on a per-individual basis. Specfically, the inbreeding coefficient, F, is estimated for each individual using a method of moments. The resulting file has the suffix “.het”.&lt;/p&gt;
+
+&lt;p&gt;–hardy&lt;/p&gt;
+
+&lt;p&gt;Reports a p-value for each site from a Hardy-Weinberg Equilibrium test (as defined by Wigginton, Cutler and Abecasis (2005)). The resulting file (with suffix “.hwe”) also contains the Observed numbers of Homozygotes and Heterozygotes and the corresponding Expected numbers under HWE.&lt;/p&gt;
+
+&lt;p&gt;–TajimaD &lt;integer&gt;&lt;/integer&gt;&lt;/p&gt;
+
+&lt;p&gt;Outputs Tajima’s D statistic in bins with size of the specified number. The output file has the suffix “.Tajima.D”.&lt;/p&gt;
+
+&lt;p&gt;–indv-freq-burden&lt;/p&gt;
+
+&lt;p&gt;This option calculates the number of variants within each individual of a specific frequency. The resulting file has the suffix “.ifreqburden”.&lt;/p&gt;
+
+&lt;p&gt;–LROH&lt;/p&gt;
+
+&lt;p&gt;This option will identify and output Long Runs of Homozygosity. The output file has the suffix “.LROH”. This function is experimental, and will use a lot of memory if applied to large datasets.&lt;/p&gt;
+
+&lt;p&gt;–relatedness&lt;/p&gt;
+
+&lt;p&gt;This option is used to calculate and output a relatedness statistic based on the method of Yang et al, Nature Genetics 2010 (doi:10.1038/ng.608). Specifically, calculate the unadjusted Ajk statistic. Expectation of Ajk is zero for individuals within a populations, and one for an individual with themselves. The output file has the suffix “.relatedness”.&lt;/p&gt;
+
+&lt;p&gt;–relatedness2&lt;/p&gt;
+
+&lt;p&gt;This option is used to calculate and output a relatedness statistic based on the method of Manichaikul et al., BIOINFORMATICS 2010 (doi:10.1093/bioinformatics/btq559). The output file has the suffix “.relatedness2”.&lt;/p&gt;
+
+&lt;p&gt;–site-quality&lt;/p&gt;
+
+&lt;p&gt;Generates a file containing the per-site SNP quality, as found in the QUAL column of the VCF file. This file has the suffix “.lqual”.&lt;/p&gt;
+
+&lt;p&gt;–missing-indv&lt;/p&gt;
+
+&lt;p&gt;Generates a file reporting the missingness on a per-individual basis. The file has the suffix “.imiss”.&lt;/p&gt;
+
+&lt;p&gt;–missing-site&lt;/p&gt;
+
+&lt;p&gt;Generates a file reporting the missingness on a per-site basis. The file has the suffix “.lmiss”.&lt;/p&gt;
+
+&lt;p&gt;–SNPdensity &lt;integer&gt;&lt;/integer&gt;&lt;/p&gt;
+
+&lt;p&gt;Calculates the number and density of SNPs in bins of size defined by this option. The resulting output file has the suffix “.snpden”.&lt;/p&gt;
+
+&lt;p&gt;–kept-sites&lt;/p&gt;
+
+&lt;p&gt;Creates a file listing all sites that have been kept after filtering. The file has the suffix “.kept.sites”.&lt;/p&gt;
+
+&lt;p&gt;–removed-sites&lt;/p&gt;
+
+&lt;p&gt;Creates a file listing all sites that have been removed after filtering. The file has the suffix “.removed.sites”.&lt;/p&gt;
+
+&lt;p&gt;–singletons&lt;/p&gt;
+
+&lt;p&gt;This option will generate a file detailing the location of singletons, and the individual they occur in. The file reports both true singletons, and private doubletons (i.e. SNPs where the minor allele only occurs in a single individual and that individual is homozygotic for that allele). The output file has the suffix “.singletons”.&lt;/p&gt;
+
+&lt;p&gt;–hist-indel-len&lt;/p&gt;
+
+&lt;p&gt;This option will generate a histogram file of the length of all indels (including SNPs). It shows both the count and the percentage of all indels for indel lengths that occur at least once in the input file. SNPs are considered indels with length zero. The output file has the suffix “.indel.hist”.&lt;/p&gt;
+
+&lt;p&gt;–hapcount &lt;BED file=&quot;&quot;&gt;&lt;/BED&gt;&lt;/p&gt;
+
+&lt;p&gt;This option will output the number of unique haplotypes within user specified bins, as defined by the BED file. The output file has the suffix “.hapcount”.&lt;/p&gt;
+
+&lt;p&gt;–mendel &lt;PED file=&quot;&quot;&gt;&lt;/PED&gt;&lt;/p&gt;
+
+&lt;p&gt;This option is use to report mendel errors identified in trios. The command requires a PLINK-style PED file, with the first four columns specifying a family ID, the child ID, the father ID, and the mother ID. The output of this command has the suffix “.mendel”.&lt;/p&gt;
+
+&lt;p&gt;–extract-FORMAT-info &lt;string&gt;&lt;/string&gt;&lt;/p&gt;
+
+&lt;p&gt;Extract information from the genotype fields in the VCF file relating to a specfied FORMAT identifier. The resulting output file has the suffix “.&lt;FORMAT_ID&gt;.FORMAT&quot;. For example, the following command would extract the all of the GT (i.e. Genotype) entries:&lt;/FORMAT_ID&gt;&lt;/p&gt;
+
+&lt;p&gt;vcftools –vcf file1.vcf –extract-FORMAT-info GT&lt;/p&gt;
+
+&lt;p&gt;–get-INFO &lt;string&gt;&lt;/string&gt;&lt;/p&gt;
+
+&lt;p&gt;This option is used to extract information from the INFO field in the VCF file. The &lt;string&gt; argument specifies the INFO tag to be extracted, and the option can be used multiple times in order to extract multiple INFO entries. The resulting file, with suffix &quot;.INFO&quot;, contains the required INFO information in a tab-separated table. For example, to extract the NS and DB flags, one would use the command:&lt;/string&gt;&lt;/p&gt;
+
+&lt;p&gt;vcftools –vcf file1.vcf –get-INFO NS –get-INFO DB&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;输出 VCF 格式&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;–recode 
+–recode-bcf&lt;/p&gt;
+
+&lt;p&gt;These options are used to generate a new file in either VCF or BCF from the input VCF or BCF file after applying the filtering options specified by the user. The output file has the suffix “.recode.vcf” or “.recode.bcf”. By default, the INFO fields are removed from the output file, as the INFO values may be invalidated by the recoding (e.g. the total depth may need to be recalculated if individuals are removed). This behavior may be overriden by the following options. By default, BCF files are written out as BGZF compressed files.&lt;/p&gt;
+
+&lt;p&gt;–recode-INFO &lt;string&gt; 
+--recode-INFO-all&lt;/string&gt;&lt;/p&gt;
+
+&lt;p&gt;These options can be used with the above recode options to define an INFO key name to keep in the output file. This option can be used multiple times to keep more of the INFO fields. The second option is used to keep all INFO values in the original file.&lt;/p&gt;
+
+&lt;p&gt;–contigs &lt;string&gt;&lt;/string&gt;&lt;/p&gt;
+
+&lt;p&gt;This option can be used in conjuction with the –recode-bcf when the input file does not have any contig declarations. This option expects a file name with one contig header per line. These lines are included in the output file.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;输出其它格式&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;–012&lt;/p&gt;
+
+&lt;p&gt;This option outputs the genotypes as a large matrix. Three files are produced. The first, with suffix “.012”, contains the genotypes of each individual on a separate line. Genotypes are represented as 0, 1 and 2, where the number represent that number of non-reference alleles. Missing genotypes are represented by -1. The second file, with suffix “.012.indv” details the individuals included in the main file. The third file, with suffix “.012.pos” details the site locations included in the main file.&lt;/p&gt;
+
+&lt;p&gt;–IMPUTE&lt;/p&gt;
+
+&lt;p&gt;This option outputs phased haplotypes in IMPUTE reference-panel format. As IMPUTE requires phased data, using this option also implies –phased. Unphased individuals and genotypes are therefore excluded. Only bi-allelic sites are included in the output. Using this option generates three files. The IMPUTE haplotype file has the suffix “.impute.hap”, and the IMPUTE legend file has the suffix “.impute.hap.legend”. The third file, with suffix “.impute.hap.indv”, details the individuals included in the haplotype file, although this file is not needed by IMPUTE.&lt;/p&gt;
+
+&lt;p&gt;–ldhat 
+–ldhat-geno&lt;/p&gt;
+
+&lt;p&gt;These options output data in LDhat format. This option requires the “–chr” filter option to also be used. The first option outputs phased data only, and therefore also implies “–phased” be used, leading to unphased individuals and genotypes being excluded. The second option treats all of the data as unphased, and therefore outputs LDhat files in genotype/unphased format. Two output files are generated with the suffixes “.ldhat.sites” and “.ldhat.locs”, which correspond to the LDhat “sites” and “locs” input files respectively.&lt;/p&gt;
+
+&lt;p&gt;–BEAGLE-GL 
+–BEAGLE-PL&lt;/p&gt;
+
+&lt;p&gt;These options output genotype likelihood information for input into the BEAGLE program. The VCF file is required to contain FORMAT fields with “GL” or “PL” tags, which can generally be output by SNP callers such as the GATK. Use of this option requires a chromosome to be specified via the “–chr” option. The resulting output file has the suffix “.BEAGLE.GL” or “.BEAGLE.PL” and contains genotype likelihoods for biallelic sites. This file is suitable for input into BEAGLE via the “like=” argument.&lt;/p&gt;
+
+&lt;p&gt;–plink 
+–plink-tped 
+–chrom-map&lt;/p&gt;
+
+&lt;p&gt;这些参数输出 PLINK PED 格式，产生两个文件，’.ped’ 和 ‘.map‘。仅双等位基因位点会被输出。具体请看 PLINK 说明文件。
+注意：第一个选项对大数据集很慢。用户可以作用 ’–chr‘ 参数分割文件，或者使用 ‘–plink-tped’ 参数输出 PLINK 转置格式的文件，后缀为 ‘.tped’ 和 ‘.tfam’。
+For usage with variant sites in species other than humans, the –chrom-map option may be used to specify a file name that has a tab-delimited mapping of chromosome name to a desired integer value with one line per chromosome. This file must contain a mapping for every chromosome value found in the file.&lt;/p&gt;
+
+&lt;h4 id=&quot;section-6&quot;&gt;2.6. 比较参数&lt;/h4&gt;
+
+&lt;p&gt;These options are used to compare the original variant file to another variant file and output the results. All of the diff functions require both files to contain the same chromosomes and that the files be sorted in the same order. If one of the files contains chromosomes that the other file does not, use the –not-chr filter to remove them from the analysis.&lt;/p&gt;
+
+&lt;p&gt;DIFF VCF FILE&lt;/p&gt;
+
+&lt;p&gt;–diff &lt;filename&gt; 
+--gzdiff &lt;filename&gt; 
+--diff-bcf &lt;filename&gt;&lt;/filename&gt;&lt;/filename&gt;&lt;/filename&gt;&lt;/p&gt;
+
+&lt;p&gt;These options compare the original input file to this specified VCF, gzipped VCF, or BCF file. These options must be specified with one additional option described below in order to specify what type of comparison is to be performed. See the examples section for typical usage.&lt;/p&gt;
+
+&lt;p&gt;DIFF OPTIONS&lt;/p&gt;
+
+&lt;p&gt;–diff-site&lt;/p&gt;
+
+&lt;p&gt;Outputs the sites that are common / unique to each file. The output file has the suffix “.diff.sites_in_files”.&lt;/p&gt;
+
+&lt;p&gt;–diff-indv&lt;/p&gt;
+
+&lt;p&gt;Outputs the individuals that are common / unique to each file. The output file has the suffix “.diff.indv_in_files”.&lt;/p&gt;
+
+&lt;p&gt;–diff-site-discordance&lt;/p&gt;
+
+&lt;p&gt;This option calculates discordance on a site by site basis. The resulting output file has the suffix “.diff.sites”.&lt;/p&gt;
+
+&lt;p&gt;–diff-indv-discordance&lt;/p&gt;
+
+&lt;p&gt;This option calculates discordance on a per-individual basis. The resulting output file has the suffix “.diff.indv”.&lt;/p&gt;
+
+&lt;p&gt;–diff-indv-map &lt;filename&gt;&lt;/filename&gt;&lt;/p&gt;
+
+&lt;p&gt;This option allows the user to specify a mapping of individual IDs in the second file to those in the first file. The program expects the file to contain a tab-delimited line containing an individual’s name in file one followed by that same individual’s name in file two with one mapping per line.&lt;/p&gt;
+
+&lt;p&gt;–diff-discordance-matrix&lt;/p&gt;
+
+&lt;p&gt;This option calculates a discordance matrix. This option only works with bi-allelic loci with matching alleles that are present in both files. The resulting output file has the suffix “.diff.discordance.matrix”.&lt;/p&gt;
+
+&lt;p&gt;–diff-switch-error&lt;/p&gt;
+
+&lt;p&gt;This option calculates phasing errors (specifically “switch errors”). This option creates an output file describing switch errors found between sites, with suffix “.diff.switch”.&lt;/p&gt;
+</description>
+        <pubDate>Mon, 24 Apr 2017 00:00:00 +0800</pubDate>
+        <link>http://liuqibao.me/2017/04/24/vcftools-introduction/</link>
+        <guid isPermaLink="true">http://liuqibao.me/2017/04/24/vcftools-introduction/</guid>
+        
+        <category>使用手册</category>
+        
+        
+        <category>bioinformatics</category>
+        
+      </item>
+    
+      <item>
+        <title>sratoolkit 工具的简单使用</title>
+        <description>&lt;p&gt;sratoolkit 是 NCBI 的一个工具包，它包含很多数据格式转换的功能：
+- Frequently Used Tools:
+fastq-dump: Convert SRA data into fastq format&lt;/p&gt;
+
+&lt;p&gt;prefetch: Allows command-line downloading of SRA, dbGaP, and ADSP data&lt;/p&gt;
+
+&lt;p&gt;sam-dump: Convert SRA data to sam format&lt;/p&gt;
+
+&lt;p&gt;sra-pileup: Generate pileup statistics on aligned SRA data&lt;/p&gt;
+
+&lt;p&gt;vdb-config: Display and modify VDB configuration information&lt;/p&gt;
+
+&lt;p&gt;vdb-decrypt: Decrypt non-SRA dbGaP data (“phenotype data”)&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Additional Tools:
+abi-dump: Convert SRA data into ABI format (csfasta / qual)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;illumina-dump: Convert SRA data into Illumina native formats (qseq, etc.)&lt;/p&gt;
+
+&lt;p&gt;sff-dump: Convert SRA data to sff format&lt;/p&gt;
+
+&lt;p&gt;sra-stat: Generate statistics about SRA data (quality distribution, etc.)&lt;/p&gt;
+
+&lt;p&gt;vdb-dump: Output the native VDB format of SRA data.&lt;/p&gt;
+
+&lt;p&gt;vdb-encrypt: Encrypt non-SRA dbGaP data (“phenotype data”)&lt;/p&gt;
+
+&lt;p&gt;vdb-validate: Validate the integrity of downloaded SRA data&lt;/p&gt;
+
+&lt;p&gt;但是我常用的只有 fastq-dump 功能，就量将 sra 格式的压缩数据转换为 fastq 格式，我想大部分人也只用这个功能（都是被 NCBI 逼的！！）&lt;/p&gt;
+
+&lt;h3 id=&quot;section&quot;&gt;1. 安装&lt;/h3&gt;
+&lt;p&gt;sratools 的安装很简单，直接下载适合你版本的包，解压可用，不用编译，为了方便也可以放到环境变量下
+我的系统是 Ubuntu，所以：
+&lt;code class=&quot;highlighter-rouge&quot;&gt;
+wget https://ftp-trace.ncbi.nlm.nih.gov/sra/sdk/2.8.2-1/sratoolkit.2.8.2-1-ubuntu64.tar.gz
+tar zxvf sratoolkit.*
+&lt;/code&gt;
+所有的工具都在 sratoolkit 的 /bin 目录下&lt;/p&gt;
+
+&lt;h3 id=&quot;fastq-dump-&quot;&gt;2. fastq-dump 的使用&lt;/h3&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;fastq-dump [options] &amp;lt;path/file&amp;gt; [&amp;lt;path/file&amp;gt; ...]
+fastq-dump [options] &amp;lt;accession&amp;gt;
+&lt;/div&gt;
+&lt;p&gt;使用比较简单，需要注意的是对于单端测序和双端测序，软件给了不同的参数。&lt;/p&gt;
+
+&lt;p&gt;–split-file：将文件分为两个部分，后缀为相应数字。
+–split-3: 将文件分为三个部分，’&lt;em&gt;_1.fastaq’ 和 ’&lt;/em&gt;_2.fastq‘ 对双端测序数据是必有的，如果有未配对的数据，会放在 ’*。fastq‘ 文件中。&lt;/p&gt;
+
+&lt;p&gt;所以，我的理解是，测序质量较好的话，对于双端测序，这两个参数产生的结果一样，‘–split-3’ 没有产生未配对文件。
+在 biostar 上也有一些解释：
+–split-3 will output 1,2, or 3 files: 1 file means the data is not paired. 2 files means paired data with no low quality reads or reads shorter than 20bp. 3 files means paired data, but asymmetric quality or trimming.  in the case of 3 file output, most people ignore &lt;file&gt;.fastq . this is a very old formatting option introduced for phase1 of 1000genomes.  before there were many analysis or trimming utilities and SRA submissions  always contained all reads from sequencer. back then nobody wanted to throw anything away. you might want to use --split-files instead. that will give only 2 files for paired-end data. or not bother with text output and access the data directly using sra ngs apis.&lt;/file&gt;&lt;/p&gt;
+</description>
+        <pubDate>Mon, 24 Apr 2017 00:00:00 +0800</pubDate>
+        <link>http://liuqibao.me/2017/04/24/sratoolkit-instrodution/</link>
+        <guid isPermaLink="true">http://liuqibao.me/2017/04/24/sratoolkit-instrodution/</guid>
+        
+        <category>使用手册</category>
+        
+        
+        <category>bioinformatics</category>
+        
+      </item>
+    
+      <item>
+        <title>从 NCBI 或者 EBI 下载数据</title>
+        <description>&lt;ul id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#section&quot; id=&quot;markdown-toc-section&quot;&gt;1. 用迅雷下载（慢）&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#wget-&quot; id=&quot;markdown-toc-wget-&quot;&gt;2. 用 wget 下载（慢）&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#aspera-&quot; id=&quot;markdown-toc-aspera-&quot;&gt;3. 用 aspera 下载（推荐）&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#aspera--1&quot; id=&quot;markdown-toc-aspera--1&quot;&gt;aspera 批量下载&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;section&quot;&gt;1. 用迅雷下载（慢）&lt;/h3&gt;
+
+&lt;p&gt;不会迅雷的请百度&lt;/p&gt;
+
+&lt;h3 id=&quot;wget-&quot;&gt;2. 用 wget 下载（慢）&lt;/h3&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;NCBI
+在 NCBI 中双端测序和单端测序都是一个压缩的 ’.sra’ 文件
+&lt;code class=&quot;highlighter-rouge&quot;&gt;
+for i in $(cat list.txt);do wget ftp://ftp-trace.ncbi.nih.gov/sra/sra-instant/reads/ByRun/sra/SRR/`echo $i | cut -c 1-6`/$i/$i.sra;done
+&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;EBI&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;EBI 的目录结构比较特别，注意匹配
+EBI 的双端测序是两个 ‘.gzipp’ 文件
+&lt;code class=&quot;highlighter-rouge&quot;&gt;
+for i in $(cat list.txt);do wget ftp://fasp.sra.ebi.ac.uk:/vol1/fastq/`echo $i | cut -c 1-6`/00`echo $i|cut -c 10`/$i/* ;done
+&lt;/code&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;aspera-&quot;&gt;3. 用 aspera 下载（推荐）&lt;/h3&gt;
+
+&lt;p&gt;aspera 的下载速度非常快，能达到几十上百兆/秒&lt;/p&gt;
+
+&lt;p&gt;Aspera的用法：
+ascp [参数] 目标文件 目的地址&lt;/p&gt;
+
+&lt;p&gt;Aspera的常用参数：
+-T
+不进行加密。若不添加此参数，可能会下载不了。
+-i string
+输入私钥，安装 aspera 后有在目录 ~/.aspera/connect/etc/ 下有几个私钥，使用 linux 服务器的时候一般使用 asperaweb_id_dsa.openssh 文件作为私钥。
+–host=string
+ftp的host名，NCBI的为ftp-private.ncbi.nlm.nih.gov；EBI的为fasp.sra.ebi.ac.uk。
+–user=string
+用户名，NCBI的为anonftp，EBI的为era-fasp。
+–mode=string
+选择模式，上传为 send，下载为 recv。
+-l string
+设置最大传输速度，比如设置为 200M 则表示最大传输速度为 200m/s。若不设置该参数，则一般可达到10m/s的速度，而设置了，传输速度可以更高。
+-L /dir
+生成报告
+-K2
+错误后重新启动&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;NCBI&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;~/ascp -QT -l 300m -i ~/asperaweb_id_dsa.openssh anonftp@ftp-private.ncbi.nlm.nih.gov:/sra/sra-instant/reads/ByRun/sra/SRR/SRR169/SRR169$i/SRR169$i.sra ./
+&lt;/div&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;EBI
+&lt;code class=&quot;highlighter-rouge&quot;&gt;
+~/ascp -QT -l 300m -i /home/liuqibao/asperaweb_id_dsa.openssh era-fasp@fasp.sra.ebi.ac.uk:/vol1/fastq/SRR158/005/SRR1580695/SRR1580695_1.fastq.gz ./
+&lt;/code&gt;
+注意：可能需要加绝对路径，前面&lt;code class=&quot;highlighter-rouge&quot;&gt;~/&lt;/code&gt;不能少，否则会报错：key passpares&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h1 id=&quot;aspera--1&quot;&gt;aspera 批量下载&lt;/h1&gt;
+&lt;p&gt;批量下载：整理成下面的格式黏贴在文本SRR_Download_List_file_list.txt 中：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;/sra/sra-instant/reads/ByRun/sra/SRR/SRR689/SRR689250/SRR689250.sra
+
+/sra/sra-instant/reads/ByRun/sra/SRR/SRR893/SRR893046/SRR893046.sra
+
+nohup ~/ascp  -i  ~/asperaweb_id_dsa.putty --mode recv --host ftp-private.ncbi.nlm.nih.gov --user anonftp   --file-list  SRR_Download_List_file_list.txt ./ &amp;amp;
+&lt;/div&gt;
+&lt;p&gt;### 4. prefech 下载&lt;/p&gt;
+
+&lt;p&gt;NCBI 的 sratoolkit 中的 prefech 也可以下载 sra， 不过我没用过。&lt;/p&gt;
+</description>
+        <pubDate>Mon, 24 Apr 2017 00:00:00 +0800</pubDate>
+        <link>http://liuqibao.me/2017/04/24/download-SRR/</link>
+        <guid isPermaLink="true">http://liuqibao.me/2017/04/24/download-SRR/</guid>
+        
+        <category>数据上传下载</category>
+        
+        
+      </item>
+    
+      <item>
+        <title>gemma 简单使用</title>
+        <description>&lt;ul id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#section&quot; id=&quot;markdown-toc-section&quot;&gt;2. 输入文件格式&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#plink-binary-ped-&quot; id=&quot;markdown-toc-plink-binary-ped-&quot;&gt;2.1 PLINK Binary PED 格式&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#bimbam-&quot; id=&quot;markdown-toc-bimbam-&quot;&gt;2.2 BIMBAM 文件格式&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#section-1&quot; id=&quot;markdown-toc-section-1&quot;&gt;2.3 相关性矩阵文件格式&lt;/a&gt;        &lt;ul&gt;
+          &lt;li&gt;&lt;a href=&quot;#section-2&quot; id=&quot;markdown-toc-section-2&quot;&gt;2.3.1 原始矩阵格式&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#section-3&quot; id=&quot;markdown-toc-section-3&quot;&gt;2.3.2 特征值和特征向量格式&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#section-4&quot; id=&quot;markdown-toc-section-4&quot;&gt;2.4 协变量文件格式（可选）&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#betaz-&quot; id=&quot;markdown-toc-betaz-&quot;&gt;2.5 Beta/Z 文件&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#section-5&quot; id=&quot;markdown-toc-section-5&quot;&gt;2.6 分类文件&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#ld-score-&quot; id=&quot;markdown-toc-ld-score-&quot;&gt;2.7 LD Score 文件&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#gemma&quot; id=&quot;markdown-toc-gemma&quot;&gt;3. 运行 GEMMA&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#gwas-&quot; id=&quot;markdown-toc-gwas-&quot;&gt;3.1 一个 GWAS 例子的小数据集&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#snp-&quot; id=&quot;markdown-toc-snp-&quot;&gt;3.2 SNP 过滤器&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#section-6&quot; id=&quot;markdown-toc-section-6&quot;&gt;3.3 用线性模型进行关联检验&lt;/a&gt;        &lt;ul&gt;
+          &lt;li&gt;&lt;a href=&quot;#section-7&quot; id=&quot;markdown-toc-section-7&quot;&gt;3.3.1 基本应用&lt;/a&gt;            &lt;ul&gt;
+              &lt;li&gt;&lt;a href=&quot;#section-8&quot; id=&quot;markdown-toc-section-8&quot;&gt;3.3.2 详细信息&lt;/a&gt;&lt;/li&gt;
+            &lt;/ul&gt;
+          &lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#section-9&quot; id=&quot;markdown-toc-section-9&quot;&gt;3.3.3 输出文件&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#section-10&quot; id=&quot;markdown-toc-section-10&quot;&gt;3.4 估计来自基因型的相关性矩阵&lt;/a&gt;        &lt;ul&gt;
+          &lt;li&gt;&lt;a href=&quot;#section-11&quot; id=&quot;markdown-toc-section-11&quot;&gt;3.4.1 基本应用&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#section-12&quot; id=&quot;markdown-toc-section-12&quot;&gt;3.4.2 详细信息&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#section-13&quot; id=&quot;markdown-toc-section-13&quot;&gt;3.4.3 输出文件&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#eigen-decomposition&quot; id=&quot;markdown-toc-eigen-decomposition&quot;&gt;3.5 进行相关矩阵的 Eigen-Decomposition&lt;/a&gt;        &lt;ul&gt;
+          &lt;li&gt;&lt;a href=&quot;#section-14&quot; id=&quot;markdown-toc-section-14&quot;&gt;3.5.1 基本应用&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#section-15&quot; id=&quot;markdown-toc-section-15&quot;&gt;3.5.2 详细信息&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#section-16&quot; id=&quot;markdown-toc-section-16&quot;&gt;3.5.3 输出文件&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#section-17&quot; id=&quot;markdown-toc-section-17&quot;&gt;3.6 单变量线性混合模型的关联检验&lt;/a&gt;        &lt;ul&gt;
+          &lt;li&gt;&lt;a href=&quot;#section-18&quot; id=&quot;markdown-toc-section-18&quot;&gt;3.6.1 基本应用&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#section-19&quot; id=&quot;markdown-toc-section-19&quot;&gt;3.6.2 详细信息&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#section-20&quot; id=&quot;markdown-toc-section-20&quot;&gt;3.6.3 输出文件&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#section-21&quot; id=&quot;markdown-toc-section-21&quot;&gt;3.7 多变量线性混合模型的关联检验&lt;/a&gt;        &lt;ul&gt;
+          &lt;li&gt;&lt;a href=&quot;#section-22&quot; id=&quot;markdown-toc-section-22&quot;&gt;3.7.1 基本应用&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#section-23&quot; id=&quot;markdown-toc-section-23&quot;&gt;3.7.2 详细信息&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#section-24&quot; id=&quot;markdown-toc-section-24&quot;&gt;3.7.3 输出文件&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#fit-a-bayesian-sparse-linear-mixed-modelbslmm&quot; id=&quot;markdown-toc-fit-a-bayesian-sparse-linear-mixed-modelbslmm&quot;&gt;3.8 Fit a Bayesian Sparse Linear Mixed Model（BSLMM）&lt;/a&gt;        &lt;ul&gt;
+          &lt;li&gt;&lt;a href=&quot;#section-25&quot; id=&quot;markdown-toc-section-25&quot;&gt;3.8.1 基本应用&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#section-26&quot; id=&quot;markdown-toc-section-26&quot;&gt;3.8.2 详细信息&lt;/a&gt;            &lt;ul&gt;
+              &lt;li&gt;&lt;a href=&quot;#section-27&quot; id=&quot;markdown-toc-section-27&quot;&gt;3.8.3 输出文件&lt;/a&gt;&lt;/li&gt;
             &lt;/ul&gt;
           &lt;/li&gt;
         &lt;/ul&gt;
       &lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#字典&quot; id=&quot;markdown-toc-字典&quot;&gt;字典&lt;/a&gt;    &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;#实际应用中的字典&quot; id=&quot;markdown-toc-实际应用中的字典&quot;&gt;实际应用中的字典&lt;/a&gt;        &lt;ul&gt;
-          &lt;li&gt;&lt;a href=&quot;#字典的基本操作&quot; id=&quot;markdown-toc-字典的基本操作&quot;&gt;字典的基本操作&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#bslmm-&quot; id=&quot;markdown-toc-bslmm-&quot;&gt;3.9 用来自 BSLMM 的输出文件预测表型&lt;/a&gt;        &lt;ul&gt;
+          &lt;li&gt;&lt;a href=&quot;#section-28&quot; id=&quot;markdown-toc-section-28&quot;&gt;3.9.1 基本应用&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#section-29&quot; id=&quot;markdown-toc-section-29&quot;&gt;3.9.2 详细信息&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#section-30&quot; id=&quot;markdown-toc-section-30&quot;&gt;3.9.3 输出文件&lt;/a&gt;&lt;/li&gt;
         &lt;/ul&gt;
       &lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#原处修改字典&quot; id=&quot;markdown-toc-原处修改字典&quot;&gt;原处修改字典&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#其他字典方法&quot; id=&quot;markdown-toc-其他字典方法&quot;&gt;其他字典方法&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#语言表&quot; id=&quot;markdown-toc-语言表&quot;&gt;语言表&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#字典用法注意事&quot; id=&quot;markdown-toc-字典用法注意事&quot;&gt;字典用法注意事&lt;/a&gt;        &lt;ul&gt;
-          &lt;li&gt;&lt;a href=&quot;#使用字典模拟灵活的列表&quot; id=&quot;markdown-toc-使用字典模拟灵活的列表&quot;&gt;使用字典模拟灵活的列表&lt;/a&gt;&lt;/li&gt;
-          &lt;li&gt;&lt;a href=&quot;#字典用于稀疏数据结构&quot; id=&quot;markdown-toc-字典用于稀疏数据结构&quot;&gt;字典用于稀疏数据结构&lt;/a&gt;&lt;/li&gt;
-          &lt;li&gt;&lt;a href=&quot;#避免missing-key错误&quot; id=&quot;markdown-toc-避免missing-key错误&quot;&gt;避免missing-key错误&lt;/a&gt;&lt;/li&gt;
-          &lt;li&gt;&lt;a href=&quot;#使用字典作为记录&quot; id=&quot;markdown-toc-使用字典作为记录&quot;&gt;使用字典作为“记录”&lt;/a&gt;&lt;/li&gt;
-          &lt;li&gt;&lt;a href=&quot;#创建字典的其他方法&quot; id=&quot;markdown-toc-创建字典的其他方法&quot;&gt;创建字典的其他方法&lt;/a&gt;&lt;/li&gt;
-          &lt;li&gt;&lt;a href=&quot;#字典解析&quot; id=&quot;markdown-toc-字典解析&quot;&gt;字典解析&lt;/a&gt;&lt;/li&gt;
-          &lt;li&gt;&lt;a href=&quot;#字典视图&quot; id=&quot;markdown-toc-字典视图&quot;&gt;字典视图&lt;/a&gt;&lt;/li&gt;
-          &lt;li&gt;&lt;a href=&quot;#字典的视图和几何&quot; id=&quot;markdown-toc-字典的视图和几何&quot;&gt;字典的视图和几何&lt;/a&gt;&lt;/li&gt;
-          &lt;li&gt;&lt;a href=&quot;#排序字典&quot; id=&quot;markdown-toc-排序字典&quot;&gt;排序字典&lt;/a&gt;&lt;/li&gt;
-          &lt;li&gt;&lt;a href=&quot;#字典大小比较无效&quot; id=&quot;markdown-toc-字典大小比较无效&quot;&gt;字典大小比较无效&lt;/a&gt;&lt;/li&gt;
-          &lt;li&gt;&lt;a href=&quot;#has_key方法已死in永生&quot; id=&quot;markdown-toc-has_key方法已死in永生&quot;&gt;has_key方法已死：in永生&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#section-31&quot; id=&quot;markdown-toc-section-31&quot;&gt;3.10 相关性矩阵的方差分量估计&lt;/a&gt;        &lt;ul&gt;
+          &lt;li&gt;&lt;a href=&quot;#section-32&quot; id=&quot;markdown-toc-section-32&quot;&gt;3.10.1 基本应用&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#section-33&quot; id=&quot;markdown-toc-section-33&quot;&gt;3.10.2 详细信息&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#section-34&quot; id=&quot;markdown-toc-section-34&quot;&gt;3.10.3 输出文件&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#summary-statistics-&quot; id=&quot;markdown-toc-summary-statistics-&quot;&gt;3.11 Summary Statistics 的方差分量估计&lt;/a&gt;        &lt;ul&gt;
+          &lt;li&gt;&lt;a href=&quot;#section-35&quot; id=&quot;markdown-toc-section-35&quot;&gt;3.11.1 基本应用&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#section-36&quot; id=&quot;markdown-toc-section-36&quot;&gt;3.11.4 详细信息&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#section-37&quot; id=&quot;markdown-toc-section-37&quot;&gt;3.11.3 输出文件&lt;/a&gt;&lt;/li&gt;
         &lt;/ul&gt;
       &lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h3 id=&quot;列表&quot;&gt;列表&lt;/h3&gt;
+&lt;p&gt;GEMMA 要求基因型文件不能有缺失值，因此，SNP 要先 impute。
+虽然有表型缺失的个体不会用于 LMM 或者 BSLMM 分析，但是所有个体仍全部用于计算相关矩阵，所以相关矩阵的结果仍是 n x n 的矩阵。
+### 1. 安装&lt;/p&gt;
 
-&lt;p&gt;主要属性：&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;任意对象的有序集合&lt;/li&gt;
-  &lt;li&gt;通过偏移读取&lt;/li&gt;
-  &lt;li&gt;可变长度、异构以及任意嵌套&lt;/li&gt;
-  &lt;li&gt;属于可变序列的分类&lt;/li&gt;
-  &lt;li&gt;对象引用数组&lt;/li&gt;
-&lt;/ul&gt;
+&lt;p&gt;gemma 安装很简单，直接下载二进制可执行文件就行，不用解压，不用编译。
+最好再给它执行权限，&lt;code class=&quot;highlighter-rouge&quot;&gt;chmod a+x gemma&lt;/code&gt;。
+这已经足够 45,000 的样本的分析，如果你的数据更大，可以使用编译安装。&lt;/p&gt;
 
-&lt;p&gt;运行‘help（list）&lt;code class=&quot;highlighter-rouge&quot;&gt;或&lt;/code&gt;dir（list）`查看list方法的完整列表清单。&lt;/p&gt;
+&lt;h3 id=&quot;section&quot;&gt;2. 输入文件格式&lt;/h3&gt;
 
-&lt;h4 id=&quot;实际应用中的列表&quot;&gt;实际应用中的列表&lt;/h4&gt;
+&lt;p&gt;GEMMA 需要四个主要的输入文件，包括基因型、表型、相关矩阵和协变量（可选）。
+基因型和表型文件可以是两种格式，都是 PLINK binary ped 格式或者都 BIMBAM 格式。不可混用。&lt;/p&gt;
 
-&lt;h5 id=&quot;基本列表操作&quot;&gt;基本列表操作&lt;/h5&gt;
+&lt;h3 id=&quot;plink-binary-ped-&quot;&gt;2.1 PLINK Binary PED 格式&lt;/h3&gt;
 
-&lt;h5 id=&quot;列表迭代和解析&quot;&gt;列表迭代和解析&lt;/h5&gt;
+&lt;p&gt;GEMMA 识别基因型型和表型的 PLINK binary ped 文件格式.
+该格式需要三个文件：*.bed, *.bim, *.bam，所有文件都有相同的前缀。
+用户可以用 PLINK 将标准 ped 文件转换成 binary ped 文件：
+命令：
+&lt;code class=&quot;highlighter-rouge&quot;&gt;
+plink --file [file_prefix] --make-bed --out [bedfile_prefix]
+&lt;/code&gt;
+对于 *.fam 文件，GEMMA 仅读取第二列（individual id）和第六列（phenotype）.
+用户可以定义其它列作为 phenotype 列，使用 ‘-n [num]’ 参数，’-n 1’ 使用原始的第六列作为 phenotypes，’-n 2’ 使用第七列，以此类推。
+GEMMA 用 0/1 编码等位基因。
+*.bim 文件的第 5 列是 minor allele ，编码为 1；第 6 列为 major allele ，编码为 0.
+因此，第 5 列的 minor allele 是效应基因。&lt;/p&gt;
 
-&lt;h5 id=&quot;索引分片和矩阵&quot;&gt;索引、分片和矩阵&lt;/h5&gt;
+&lt;p&gt;GEMMA 将按照提供的方式读入表型，’-9‘ 和 ‘NA’ 作为缺失表型。&lt;/p&gt;
 
-&lt;p&gt;&lt;strong&gt;索引&lt;/strong&gt;的结果是你指定的偏移处的&lt;strong&gt;对象&lt;/strong&gt;（无论对象是什么类型），而对列表进行&lt;strong&gt;分片&lt;/strong&gt;时往往返回一个&lt;strong&gt;新的列表&lt;/strong&gt;。&lt;/p&gt;
+&lt;h4 id=&quot;bimbam-&quot;&gt;2.2 BIMBAM 文件格式&lt;/h4&gt;
 
-&lt;h5 id=&quot;原处修改列表&quot;&gt;原处修改列表&lt;/h5&gt;
+&lt;p&gt;详见&lt;a href=&quot;http://zzz.bwh.harvard.edu/plink/data.shtml&quot;&gt;使用手册&lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;本节的操作都可以直接修改对象，而不会像字符串那样强迫你建立一个新的拷贝。&lt;/p&gt;
+&lt;h4 id=&quot;section-1&quot;&gt;2.3 相关性矩阵文件格式&lt;/h4&gt;
 
-&lt;h6 id=&quot;索引与分片的赋值&quot;&gt;索引与分片的赋值&lt;/h6&gt;
+&lt;p&gt;两种方法，使用原始相关矩阵，或者使用原始相关矩阵的特征值和特征微量。&lt;/p&gt;
 
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;L[1:2]=[]&lt;/code&gt;实际上是删除操作。&lt;/p&gt;
+&lt;h5 id=&quot;section-2&quot;&gt;2.3.1 原始矩阵格式&lt;/h5&gt;
 
-&lt;p&gt;被赋值的序列长度不一定要与被赋值的分片的长度相匹配。&lt;/p&gt;
+&lt;p&gt;用户可以通过 ’-km [num]’ 参数选择使用哪种格式，即：
+-km 1：PLINK binary ped 格式的第一种；或者 BIMPAM 格式；
+-km 2: PLINK binary ped 格式的第二种（id id value）&lt;/p&gt;
 
-&lt;h6 id=&quot;列表方法调用&quot;&gt;列表方法调用&lt;/h6&gt;
+&lt;h5 id=&quot;section-3&quot;&gt;2.3.2 特征值和特征向量格式&lt;/h5&gt;
 
-&lt;p&gt;方法就是附属于特定对象的函数（实际上是引用函数的属性）。&lt;/p&gt;
+&lt;p&gt;详见原文&lt;/p&gt;
 
-&lt;ul&gt;
-  &lt;li&gt;
-    &lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;L.append（X）&lt;/code&gt;与&lt;code class=&quot;highlighter-rouge&quot;&gt;L+[X]&lt;/code&gt;的结果类似，不同的是，前者会&lt;strong&gt;原地修改L&lt;/strong&gt;，而后者会生成&lt;strong&gt;新的列表&lt;/strong&gt;。&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;sort:原地对列表排序。&lt;strong&gt;默认比较字符串，以递增的顺序进行排序&lt;/strong&gt;&lt;/p&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
+&lt;h4 id=&quot;section-4&quot;&gt;2.4 协变量文件格式（可选）&lt;/h4&gt;
 
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;reverse&lt;/code&gt;参数允许排序按照降序而不是升序进行&lt;/p&gt;
+&lt;h4 id=&quot;betaz-&quot;&gt;2.5 Beta/Z 文件&lt;/h4&gt;
 
-&lt;hr /&gt;
-&lt;p&gt;&lt;strong&gt;注意：&lt;/strong&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;append&lt;/code&gt;和&lt;code class=&quot;highlighter-rouge&quot;&gt;sort&lt;/code&gt;是原处修改相关的列表对象，而结果&lt;strong&gt;并没有返回列表&lt;/strong&gt;（实际上，两者都返回的值为&lt;strong&gt;None&lt;/strong&gt;）。&lt;/p&gt;
+&lt;h4 id=&quot;section-5&quot;&gt;2.6 分类文件&lt;/h4&gt;
 
-&lt;p&gt;如果编辑类似&lt;code class=&quot;highlighter-rouge&quot;&gt;L=L.append（x)&lt;/code&gt;的语句，将不会得L修改后的值，即相当于&lt;code class=&quot;highlighter-rouge&quot;&gt;L=None&lt;/code&gt;。
-***&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;reverse：原地反转列表&lt;/li&gt;
-  &lt;li&gt;extend：末端插入&lt;strong&gt;多个&lt;/strong&gt;元素&lt;/li&gt;
-  &lt;li&gt;pop：末端删除&lt;strong&gt;一个&lt;/strong&gt;元素
-&lt;em&gt;**
-列表的pop方法和append方法常被联用，来实现快速的后进先出（LIFO，last-in-first-out）堆栈结构。
-**&lt;/em&gt;&lt;/li&gt;
-&lt;/ul&gt;
+&lt;h4 id=&quot;ld-score-&quot;&gt;2.7 LD Score 文件&lt;/h4&gt;
 
-&lt;h6 id=&quot;其他常见列表操作&quot;&gt;其他常见列表操作&lt;/h6&gt;
+&lt;h3 id=&quot;gemma&quot;&gt;3. 运行 GEMMA&lt;/h3&gt;
 
-&lt;ul&gt;
-  &lt;li&gt;del语句在原处删除某项或某片段。&lt;/li&gt;
-&lt;/ul&gt;
+&lt;h4 id=&quot;gwas-&quot;&gt;3.1 一个 GWAS 例子的小数据集&lt;/h4&gt;
 
-&lt;h3 id=&quot;字典&quot;&gt;字典&lt;/h3&gt;
+&lt;p&gt;该数据集在 GEMMA 的源文件中，可以在官网下载，也可以在 GitHub 下载。&lt;/p&gt;
 
-&lt;p&gt;主要属性：&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;通过键而不是偏移来读取&lt;/li&gt;
-  &lt;li&gt;任意对象的无序集合&lt;/li&gt;
-  &lt;li&gt;可变长度、异构、任意嵌套&lt;/li&gt;
-  &lt;li&gt;属于可变映射类型&lt;/li&gt;
-  &lt;li&gt;对象引用表（散列表）&lt;/li&gt;
-&lt;/ul&gt;
+&lt;h4 id=&quot;snp-&quot;&gt;3.2 SNP 过滤器&lt;/h4&gt;
 
-&lt;p&gt;&lt;strong&gt;和列表一样，字典存储的是对象引用（不是拷贝）。&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;软件提供了几个 SNP 过滤器。&lt;/p&gt;
 
-&lt;h4 id=&quot;实际应用中的字典&quot;&gt;实际应用中的字典&lt;/h4&gt;
+&lt;p&gt;多态性：没有多态性的 SNPs 不会用于分析。
+缺失值：‘-miss [num]’ 参数调节，默认 5%。例，’-miss 0.1’
+最小等位基因频率：‘-maf [num]’ 参数调节，默认 1%。例，’-maf 0.05’
+Correlation with any covariate：’-r2 [num]‘ 调节，默认 0.9999。例，’-r2 0.999999
+哈迪——温勃格平衡：‘-hww [num]’ 参数调节。例，‘-hwe 0.001’，将过滤 hwe 的 p 值小于 0.001 的 SNPs。&lt;/p&gt;
 
-&lt;h5 id=&quot;字典的基本操作&quot;&gt;字典的基本操作&lt;/h5&gt;
+&lt;p&gt;以上阈值计算基于分析的个体（即，个体没有缺失的表型和没有缺失的协变量）。
+因此，如果所有的个体都有缺失表型，那么没有 SNP 会被分析，输出矩阵为空。&lt;/p&gt;
 
-&lt;ul&gt;
-  &lt;li&gt;len函数：返回幸元素的数目，即keys列表的长度。&lt;/li&gt;
-  &lt;li&gt;keys方法：返回字典中所有的键，将它们收集在一个&lt;strong&gt;列表&lt;/strong&gt;中。&lt;/li&gt;
-&lt;/ul&gt;
+&lt;h4 id=&quot;section-6&quot;&gt;3.3 用线性模型进行关联检验&lt;/h4&gt;
 
-&lt;p&gt;在Python3.0中，&lt;code class=&quot;highlighter-rouge&quot;&gt;list(D.keys())&lt;/code&gt;:&lt;code class=&quot;highlighter-rouge&quot;&gt;keys&lt;/code&gt;返回一个迭代器，而不是一个物理的列表，&lt;code class=&quot;highlighter-rouge&quot;&gt;list&lt;/code&gt;调用迫使它一次生成所有的值。&lt;/p&gt;
+&lt;h5 id=&quot;section-7&quot;&gt;3.3.1 基本应用&lt;/h5&gt;
 
-&lt;h4 id=&quot;原处修改字典&quot;&gt;原处修改字典&lt;/h4&gt;
+&lt;p&gt;用 PLINK bed 格式或者 BIMBAM 格式进行线性模型关联分析的基本应用：
+&lt;code class=&quot;highlighter-rouge&quot;&gt;
+./gemma -bfile [prefix] -lm [num] -o [prefix]
+./gemma -g [filename] -p [filename] -a [filename] -lm [num] -o [prefix]
+&lt;/code&gt;&lt;/p&gt;
 
-&lt;h4 id=&quot;其他字典方法&quot;&gt;其他字典方法&lt;/h4&gt;
+&lt;p&gt;-lm：指定用哪种频数检验
+  -lm 1：Wald test
+  -lm 2: likelihood ratio test
+  -lm 3：score test
+  -lm 4: 以上三种检验
+-bfile [prefix]: PLINK binary ped file 前缀
+-g [filename]：BIMBAM mean genotype 文件名
+-p [filename]：BIMBAM 表型文件名
+-a [filename]：可选，BIMBAM SNP 注释文件名
+-o [prefix] ：输出文件前缀&lt;/p&gt;
 
-&lt;ul&gt;
-  &lt;li&gt;values：返回字典值列表&lt;/li&gt;
-  &lt;li&gt;items：返回（key，value）元组对&lt;/li&gt;
-  &lt;li&gt;get：当&lt;strong&gt;键&lt;/strong&gt;不存在时，返回默认值（None或用户定义的默认值）&lt;/li&gt;
-  &lt;li&gt;update：类似合并&lt;/li&gt;
-  &lt;li&gt;pop：删除一个键并&lt;strong&gt;返回&lt;/strong&gt;它的值&lt;/li&gt;
-&lt;/ul&gt;
+&lt;p&gt;注意：与线性混合模型不同，该分析不需要相关性矩阵&lt;/p&gt;
 
-&lt;h4 id=&quot;语言表&quot;&gt;语言表&lt;/h4&gt;
+&lt;h6 id=&quot;section-8&quot;&gt;3.3.2 详细信息&lt;/h6&gt;
 
-&lt;h4 id=&quot;字典用法注意事&quot;&gt;字典用法注意事&lt;/h4&gt;
+&lt;p&gt;对二进制性状，用户可以将对照组标记为 0 ，实验组标记为 1，然后通过把二进制化的对照实验标签当作数量性状，跟据以上方法用线性混合模型拟合数据。&lt;/p&gt;
 
-&lt;ul&gt;
-  &lt;li&gt;序列运算无效&lt;/li&gt;
-  &lt;li&gt;对新索引赋值会添加项&lt;/li&gt;
-  &lt;li&gt;键不一定总是字符串&lt;/li&gt;
-&lt;/ul&gt;
+&lt;h5 id=&quot;section-9&quot;&gt;3.3.3 输出文件&lt;/h5&gt;
 
-&lt;h5 id=&quot;使用字典模拟灵活的列表&quot;&gt;使用字典模拟灵活的列表&lt;/h5&gt;
+&lt;p&gt;共有两个输出文件，都在当前目录下的文件夹中。
+‘preix.log.txt’ 文件有一些关于运行参数和计算时间的细节信息。除此之外，还包含 PBE 检测和它的标准误。
+’prefix.assoc.txt’ 文件包含结果。例如：
+&lt;code class=&quot;highlighter-rouge&quot;&gt;
+chr rs ps n_mis n_obs allele1 allele0 af beta se p_wald
+1 rs3683945 3197400 0 1410 A G 0.443 -1.586575e-01 3.854542e-02 4.076703e-05
+1 rs3707673 3407393 0 1410 G A 0.443 -1.563903e-01 3.855200e-02 5.252187e-05
+1 rs6269442 3492195 0 1410 A G 0.365 -2.349908e-01 3.905200e-02 2.256622e-09
+1 rs6336442 3580634 0 1410 A G 0.443 -1.566721e-01 3.857380e-02 5.141944e-05
+1 rs13475700 4098402 0 1410 A C 0.127 2.209575e-01 5.644804e-02 9.497902e-05
+&lt;/code&gt;
+这 11 行是：染色体、SNP id、碱基对在染色体上的位置、相应 SNP 的缺失个体数量、相应 SNP 的无缺个体数量、最小等位基困、最大等位基因、等位基因频率、beta 检测、beta 标准误、Wald 检验的 P 值。&lt;/p&gt;
 
-&lt;h5 id=&quot;字典用于稀疏数据结构&quot;&gt;字典用于稀疏数据结构&lt;/h5&gt;
+&lt;h4 id=&quot;section-10&quot;&gt;3.4 估计来自基因型的相关性矩阵&lt;/h4&gt;
 
-&lt;h5 id=&quot;避免missing-key错误&quot;&gt;避免missing-key错误&lt;/h5&gt;
+&lt;h5 id=&quot;section-11&quot;&gt;3.4.1 基本应用&lt;/h5&gt;
 
-&lt;h5 id=&quot;使用字典作为记录&quot;&gt;使用字典作为“记录”&lt;/h5&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;./gemma -bfile [prefix] -gk [num] -o [prefix]
+./gemma -g [filename] -p [filename] -gk [num] -o [prefix]
+&lt;/div&gt;
+&lt;p&gt;-gk [num]: 估计哪种相关性矩阵：
+  -gk 1: centered relatedness matrix, 默认
+  -gk 2: standardized relatedness matrix
+-bfile [prefix]: PLINK binary ped file prefix
+-g [filename]: 见 3.3
+-p [filename]:  见 3.3
+-o [prefix]: 见 3.3&lt;/p&gt;
 
-&lt;h5 id=&quot;创建字典的其他方法&quot;&gt;创建字典的其他方法&lt;/h5&gt;
+&lt;p&gt;注意：BIMBAM mean genotype 文件可以用 gzip 压缩格式&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; # 一
-{'name':'mel','age':45}
- # 二
-D = {}
-D['name']='mel'
-D['age']=45
- # 三
-dict(name='mel',age=45)
- # 四
-dict([('name','mel'),('age',45)])
- # 初始化
-dict.fromkeys(['a','b'],0)
-&lt;/code&gt;&lt;/pre&gt;
+&lt;h5 id=&quot;section-12&quot;&gt;3.4.2 详细信息&lt;/h5&gt;
+
+&lt;p&gt;较低的最小等位基因频率趋于较大的效应：standardized genotype atrix
+SNP 的效应大小不依赖于最小等位基因频率：ecntered genotype matrix&lt;/p&gt;
+
+&lt;h5 id=&quot;section-13&quot;&gt;3.4.3 输出文件&lt;/h5&gt;
+
+&lt;h4 id=&quot;eigen-decomposition&quot;&gt;3.5 进行相关矩阵的 Eigen-Decomposition&lt;/h4&gt;
+
+&lt;h5 id=&quot;section-14&quot;&gt;3.5.1 基本应用&lt;/h5&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;./gemma -bfile [prefix] -k [filename] -eigen -o [prefix]
+./gemma -g [filename] -p [filename] -k [filename] -eigen -o [prefix]
+&lt;/div&gt;
+&lt;p&gt;-b：见前文
+-g：见前文
+-p：见前文
+-k [filename]：相关矩阵文件名&lt;/p&gt;
+
+&lt;p&gt;注意：BIMBAM mean genotype/相关矩阵文件格式可以是 gzip 压缩格式&lt;/p&gt;
+
+&lt;h5 id=&quot;section-15&quot;&gt;3.5.2 详细信息&lt;/h5&gt;
+
+&lt;h5 id=&quot;section-16&quot;&gt;3.5.3 输出文件&lt;/h5&gt;
+
+&lt;h4 id=&quot;section-17&quot;&gt;3.6 单变量线性混合模型的关联检验&lt;/h4&gt;
+
+&lt;h5 id=&quot;section-18&quot;&gt;3.6.1 基本应用&lt;/h5&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;./gemma -bfile [prefix] -k [filename] -lmm [num] -o [prefix]
+./gemma -g [filename] -p [filename] -a [filename] -k [filename] -lmm [num] -o [prefix]
+&lt;/div&gt;
+&lt;p&gt;-lmm：指定用哪种频数检验
+  -lmm 1：Wald test
+  -lmm 2: likelihood ratio test
+  -lmm 3：score test
+  -lmm 4: 以上三种检验
+-bfile [prefix]: PLINK binary ped file 前缀
+-g [filename]：BIMBAM mean genotype 文件名
+-p [filename]：BIMBAM 表型文件名
+-a [filename]：可选，BIMBAM SNP 注释文件名
+-o [prefix] ：输出文件前缀
+-k [filename]：相关矩阵文件名&lt;/p&gt;
+
+&lt;p&gt;为检测基因-环境的交互作用，你可以加 ’-gxe [filename]’ 参数。
+注意：‘-k [filename]’ 可以用 ‘-d [filename]’ （特征值文件）和 ‘-u [filename]’ （特征向量文件）所代替。&lt;/p&gt;
+
+&lt;h5 id=&quot;section-19&quot;&gt;3.6.2 详细信息&lt;/h5&gt;
+
+&lt;h5 id=&quot;section-20&quot;&gt;3.6.3 输出文件&lt;/h5&gt;
+
+&lt;p&gt;见前文&lt;/p&gt;
+
+&lt;h4 id=&quot;section-21&quot;&gt;3.7 多变量线性混合模型的关联检验&lt;/h4&gt;
+
+&lt;h5 id=&quot;section-22&quot;&gt;3.7.1 基本应用&lt;/h5&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;./gemma -bfile [prefix] -k [filename] -lmm [num] -n [num1] [num2] [num3] -o [prefix]
+./gemma -g [filename] -p [filename] -a [filename] -k [filename] -lmm [num] -n [num1] [num2] [num3] -o [prefix]
 &lt;/div&gt;
 
-&lt;h5 id=&quot;字典解析&quot;&gt;字典解析&lt;/h5&gt;
+&lt;p&gt;-lmm：指定用哪种频数检验
+  -lmm 1：Wald test
+  -lmm 2: likelihood ratio test
+  -lmm 3：score test
+  -lmm 4: 以上三种检验
+-n [num1] [num2] [num3]: 表型文件中哪些表型用于关联
+-bfile [prefix]: PLINK binary ped file 前缀
+-g [filename]：BIMBAM mean genotype 文件名
+-p [filename]：BIMBAM 表型文件名
+-a [filename]：可选，BIMBAM SNP 注释文件名
+-o [prefix] ：输出文件前缀
+-k [filename]：相关矩阵文件名&lt;/p&gt;
 
-&lt;ul&gt;
-  &lt;li&gt;zip函数：构建字典&lt;/li&gt;
-&lt;/ul&gt;
+&lt;p&gt;为检测基因-环境的交互作用，你可以加 ’-gxe [filename]’ 参数。
+注意：‘-k [filename]’ 可以用 ‘-d [filename]’ （特征值文件）和 ‘-u [filename]’ （特征向量文件）所代替。&lt;/p&gt;
 
-&lt;h5 id=&quot;字典视图&quot;&gt;字典视图&lt;/h5&gt;
+&lt;h5 id=&quot;section-23&quot;&gt;3.7.2 详细信息&lt;/h5&gt;
 
-&lt;p&gt;在Python3.0中，字典的keys、values和items都返回视图对象。&lt;strong&gt;视图对象是可迭代的，即对象每次产生一个结果项，而不是在内存中立即产生结果列表（即一次性产生和存储所有结果）&lt;/strong&gt;。所以，为了显示它们的值，必须通过内置函数list来运行这3个方法的结果。&lt;/p&gt;
+&lt;p&gt;建议表型的数量小于 10 个。
+当表型的一小部分缺失的时候，用户可以在关联前推测缺失值:
+&lt;code class=&quot;highlighter-rouge&quot;&gt;
+./gemma -bfile [prefix] -k [filename] -predict -n [num1] [num2] [num3] -o [prefix]
+./gemma -g [filename] -p [filename] -a [filename] -k [filename] -predict -n [num1] [num2] [num3] -o [prefix]
+&lt;/code&gt;&lt;/p&gt;
 
-&lt;h5 id=&quot;字典的视图和几何&quot;&gt;字典的视图和几何&lt;/h5&gt;
+&lt;h5 id=&quot;section-24&quot;&gt;3.7.3 输出文件&lt;/h5&gt;
 
-&lt;h5 id=&quot;排序字典&quot;&gt;排序字典&lt;/h5&gt;
+&lt;p&gt;见前文&lt;/p&gt;
 
-&lt;ul&gt;
-  &lt;li&gt;手动地转换一个列表&lt;/li&gt;
-  &lt;li&gt;在一个键视图或字典自身上且用sorted调用&lt;/li&gt;
-&lt;/ul&gt;
+&lt;h4 id=&quot;fit-a-bayesian-sparse-linear-mixed-modelbslmm&quot;&gt;3.8 Fit a Bayesian Sparse Linear Mixed Model（BSLMM）&lt;/h4&gt;
 
-&lt;h5 id=&quot;字典大小比较无效&quot;&gt;字典大小比较无效&lt;/h5&gt;
+&lt;h5 id=&quot;section-25&quot;&gt;3.8.1 基本应用&lt;/h5&gt;
 
-&lt;h5 id=&quot;has_key方法已死in永生&quot;&gt;has_key方法已死：in永生&lt;/h5&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;./gemma -bfile [prefix] -bslmm [num] -o [prefix]
+./gemma -g [filename] -p [filename] -a [filename] -bslmm [num] -o [prefix]
+
+&lt;/div&gt;
+&lt;p&gt;-bslmm [num]：
+  -bslmm 1: a standard linear BSLMM，使用 MCMC
+  -bslmm 2: a ridge regression/GBLUP，使用 standard non-MCMC 方法。最快
+  -bslmm 3: a probit BSLMM，使用 MCMC。最慢&lt;/p&gt;
+
+&lt;h5 id=&quot;section-26&quot;&gt;3.8.2 详细信息&lt;/h5&gt;
+
+&lt;p&gt;注意：拟合 BSLMM 需要大量内存（例，4000 个体，400，000 SNPs，20 GB 内存），因为软件会存储整个基因型矩阵到内存中。
+foat 版本（gemmaf）可以在不会缺失太大精度的情况下节省一半的内存。&lt;/p&gt;
+
+&lt;p&gt;GEMMA 默认不需要用户提供相关性矩阵，它会自动计算，你也可以通过 ‘-k [filename]’ 自己提供。
+在拟合 BSLMM 的时候，GEMMA 不需要协变量文件，然而，用户可以用 BIMBAM mean genotype 文件存储协变量，用 ‘-notsnp’ 参数使用它们。&lt;/p&gt;
+
+&lt;p&gt;使用基于 MCMC 的方法时，用户可以通过 ‘-w [num]’ 选择 burn-in iterations 的数量，‘-s [num]’ 选择 sampling iterations 的数量。
+此外，用户可以使用 ‘-smax [num]’ 选择用于模型的最大 SNPs 数量（即，有加性效应的 SNPs），probit BSLMM 很需要，因为它的计算负担重。
+为了平衡计算精度和计算时间，用户可以自己决定使用这些参数。&lt;/p&gt;
+
+&lt;h6 id=&quot;section-27&quot;&gt;3.8.3 输出文件&lt;/h6&gt;
+
+&lt;p&gt;共有 5 个输出文件，位于当前目录的输出文件夹下。
+prefix.log.txt：
+prefix.hyp.txt：
+prefix.param.txt：
+prefix.bv.txt：一列育种值
+prefix.gamma.txt：&lt;/p&gt;
+
+&lt;h4 id=&quot;bslmm-&quot;&gt;3.9 用来自 BSLMM 的输出文件预测表型&lt;/h4&gt;
+
+&lt;h5 id=&quot;section-28&quot;&gt;3.9.1 基本应用&lt;/h5&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;./gemma -bfile [prefix] -epm [filename] -emu [filename] -ebv [filename] -k [filename] -predict [num] -o [prefix]
+./gemma -g [filename] -p [filename] -epm [filename] -emu [filename] -ebv [filename] -k [filename] -predict [num] -o [prefix]
+&lt;/div&gt;
+&lt;p&gt;-predict [num]: 预测值需要用正态累积分布函数（CDF）额外转换
+  -predict 1: 获得预测值
+  -predict 2: 获得预测值，用 CDF 将它们转换成概率大小。仅拟合 probit BSLMM 时用。
+-epm [filename]：来自 BSLMM 的 prefix.param.txt
+-emu [filename]: prefix.log.txt from BSLMM
+-ebv [filename]: prefix.bv.txt from BSLMM
+-k [filename]: 相关性矩阵&lt;/p&gt;
+
+&lt;h5 id=&quot;section-29&quot;&gt;3.9.2 详细信息&lt;/h5&gt;
+
+&lt;p&gt;使用拟合 BSLMM 中的同一个表型文件和基因型文件。
+如果用户使用默认矩阵进行拟合 BSLMM，那么在第二步不需要提供 ‘-bev’ 和 ‘-k’。&lt;/p&gt;
+
+&lt;h5 id=&quot;section-30&quot;&gt;3.9.3 输出文件&lt;/h5&gt;
+
+&lt;p&gt;在当前目录的输出文件夹下有两个输出文件。
+prefix.log.txt:
+prefix.prdt.txt:有一列所有个体的预测值&lt;/p&gt;
+
+&lt;h4 id=&quot;section-31&quot;&gt;3.10 相关性矩阵的方差分量估计&lt;/h4&gt;
+
+&lt;h6 id=&quot;section-32&quot;&gt;3.10.1 基本应用&lt;/h6&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;./gemma -p [filename] -k [filename] -n [num] -vc [num] -o [prefix]
+./gemma -p [filename] -mk [filename] -n [num] -vc [num] -o [prefix]
+&lt;/div&gt;
+&lt;p&gt;-vc: 作用哪种估计方式：
+  -vc 1: 默认，使用 HE regression
+  -vc 2: REML AI 算法
+-n [num]: 使用表型的哪一列，默认 1&lt;/p&gt;
+
+&lt;h5 id=&quot;section-33&quot;&gt;3.10.2 详细信息&lt;/h5&gt;
+
+&lt;p&gt;默认 REML AI 算法的方差分量估计限制为正，用户可以在 ’-vc 2‘ 上用 ’-noconstrain‘。
+HE regression 没有限制&lt;/p&gt;
+
+&lt;h5 id=&quot;section-34&quot;&gt;3.10.3 输出文件&lt;/h5&gt;
+
+&lt;h4 id=&quot;summary-statistics-&quot;&gt;3.11 Summary Statistics 的方差分量估计&lt;/h4&gt;
+
+&lt;h5 id=&quot;section-35&quot;&gt;3.11.1 基本应用&lt;/h5&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;./gemma -beta [filename] -bfile [prefix] -vc 1 -o [prefix]
+./gemma -beta [filename] -g [filename] -p [filename] -a [filename] -vc 1 -o [prefix]
+&lt;/div&gt;
+&lt;p&gt;-vc 1: MQS-HEW
+-beta [filename]: beta 文件名&lt;/p&gt;
+
+&lt;h5 id=&quot;section-36&quot;&gt;3.11.4 详细信息&lt;/h5&gt;
+
+&lt;h5 id=&quot;section-37&quot;&gt;3.11.3 输出文件&lt;/h5&gt;
 
 </description>
-        <pubDate>Wed, 07 Dec 2016 00:00:00 -0500</pubDate>
-        <link>http://liuqibao.me/2016/12/07/list-and-dictory/</link>
-        <guid isPermaLink="true">http://liuqibao.me/2016/12/07/list-and-dictory/</guid>
+        <pubDate>Thu, 20 Apr 2017 00:00:00 +0800</pubDate>
+        <link>http://liuqibao.me/2017/04/20/gemma-introdution/</link>
+        <guid isPermaLink="true">http://liuqibao.me/2017/04/20/gemma-introdution/</guid>
         
-        <category>Python学习手册</category>
+        <category>使用手册</category>
         
         
-        <category>Python</category>
+        <category>bioinformatics</category>
         
       </item>
     
       <item>
-        <title>正规表示法与文件格式化处理</title>
+        <title>gapit：用户使用手册</title>
         <description>&lt;ul id=&quot;markdown-toc&quot;&gt;
-  &lt;li&gt;&lt;a href=&quot;#语系对正规表示法的影响&quot; id=&quot;markdown-toc-语系对正规表示法的影响&quot;&gt;语系对正规表示法的影响&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#grep-的一些进阶选项&quot; id=&quot;markdown-toc-grep-的一些进阶选项&quot;&gt;grep 的一些进阶选项&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#基础正规表示法练习&quot; id=&quot;markdown-toc-基础正规表示法练习&quot;&gt;基础正规表示法练习&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#基础正规表示法字符汇整-characters&quot; id=&quot;markdown-toc-基础正规表示法字符汇整-characters&quot;&gt;基础正规表示法字符汇整 (characters)&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#sed-工具&quot; id=&quot;markdown-toc-sed-工具&quot;&gt;sed 工具&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#延伸正规表示法&quot; id=&quot;markdown-toc-延伸正规表示法&quot;&gt;延伸正规表示法&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#文件的格式化与相关处理&quot; id=&quot;markdown-toc-文件的格式化与相关处理&quot;&gt;文件的格式化与相关处理&lt;/a&gt;    &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;#格式化打印-printf&quot; id=&quot;markdown-toc-格式化打印-printf&quot;&gt;格式化打印： printf&lt;/a&gt;&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#awk好用的数据处理工具&quot; id=&quot;markdown-toc-awk好用的数据处理工具&quot;&gt;awk：好用的数据处理工具&lt;/a&gt;    &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;#awk-的逻辑运算字符&quot; id=&quot;markdown-toc-awk-的逻辑运算字符&quot;&gt;awk 的逻辑运算字符&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#档案比对工具&quot; id=&quot;markdown-toc-档案比对工具&quot;&gt;档案比对工具&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#cmp&quot; id=&quot;markdown-toc-cmp&quot;&gt;cmp&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#patch&quot; id=&quot;markdown-toc-patch&quot;&gt;patch&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#档案打印准备pr&quot; id=&quot;markdown-toc-档案打印准备pr&quot;&gt;档案打印准备：pr&lt;/a&gt;&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;hr /&gt;
-&lt;p&gt;正规表示法与通配符是完全不一样的东西！&lt;br /&gt;
-通配符 (wildcard) 代表的是 bash 操作接口的一个功能&lt;br /&gt;
-正规表示法则是一种字符串处理的表示方式&lt;br /&gt;
-***&lt;/p&gt;
-
-&lt;h3 id=&quot;语系对正规表示法的影响&quot;&gt;语系对正规表示法的影响&lt;/h3&gt;
-
-&lt;p&gt;由于不同语系的编码数据并不相同，所以就会造成数据撷取结果的差异了。&lt;/p&gt;
-
-&lt;p&gt;由于一般我们在练习正规表示法时，使用的是兼容于 POSIX 的标准，因此就使用『C 』这个语系。 因此，底下的很多练习都是使用『LANG=C 』这个语系数据来进行的。&lt;/p&gt;
-
-&lt;p&gt;为了要避免这样编码所造成的英文与数字的撷取问题，因此有些特殊的符号我们得要了解一下。&lt;/p&gt;
-
-&lt;blockquote&gt;
-
-  &lt;ul&gt;
-    &lt;li&gt;[:alnum:] 代表英文大小写字符及数字，亦即  0-9,A-Z,a-z&lt;/li&gt;
-    &lt;li&gt;[:alpha:] 代表任何英文大小写字符，亦即 A-Z, a-z&lt;/li&gt;
-    &lt;li&gt;[:blank:] 代表空格键与 [Tab] 按键两者&lt;/li&gt;
-    &lt;li&gt;[:cntrl:] 代表键盘上面的控制按键，亦即包括 CR, LF, Tab, Del.. 等等&lt;/li&gt;
-    &lt;li&gt;[:digit:] 代表数字而已，亦即 0-9&lt;/li&gt;
-    &lt;li&gt;[:graph:] 除了空格符 (空格键与 [Tab] 按键) 外的其他所有按键&lt;/li&gt;
-    &lt;li&gt;[:lower:] 代表小写字符，亦即 a-z&lt;/li&gt;
-    &lt;li&gt;[:print:] 代表任何可以被打印出来的字符&lt;/li&gt;
-    &lt;li&gt;[:punct:] 代表标点符号 (punctuation symbol)，亦即：” ‘ ? ! ; : # $…&lt;/li&gt;
-    &lt;li&gt;[:upper:] 代表大写字符，亦即 A-Z&lt;/li&gt;
-    &lt;li&gt;[:space:] 任何会产生空白的字符，包括空格键, [Tab], CR 等等&lt;/li&gt;
-    &lt;li&gt;[:xdigit:] 代表 16 进位的数字类型，因此包括： 0-9, A-F, a-f 的数字与字符&lt;/li&gt;
-  &lt;/ul&gt;
-&lt;/blockquote&gt;
-
-&lt;h3 id=&quot;grep-的一些进阶选项&quot;&gt;grep 的一些进阶选项&lt;/h3&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;[root@www ~]# grep [-A] [-B] [--color=auto] '搜寻字符串' filename
-选项与参数：
--A ：后面可加数字，为 after 的意思，除了列出该行外，后续的 n 行也列出来；
--B ：后面可加数字，为 befer 的意思，除了列出该行外，前面的 n 行也列出来；
---color=auto 可将正确的那个撷取数据列出颜色
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;h3 id=&quot;基础正规表示法练习&quot;&gt;基础正规表示法练习&lt;/h3&gt;
-
-&lt;p&gt;底下的练习大前提是：&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;语系已经使用&lt;code class=&quot;highlighter-rouge&quot;&gt;export LANG=C &lt;/code&gt;的设定值；&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;grep&lt;/code&gt;已经使用&lt;code class=&quot;highlighter-rouge&quot;&gt;alias&lt;/code&gt;设定成为&lt;code class=&quot;highlighter-rouge&quot;&gt;grep --color=auto &lt;/code&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;练习文档：&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;下载连结：
-&lt;code class=&quot;highlighter-rouge&quot;&gt;http://linux.vbird.org/linux_basic/0330regularex/regular_express.txt&lt;/code&gt;&lt;/li&gt;
-  &lt;li&gt;如果你的 Linux 可以直接连上 Internet 的话，那么使用如下的指令来捉取即可：
-&lt;code class=&quot;highlighter-rouge&quot;&gt;wget http://linux.vbird.org/linux_basic/0330regularex/regular_express.txt&lt;/code&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;基础正规表示法字符汇整-characters&quot;&gt;基础正规表示法字符汇整 (characters)&lt;/h3&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;^word&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;意义：待搜寻的字符串(word)在行首！&lt;/p&gt;
-
-&lt;p&gt;范例：搜寻行首为 # 开始的那一行，并列出行号
-&lt;code class=&quot;highlighter-rouge&quot;&gt;grep -n '^#' regular_express.txt&lt;/code&gt;&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;word$&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;意义：待搜寻的字符串(word)在行尾！&lt;/p&gt;
-
-&lt;p&gt;范例：将行尾为 ! 的那一行打印出来，并列出行号
-&lt;code class=&quot;highlighter-rouge&quot;&gt;grep -n '!$' regular_express.txt&lt;/code&gt;&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;意义：代表『一定有一个任意字符』的字符！&lt;/p&gt;
-
-&lt;p&gt;范例：搜寻的字符串可以是 (eve) (eae) (eee) (e e)， 但不能仅有 (ee) ！亦即 e
-与 e 中间『一定』仅有一个字符，而空格符也是字符！
-&lt;code class=&quot;highlighter-rouge&quot;&gt;grep -n 'e.e' regular_express.txt&lt;/code&gt;&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;\&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;意义：跳脱字符，将特殊符号的特殊意义去除！&lt;/p&gt;
-
-&lt;p&gt;范例：搜寻含有单引号 ‘ 的那一行！
-&lt;code class=&quot;highlighter-rouge&quot;&gt;grep -n \' regular_express.txt&lt;/code&gt;&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;*&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;意义：重复零个到无穷多个的前一个 RE 字符&lt;/p&gt;
-
-&lt;p&gt;范例：找出含有 (es) (ess) (esss) 等等的字符串，注意，因为 * 可以是 0 个，所以es 也是符合带搜寻字符串。另外，因为 * 为重复『前一个 RE 字符』的符号， 因
-此，在 * 之前必须要紧接着一个 RE 字符喔！例如任意字符则为 『 .*』 ！
-&lt;code class=&quot;highlighter-rouge&quot;&gt;grep -n 'ess*' regular_express.txt&lt;/code&gt;&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;[list]&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;意义：字符集合的 RE 字符，里面列出想要撷取的字符！&lt;/p&gt;
-
-&lt;p&gt;范例：搜寻含有 (gl) 或 (gd) 的那一行，需要特别留意的是，在 [] 当中『谨代表一
-个待搜寻的字符』， 例如『a[afl]y 』代表搜寻的字符串可以是 aay, afy, aly 即
-[afl] 代表 a 或 f 或 l 的意思！
-&lt;code class=&quot;highlighter-rouge&quot;&gt;grep -n 'g[ld]' regular_express.txt&lt;/code&gt;&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;[n1-n2]&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;意义：字符集合的 RE 字符，里面列出想要撷取的字符范围！&lt;/p&gt;
-
-&lt;p&gt;范例：搜寻含有任意数字的那一行！需特别留意，在字符集合 [] 中的减号 - 是有
-特殊意义的，他代表两个字符之间的所有连续字符！但这个连续与否与 ASCII 编码
-有关，因此，你的编码需要设定正确(在 bash 当中，需要确定 LANG 与
-LANGUAGE 的变量是否正确！) 例如所有大写字符则为 [A-Z]
-&lt;code class=&quot;highlighter-rouge&quot;&gt;grep -n '[0-9]' regular_express.txt&lt;/code&gt;&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;[^list]&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;意义：字符集合的 RE 字符，里面列出不要的字符串或范围！&lt;/p&gt;
-
-&lt;p&gt;范例：搜寻的字符串可以是 (oog) (ood) 但不能是 (oot) ，那个 ^ 在 [] 内时，代
-表的意义是『反向选择』的意思。 例如，我不要大写字符，则为 [^A-Z]。但是，
-需要特别注意的是，如果以&lt;code class=&quot;highlighter-rouge&quot;&gt;grep -n [^A-Z] regular_express.txt&lt;/code&gt;来搜寻，却发现该档案内的所有行都被列出，为什么？因为这个 [^A-Z] 是『非大写字符』的意
-思， 因为每一行均有非大写字符，例如第一行的 “Open Source” 就有 p,e,n,o….
-等等的小写字
-&lt;code class=&quot;highlighter-rouge&quot;&gt;grep -n 'oo[^t]' regular_express.txt&lt;/code&gt;&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;{n,m}&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;意义：连续 n 到 m 个的『前一个 RE 字符』&lt;/p&gt;
-
-&lt;p&gt;意义：若为 {n} 则是连续 n 个的前一个 RE 字符，&lt;/p&gt;
-
-&lt;p&gt;意义：若是 {n,} 则是连续 n 个以上的前一个 RE 字符！ 范例：在 g 与 g 之间有
-2 个到 3 个的 o 存在的字符串，亦即 (goog)(gooog)
-&lt;code class=&quot;highlighter-rouge&quot;&gt;grep -n 'go\{2,3\}g' regular_express.txt&lt;/code&gt;&lt;/p&gt;
-
-&lt;hr /&gt;
-&lt;p&gt;『 正规表示法的特殊字符』与一般在指令列输入指令的『通配符』并不相同， 例如，在通配符当中的 * 代表的是『0 ~ 无限多个字符』的意思，但是在正规表示法当中， * 则是『重复 0 到无穷多个的前一个 RE 字符』&lt;/p&gt;
-
-&lt;p&gt;举例来说，不支持正规表示法的 ls 这个工具中，若我们使用 ` ls -l * ` 代表的是任意档名的档案，而&lt;code class=&quot;highlighter-rouge&quot;&gt; ls -l a* &lt;/code&gt;代表的是以 a 为开头的任何档名的档案， 但在正规表示法中，我们要找到含有以 a 为开头的档案，则必须要这样：(需搭配支持正规表示法的工具):
-&lt;code class=&quot;highlighter-rouge&quot;&gt;ls | grep -n '^a.*'&lt;/code&gt;
-***&lt;/p&gt;
-
-&lt;h3 id=&quot;sed-工具&quot;&gt;sed 工具&lt;/h3&gt;
-
-&lt;p&gt;sed 本身也是一个管线命令，可以分析 standard input 的啦！ 而且 sed 还可以将数据进行取代、删除、新增、撷取特定行等等的功能。&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;[root@www ~]# sed [-nefr] [动作]
-选项与参数：
--n ：使用安静(silent)模式。在一般 sed 的用法中，所有来自 STDIN 的数据一般都会被列出到屏幕上。但如果加上 -n 参数后，则只有经过 sed 特殊处理的那一行(或者动作)才会被列出来。
--e ：直接在指令列模式上进行 sed 的动作编辑；
--f ：直接将 sed 的动作写在一个档案内， `-f filename`则可以执行 filename 内 的 sed 动作；
--r ：sed 的动作支持的是延伸型正规表示法的语法。 (预设是基础正规表示法语法)
--i ：直接修改读取的档案内容，而不是由屏幕输出。
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;动作说明： [n1[,n2]]function
-n1, n2 ：不见得会存在，一般代表『选择进行动作的行数』，举例来说，如果我的动作是需要在 10 到 20 行之间进行的，则『10,20[动作行为] 』
-function 有底下这些咚咚：
-a ：新增， a 的后面可以接字符串，而这些字符串会在新的一行出现(目前的下一行)～
-c ：取代， c 的后面可以接字符串，这些字符串可以取代 n1,n2 之间的行！
-d ：删除，因为是删除啊，所以 d 后面通常不接任何咚咚；
-i ：插入，i 的后面可以接字符串，而这些字符串会在新的一行出现(目前的上一行)；
-p ：打印，亦即将某个选择的数据印出。通常 p 会与参数 sed -n 一起运作～
-s ：取代，可以直接进行取代的工作！通常这个 s 的动作可以搭配正规表示法！例如 `1,20s/old/new/g`！
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;以行为单位的新增/删除功能&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;范例一：将 /etc/passwd 的内容列出并且打印行号，同时，请将第 2~5 行删
-除！
-[root@www ~]# nl /etc/passwd | sed '2,5d'
-1 root:x:0:0:root:/root:/bin/bash
-6 sync:x:5:0:sync:/sbin:/bin/sync
-7 shutdown:x:6:0:shutdown:/sbin:/sbin/shutdown
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;&lt;strong&gt;注意&lt;/strong&gt;，原本应该是要下达&lt;code class=&quot;highlighter-rouge&quot;&gt;sed -e&lt;/code&gt;才对，没有&lt;code class=&quot;highlighter-rouge&quot;&gt;-e&lt;/code&gt;也行！同时也要注意的是，sed后面接的动作，要以&lt;code class=&quot;highlighter-rouge&quot;&gt;''&lt;/code&gt;两个单引号括住！但是，sed后面如果要接超过&lt;strong&gt;两个&lt;/strong&gt;以上的动作时，每个动作前面得加&lt;code class=&quot;highlighter-rouge&quot;&gt;-e&lt;/code&gt;才行&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;范例二：承上题，在第二行后(亦即是加在第三行)加上『 drink tea?』字样！
-[root@www ~]# nl /etc/passwd | sed '2a drink tea'
-1 root:x:0:0:root:/root:/bin/bash
-2 bin:x:1:1:bin:/bin:/sbin/nologin
-drink tea
-3 daemon:x:2:2:daemon:/sbin:/sbin/nologin
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;范例三：在第二行后面加入两行字，例如『 Drink tea or .....』与『 drink
-beer?』
-[root@www ~]# nl /etc/passwd | sed '2a Drink tea or ......\ drink beer ?'
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;p&gt;重点是可以新增&lt;strong&gt;不只一行&lt;/strong&gt;！但是每一行之间都必须要以&lt;strong&gt;反斜杠&lt;/strong&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;\&lt;/code&gt;来进行新行的增加。&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;以行为单位的取代与显示功能&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;范例四：我想将第 2-5 行的内容取代成为『 No 2-5 number』呢？
-[root@www ~]# nl /etc/passwd | sed '2,5c No 2-5 number'
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;范例五：仅列出 /etc/passwd 档案内的第 5-7 行
-[root@www ~]# nl /etc/passwd | sed -n '5,7p'
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;p&gt;&lt;strong&gt;注意：&lt;/strong&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;- n&lt;/code&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;部分数据的搜寻并取代的功能&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;除了整行的处理模式之外，sed 还可以用行为单位进行部分数据的搜寻并取代的功能。&lt;/p&gt;
-
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;sed 's/要被取代的字符串/新的字符串/g&lt;/code&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;直接修改档案内容(危险动作)&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;范例六：利用 sed 将 regular_express.txt 内每一行结尾若为 . 则换成 !
-[root@www ~]# sed -i 's/\.$/\!/g' regular_express.txt
-# 上头的 -i 选项可以让你的 sed 直接去修改后面接的档案内容而不是由屏幕输出
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;h3 id=&quot;延伸正规表示法&quot;&gt;延伸正规表示法&lt;/h3&gt;
-
-&lt;p&gt;符合正则表达式的NFA流派。&lt;/p&gt;
-
-&lt;h3 id=&quot;文件的格式化与相关处理&quot;&gt;文件的格式化与相关处理&lt;/h3&gt;
-
-&lt;h4 id=&quot;格式化打印-printf&quot;&gt;格式化打印： printf&lt;/h4&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;[root@www ~]# printf '打印格式' 实际内容
-选项与参数：
-关于格式方面的几个特殊样式：
-\a 警告声音输出
-\b 退格键(backspace)
-\f 清除屏幕 (form feed)
-\n 输出新的一行
-\r 亦即 Enter 按键
-\t 水平的 [tab] 按键
-\v 垂直的 [tab] 按键
-\xNN NN 为两位数的数字，可以转换数字成为字符。
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;h3 id=&quot;awk好用的数据处理工具&quot;&gt;awk：好用的数据处理工具&lt;/h3&gt;
-
-&lt;p&gt;相较于 sed 常常作用于&lt;strong&gt;一整个行&lt;/strong&gt;的处理，awk 则比较倾向于一行当中分成数个*字段&lt;strong&gt;来处理。默认的『字段的分隔符为&lt;/strong&gt;空格键&lt;strong&gt;或 **[tab]键&lt;/strong&gt;因此，awk 相当的适合处理&lt;strong&gt;小型的数据&lt;/strong&gt;处理。&lt;/p&gt;
-
-&lt;p&gt;模式：
-` [root@www ~]# awk ‘条件类型 1{动作 1} 条件类型 2{动作 2} …’ filename `&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; # 取出账号与登入者的 IP ，且账号与 IP 之间以 [tab] 隔开
-[root@www ~]# last -n 5 | awk '{print $1 &quot;\t&quot; $3}'
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;上表是 awk 最常使用的动作&lt;strong&gt;透过 print 的功能将字段数据列出来&lt;/strong&gt;,字段的分隔则以空格键或 [tab] 按键来隔开。 因为不论哪一行我都要处理，因此，就不需要有** “条件类型”** 的限制！&lt;/p&gt;
-
-&lt;p&gt;使用 awk 的时候，请先确认一下你的数据当中，如果是连续性的数据，请不要有空格或 [tab] 在内，否则，就会发生误判！&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;strong&gt;awk 的处理流程：&lt;/strong&gt;
-    &lt;blockquote&gt;
-      &lt;ol&gt;
-        &lt;li&gt;读入第一行，并将第一行的资料填入 $0, $1, $2…. 等变数当中；&lt;/li&gt;
-        &lt;li&gt;依据 “条件类型” 的限制，判断是否需要进行后面的 “动作”；&lt;/li&gt;
-        &lt;li&gt;做完所有的动作与条件类型；&lt;/li&gt;
-        &lt;li&gt;若还有后续的『行』的数据，则重复上面1~3的步骤，直到所有的数据都读完为止。&lt;/li&gt;
-      &lt;/ol&gt;
-    &lt;/blockquote&gt;
-  &lt;/li&gt;
-  &lt;li&gt;awk 的内建变量：
-    &lt;blockquote&gt;
-      &lt;p&gt;NF 每一行 ($0) 拥有的字段总数&lt;br /&gt;
-NR 目前 awk 所处理的是『第几行』数据&lt;br /&gt;
-FS 目前的分隔字符，默认是空格键&lt;/p&gt;
-    &lt;/blockquote&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;hr /&gt;
-&lt;p&gt;&lt;strong&gt;Tips:&lt;/strong&gt;
-要注意，awk 后续的所有动作是以单引号&lt;code class=&quot;highlighter-rouge&quot;&gt;'&lt;/code&gt;括住的，由于单引号与双引号都必须是成对的， 所以， awk 的格式内容如果想要以 print 打印时，记得非变量的文字部分，包含上一小节 printf 提到的格式中，都需要使用&lt;strong&gt;双引号&lt;/strong&gt;来定义出来喔！因为单引号已经是 awk 的指令固定用法了！
-***&lt;/p&gt;
-
-&lt;p&gt;以上面 last -n 5 的例子来做说明，如果我想要：&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;列出每一行的账号(就是&lt;code class=&quot;highlighter-rouge&quot;&gt;$1&lt;/code&gt;)；&lt;/li&gt;
-  &lt;li&gt;列出目前处理的行数(就是 awk 内的&lt;code class=&quot;highlighter-rouge&quot;&gt;NR&lt;/code&gt;变量)&lt;/li&gt;
-  &lt;li&gt;并且说明，该行有多少字段(就是 awk 内的&lt;code class=&quot;highlighter-rouge&quot;&gt;NF&lt;/code&gt;变量)则可以这样
-    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;[root@www ~]# last -n 5| awk '{print $1 &quot;\t lines: &quot; NR &quot;\t columes: &quot; NF}'
-root lines: 1 columes: 10
-&lt;/code&gt;&lt;/pre&gt;
-    &lt;/div&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h4 id=&quot;awk-的逻辑运算字符&quot;&gt;awk 的逻辑运算字符&lt;/h4&gt;
-
-&lt;p&gt;举例：在&lt;code class=&quot;highlighter-rouge&quot;&gt;/etc/passwd&lt;/code&gt;当中是以冒号 &lt;code class=&quot;highlighter-rouge&quot;&gt;:&lt;/code&gt; 来作为字段的分隔， 该档案中第一字段为账号，第三字段则是 UID。那假设我要查阅，第三栏小于 10 以下的数据，并且仅列出账号与第三栏， 那么可以这样做：&lt;/p&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;[root@www ~]# cat /etc/passwd | \
-&amp;gt; awk 'BEGIN {FS=&quot;:&quot;} $3 &amp;lt; 10 {print $1 &quot;\t &quot; $3}'
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt; BEGIN&lt;/code&gt;:预先设定 awk 的变量,否则FS从&lt;strong&gt;第二行&lt;/strong&gt;才能生效。&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;awk 来进行计算功能&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;例子：pay.txt
-Name 1st 2nd 3th
-VBird 23000 24000 25000
-DMTsai 21000 20000 23000
-Bird2 43000 42000 41000
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;计算每个人的总额并且格式化输出：&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;第一行只是说明，所以第一行不要进行加总 (&lt;code class=&quot;highlighter-rouge&quot;&gt;NR==1&lt;/code&gt;时处理)；&lt;/li&gt;
-  &lt;li&gt;第二行以后就会有加总的情况出现 (&lt;code class=&quot;highlighter-rouge&quot;&gt;NR&amp;gt;=2&lt;/code&gt;以后处理)
-    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;[root@www ~]# cat pay.txt | \
-&amp;gt; awk 'NR==1{printf
-&quot;%10s %10s %10s %10s %10s\n&quot;,$1,$2,$3,$4,&quot;Total&quot; }
-NR&amp;gt;=2{total = $2 + $3 + $4
-printf &quot;%10s %10d %10d %10d %10.2f\n&quot;, $1, $2, $3, $4, total}'
-Name 1st 2nd 3th Total
-VBird 23000 24000 25000 72000.00
-DMTsai 21000 20000 23000 64000.00
-Bird2 43000 42000 41000 126000.00
-&lt;/code&gt;&lt;/pre&gt;
-    &lt;/div&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;几个重要事项应该要先说明的：&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;awk 的指令间隔：所有 awk 的动作，亦即在&lt;code class=&quot;highlighter-rouge&quot;&gt;&lt;span class=&quot;p&quot;&gt;{}&lt;/span&gt;&lt;/code&gt;内的动作，如果有需要多个指令辅助时，可利用分号&lt;code class=&quot;highlighter-rouge&quot;&gt; ;&lt;/code&gt;间隔， 或者直接以 &lt;code class=&quot;highlighter-rouge&quot;&gt;Enter&lt;/code&gt; 按键来隔开每个指令，例如上面的范例中，鸟哥共按了三次&lt;code class=&quot;highlighter-rouge&quot;&gt;enter&lt;/code&gt; ！&lt;/li&gt;
-  &lt;li&gt;逻辑运算当中，如果是『等于』的情况，则务必使用两个等号&lt;code class=&quot;highlighter-rouge&quot;&gt; ==&lt;/code&gt;！&lt;/li&gt;
-  &lt;li&gt;格式化输出时，在&lt;code class=&quot;highlighter-rouge&quot;&gt;printf&lt;/code&gt;的格式设定当中，务必加上&lt;code class=&quot;highlighter-rouge&quot;&gt;\n&lt;/code&gt;，才能进行分行！&lt;/li&gt;
-  &lt;li&gt;与 bash shell 的变量不同，在 awk 当中，变量可以直接使用，不需加上&lt;code class=&quot;highlighter-rouge&quot;&gt;$&lt;/code&gt;符号。&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h4 id=&quot;档案比对工具&quot;&gt;档案比对工具&lt;/h4&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;diff&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;diff 就是用在比对两个档案之间的差异的，并且是以行为单位来比对的！一般是用在 ASCII 纯文本档的比对上。 由于是以行为比对的单位，因此 diff 通常是用在同一的档案(或软件)的新旧版本差异上！&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;[root@www ~]# diff [-bBi] from-file to-file
-选项与参数：
-from-file ：一个档名，作为原始比对档案的档名；
-to-file ：一个档名，作为目的比对档案的档名；
-注意，from-file 或 to-file 可以 - 取代，那个 - 代表『 Standard input』之意。
--b ：忽略一行当中，仅有多个空白的差异(例如 &quot;about me&quot; 与 &quot;about me&quot;视为相同
--B ：忽略空白行的差异。
--i ：忽略大小写的不同。
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;h4 id=&quot;cmp&quot;&gt;cmp&lt;/h4&gt;
-
-&lt;p&gt;mp 主要也是在比对两个档案，他主要利用&lt;strong&gt;字节&lt;/strong&gt;单位去比对， 因此，当然也可以比对&lt;strong&gt;binary file&lt;/strong&gt;。注意， diff 主要是以&lt;strong&gt;行&lt;/strong&gt;为单位比对， cmp 则是以&lt;strong&gt;字节&lt;/strong&gt;为单位去比对，这并不相同！&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;[root@www ~]# cmp [-s] file1 file2
-选项与参数：
--s ：将所有的不同点的字节处都列出来。因为 cmp 预设仅会输出第一个发现的不同点。
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;h4 id=&quot;patch&quot;&gt;patch&lt;/h4&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;[root@www ~]# patch -pN &amp;lt; patch_file &amp;lt;==更新
-[root@www ~]# patch -R -pN &amp;lt; patch_file &amp;lt;==还原
-选项与参数：
--p ：后面可以接『取消几层目录』的意思。
--R ：代表还原，将新的文件还原成原来旧的版本。
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;h4 id=&quot;档案打印准备pr&quot;&gt;档案打印准备：pr&lt;/h4&gt;
-</description>
-        <pubDate>Wed, 07 Dec 2016 00:00:00 -0500</pubDate>
-        <link>http://liuqibao.me/2016/12/07/regular-expression/</link>
-        <guid isPermaLink="true">http://liuqibao.me/2016/12/07/regular-expression/</guid>
-        
-        <category>文本处理</category>
-        
-        
-        <category>Linux</category>
-        
-      </item>
-    
-      <item>
-        <title>第7章 认识字符串</title>
-        <description>&lt;ul id=&quot;markdown-toc&quot;&gt;
-  &lt;li&gt;&lt;a href=&quot;#字符串常量&quot; id=&quot;markdown-toc-字符串常量&quot;&gt;字符串常量&lt;/a&gt;    &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;#单双引号字符串是一样的&quot; id=&quot;markdown-toc-单双引号字符串是一样的&quot;&gt;单双引号字符串是一样的&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#用转义序列代表特殊字节&quot; id=&quot;markdown-toc-用转义序列代表特殊字节&quot;&gt;用转义序列代表特殊字节&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#raw字符串抑制转义&quot; id=&quot;markdown-toc-raw字符串抑制转义&quot;&gt;raw字符串抑制转义&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#三重引号编写多行字符串块&quot; id=&quot;markdown-toc-三重引号编写多行字符串块&quot;&gt;三重引号编写多行字符串块&lt;/a&gt;&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#实际应用中的字符串&quot; id=&quot;markdown-toc-实际应用中的字符串&quot;&gt;实际应用中的字符串&lt;/a&gt;    &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;#基本操作&quot; id=&quot;markdown-toc-基本操作&quot;&gt;基本操作&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#索引和分片&quot; id=&quot;markdown-toc-索引和分片&quot;&gt;索引和分片&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#字符串转换工具&quot; id=&quot;markdown-toc-字符串转换工具&quot;&gt;字符串转换工具&lt;/a&gt;&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#字符串方法&quot; id=&quot;markdown-toc-字符串方法&quot;&gt;字符串方法&lt;/a&gt;    &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;#字符串方法实例修改字符串&quot; id=&quot;markdown-toc-字符串方法实例修改字符串&quot;&gt;字符串方法实例：修改字符串&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#字符串方法实例文本解析&quot; id=&quot;markdown-toc-字符串方法实例文本解析&quot;&gt;字符串方法实例：&lt;strong&gt;文本解析&lt;/strong&gt;&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#实际应用中的其他常见字符串方法&quot; id=&quot;markdown-toc-实际应用中的其他常见字符串方法&quot;&gt;实际应用中的其他常见字符串方法&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#字符串格式化表达式&quot; id=&quot;markdown-toc-字符串格式化表达式&quot;&gt;字符串格式化表达式&lt;/a&gt;        &lt;ul&gt;
-          &lt;li&gt;&lt;a href=&quot;#更高级的字符串格式化表达式&quot; id=&quot;markdown-toc-更高级的字符串格式化表达式&quot;&gt;更高级的字符串格式化表达式&lt;/a&gt;&lt;/li&gt;
-          &lt;li&gt;&lt;a href=&quot;#基于字典的字符串格式化&quot; id=&quot;markdown-toc-基于字典的字符串格式化&quot;&gt;基于字典的字符串格式化&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#gapit-&quot; id=&quot;markdown-toc-gapit-&quot;&gt;GAPIT 的简单使用&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#section&quot; id=&quot;markdown-toc-section&quot;&gt;1. 安装&lt;/a&gt;        &lt;ul&gt;
+          &lt;li&gt;&lt;a href=&quot;#section-1&quot; id=&quot;markdown-toc-section-1&quot;&gt;2.1. 基本应用&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#enhanced-compression&quot; id=&quot;markdown-toc-enhanced-compression&quot;&gt;2.2. Enhanced Compression&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#section-2&quot; id=&quot;markdown-toc-section-2&quot;&gt;2.4. 基因组预测&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#section-3&quot; id=&quot;markdown-toc-section-3&quot;&gt;2.5. 多基因型文件&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#numeric-genotype-format&quot; id=&quot;markdown-toc-numeric-genotype-format&quot;&gt;2.6. Numeric Genotype Format&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#snps-fractional-snps-kinship--pcs&quot; id=&quot;markdown-toc-snps-fractional-snps-kinship--pcs&quot;&gt;2.8. 用部分 SNPs （Fractional SNPs）计算 Kinship 和 PCs&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#section-4&quot; id=&quot;markdown-toc-section-4&quot;&gt;2.9. 节省内存&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#section-5&quot; id=&quot;markdown-toc-section-5&quot;&gt;2.10. 模型选择&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#super&quot; id=&quot;markdown-toc-super&quot;&gt;2.11. SUPER&lt;/a&gt;&lt;/li&gt;
         &lt;/ul&gt;
       &lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#字符串格式化调用方法&quot; id=&quot;markdown-toc-字符串格式化调用方法&quot;&gt;字符串格式化调用方法&lt;/a&gt;        &lt;ul&gt;
-          &lt;li&gt;&lt;a href=&quot;#基础知识&quot; id=&quot;markdown-toc-基础知识&quot;&gt;基础知识&lt;/a&gt;&lt;/li&gt;
-          &lt;li&gt;&lt;a href=&quot;#添加键属性和偏移量&quot; id=&quot;markdown-toc-添加键属性和偏移量&quot;&gt;添加键、属性和偏移量&lt;/a&gt;&lt;/li&gt;
-          &lt;li&gt;&lt;a href=&quot;#添加具体格式化&quot; id=&quot;markdown-toc-添加具体格式化&quot;&gt;添加具体格式化&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#section-6&quot; id=&quot;markdown-toc-section-6&quot;&gt;3. 数据&lt;/a&gt;        &lt;ul&gt;
+          &lt;li&gt;&lt;a href=&quot;#section-7&quot; id=&quot;markdown-toc-section-7&quot;&gt;3.1 表型数据&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#section-8&quot; id=&quot;markdown-toc-section-8&quot;&gt;3.2 基因型数据&lt;/a&gt;            &lt;ul&gt;
+              &lt;li&gt;&lt;a href=&quot;#hapmap-&quot; id=&quot;markdown-toc-hapmap-&quot;&gt;3.2.1 HapMap 格式&lt;/a&gt;&lt;/li&gt;
+              &lt;li&gt;&lt;a href=&quot;#numeric-&quot; id=&quot;markdown-toc-numeric-&quot;&gt;3.2.2 numeric 格式&lt;/a&gt;&lt;/li&gt;
+            &lt;/ul&gt;
+          &lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#kinship&quot; id=&quot;markdown-toc-kinship&quot;&gt;3.3 Kinship&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#section-9&quot; id=&quot;markdown-toc-section-9&quot;&gt;3.4 协变量&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#section-10&quot; id=&quot;markdown-toc-section-10&quot;&gt;3.5 通过文件名输入基因型文件&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#gapit--1&quot; id=&quot;markdown-toc-gapit--1&quot;&gt;3.6 其它 GAPIT 参数&lt;/a&gt;&lt;/li&gt;
         &lt;/ul&gt;
       &lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#通常意义下的类型分类&quot; id=&quot;markdown-toc-通常意义下的类型分类&quot;&gt;通常意义下的类型分类&lt;/a&gt;    &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;#同样分类的类型共享其操作集合&quot; id=&quot;markdown-toc-同样分类的类型共享其操作集合&quot;&gt;同样分类的类型共享其操作集合&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#可变类型能够在原处修改&quot; id=&quot;markdown-toc-可变类型能够在原处修改&quot;&gt;可变类型能够在原处修改&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#section-11&quot; id=&quot;markdown-toc-section-11&quot;&gt;4. 结果&lt;/a&gt;&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;hr /&gt;
-&lt;p&gt;字符串处理工具：核心系列、re模块、基于模式的字符串处理（eg.自然语言处理）、文本处理工具（eg.XML解析器）
-***&lt;/p&gt;
-
-&lt;h3 id=&quot;字符串常量&quot;&gt;字符串常量&lt;/h3&gt;
-
-&lt;h4 id=&quot;单双引号字符串是一样的&quot;&gt;单双引号字符串是一样的&lt;/h4&gt;
-
-&lt;h4 id=&quot;用转义序列代表特殊字节&quot;&gt;用转义序列代表特殊字节&lt;/h4&gt;
-
-&lt;h4 id=&quot;raw字符串抑制转义&quot;&gt;raw字符串抑制转义&lt;/h4&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;
-    &lt;p&gt;raw字符串会关闭转义机制，这在输入网址时很有用，&lt;code class=&quot;highlighter-rouge&quot;&gt;ft=open(r‘c:\new\text','w')&lt;/code&gt;&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;另一种办法：使用两个反斜线来保留反斜线,&lt;code class=&quot;highlighter-rouge&quot;&gt;ft=open('c:\\new\\text','w')&lt;/code&gt;&lt;/p&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h4 id=&quot;三重引号编写多行字符串块&quot;&gt;三重引号编写多行字符串块&lt;/h4&gt;
-
-&lt;p&gt;&lt;strong&gt;原则：&lt;/strong&gt;输入的是什么，得到的就是什么！&lt;/p&gt;
-
-&lt;h3 id=&quot;实际应用中的字符串&quot;&gt;实际应用中的字符串&lt;/h3&gt;
-
-&lt;h4 id=&quot;基本操作&quot;&gt;基本操作&lt;/h4&gt;
-
-&lt;h4 id=&quot;索引和分片&quot;&gt;索引和分片&lt;/h4&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;步长：&lt;code class=&quot;highlighter-rouge&quot;&gt;X[I:J:K]&lt;/code&gt;其中&lt;code class=&quot;highlighter-rouge&quot;&gt;K&lt;/code&gt;为步长。&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;strong&gt;若&lt;code class=&quot;highlighter-rouge&quot;&gt;K=-1&lt;/code&gt;就会对字符串进行反转&lt;/strong&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;分片&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;blockquote&gt;
-  &lt;ul&gt;
-    &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;line[:-1]&lt;/code&gt;会将该行除最后一个字符之外的所有内容提取&lt;/li&gt;
-    &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;line.rstrip()&lt;/code&gt;会留下没有换行字符的那一年行的最后一个字符。（&lt;strong&gt;推荐&lt;/strong&gt;）&lt;/li&gt;
-  &lt;/ul&gt;
-&lt;/blockquote&gt;
-
-&lt;h4 id=&quot;字符串转换工具&quot;&gt;字符串转换工具&lt;/h4&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;int（）&lt;/code&gt;和&lt;code class=&quot;highlighter-rouge&quot;&gt;str（）&lt;/code&gt;&lt;/li&gt;
-  &lt;li&gt;代码转换：&lt;code class=&quot;highlighter-rouge&quot;&gt;ord（）&lt;/code&gt;和&lt;code class=&quot;highlighter-rouge&quot;&gt;chr（）&lt;/code&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;字符串方法&quot;&gt;字符串方法&lt;/h3&gt;
-
-&lt;h4 id=&quot;字符串方法实例修改字符串&quot;&gt;字符串方法实例：修改字符串&lt;/h4&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;替换字符串：&lt;code class=&quot;highlighter-rouge&quot;&gt;replace&lt;/code&gt;方法&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;find&lt;/code&gt;搜索字符串，返回&lt;strong&gt;字符串出现处的偏移&lt;/strong&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;jion&lt;/code&gt;将列表“合成”一个字符串&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h4 id=&quot;字符串方法实例文本解析&quot;&gt;字符串方法实例：&lt;strong&gt;文本解析&lt;/strong&gt;&lt;/h4&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;用&lt;strong&gt;分片&lt;/strong&gt;技术提取字符串&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;split&lt;/code&gt;方法将一个字符串分割为一个子字符串的列表，以&lt;strong&gt;分隔符字符串&lt;/strong&gt;为标准
-    &lt;blockquote&gt;
-      &lt;p&gt;在此分隔答符不一定是&lt;strong&gt;空格&lt;/strong&gt;或&lt;strong&gt;标点符号&lt;/strong&gt;，也可以是一个&lt;strong&gt;字符串&lt;/strong&gt;。&lt;/p&gt;
-    &lt;/blockquote&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h4 id=&quot;实际应用中的其他常见字符串方法&quot;&gt;实际应用中的其他常见字符串方法&lt;/h4&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;rstrip&lt;/code&gt;：清除每行末尾空白&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;upper&lt;/code&gt;：执行大小写转换&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;isalpha&lt;/code&gt;：测试内容&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;startswith&lt;/code&gt;和&lt;code class=&quot;highlighter-rouge&quot;&gt;endswith&lt;/code&gt;：检测起始和末尾子字符串&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h4 id=&quot;字符串格式化表达式&quot;&gt;字符串格式化表达式&lt;/h4&gt;
-
-&lt;p&gt;字符串格式化允许在一个单个的步骤中对一个字符串执行多个特定类型的替换。&lt;/p&gt;
-&lt;blockquote&gt;
-  &lt;p&gt;两种形式的实现方式：&lt;/p&gt;
-  &lt;ul&gt;
-    &lt;li&gt;字符串格式化表达式&lt;/li&gt;
-    &lt;li&gt;字符串格式化方法调用&lt;/li&gt;
-  &lt;/ul&gt;
-&lt;/blockquote&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;%&lt;/code&gt;操作符的左侧放置一个需要进行格式化的字符串。&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;%&lt;/code&gt;操作符右侧放置一个（或多个，嵌入到元组中）的对象。&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h5 id=&quot;更高级的字符串格式化表达式&quot;&gt;更高级的字符串格式化表达式&lt;/h5&gt;
-
-&lt;p&gt;详见标准手册&lt;/p&gt;
-
-&lt;h5 id=&quot;基于字典的字符串格式化&quot;&gt;基于字典的字符串格式化&lt;/h5&gt;
-
-&lt;h4 id=&quot;字符串格式化调用方法&quot;&gt;字符串格式化调用方法&lt;/h4&gt;
-
-&lt;h5 id=&quot;基础知识&quot;&gt;基础知识&lt;/h5&gt;
-
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;format&lt;/code&gt;方法使用主体字符串作为模板，在主体字符串中，花括号&lt;code class=&quot;highlighter-rouge&quot;&gt;&lt;span class=&quot;p&quot;&gt;{}&lt;/span&gt;&lt;/code&gt;通过位置或关键字指出替换目标及将要插入的参数。&lt;/p&gt;
-
-&lt;h5 id=&quot;添加键属性和偏移量&quot;&gt;添加键、属性和偏移量&lt;/h5&gt;
-
-&lt;h5 id=&quot;添加具体格式化&quot;&gt;添加具体格式化&lt;/h5&gt;
-
-&lt;h3 id=&quot;通常意义下的类型分类&quot;&gt;通常意义下的类型分类&lt;/h3&gt;
-
-&lt;h4 id=&quot;同样分类的类型共享其操作集合&quot;&gt;同样分类的类型共享其操作集合&lt;/h4&gt;
-
-&lt;p&gt;三个主要类型（以及操作）分类：&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;数字（整数、浮点数、二进制、分数等）&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;支持加法和乘法等。&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;序列（字符串、列表、元组）：&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;支持索引、分片和合并等。&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;映射（字典）：&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;支持通过徤的索引等。&lt;/p&gt;
-
-&lt;p&gt;集合是自成一体的一个分类。&lt;/p&gt;
-
-&lt;h4 id=&quot;可变类型能够在原处修改&quot;&gt;可变类型能够在原处修改&lt;/h4&gt;
-
-&lt;p&gt;主要核心类型：&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;
-    &lt;p&gt;不可变类型（数字、字符串、元组、不可变集合）&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;可变类型（列表、字典、可变集合）&lt;/p&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-</description>
-        <pubDate>Tue, 06 Dec 2016 00:00:00 -0500</pubDate>
-        <link>http://liuqibao.me/2016/12/06/learn-string/</link>
-        <guid isPermaLink="true">http://liuqibao.me/2016/12/06/learn-string/</guid>
-        
-        <category>Python学习手册</category>
-        
-        
-        <category>Python</category>
-        
-      </item>
-    
-      <item>
-        <title>认识与学习bash</title>
-        <description>&lt;ul id=&quot;markdown-toc&quot;&gt;
-  &lt;li&gt;&lt;a href=&quot;#bash-shell-的内建命令type&quot; id=&quot;markdown-toc-bash-shell-的内建命令type&quot;&gt;Bash shell 的内建命令：type&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#指令的下达&quot; id=&quot;markdown-toc-指令的下达&quot;&gt;指令的下达&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#shell-的变量功能&quot; id=&quot;markdown-toc-shell-的变量功能&quot;&gt;Shell 的变量功能&lt;/a&gt;    &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;#影响-bash-环境操作的变量&quot; id=&quot;markdown-toc-影响-bash-环境操作的变量&quot;&gt;影响 bash 环境操作的变量&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#变量的取用与设定echo变量设定规则unset&quot; id=&quot;markdown-toc-变量的取用与设定echo变量设定规则unset&quot;&gt;变量的取用与设定：echo，变量设定规则，unset&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#环境变量的功能&quot; id=&quot;markdown-toc-环境变量的功能&quot;&gt;环境变量的功能&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#影响显示结果的语系变量-locale&quot; id=&quot;markdown-toc-影响显示结果的语系变量-locale&quot;&gt;影响显示结果的语系变量 (locale)&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#变量的有效范围&quot; id=&quot;markdown-toc-变量的有效范围&quot;&gt;变量的有效范围&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#变量键盘读取数组与宣告-read-array-declare&quot; id=&quot;markdown-toc-变量键盘读取数组与宣告-read-array-declare&quot;&gt;变量键盘读取、数组与宣告： read, array, declare&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#变量内容的删除取代与替换&quot; id=&quot;markdown-toc-变量内容的删除取代与替换&quot;&gt;变量内容的删除、取代与替换&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#命令别名&quot; id=&quot;markdown-toc-命令别名&quot;&gt;命令别名&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#路径与指令搜寻顺序&quot; id=&quot;markdown-toc-路径与指令搜寻顺序&quot;&gt;路径与指令搜寻顺序&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#bash-的进站与欢迎讯息&quot; id=&quot;markdown-toc-bash-的进站与欢迎讯息&quot;&gt;bash 的进站与欢迎讯息：&lt;code class=&quot;highlighter-rouge&quot;&gt;/etc/issue&lt;/code&gt;,&lt;code class=&quot;highlighter-rouge&quot;&gt;/etc/motd&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#bash-的环境配置文件&quot; id=&quot;markdown-toc-bash-的环境配置文件&quot;&gt;bash 的环境配置文件&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#数据流重导向&quot; id=&quot;markdown-toc-数据流重导向&quot;&gt;数据流重导向&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#命令执行的判断依据--&quot; id=&quot;markdown-toc-命令执行的判断依据--&quot;&gt;命令执行的判断依据:&lt;code class=&quot;highlighter-rouge&quot;&gt;;&lt;/code&gt; &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;amp;&amp;amp;&lt;/code&gt; &lt;code class=&quot;highlighter-rouge&quot;&gt;||&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#管线命令-pipe&quot; id=&quot;markdown-toc-管线命令-pipe&quot;&gt;管线命令 (pipe)&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#排序命令&quot; id=&quot;markdown-toc-排序命令&quot;&gt;排序命令：&lt;code class=&quot;highlighter-rouge&quot;&gt;sort&lt;/code&gt;，&lt;code class=&quot;highlighter-rouge&quot;&gt;wc&lt;/code&gt;，&lt;code class=&quot;highlighter-rouge&quot;&gt;uniq&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#字符转换命令&quot; id=&quot;markdown-toc-字符转换命令&quot;&gt;字符转换命令：&lt;code class=&quot;highlighter-rouge&quot;&gt;tr&lt;/code&gt;,&lt;code class=&quot;highlighter-rouge&quot;&gt;col&lt;/code&gt;,&lt;code class=&quot;highlighter-rouge&quot;&gt;join&lt;/code&gt;,&lt;code class=&quot;highlighter-rouge&quot;&gt;paste&lt;/code&gt;,&lt;code class=&quot;highlighter-rouge&quot;&gt;expand&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;bash-shell-的内建命令type&quot;&gt;Bash shell 的内建命令：type&lt;/h3&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;type [-tpa] name
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;h3 id=&quot;指令的下达&quot;&gt;指令的下达&lt;/h3&gt;
-
-&lt;p&gt;如果指令串太长，用反斜杠&lt;code class=&quot;highlighter-rouge&quot;&gt;\[Enter]&lt;/code&gt;换行。&lt;/p&gt;
-
-&lt;h3 id=&quot;shell-的变量功能&quot;&gt;Shell 的变量功能&lt;/h3&gt;
-
-&lt;h4 id=&quot;影响-bash-环境操作的变量&quot;&gt;影响 bash 环境操作的变量&lt;/h4&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;PATH&lt;/li&gt;
-  &lt;li&gt;HOME&lt;/li&gt;
-  &lt;li&gt;MAIL&lt;/li&gt;
-  &lt;li&gt;SHELL&lt;/li&gt;
-  &lt;li&gt;…&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h4 id=&quot;变量的取用与设定echo变量设定规则unset&quot;&gt;变量的取用与设定：echo，变量设定规则，unset&lt;/h4&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;变数的取用：echo
-    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;echo $HOME    
-echo $PATH    
-myname=Liuqb &quot; 设定一个变量  
-&lt;/code&gt;&lt;/pre&gt;
-    &lt;/div&gt;
-  &lt;/li&gt;
-  &lt;li&gt;变量的设定规则&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;blockquote&gt;
-  &lt;ol&gt;
-    &lt;li&gt;以&lt;code class=&quot;highlighter-rouge&quot;&gt;=&lt;/code&gt;号结&lt;/li&gt;
-    &lt;li&gt;等号两边不能有空格&lt;/li&gt;
-    &lt;li&gt;只能是英文字母与数字，但开头不能是数字。&lt;/li&gt;
-    &lt;li&gt;变量内容若有空格符可使用双引号&lt;code class=&quot;highlighter-rouge&quot;&gt;“&lt;/code&gt;或单引号&lt;code class=&quot;highlighter-rouge&quot;&gt;‘&lt;/code&gt;连接。
-      &lt;blockquote&gt;
-        &lt;ul&gt;
-          &lt;li&gt;双引号内的特殊字符如&lt;code class=&quot;highlighter-rouge&quot;&gt;$&lt;/code&gt;能保持原有特性。&lt;/li&gt;
-          &lt;li&gt;单引号内的特殊字符仅为一般纯文本。&lt;/li&gt;
-        &lt;/ul&gt;
-      &lt;/blockquote&gt;
-    &lt;/li&gt;
-  &lt;/ol&gt;
-&lt;/blockquote&gt;
-
-&lt;blockquote&gt;
-  &lt;ol&gt;
-    &lt;li&gt;可用跳脱字符&lt;code class=&quot;highlighter-rouge&quot;&gt;\&lt;/code&gt;将特殊符号转义&lt;/li&gt;
-    &lt;li&gt;扩增变量
-  &lt;code class=&quot;highlighter-rouge&quot;&gt;eg. PATH=&quot;PATH&quot;:/home/bin&lt;/code&gt;&lt;/li&gt;
-    &lt;li&gt;取消变量：unset
-  &lt;code class=&quot;highlighter-rouge&quot;&gt;eg. unset myname&lt;/code&gt;&lt;/li&gt;
-  &lt;/ol&gt;
-&lt;/blockquote&gt;
-
-&lt;hr /&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;如何进入目前核心扩模块目录？
-    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;cd /lib/modules/`uname -r`/kernel  
-cd /lib/modules/$(uname -r)/kernel
-&lt;/code&gt;&lt;/pre&gt;
-    &lt;/div&gt;
-  &lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;&lt;strong&gt;反引号（&lt;code class=&quot;highlighter-rouge&quot;&gt;）后的命令会先执行，&lt;/code&gt;uname -r&lt;code class=&quot;highlighter-rouge&quot;&gt;先获得核心版本号，然后&lt;/code&gt;cd`进入kernel目录&lt;/strong&gt;&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;小技巧：如何将一个常去的工作目录简化？&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;如进入一个目录，需&lt;code class=&quot;highlighter-rouge&quot;&gt;cd github/liuqb566.io/_draft&lt;/code&gt;可以用以下命令：&lt;/p&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;work=&quot;~/github/liuqb566.io/_draft&quot;  
-cd $work
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;&lt;strong&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;work&lt;/code&gt;变量可以在&lt;code class=&quot;highlighter-rouge&quot;&gt;bash&lt;/code&gt;的配置文件中直接指定&lt;/strong&gt;&lt;br /&gt;
-&lt;strong&gt;ps:&lt;/strong&gt; 也可以用&lt;code class=&quot;highlighter-rouge&quot;&gt;alias&lt;/code&gt;别名重新映射一串常用命令。&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;h4 id=&quot;环境变量的功能&quot;&gt;环境变量的功能&lt;/h4&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;
-    &lt;p&gt;用&lt;code class=&quot;highlighter-rouge&quot;&gt;env&lt;/code&gt;观察环境变量与常见环境变量说明
- env&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;用&lt;code class=&quot;highlighter-rouge&quot;&gt;set&lt;/code&gt;观察所有变量（含&lt;strong&gt;环境变量&lt;/strong&gt;与&lt;strong&gt;自定义变量&lt;/strong&gt;）
- set&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;export&lt;/code&gt;：自定义变量转成环境变量&lt;/p&gt;
-  &lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h4 id=&quot;影响显示结果的语系变量-locale&quot;&gt;影响显示结果的语系变量 (locale)&lt;/h4&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;locale -a
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;h4 id=&quot;变量的有效范围&quot;&gt;变量的有效范围&lt;/h4&gt;
-
-&lt;h4 id=&quot;变量键盘读取数组与宣告-read-array-declare&quot;&gt;变量键盘读取、数组与宣告： read, array, declare&lt;/h4&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;read&lt;/code&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;[root@www ~]# read [-pt] variable
-选项与参数：
--p ：后面可以接提示字符！
--t ：后面可以接等待的『秒数！』
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;declare / typeset&lt;/code&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;[root@www ~]# declare [-aixr] variable
-选项与参数：
--a ：将后面名为 variable 的变量定义成为数组 (array) 类型
--i ：将后面名为 variable 的变量定义成为整数数字 (integer) 类型
--x ：用法与 export 一样，就是将后面的 variable 变成环境变量；
--r ：将变量设定成为 readonly 类型，该变量不可被更改内容，也不能 unset
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;
-    &lt;p&gt;数组 (array) 变量类型&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;与文件系统及程序的限制关系：&lt;code class=&quot;highlighter-rouge&quot;&gt;ulimit&lt;/code&gt;&lt;/p&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h4 id=&quot;变量内容的删除取代与替换&quot;&gt;变量内容的删除、取代与替换&lt;/h4&gt;
-
-&lt;h4 id=&quot;命令别名&quot;&gt;命令别名&lt;/h4&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;
-    &lt;p&gt;命令别名设定：&lt;code class=&quot;highlighter-rouge&quot;&gt;alias&lt;/code&gt;，&lt;code class=&quot;highlighter-rouge&quot;&gt;unalias&lt;/code&gt;&lt;/p&gt;
-
-    &lt;table&gt;
-      &lt;tbody&gt;
-        &lt;tr&gt;
-          &lt;td&gt;alias lm=’ls -al&lt;/td&gt;
-          &lt;td&gt;more’&lt;/td&gt;
-        &lt;/tr&gt;
-      &lt;/tbody&gt;
-    &lt;/table&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;hr /&gt;
-
-&lt;p&gt;命令别名是&lt;strong&gt;新创一个新的指令， 你可以直接下达该指令&lt;/strong&gt;的，至于变量则需要使用类似&lt;code class=&quot;highlighter-rouge&quot;&gt;echo &lt;/code&gt;指令才能够呼叫出变量的内容！
-***&lt;/p&gt;
-
-&lt;h4 id=&quot;路径与指令搜寻顺序&quot;&gt;路径与指令搜寻顺序&lt;/h4&gt;
-
-&lt;blockquote&gt;
-  &lt;ol&gt;
-    &lt;li&gt;以相对/绝对路径执行指令，例如&lt;code class=&quot;highlighter-rouge&quot;&gt;/bin/ls &lt;/code&gt;或&lt;code class=&quot;highlighter-rouge&quot;&gt;./ls &lt;/code&gt;；&lt;/li&gt;
-    &lt;li&gt;由&lt;code class=&quot;highlighter-rouge&quot;&gt;alias&lt;/code&gt;找到该指令来执行；&lt;/li&gt;
-    &lt;li&gt;由&lt;code class=&quot;highlighter-rouge&quot;&gt;bash&lt;/code&gt;内建的&lt;code class=&quot;highlighter-rouge&quot;&gt;builtin&lt;/code&gt;指令来执行；&lt;/li&gt;
-    &lt;li&gt;透过&lt;code class=&quot;highlighter-rouge&quot;&gt;$PATH&lt;/code&gt;这个变量的顺序搜寻到的第一个指令来执行。&lt;/li&gt;
-  &lt;/ol&gt;
-&lt;/blockquote&gt;
-
-&lt;h4 id=&quot;bash-的进站与欢迎讯息&quot;&gt;bash 的进站与欢迎讯息：&lt;code class=&quot;highlighter-rouge&quot;&gt;/etc/issue&lt;/code&gt;,&lt;code class=&quot;highlighter-rouge&quot;&gt;/etc/motd&lt;/code&gt;&lt;/h4&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;man issue
-man mingetty 
-man mingetty 
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;/etc/issue.net&lt;/code&gt;是 telnet 这个远
-程登录程序用的。当我们使用 telnet 连接到主机时，主机的登入画面就会显示&lt;code class=&quot;highlighter-rouge&quot;&gt;/etc/issue.net&lt;/code&gt;而不是&lt;code class=&quot;highlighter-rouge&quot;&gt;/etc/issue&lt;/code&gt;！&lt;/p&gt;
-
-&lt;h4 id=&quot;bash-的环境配置文件&quot;&gt;bash 的环境配置文件&lt;/h4&gt;
-
-&lt;h4 id=&quot;数据流重导向&quot;&gt;数据流重导向&lt;/h4&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;standard output 与 standard error output&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;blockquote&gt;
-  &lt;ol&gt;
-    &lt;li&gt;标准输入 (stdin) ：代码为 0 ，使用&lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;&lt;/code&gt;或&lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;&amp;lt;&lt;/code&gt;；&lt;/li&gt;
-    &lt;li&gt;标准输出 (stdout)：代码为 1 ，使用&lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;gt;&lt;/code&gt;或&lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;gt;&amp;gt;&lt;/code&gt;；&lt;/li&gt;
-    &lt;li&gt;标准错误输出(stderr)：代码为 2 ，使用&lt;code class=&quot;highlighter-rouge&quot;&gt;2&amp;gt;&lt;/code&gt;或&lt;code class=&quot;highlighter-rouge&quot;&gt;2&amp;gt;&amp;gt;&lt;/code&gt;；&lt;/li&gt;
-  &lt;/ol&gt;
-&lt;/blockquote&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;/dev/null&lt;/code&gt;垃圾桶黑洞装置与特殊写法&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;写入同一个档案的特殊语法:&lt;code class=&quot;highlighter-rouge&quot;&gt;2&amp;gt;&amp;amp;1&lt;/code&gt;或&lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;amp;&amp;gt;&lt;/code&gt;.&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;standard input:&lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;&lt;/code&gt;与&lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;&amp;lt;&lt;/code&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;将原本需要由键盘输入的数据，改由档案内容来取代。&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;利用 cat 指令来建立一个档案的简单流程
-[root@www ~]# cat &amp;gt; catfile
-testing
-cat file test
-&amp;lt;==这里按下 [ctrl]+d 来离开
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;用 stdin 取代键盘的输入以建立新档案的简单流程
-[root@www ~]# cat &amp;gt; catfile &amp;lt; ~/.bashrc
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;p&gt;&lt;strong&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;&amp;lt; &lt;/code&gt;结束输入&lt;/strong&gt;我要用&lt;code class=&quot;highlighter-rouge&quot;&gt;cat&lt;/code&gt;直接将输入的讯息输出到&lt;code class=&quot;highlighter-rouge&quot;&gt;catfile&lt;/code&gt;中， 且当由键盘输入 &lt;code class=&quot;highlighter-rouge&quot;&gt;eof&lt;/code&gt;时，该次输入就结束:&lt;/p&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;[root@www ~]# cat &amp;gt; catfile &amp;lt;&amp;lt; &quot;eof&quot;
-&amp;gt; This is a test.
-&amp;gt; OK now stop
-&amp;gt; eof &amp;lt;==输入这关键词，立刻就结束而不需要输入 [ctrl]+d
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;h4 id=&quot;命令执行的判断依据--&quot;&gt;命令执行的判断依据:&lt;code class=&quot;highlighter-rouge&quot;&gt;;&lt;/code&gt; &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;amp;&amp;amp;&lt;/code&gt; &lt;code class=&quot;highlighter-rouge&quot;&gt;||&lt;/code&gt;&lt;/h4&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;cmd;cmd&lt;/code&gt;(不考虑指令相关性的连续指令下达)&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;$?&lt;/code&gt;(指令回传值）与&lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;amp;&amp;amp;&lt;/code&gt;或&lt;code class=&quot;highlighter-rouge&quot;&gt;||&lt;/code&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;&lt;strong&gt;若前一个指令执行的结果为正确，在 Linux 底下会回传一个&lt;code class=&quot;highlighter-rouge&quot;&gt;$? = 0&lt;/code&gt;的值。&lt;/strong&gt;&lt;/p&gt;
-  &lt;blockquote&gt;
-    &lt;p&gt;cmd1 &amp;amp;&amp;amp; cmd2&lt;/p&gt;
-    &lt;ol&gt;
-      &lt;li&gt;若 cmd1 执行完毕且正确执行($?=0)，则开始执行 cmd2。&lt;/li&gt;
-      &lt;li&gt;若 cmd1 执行完毕且为错误 ($?≠0)，则 cmd2 不执行。&lt;br /&gt;
-cmd1 || cmd2&lt;/li&gt;
-      &lt;li&gt;若 cmd1 执行完毕且正确执行($?=0)，则 cmd2 不执行。&lt;/li&gt;
-      &lt;li&gt;若 cmd1 执行完毕且为错误 ($?≠0)，则开始执行 cmd2。&lt;/li&gt;
-    &lt;/ol&gt;
-  &lt;/blockquote&gt;
-&lt;/blockquote&gt;
-
-&lt;h4 id=&quot;管线命令-pipe&quot;&gt;管线命令 (pipe)&lt;/h4&gt;
-
-&lt;p&gt;&lt;strong&gt;管线命令&lt;code class=&quot;highlighter-rouge&quot;&gt;|&lt;/code&gt;仅能处理经由前面一个指令传来的正确信息，也就是 standard output 的信息，对于 stdandard error 并没有直接处理的能力。&lt;/strong&gt;&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;ol&gt;
-    &lt;li&gt;管线命令仅会处理 standard output，对于 standard error output 会予以忽略&lt;/li&gt;
-    &lt;li&gt;管线命令必须要能够接受来自前一个指令的数据成为 standard input 继续处理才行。&lt;/li&gt;
-  &lt;/ol&gt;
-&lt;/blockquote&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;撷取命令:&lt;code class=&quot;highlighter-rouge&quot;&gt;cut&lt;/code&gt;,&lt;code class=&quot;highlighter-rouge&quot;&gt;grep&lt;/code&gt;&lt;br /&gt;
-一般来说，撷取讯息通常是针对 &lt;strong&gt;一行一行&lt;/strong&gt; 来分析的,并不是整篇讯息分析.
-    &lt;blockquote&gt;
-      &lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;cut&lt;/code&gt;:这个指令可以将一段讯息的某一段给他『切』出来～ 处理的讯息是以
-『行』为单位.&lt;/p&gt;
-    &lt;/blockquote&gt;
-  &lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;[root@www ~]# cut -d'分隔字符' -f fields &amp;lt;==用于有特定分隔字符
-[root@www ~]# cut -c 字符区间 &amp;lt;==用于排列整齐的讯息
-选项与参数：
--d ：后面接分隔字符。与 -f 一起使用；
--f ：依据 -d 的分隔字符将一段讯息分割成为数段，用 -f 取出第几段的意思；
--c ：以字符 (characters) 的单位取出固定字符区间；
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;范例一：[root@www ~]# echo $PATH | cut -d ':' -f 5
-# 如同上面的数字显示，我们是以『: 』作为分隔，因此会出现 /usr/local/bin
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# 那么如果想要列出第 3 与第 5 呢？，就是这样：
-[root@www ~]# echo $PATH | cut -d ':' -f 3,5
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;范例二：将 export 输出的讯息，取得第 12 字符以后的所有字符串
-[root@www ~]# export
-declare -x HISTSIZE=&quot;1000&quot;
-declare -x INPUTRC=&quot;/etc/inputrc&quot;
-declare -x KDEDIR=&quot;/usr&quot;
-declare -x LANG=&quot;zh_TW.big5&quot;
-.....(其他省略).....
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# 注意看，每个数据都是排列整齐的输出！如果我们不想要『declare -x 』时， 就得这么做：
-[root@www ~]# export | cut -c 12-
-HISTSIZE=&quot;1000&quot;
-INPUTRC=&quot;/etc/inputrc&quot;
-KDEDIR=&quot;/usr&quot;
-LANG=&quot;zh_TW.big5&quot;
-.....(其他省略).....
-# 知道怎么回事了吧？用 -c 可以处理比较具有格式的输出数据！
-# 我们还可以指定某个范围的值，例如第 12-20 的字符，就是 cut -c 12-20 等等！
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;范例三：用 last 将显示的登入者的信息中，仅留下用户大名
-[root@www ~]# last
-root pts/1 192.168.201.101 Sat Feb 7 12:35 still logged in
-root pts/1 192.168.201.101 Fri Feb 6 12:13 - 18:46 (06:33)
-root pts/1 192.168.201.254 Thu Feb 5 22:37 - 23:53 (01:16)
-# last 可以输出『账号/终端机/来源/日期时间』的数据，并且是排列整齐的
-[root@www ~]# last | cut -d ' ' -f 1
-# 由输出的结果我们可以发现第一个空白分隔的字段代表账号，所以使用如上指令：
-# 但是因为 root pts/1 之间空格有好几个，并非仅有一个，所以，如果要找出
-# pts/1 其实不能以 cut -d ' ' -f 1,2 喔！输出的结果会不是我们想要的。
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;cut&lt;/code&gt;主要的用途在于将『同一行里面的数据进行分解！』最常使用在分析一些数据或文字数据的时候！这是因为有时候我们会以某些字符当作分割的参数，然后来将数据加以切割，以取得我们所需要的数据。&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;grep&lt;/code&gt;:&lt;code class=&quot;highlighter-rouge&quot;&gt;cut&lt;/code&gt;是将一行讯息当中，取出某部分我们想要的，而&lt;code class=&quot;highlighter-rouge&quot;&gt;grep&lt;/code&gt;则是分析一行讯息,若当中有我们所需要的信息，就将该行拿出来。&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;root@www ~]# grep [-acinv] [--color=auto] '搜寻字符串' filename
-选项与参数：
--a ：将 binary 档案以 text 档案的方式搜寻数据
--c ：计算找到 '搜寻字符串' 的次数
--i ：忽略大小写的不同，所以大小写视为相同
--n ：顺便输出行号
--v ：反向选择，亦即显示出没有 '搜寻字符串' 内容的那一行！
---color=auto ：可以将找到的关键词部分加上颜色的显示喔！
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;h4 id=&quot;排序命令&quot;&gt;排序命令：&lt;code class=&quot;highlighter-rouge&quot;&gt;sort&lt;/code&gt;，&lt;code class=&quot;highlighter-rouge&quot;&gt;wc&lt;/code&gt;，&lt;code class=&quot;highlighter-rouge&quot;&gt;uniq&lt;/code&gt;&lt;/h4&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;sort&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;sort&lt;/code&gt;可以依据不同的数据型态来排序，此外，排序的字符与&lt;strong&gt;语系的编码&lt;/strong&gt;有关，因此，如果您需要排序时，建议使用&lt;strong&gt;LANG=C&lt;/strong&gt; 来让语系统一，数据排序比较好一些。&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;[root@www ~]# sort [-fbMnrtuk] [file or stdin]
-选项与参数：
--f ：忽略大小写的差异，例如 A 与 a 视为编码相同；
--b ：忽略最前面的空格符部分；
--M ：以月份的名字来排序，例如 JAN, DEC 等等的排序方法；
--n ：使用『纯数字』进行排序(默认是以文字型态来排序的)；
--r ：反向排序；
--u ：就是 uniq ，相同的数据中，仅出现一行代表；
--t ：分隔符，预设是用 [tab] 键来分隔；
--k ：以那个区间 (field) 来进行排序的意思
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;eg. /etc/passwd 内容是以 : 来分隔的，我想以第三栏来排序，该如何？
-# 默认以文字排序
-[root@www ~]# cat /etc/passwd | sort -t ':' -k 3
-# 加 -n 以数字排序
-cat /etc/passwd | sort -t ':' -k 3 -n
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;利用 last ，将输出的数据仅取账号，并加以排序
-[root@www ~]# last | cut -d ' ' -f1 | sort
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;uniq：用于将重复的行删除只显示一个
-    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;[root@www ~]# uniq [-ic]
-选项与参数：
--i ：忽略大小写字符的不同；
--c ：进行计数
-&lt;/code&gt;&lt;/pre&gt;
-    &lt;/div&gt;
-    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;eg. 使用 last 将账号列出，仅取出账号栏，进行排序后仅取出一位；并统计次数
-[root@www ~]# last | cut -d ' ' -f1 | sort | uniq -c
-&lt;/code&gt;&lt;/pre&gt;
-    &lt;/div&gt;
-  &lt;/li&gt;
-  &lt;li&gt;wc:可以计算输出的讯息的整体数据&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;[root@www ~]# wc [-lwm]
-选项与参数：
--l ：仅列出行；
--w ：仅列出多少字(英文单字)；
--m ：多少字符；
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;那个 /etc/man.config 里面到底有多少相关字、行、字符数？
-[root@www ~]# cat /etc/man.config | wc
-141 722 4617
-# 输出的三个数字中,分别代表：行、字数、字符数
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;tee: 双向重导向，tee 会同时将数据流分送到档案去与屏幕 (screen)；而输出到屏幕的，其实就是 stdout.
-    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;[root@www ~]# tee [-a] file
-选项与参数：
--a ：以累加 (append) 的方式，将数据加入 file 当中！ 
-&lt;/code&gt;&lt;/pre&gt;
-    &lt;/div&gt;
-  &lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h4 id=&quot;字符转换命令&quot;&gt;字符转换命令：&lt;code class=&quot;highlighter-rouge&quot;&gt;tr&lt;/code&gt;,&lt;code class=&quot;highlighter-rouge&quot;&gt;col&lt;/code&gt;,&lt;code class=&quot;highlighter-rouge&quot;&gt;join&lt;/code&gt;,&lt;code class=&quot;highlighter-rouge&quot;&gt;paste&lt;/code&gt;,&lt;code class=&quot;highlighter-rouge&quot;&gt;expand&lt;/code&gt;&lt;/h4&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;tr:可以用来删除一段讯息当中的文字，或者是进行文字讯息的替换！
-    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;[root@www ~]# tr [-ds] SET1 ...
-选项与参数：
--d ：删除讯息当中的 SET1 这个字符串；
--s ：取代掉重复的字符！
-&lt;/code&gt;&lt;/pre&gt;
-    &lt;/div&gt;
-    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;范例一：将 last 输出的讯息中，所有的小写变成大写字符：
-[root@www ~]# last | tr '[a-z]' '[A-Z]'
-# 事实上，没有加上单引号也是可以执行的，如：『last | tr [a-z] [A-Z] 』
-&lt;/code&gt;&lt;/pre&gt;
-    &lt;/div&gt;
-    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;范例二：将 /etc/passwd 输出的讯息中，将冒号 (:) 删除
-[root@www ~]# cat /etc/passwd | tr -d ':'
-&lt;/code&gt;&lt;/pre&gt;
-    &lt;/div&gt;
-  &lt;/li&gt;
-  &lt;li&gt;col:
-    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;[root@www ~]# col [-xb]
-选项与参数：
--x ：将 tab 键转换成对等的空格键
--b ：在文字内有反斜杠 (/) 时，仅保留反斜杠最后接的那个字符
-&lt;/code&gt;&lt;/pre&gt;
-    &lt;/div&gt;
-  &lt;/li&gt;
-  &lt;li&gt;join: 两个档案当中，有 “相同数据” 的那一行，加在一起
-    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;[root@www ~]# join [-ti12] file1 file2
-选项与参数：
--t ：join 默认以空格符分隔数据，并且比对『第一个字段』的数据，
-如果两个档案相同，则将两笔数据联成一行，且第一个字段放在第一个！
--i ：忽略大小写的差异；
--1 ：这个是数字的 1 ，代表『第一个档案要用那个字段来分析』的意思；
--2 ：代表『第二个档案要用那个字段来分析』的意思。
-&lt;/code&gt;&lt;/pre&gt;
-    &lt;/div&gt;
-    &lt;p&gt;&lt;strong&gt;在使用&lt;code class=&quot;highlighter-rouge&quot;&gt;join&lt;/code&gt;之前，你所需要处理的档案应该要事先经过排序 &lt;code class=&quot;highlighter-rouge&quot;&gt;sort&lt;/code&gt; 处理！
-否则有些比对的项目会被略过&lt;/strong&gt;&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;paste:相对于&lt;code class=&quot;highlighter-rouge&quot;&gt;join&lt;/code&gt;必须要比对两个档案的数据相关性，&lt;code class=&quot;highlighter-rouge&quot;&gt;paste&lt;/code&gt;就直接** 将
-两行贴在一起，且中间以 [tab] 键隔开**&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;[root@www ~]# paste [-d] file1 file2
-选项与参数：
--d ：后面可以接分隔字符。预设是以 [tab] 来分隔的！
-- ：如果 file 部分写成 - ，表示来自 standard input 的资料的意思。
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;expand:将 [tab] 按键转成空格键&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;[root@www ~]# expand [-t] file
-选项与参数：
--t ：后面可以接数字。一般来说，一个 tab 按键可以用 8 个空格键取代。
-我们也可以自行定义一个 [tab] 按键代表多少个字符。
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;split：分割命令可以将一个大档案，依据档案大小或行数来分割，就将大档案分割成为小档案。&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;[root@www ~]# split [-bl] file PREFIX
-选项与参数：
--b ：后面可接欲分割成的档案大小，可加单位，例如 b, k, m 等；
--l ：以行数来进行分割。
-PREFIX ：代表前导符的意思，可作为分割档案的前导文字。
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;范例一：我的 /etc/termcap 有七百多 K，若想要分成 300K 一个档案时？
-[root@www ~]# cd /tmp; split -b 300k /etc/termcap termcap
-[root@www tmp]# ll -k termcap*
--rw-r--r-- 1 root root 300 Feb 7 16:39 termcapaa
--rw-r--r-- 1 root root 300 Feb 7 16:39 termcapab
--rw-r--r-- 1 root root 189 Feb 7 16:39 termcapac
-# 那个档名可以随意取的啦！我们只要写上前导文字，小档案就会以
-# xxxaa, xxxab, xxxac 等方式来建立小档案的！
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;范例二：如何将上面的三个小档案合成一个档案，档名为 termcapback
-[root@www tmp]# cat termcap* &amp;gt;&amp;gt; termcapback
-# 很简单吧？就用数据流重导向就好啦！简单！
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;范例三：使用 ls -al / 输出的信息中，每十行记录成一个档案
-[root@www tmp]# ls -al / | split -l 10 - lsroot
-[root@www tmp]# wc -l lsroot*
-10 lsrootaa
-10 lsrootab
-6 lsrootac
-26 total
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;&lt;strong&gt;重点在那个&lt;code class=&quot;highlighter-rouge&quot;&gt;-&lt;/code&gt;！一般来说，如果需要 stdout/stdin 时，但偏偏又没有档案有的只是 - 时，那么那个&lt;code class=&quot;highlighter-rouge&quot;&gt;-&lt;/code&gt;就会被当成 stdin 或 stdout。&lt;/strong&gt;&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;xargs:参数代换&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;x 是加减乘除的乘号，args 则是 arguments (参数)的意思，所以说，这个玩意儿就是在产生某个指令的参数的意思！** xargs 可以读入 stdin 的数据，并且以空格符或断行字符作为分辨，将 stdin 的资料分隔成为 arguments 。** 因为是以空格符作为分隔，所以，如果有一些档名或者是其他意义的名词内含有空格符的时候， xargs 可能就会误判了。&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;[root@www ~]# xargs [-0epn] command
-选项与参数：
--0 ：如果输入的 stdin 含有特殊字符，例如 `, \, 空格键等等字符时，这个 -0 参
-数可以将他还原成一般字符。这个参数可以用于特殊状态！
--e ：这个是 EOF (end of file) 的意思。后面可以接一个字符串，当 xargs 分析
-到这个字符串时，就会停止继续工作！
--p ：在执行每个指令的 argument 时，都会询问使用者的意思；
--n ：后面接次数，每次 command 指令执行时，要使用几个参数的意思。
-当 xargs 后面没有接任何的指令时，默认是以 echo 来进行输出！
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;范例一：将 /etc/passwd 内的第一栏取出，仅取三行，使用 finger 这个指令将
-每个账号内容秀出来
-[root@www ~]# cut -d':' -f1 /etc/passwd |head -n 3| xargs finger
-# 后的结果。在这个例子当中，我们利用 cut 取出账号名称，用 head 取出三个账号,最后则是由 xargs 将三个账号的名称变成 finger 后面需要的参数！
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;范例三：将所有的 /etc/passwd 内的账号都以 finger 查阅，但一次仅查阅五个
-账号
-[root@www ~]# cut -d':' -f1 /etc/passwd | xargs -p -n 5 finger
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;范例四：同上，但是当分析到 lp 就结束这串指令？
-[root@www ~]# cut -d':' -f1 /etc/passwd | xargs -p -e'lp' finger
-finger root bin daemon adm ?...
-# 仔细与上面的案例做比较。也同时注意，那个 -e'lp' 是连在一起的，中间没有
-空格键。
-# 上个例子当中，第五个参数是 lp 啊，那么我们下达 -e'lp' 后，则分析到 lp
-# 这个字符串时，后面的其他 stdin 的内容就会被 xargs 舍弃掉了！
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;p&gt;&lt;strong&gt;会使用 xargs 的原因是， 很多指令其实并不支持管线命令，因此我们可以透过 xargs 来提供该指令引用 standard input 之用！&lt;/strong&gt;&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;范例五：找出 /sbin 底下具有特殊权限的档名，并使用 ls -l 列出详细属性
-[root@www ~]# find /sbin -perm +7000 | ls -l
- # 因为 ll (ls) 并不是管线命令,所以仅列出root所在目录档案
-[root@www ~]# find /sbin -perm +7000 | xargs ls -l
--rwsr-xr-x 1 root root 70420 May 25 2008 /sbin/mount.nfs
--rwsr-xr-x 1 root root 70424 May 25 2008 /sbin/mount.nfs4
--rwxr-sr-x 1 root root 5920 Jun 15 2008 /sbin/netreport
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;减号&lt;code class=&quot;highlighter-rouge&quot;&gt;-&lt;/code&gt;的用途：&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;在管线命令当中，常常会使用到前一个指令的 stdout 作为这次的stdin ，某些指令需要用到文件名 (例如 tar) 来进行处理时，该 stdin 与 stdout 可以利用减号 “-“ 来替代。&lt;/p&gt;
-
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;[root@www ~]# tar -cvf - /home | tar -xvf -&lt;/code&gt;&lt;/p&gt;
-&lt;blockquote&gt;
-  &lt;p&gt;将&lt;code class=&quot;highlighter-rouge&quot;&gt;/home&lt;/code&gt;里面的档案打包，但打包的数据不是纪录到档案，而是传送到stdout； 经过管线后，将&lt;code class=&quot;highlighter-rouge&quot;&gt;tar -cvf - /home&lt;/code&gt;传送给后面的&lt;code class=&quot;highlighter-rouge&quot;&gt;tar -xvf -&lt;/code&gt;。后面的这个&lt;code class=&quot;highlighter-rouge&quot;&gt;-&lt;/code&gt;则是取用前一个指令的 stdout， 因此，就不需要使用 file 了！&lt;/p&gt;
-&lt;/blockquote&gt;
-
-</description>
-        <pubDate>Tue, 06 Dec 2016 00:00:00 -0500</pubDate>
-        <link>http://liuqibao.me/2016/12/06/learn-bash/</link>
-        <guid isPermaLink="true">http://liuqibao.me/2016/12/06/learn-bash/</guid>
-        
-        <category>鸟哥的Linux私房菜</category>
-        
-        
-        <category>Linux</category>
-        
-      </item>
-    
-      <item>
-        <title>第4章 介绍python对象的类型</title>
-        <description>&lt;ul id=&quot;markdown-toc&quot;&gt;
-  &lt;li&gt;&lt;a href=&quot;#python的核心数据类型&quot; id=&quot;markdown-toc-python的核心数据类型&quot;&gt;Python的核心数据类型&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#数字&quot; id=&quot;markdown-toc-数字&quot;&gt;数字&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#字符串&quot; id=&quot;markdown-toc-字符串&quot;&gt;字符串&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#列表&quot; id=&quot;markdown-toc-列表&quot;&gt;列表&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#字典&quot; id=&quot;markdown-toc-字典&quot;&gt;字典&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#元组&quot; id=&quot;markdown-toc-元组&quot;&gt;元组&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#文件&quot; id=&quot;markdown-toc-文件&quot;&gt;文件&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#集合&quot; id=&quot;markdown-toc-集合&quot;&gt;集合&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#用户定义的类&quot; id=&quot;markdown-toc-用户定义的类&quot;&gt;用户定义的类&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;python的核心数据类型&quot;&gt;Python的核心数据类型&lt;/h3&gt;
-
-&lt;p&gt;&lt;strong&gt;内置对象&lt;/strong&gt;&lt;/p&gt;
-
-&lt;blockquote&gt;
-
-  &lt;ul&gt;
-    &lt;li&gt;数字&lt;/li&gt;
-    &lt;li&gt;字符串&lt;/li&gt;
-    &lt;li&gt;列表&lt;/li&gt;
-    &lt;li&gt;字典&lt;/li&gt;
-    &lt;li&gt;元组&lt;/li&gt;
-    &lt;li&gt;文件&lt;/li&gt;
-    &lt;li&gt;集合&lt;/li&gt;
-    &lt;li&gt;其他类型&lt;/li&gt;
-    &lt;li&gt;编程单元类型&lt;/li&gt;
-    &lt;li&gt;与实现相关的类型&lt;/li&gt;
-  &lt;/ul&gt;
-
-&lt;/blockquote&gt;
-
-&lt;hr /&gt;
-
-&lt;p&gt;一旦创建了一个对象，它就和其相应的操作集合绑定了，即只能进行其合适的操作&lt;/p&gt;
-
-&lt;p&gt;可以使用dir()函数来查看一个对象的所有属性，dir()函数会列出该对象的实现方式（以双下划线开头和结尾）和能够调用的方法。要查询一个方法能做什么，你可以用help()函数来查询。&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;```
-s = 'hello'
-dir(s)
-help(s.replace)
-``` ***
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;h3 id=&quot;数字&quot;&gt;数字&lt;/h3&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;repr：as code&lt;/li&gt;
-  &lt;li&gt;str： user-friendly&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;字符串&quot;&gt;字符串&lt;/h3&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;索引从0开始&lt;/li&gt;
-  &lt;li&gt;能在方括号中使用任意表达式，而不仅仅是使用数字常量。eg. s[len(s)-1]&lt;/li&gt;
-  &lt;li&gt;不可变性&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;列表&quot;&gt;列表&lt;/h3&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;列表解析表达式。&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;字典&quot;&gt;字典&lt;/h3&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;唯一的映射&lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;键的排序：for循环&lt;/p&gt;
-
-    &lt;p&gt;keys()方法&lt;/p&gt;
-
-    &lt;p&gt;sort()方法&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;迭代和优化&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;strong&gt;列表解析和相关的函数编程工具（eg. ` map&lt;code class=&quot;highlighter-rouge&quot;&gt;和&lt;/code&gt;fileter&lt;code class=&quot;highlighter-rouge&quot;&gt;），通常运行速度比‘for&lt;/code&gt;循环快。&lt;/strong&gt;&lt;/p&gt;
-
-&lt;h3 id=&quot;元组&quot;&gt;元组&lt;/h3&gt;
-
-&lt;p&gt;两个专有的可调用方法&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;T.index（）
-
-T.count（）
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;h3 id=&quot;文件&quot;&gt;文件&lt;/h3&gt;
-
-&lt;p&gt;在Python3.0中，文本文件把内容显示为字符串，并且自动执行Unicode编码和解码；而二进制文件把内容显示为一个特定的字节字符串类型，并且允许你不修改地孔访问文件内容。&lt;/p&gt;
-
-&lt;h3 id=&quot;集合&quot;&gt;集合&lt;/h3&gt;
-
-&lt;h3 id=&quot;用户定义的类&quot;&gt;用户定义的类&lt;/h3&gt;
-
-</description>
-        <pubDate>Wed, 30 Nov 2016 00:00:00 -0500</pubDate>
-        <link>http://liuqibao.me/2016/11/30/types-of-objects-of-python/</link>
-        <guid isPermaLink="true">http://liuqibao.me/2016/11/30/types-of-objects-of-python/</guid>
-        
-        <category>Python学习手册</category>
-        
-        
-        <category>Python</category>
-        
-      </item>
-    
-      <item>
-        <title>正则表达式的平衡法则</title>
-        <description>&lt;ul id=&quot;markdown-toc&quot;&gt;
-  &lt;li&gt;&lt;a href=&quot;#正则表达式的平衡法则&quot; id=&quot;markdown-toc-正则表达式的平衡法则&quot;&gt;正则表达式的平衡法则&lt;/a&gt;    &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;#匹配ip地址&quot; id=&quot;markdown-toc-匹配ip地址&quot;&gt;匹配IP地址&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#处理文件名&quot; id=&quot;markdown-toc-处理文件名&quot;&gt;处理文件名&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#匹配对称的括号&quot; id=&quot;markdown-toc-匹配对称的括号&quot;&gt;匹配对称的括号&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#匹配分隔符之内的文本&quot; id=&quot;markdown-toc-匹配分隔符之内的文本&quot;&gt;匹配分隔符之内的文本&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#容许引文字符串中出现转义引号&quot; id=&quot;markdown-toc-容许引文字符串中出现转义引号&quot;&gt;容许引文字符串中出现转义引号&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#去除文本首尾的空白字符&quot; id=&quot;markdown-toc-去除文本首尾的空白字符&quot;&gt;去除文本首尾的空白字符&lt;/a&gt;&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;正则表达式的平衡法则&quot;&gt;正则表达式的平衡法则&lt;/h3&gt;
-
-&lt;p&gt;&lt;strong&gt;好的正则表达式必须在以下方面求得平衡:&lt;/strong&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;只匹配期望的文本，排除不期望的文本。&lt;/li&gt;
-  &lt;li&gt;必须易于控制和理解。&lt;/li&gt;
-  &lt;li&gt;如果使用NFA引擎，必须保证效率（如果能够匹配，必须很快地返回匹配结果，如果不能匹配，应该在尽可能短的时间内报告匹配失败。）&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h4 id=&quot;匹配ip地址&quot;&gt;匹配IP地址&lt;/h4&gt;
-
-&lt;p&gt;&lt;strong&gt;对于NFA引擎：应选择尽可能少的分支，以保证效率&lt;/strong&gt;&lt;/p&gt;
-
-&lt;h4 id=&quot;处理文件名&quot;&gt;处理文件名&lt;/h4&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;eg. /usr/local/bin/perl
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;
-    &lt;p&gt;去掉文件名开头的路径&lt;/p&gt;
-
-    &lt;p&gt;Perl ` $f =~ s{^.*/}{} `&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;从路径中获取文件名&lt;/p&gt;
-
-    &lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt; [^/]*$ &lt;/code&gt; （&lt;em&gt;这个表达式的不足之处在于：它在锚定到最后之间，会进行非常多的回溯&lt;/em&gt;）&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;所在路径和文件名&lt;/p&gt;
-
-    &lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt; ^(.*)/([^/]*$ &lt;/code&gt; （&lt;em&gt;这个表达式的不足之处在于：无法匹配不包含路径的文件名，如：file.txt&lt;/em&gt;）&lt;/p&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h4 id=&quot;匹配对称的括号&quot;&gt;匹配对称的括号&lt;/h4&gt;
-
-&lt;hr /&gt;
-
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt; .* &lt;/code&gt; 通常不是合适的选择，因为它非常可能会匹配过多的内容。&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;h4 id=&quot;匹配分隔符之内的文本&quot;&gt;匹配分隔符之内的文本&lt;/h4&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;1. 匹配起始分隔符
-2. 匹配正文
-3. 匹配结束分隔符
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;h4 id=&quot;容许引文字符串中出现转义引号&quot;&gt;容许引文字符串中出现转义引号&lt;/h4&gt;
-
-&lt;p&gt;没看懂&lt;/p&gt;
-
-&lt;h4 id=&quot;去除文本首尾的空白字符&quot;&gt;去除文本首尾的空白字符&lt;/h4&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;```
-1. s/^\s+//;
-2. s/\s+$//;
-
+&lt;h2 id=&quot;gapit-&quot;&gt;GAPIT 的简单使用&lt;/h2&gt;
+
+&lt;p&gt;GAPIT 2 是基于 R 语言的基因组关联和预测的整合工具包，提供了多种方法用于 GWAS 分析，包括 GLM、MLM、CMLM、P3D、EMMA等。
+对于包含大量 SNPs 的大数据集，可以通过将基因型文件分隔成多个文件进行分析，例如，每个染色体一个文件。
+GAPIT 的输入文件可以是 HapMap 格式，也可以是 EMMA 需要的 numerical 格式。&lt;/p&gt;
+
+&lt;h3 id=&quot;section&quot;&gt;1. 安装&lt;/h3&gt;
+
+&lt;p&gt;GAPIT 的需要几个 R 的依赖包，安装比较简单，具体请看&lt;a href=&quot;http://zzlab.net/GAPIT/&quot;&gt;使用手册&lt;/a&gt;，不再赘述。
+&lt;code class=&quot;highlighter-rouge&quot;&gt;
+source(&quot;http://www.bioconductor.org/biocLite.R&quot;)
+biocLite(&quot;multtest&quot;)
+install.packages(&quot;gplots&quot;)
+install.packages(&quot;LDheatmap&quot;)
+install.packages(&quot;genetics&quot;)
+install.packages(&quot;ape&quot;)
+install.packages(&quot;EMMREML&quot;)
+install.packages(&quot;scatterplot3d&quot;)
+&lt;/code&gt;
+### 2. 使用&lt;/p&gt;
+
+&lt;p&gt;以下包在每次使用前需要重新加载
 ```
-&lt;/code&gt;&lt;/pre&gt;
+library(multtest)
+library(gplots)
+library(LDheatmap)
+library(genetics)
+library(ape) # required for as.phylo
+library(EMMREML)
+library(compiler) #required for cmpfun
+library(“scatterplot3d”)&lt;/p&gt;
+
+&lt;p&gt;source(“http://www.zzlab.net/GAPIT/emma.txt”)           # 这两个脚本也可以下载到本地，通过本地路径加载
+source(“http://www.zzlab.net/GAPIT/gapit_functions.txt”)
+```&lt;/p&gt;
+
+&lt;p&gt;可以下载官网提供的数据进行练习&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;setwd(&quot;/myGAPIT&quot;) # 设定工作目录，结果文件将输出到该目录
 &lt;/div&gt;
 
+&lt;h4 id=&quot;section-1&quot;&gt;2.1. 基本应用&lt;/h4&gt;
+
+&lt;p&gt;基本应用需要两个文件（表型数据文件和基因型文件）和一个参数主成分的个数（&lt;code class=&quot;highlighter-rouge&quot;&gt;PCA.total&lt;/code&gt;）；GAPIT 会自动计算 K 矩阵（VanRaden 方法）；用默认的聚类算法（平均）和 group kinship type（Mean）进行 GWAS 分析。&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;# 输入文件
+myY  &amp;lt;- read.table(&quot;mdp_traits.txt&quot;, head = TRUE)
+myG &amp;lt;- read.delim(&quot;mdp_genotype_test.hmp.txt&quot;, head = FALSE)
+
+# 运行 GAPIT
+myGAPIT &amp;lt;- GAPIT(
+Y=myY,
+G=myG,
+PCA.total=3,
+)
+&lt;/div&gt;
+
+&lt;h4 id=&quot;enhanced-compression&quot;&gt;2.2. Enhanced Compression&lt;/h4&gt;
+
+&lt;p&gt;在这个用法中，你可以指定其它的聚类算法（&lt;code class=&quot;highlighter-rouge&quot;&gt;kinship.cluster&lt;/code&gt; 参数控制），kinship summary statistic（‘kinship.group’ 参数）。
+默认 ‘kinship.cluster=’average’、’kinship.group=’Mean’。
+a specific range group numbers（即，k 矩阵的维度）可以通过’group.from’,’group.to’,’group.by’ 三个参数指定。
+（好吧，我承认没看懂。。。）
+&lt;code class=&quot;highlighter-rouge&quot;&gt;
+#Step 1: Set data directory and import files
+myY &amp;lt;- read.table(&quot;mdp_traits.txt&quot;, head = TRUE)
+myG &amp;lt;- read.table(&quot;mdp_genotype_test.hmp.txt&quot;, head = FALSE)
+#Step 2: Run GAPIT
+myGAPIT &amp;lt;- GAPIT(
+Y=myY,
+G=myG,
+PCA.total=3,
+kinship.cluster=c(&quot;average&quot;, &quot;complete&quot;, &quot;ward&quot;),
+kinship.group=c(&quot;Mean&quot;, &quot;Max&quot;),
+group.from=200,
+group.to=1000000,
+group.by=10
+)
+&lt;/code&gt;
+#### 2.3. 用户输入的 K 矩阵和协变量&lt;/p&gt;
+
+&lt;p&gt;本用法假设用户提供了 K 矩阵和协变量文件。
+你可以使用第三方软件产生的 K 矩阵或协变量（如，PCs 等）。
+当用这种方法输入 PCs 时，参数 ‘PCA.total’ 应该设为 0 （默认），否则会出错。&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;#Step 1: Set data directory and import files
+myY &amp;lt;- read.table(&quot;mdp_traits.txt&quot;, head = TRUE)
+myG &amp;lt;- read.table(&quot;mdp_genotype_test.hmp.txt&quot;, head = FALSE)
+myKI &amp;lt;- read.table(&quot;KSN.txt&quot;, head = FALSE)
+myCV &amp;lt;- read.table(&quot;Copy of Q_First_Three_Principal_Components.txt&quot;, head = TRUE)
+#Step 2: Run GAPIT
+myGAPIT &amp;lt;- GAPIT(
+Y=myY,
+G=myG,
+KI=myKI,
+CV=myCV
+)
+&lt;/div&gt;
+
+&lt;h4 id=&quot;section-2&quot;&gt;2.4. 基因组预测&lt;/h4&gt;
+
+&lt;p&gt;Genomic prediction 不用进行 GWAS，所以需要关闭 GWAS 功能，参数为‘SNP.test=FALSE’。
+&lt;code class=&quot;highlighter-rouge&quot;&gt;
+#Step 1: Set data directory and import files
+myY &amp;lt;- read.table(&quot;mdp_traits.txt&quot;, head = TRUE)
+myKI &amp;lt;- read.table(&quot;KSN.txt&quot;, head = FALSE)
+#Step 2: Run GAPIT
+myGAPIT &amp;lt;- GAPIT(
+Y=myY,
+KI=myKI,
+PCA.total=3,
+SNP.test=FALSE
+)
+&lt;/code&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;section-3&quot;&gt;2.5. 多基因型文件&lt;/h4&gt;
+
+&lt;p&gt;在本用法中，来自用法 1 的 HapMap 基因型数据集被分割成多个基因型文件，每个文件对应一个染色体。
+这个用法适用于在 R 中处理基因型文件太大的情况。
+所有的基因型文件有一个通用名和一个扩展名，还有一个特定的序列号（例，’mdp_genotype_chr1.hmp.txt’,’mdp_genotype_chr2.hmp.txt’,…）。
+用‘file.from’ 和 ’file.to‘ 参数声明开始和结束文件。
+通常文件名（如，’mdp_genotype+chr’）和 扩展文件名（如，’hmp.txt’）通过 ’file.G’ 和 ‘file.Ext.G’ 参数传递给 GAPIT。
+当没有提供 ‘file.path’ 参数时，GAPIT 尝试从当前目录查找文件。&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;#Step 1: Set data directory and import files
+myY &amp;lt;- read.table(&quot;mdp_traits.txt&quot;, head = TRUE)
+#Step 2: Run GAPIT
+myGAPIT &amp;lt;- GAPIT(
+Y=myY,
+PCA.total=3,
+file.G=&quot;mdp_genotype_chr&quot;,
+file.Ext.G=&quot;hmp.txt&quot;,
+file.from=1,
+file.to=10,
+file.path=&quot;C:\\myGAPIT\\&quot;
+)
+&lt;/div&gt;
+
+&lt;h4 id=&quot;numeric-genotype-format&quot;&gt;2.6. Numeric Genotype Format&lt;/h4&gt;
+
+&lt;p&gt;在本用法中，基因型数据集是用的不同的格式，numerical 格式。
+需要两个基因型文件。
+一个文件包含基因型数据（’GD’，参数），另一个文件包含染色体和每个 SNP 的碱基对位置（’GM’，参数）。
+&lt;code class=&quot;highlighter-rouge&quot;&gt;
+#Step 1: Set data directory and import files
+myY &amp;lt;- read.table(&quot;mdp_traits.txt&quot;, head = TRUE)
+myGD &amp;lt;- read.table(&quot;mdp_numeric.txt&quot;, head = TRUE)
+myGM &amp;lt;- read.table(&quot;mdp_SNP_information.txt&quot; , head = TRUE)
+#Step 2: Run GAPIT
+myGAPIT &amp;lt;- GAPIT(
+Y=myY,
+GD=myGD,
+GM=myGM,
+PCA.total=3
+)
+&lt;/code&gt;
+#### 2.7. 多个文件的 Numeric genotype Format&lt;/p&gt;
+
+&lt;p&gt;在本用法中，用法 6 的 numeric genotype 数据集被分割成多个基因型文件。
+基因型文件的通用名和扩展名通过 ‘file.GD’ 和 ‘file.Ext.GD’ 参数传递给 GAPIT。
+基因型 map 文件的通用名和扩展名通过 ‘file.GM’ 和 ’file.Ext.GM’ 参数传递给 GAPIT。
+&lt;code class=&quot;highlighter-rouge&quot;&gt;
+#Step 1: Set data directory and import files
+myY &amp;lt;- read.table(&quot;mdp_traits.txt&quot;, head = TRUE)
+#Step 2: Run GAPIT
+myGAPIT &amp;lt;- GAPIT(
+Y=myY,
+PCA.total=3,
+file.GD=&quot;mdp_numeric&quot;,
+file.GM=&quot;mdp_SNP_information&quot;,
+file.Ext.GD=&quot;txt&quot;,
+file.Ext.GM=&quot;txt&quot;,
+file.from=1,
+file.to=3,
+)
+&lt;/code&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;snps-fractional-snps-kinship--pcs&quot;&gt;2.8. 用部分 SNPs （Fractional SNPs）计算 Kinship 和 PCs&lt;/h4&gt;
+
+&lt;p&gt;选取总 SNPs 的部分进行计算可以节省计算时间，更重要的是它的结果类似。
+fraction 可以通过 ‘Ratio’ 参数控制。
+取样是随机的。
+以下用的是 ’SNP.fraction=0.6’,总 SNPs 为 3093.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;#Step 1: Set data directory and import files
+myY &amp;lt;- read.table(&quot;mdp_traits.txt&quot;, head = TRUE)
+#Step 2: Run GAPIT
+myGAPIT &amp;lt;- GAPIT(
+Y=myY,
+PCA.total=3,
+file.GD=&quot;mdp_numeric&quot;,
+file.GM=&quot;mdp_SNP_information&quot;,
+file.Ext.GD=&quot;txt&quot;,
+file.Ext.GM=&quot;txt&quot;,
+file.from=1,
+file.to=3,
+SNP.fraction=0.6
+)
+&lt;/div&gt;
+
+&lt;h4 id=&quot;section-4&quot;&gt;2.9. 节省内存&lt;/h4&gt;
+
+&lt;p&gt;如果样本量很大，读入整个基因型数据集是很难的。
+GPAIT 每次只载入一部分片段（fragment）。
+默认 fragment 大小是 512 SNPs。
+这个数字可以通过 ‘file.fragment’ 参数进行控制。
+这个例子是用的 ‘file.fragment=128’&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;#Step 1: Set data directory and import files
+myY &amp;lt;- read.table(&quot;mdp_traits.txt&quot;, head = TRUE)
+#Step 2: Run GAPIT
+myGAPIT &amp;lt;- GAPIT(
+Y=myY,
+PCA.total=3,
+file.GD=&quot;mdp_numeric&quot;,
+file.GM=&quot;mdp_SNP_information&quot;,
+file.Ext.GD=&quot;txt&quot;,
+file.Ext.GM=&quot;txt&quot;,
+file.from=1,
+file.to=3,
+SNP.fraction=0.6,
+file.fragment = 128
+)
+&lt;/div&gt;
+
+&lt;h4 id=&quot;section-5&quot;&gt;2.10. 模型选择&lt;/h4&gt;
+
+&lt;p&gt;群体结构相关性的程度随性状的改变而改变。
+因此，在 GWAS 中，选择的完整的 PCs 并不是必须的。
+GAPIT 可以通过通过基于贝叶斯信息评价的（BIC）的模型选择，寻找最合适的 PCs 数量。
+参数为 ‘Model.selection=TRUE’
+输出文件 ‘.BIC.Model.Selection.Results.csv’
+```&lt;/p&gt;
+
+&lt;p&gt;myY &amp;lt;- read.table(“mdp_traits.txt”, head = TRUE)
+myG &amp;lt;- read.table(“mdp_genotype_test.hmp.txt”, head = FALSE)
+#Step 2: Run GAPIT
+myGAPIT &amp;lt;- GAPIT(
+Y=myY,
+G=myG,
+PCA.total=3,
+Model.selection = TRUE
+)
+```&lt;/p&gt;
+
+&lt;h4 id=&quot;super&quot;&gt;2.11. SUPER&lt;/h4&gt;
+
+&lt;p&gt;GAPIT 也提供了 SUPER GWAS 方法，它提取 SNPs 的小数据集用于 FaST-LMM。
+&lt;code class=&quot;highlighter-rouge&quot;&gt;
+#Step 1: Set data directory and import files
+myCV &amp;lt;- read.table(&quot;Copy of Q_First_Three_Principal_Components.txt&quot;, head = TRUE)
+myY &amp;lt;- read.table(&quot;mdp_traits.txt&quot;, head = TRUE)
+myG &amp;lt;- read.table(&quot;mdp_genotype_test.hmp.txt&quot; , head = FALSE)
+#Step 2: Run GAPIT
+myGAPIT_SUPER &amp;lt;- GAPIT(
+Y=myY[,c(1,2)],
+G=myG,
+#KI=myKI,
+CV=myCV,
+#PCA.total=3,
+sangwich.top=&quot;MLM&quot;, #options are GLM,MLM,CMLM, FaST and SUPER
+sangwich.bottom=&quot;SUPER&quot;, #options are GLM,MLM,CMLM, FaST and SUPER
+LD=0.1,
+)
+&lt;/code&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;section-6&quot;&gt;3. 数据&lt;/h3&gt;
+
+&lt;p&gt;所有的输入数据都应该被保存在 ’\t‘ 分割的 text 文件中，建议 taxa 安字母表排序。&lt;/p&gt;
+
+&lt;h4 id=&quot;section-7&quot;&gt;3.1 表型数据&lt;/h4&gt;
+
+&lt;p&gt;多个性状可以放在一个文件中。
+第一列为 ’taxa‘ （样本），其它列为表型数据。（’\t‘ 分割）
+缺失数据用 ’NaN‘ 或者 ’NA‘。
+&lt;code class=&quot;highlighter-rouge&quot;&gt;
+myY &amp;lt;- read.table(&quot;mdp_traits.txt&quot;, head = TRUE)
+head（myY）
+  Taxa EarHT dpoll   EarDia
+  1   811 59.50   NaN      NaN
+  2  4226 65.50  59.5 32.21933
+  3  4722 81.13  71.5 32.42100
+  4 33-16 64.75  64.5      NaN
+  5 38-11 92.25  68.5 37.89700
+  6  A188 27.50  62.0 31.4190
+&lt;/code&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;section-8&quot;&gt;3.2 基因型数据&lt;/h4&gt;
+
+&lt;p&gt;GWAS 需要基因型数据，基因组预测可不用。
+基因型数据的数据格式可以用 HapMap 格式或者 numeric 格式。&lt;/p&gt;
+
+&lt;h5 id=&quot;hapmap-&quot;&gt;3.2.1 HapMap 格式&lt;/h5&gt;
+
+&lt;p&gt;HapMap 格式 SNP 信息（染色体及位置）和每个 taxa 的基因型保存在一个文件中。
+具体格式自行 google
+例子
+&lt;code class=&quot;highlighter-rouge&quot;&gt;
+myG &amp;lt;- read.table(&quot;mdp_genotype_test.hmp.txt&quot;, head = FALSE)
+&lt;/code&gt;&lt;/p&gt;
+
+&lt;h5 id=&quot;numeric-&quot;&gt;3.2.2 numeric 格式&lt;/h5&gt;
+
+&lt;p&gt;numeric 格式有两个文件，一个包含基因型数据信息，一个包含 SNP 位置信息。
+两个文件的排序应该相同。
+例子
+&lt;code class=&quot;highlighter-rouge&quot;&gt;
+myGD &amp;lt;- read.table(&quot;mdp_numeric.txt&quot;, head = TRUE)
+myGM &amp;lt;- read.table(&quot;mdp_SNP_information.txt&quot;, head = TRUE)
+&lt;/code&gt;
+格式转换:HapMap -&amp;gt; numeric
+&lt;code class=&quot;highlighter-rouge&quot;&gt;
+myG &amp;lt;- read.table(&quot;mdp_genotype_test.hmp.txt&quot;, head = FALSE) myGAPIT &amp;lt;- GAPIT(G=myG, output.numerical=TRUE)
+myGD= myGAPIT$GD
+myGM= myGAPIT$GM
+&lt;/code&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;kinship&quot;&gt;3.3 Kinship&lt;/h4&gt;
+
+&lt;p&gt;K 矩阵在 GAPIT 中称之为 ’KI’。
+第一列为样本名，其余为相关矩阵，没有表头。
+例子：
+&lt;code class=&quot;highlighter-rouge&quot;&gt;
+myKI &amp;lt;- read.table(&quot;KSN.txt&quot;, head = FALSE)
+&lt;/code&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;section-9&quot;&gt;3.4 协变量&lt;/h4&gt;
+
+&lt;p&gt;在 GAPIT 中，协变量文件叫 ‘CV’，包含群体结构信息（Q 矩阵）或者 PCs。
+例子
+&lt;code class=&quot;highlighter-rouge&quot;&gt;
+myCV &amp;lt;- read.table(&quot;mdp_population_structure.txt&quot;, head = TRUE)
+&lt;/code&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;section-10&quot;&gt;3.5 通过文件名输入基因型文件&lt;/h4&gt;
+
+&lt;p&gt;见第二部分，多基因型文件&lt;/p&gt;
+
+&lt;h4 id=&quot;gapit--1&quot;&gt;3.6 其它 GAPIT 参数&lt;/h4&gt;
+
+&lt;h3 id=&quot;section-11&quot;&gt;4. 结果&lt;/h3&gt;
+
+&lt;p&gt;GAPIT 产生的结果保存为两种格式。
+所有的表格结果保存为 .csv 文件，所有的图形保存为 .pdf 文件。&lt;/p&gt;
+
 </description>
-        <pubDate>Sun, 27 Nov 2016 00:00:00 -0500</pubDate>
-        <link>http://liuqibao.me/2016/11/27/skills-of-regular-expression/</link>
-        <guid isPermaLink="true">http://liuqibao.me/2016/11/27/skills-of-regular-expression/</guid>
+        <pubDate>Wed, 19 Apr 2017 00:00:00 +0800</pubDate>
+        <link>http://liuqibao.me/2017/04/19/gapit-introdution/</link>
+        <guid isPermaLink="true">http://liuqibao.me/2017/04/19/gapit-introdution/</guid>
         
-        <category>正则表达式</category>
+        <category>使用手册</category>
         
         
-        <category>文本编辑</category>
+        <category>bioinformatics</category>
         
       </item>
     
       <item>
-        <title>第四章 正则表达式的匹配原理</title>
+        <title>edgeR：用户使用手册</title>
         <description>&lt;ul id=&quot;markdown-toc&quot;&gt;
-  &lt;li&gt;&lt;a href=&quot;#正则引擎的分类&quot; id=&quot;markdown-toc-正则引擎的分类&quot;&gt;正则引擎的分类&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#匹配的基础&quot; id=&quot;markdown-toc-匹配的基础&quot;&gt;匹配的基础&lt;/a&gt;    &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;#规则1优先选择最左端的匹配结果&quot; id=&quot;markdown-toc-规则1优先选择最左端的匹配结果&quot;&gt;规则1：优先选择最左端的匹配结果&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#规则2-标准量词是匹配优先&quot; id=&quot;markdown-toc-规则2-标准量词是匹配优先&quot;&gt;规则2: 标准量词是匹配优先&lt;/a&gt;&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#表达式主导与文本主导&quot; id=&quot;markdown-toc-表达式主导与文本主导&quot;&gt;表达式主导与文本主导&lt;/a&gt;    &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;#nfa-引擎表达式主导&quot; id=&quot;markdown-toc-nfa-引擎表达式主导&quot;&gt;NFA 引擎：表达式主导&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#dfa-引擎文本主导&quot; id=&quot;markdown-toc-dfa-引擎文本主导&quot;&gt;DFA 引擎：文本主导&lt;/a&gt;&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#回溯&quot; id=&quot;markdown-toc-回溯&quot;&gt;回溯&lt;/a&gt;    &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;#回溯的两个要点&quot; id=&quot;markdown-toc-回溯的两个要点&quot;&gt;回溯的两个要点&lt;/a&gt;&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#关于匹配优先和回溯的更多内容&quot; id=&quot;markdown-toc-关于匹配优先和回溯的更多内容&quot;&gt;关于匹配优先和回溯的更多内容&lt;/a&gt;    &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;#匹配优先的问题&quot; id=&quot;markdown-toc-匹配优先的问题&quot;&gt;匹配优先的问题&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#使用忽略优先量词&quot; id=&quot;markdown-toc-使用忽略优先量词&quot;&gt;使用忽略优先量词&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#占有优先量词---mn&quot; id=&quot;markdown-toc-占有优先量词---mn&quot;&gt;占有优先量词，?+ *+ ++ {m,n}+&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#环视中的回溯&quot; id=&quot;markdown-toc-环视中的回溯&quot;&gt;环视中的回溯&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#多选结构&quot; id=&quot;markdown-toc-多选结构&quot;&gt;多选结构&lt;/a&gt;&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#nfadfa和posix&quot; id=&quot;markdown-toc-nfadfa和posix&quot;&gt;NFA、DFA和POSIX&lt;/a&gt;    &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;#最左最长规则&quot; id=&quot;markdown-toc-最左最长规则&quot;&gt;最左最长规则&lt;/a&gt;&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;正则引擎的分类&quot;&gt;正则引擎的分类&lt;/h3&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;
-    &lt;p&gt;DFA：确定型有穷自动机
-  awk egrep flex lex MySQL Procmail&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;NFA：非确定型有穷自动机&lt;/p&gt;
-
-    &lt;ul&gt;
-      &lt;li&gt;
-        &lt;p&gt;传统型NFA：GNU Emacs、Java grep less more .NET Per PHP Pthon Ruby sed vi&lt;/p&gt;
-      &lt;/li&gt;
-      &lt;li&gt;
-        &lt;p&gt;POSIX NFA: mawk GNU Emacs&lt;/p&gt;
+  &lt;li&gt;&lt;a href=&quot;#section&quot; id=&quot;markdown-toc-section&quot;&gt;第 一 章&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#section-1&quot; id=&quot;markdown-toc-section-1&quot;&gt;简介&lt;/a&gt;        &lt;ul&gt;
+          &lt;li&gt;&lt;a href=&quot;#section-2&quot; id=&quot;markdown-toc-section-2&quot;&gt;1.1 使用范围&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#section-3&quot; id=&quot;markdown-toc-section-3&quot;&gt;1.2 引用&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#section-4&quot; id=&quot;markdown-toc-section-4&quot;&gt;1.3 如何获得帮助&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#quick-start&quot; id=&quot;markdown-toc-quick-start&quot;&gt;1.4 Quick start&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
       &lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;匹配的基础&quot;&gt;匹配的基础&lt;/h3&gt;
-
-&lt;h4 id=&quot;规则1优先选择最左端的匹配结果&quot;&gt;规则1：优先选择最左端的匹配结果&lt;/h4&gt;
-
-&lt;hr /&gt;
-
-&lt;p&gt;引擎的构造&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;文字文本&lt;/li&gt;
-  &lt;li&gt;字符组、点号、Unicode属性及其他&lt;/li&gt;
-  &lt;li&gt;捕获型括号&lt;/li&gt;
-  &lt;li&gt;锚点&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;hr /&gt;
-
-&lt;h4 id=&quot;规则2-标准量词是匹配优先&quot;&gt;规则2: 标准量词是匹配优先&lt;/h4&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;标准匹配量词：? * + {min,max} 都是匹配优先&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;表达式主导与文本主导&quot;&gt;表达式主导与文本主导&lt;/h3&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;
-    &lt;h4 id=&quot;nfa-引擎表达式主导&quot;&gt;NFA 引擎：表达式主导&lt;/h4&gt;
+  &lt;li&gt;&lt;a href=&quot;#section-5&quot; id=&quot;markdown-toc-section-5&quot;&gt;第 二 章&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#section-6&quot; id=&quot;markdown-toc-section-6&quot;&gt;功能概括&lt;/a&gt;        &lt;ul&gt;
+          &lt;li&gt;&lt;a href=&quot;#section-7&quot; id=&quot;markdown-toc-section-7&quot;&gt;2.1 术语&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#read-&quot; id=&quot;markdown-toc-read-&quot;&gt;2.2 将 read 比对到基因组上&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#read-counts-&quot; id=&quot;markdown-toc-read-counts-&quot;&gt;2.3 产生 read counts 的列表&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#counts&quot; id=&quot;markdown-toc-counts&quot;&gt;2.4 从一个文件中读入 counts&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#dgelist-&quot; id=&quot;markdown-toc-dgelist-&quot;&gt;2.5 DGEList 数据类&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#section-8&quot; id=&quot;markdown-toc-section-8&quot;&gt;2.6 过滤&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#section-9&quot; id=&quot;markdown-toc-section-9&quot;&gt;2.7 标准化&lt;/a&gt;            &lt;ul&gt;
+              &lt;li&gt;&lt;a href=&quot;#section-10&quot; id=&quot;markdown-toc-section-10&quot;&gt;2.7.1 标准化仅对样本特异化影响是必须的&lt;/a&gt;&lt;/li&gt;
+              &lt;li&gt;&lt;a href=&quot;#section-11&quot; id=&quot;markdown-toc-section-11&quot;&gt;2.7.2 测序深度&lt;/a&gt;&lt;/li&gt;
+              &lt;li&gt;&lt;a href=&quot;#rna-&quot; id=&quot;markdown-toc-rna-&quot;&gt;2.7.3 RNA 组成&lt;/a&gt;&lt;/li&gt;
+              &lt;li&gt;&lt;a href=&quot;#gc-&quot; id=&quot;markdown-toc-gc-&quot;&gt;2.7.4 GC 含量&lt;/a&gt;&lt;/li&gt;
+              &lt;li&gt;&lt;a href=&quot;#section-12&quot; id=&quot;markdown-toc-section-12&quot;&gt;2.7.4 基因长度&lt;/a&gt;&lt;/li&gt;
+              &lt;li&gt;&lt;a href=&quot;#section-13&quot; id=&quot;markdown-toc-section-13&quot;&gt;2.7.6 基于模型的标准化，而不是转化&lt;/a&gt;&lt;/li&gt;
+              &lt;li&gt;&lt;a href=&quot;#pseudo-counts&quot; id=&quot;markdown-toc-pseudo-counts&quot;&gt;2.7.7 Pseudo-counts&lt;/a&gt;&lt;/li&gt;
+            &lt;/ul&gt;
+          &lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#section-14&quot; id=&quot;markdown-toc-section-14&quot;&gt;2.8 负二项模型&lt;/a&gt;            &lt;ul&gt;
+              &lt;li&gt;&lt;a href=&quot;#section-15&quot; id=&quot;markdown-toc-section-15&quot;&gt;2.8.1 简介&lt;/a&gt;&lt;/li&gt;
+              &lt;li&gt;&lt;a href=&quot;#bcv&quot; id=&quot;markdown-toc-bcv&quot;&gt;2.8.2 生物变异的影响（BCV）&lt;/a&gt;&lt;/li&gt;
+              &lt;li&gt;&lt;a href=&quot;#bcvs&quot; id=&quot;markdown-toc-bcvs&quot;&gt;2.8.3 计算 BCVs&lt;/a&gt;&lt;/li&gt;
+              &lt;li&gt;&lt;a href=&quot;#quasi-negative-binomial&quot; id=&quot;markdown-toc-quasi-negative-binomial&quot;&gt;2.8.4 Quasi negative binomial&lt;/a&gt;&lt;/li&gt;
+            &lt;/ul&gt;
+          &lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#section-16&quot; id=&quot;markdown-toc-section-16&quot;&gt;2.9 两组或多组的成对比较（经典方法）&lt;/a&gt;            &lt;ul&gt;
+              &lt;li&gt;&lt;a href=&quot;#section-17&quot; id=&quot;markdown-toc-section-17&quot;&gt;2.9.1 计算离散度&lt;/a&gt;&lt;/li&gt;
+              &lt;li&gt;&lt;a href=&quot;#de-genes-&quot; id=&quot;markdown-toc-de-genes-&quot;&gt;2.9.2 DE genes 检测&lt;/a&gt;&lt;/li&gt;
+            &lt;/ul&gt;
+          &lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#glm-&quot; id=&quot;markdown-toc-glm-&quot;&gt;2.10 更复杂的实验（glm 功能）&lt;/a&gt;            &lt;ul&gt;
+              &lt;li&gt;&lt;a href=&quot;#glms&quot; id=&quot;markdown-toc-glms&quot;&gt;2.10.1 一般线性模型（GLMs）&lt;/a&gt;&lt;/li&gt;
+              &lt;li&gt;&lt;a href=&quot;#section-18&quot; id=&quot;markdown-toc-section-18&quot;&gt;2.10.2 计算离散度&lt;/a&gt;&lt;/li&gt;
+              &lt;li&gt;&lt;a href=&quot;#de-genes--1&quot; id=&quot;markdown-toc-de-genes--1&quot;&gt;2.10.3 DE genes 检验&lt;/a&gt;&lt;/li&gt;
+            &lt;/ul&gt;
+          &lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#section-19&quot; id=&quot;markdown-toc-section-19&quot;&gt;2.11 如果没有重复怎么办&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#fold-change-&quot; id=&quot;markdown-toc-fold-change-&quot;&gt;2.12 表达差异高于 fold-change 阈值&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#go--pathway-&quot; id=&quot;markdown-toc-go--pathway-&quot;&gt;2.13 GO 和 pathway 分析&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#gene-set-testing&quot; id=&quot;markdown-toc-gene-set-testing&quot;&gt;2.14 Gene set testing&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#clustering-heatmaps-&quot; id=&quot;markdown-toc-clustering-heatmaps-&quot;&gt;2.15 clustering, heatmaps 等&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#section-20&quot; id=&quot;markdown-toc-section-20&quot;&gt;2.16 可变剪接&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#crispr-cas9-tkg-shrna-seq-screen-&quot; id=&quot;markdown-toc-crispr-cas9-tkg-shrna-seq-screen-&quot;&gt;2.17 CRISPR-Cas9 tkg shRNA-seq screen 分析&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
   &lt;/li&gt;
-  &lt;li&gt;
-    &lt;h4 id=&quot;dfa-引擎文本主导&quot;&gt;DFA 引擎：文本主导&lt;/h4&gt;
+  &lt;li&gt;&lt;a href=&quot;#section-21&quot; id=&quot;markdown-toc-section-21&quot;&gt;第 三 章 特异性实验设计&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#section-22&quot; id=&quot;markdown-toc-section-22&quot;&gt;3.1 简介&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#section-23&quot; id=&quot;markdown-toc-section-23&quot;&gt;3.2 两组或多组&lt;/a&gt;        &lt;ul&gt;
+          &lt;li&gt;&lt;a href=&quot;#section-24&quot; id=&quot;markdown-toc-section-24&quot;&gt;3.2.1 引言&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#section-25&quot; id=&quot;markdown-toc-section-25&quot;&gt;3.2.2 经典方法&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#glm--1&quot; id=&quot;markdown-toc-glm--1&quot;&gt;GLM 方法&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
   &lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h3 id=&quot;回溯&quot;&gt;回溯&lt;/h3&gt;
+&lt;h2 id=&quot;section&quot;&gt;第 一 章&lt;/h2&gt;
 
-&lt;p&gt;&lt;strong&gt;NFA 引擎最重要的性质:&lt;/strong&gt; 依次处理各个子表达式或组成元素，遇到需要在两个可能成功的可能中进行选择的时候，它发会选择其一，同时记住另一个，以备稍后可能的需要。&lt;/p&gt;
+&lt;h3 id=&quot;section-1&quot;&gt;简介&lt;/h3&gt;
 
-&lt;p&gt;&lt;strong&gt;需要做出选择的情形包括量词（决定是否尝试另一次匹配）和多选结构（决定选择哪个多选分支，留下哪个稍后尝试）。&lt;/strong&gt;&lt;/p&gt;
+&lt;h4 id=&quot;section-2&quot;&gt;1.1 使用范围&lt;/h4&gt;
 
-&lt;h4 id=&quot;回溯的两个要点&quot;&gt;回溯的两个要点&lt;/h4&gt;
+&lt;p&gt;edgeR 主要用来分析 read 的表达差异，数据可以来自各个平台，如 RNA-seq、ChIP-seq、CRISR-Cas9 、SAGE-seq等。
+edgeR 提供两各方法进行统计分析：
+- 经典 edgeR：分析多组实验的精确统计方法
+- glm edgeR：适合任何复杂的多因子实验的一般线性模型方法（glm）；这部分功能的名字以 ’glm‘ 标识
+edgeR 的功能是基于经验贝叶斯方法的，它可以用于基因、外显子、转录本或者 tag 水平。&lt;/p&gt;
 
-&lt;ul&gt;
-  &lt;li&gt;
-    &lt;p&gt;面对众多选择时，哪个分支应当首先选择？&lt;/p&gt;
+&lt;h4 id=&quot;section-3&quot;&gt;1.2 引用&lt;/h4&gt;
 
-    &lt;p&gt;&lt;strong&gt;如果需要在“进行尝试”和“跳过尝试”之间选择，对于匹配优先量词，引擎会优先选择“进行尝试”，而对于忽略优先量词，会选择“跳过尝试”。&lt;/strong&gt;&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;回溯时使用的是哪个之前保存的分支？
-  &lt;strong&gt;距离当前最近储存的选项就是当本地失败强制回溯时返回的。使用的原则是LIFO（last in first out，后进先出）。&lt;/strong&gt;&lt;/p&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
+&lt;h4 id=&quot;section-4&quot;&gt;1.3 如何获得帮助&lt;/h4&gt;
 
-&lt;h3 id=&quot;关于匹配优先和回溯的更多内容&quot;&gt;关于匹配优先和回溯的更多内容&lt;/h3&gt;
+&lt;h4 id=&quot;quick-start&quot;&gt;1.4 Quick start&lt;/h4&gt;
 
-&lt;h4 id=&quot;匹配优先的问题&quot;&gt;匹配优先的问题&lt;/h4&gt;
+&lt;p&gt;edgeR 提供了很多分析方法。通常，建议使用 glm 流程，因为它非常灵活。
+在 glm 框架在有两种检测方法：似然比检测和准似然比 F-test。&lt;/p&gt;
 
-&lt;p&gt;匹配“McDonald’s”？&lt;/p&gt;
+&lt;p&gt;这个例子用了 4 个RNA-seq 库，分为两组，counts 是排好序的，保存在文件中，基因符号位于一列，命名为 Symbol。&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;**关键：我们希望匹配的不是双引号之间的“任何文本”，而是“除双引号以外的任何文本”。
+&lt;div class=&quot;highlighter-rouge&quot;&gt;x &amp;lt;- read.delim(&quot;TableOfCounts.txt',row.names='Symbol') # 读入数据，也可以用 read.table 等，或者在 R 中手动构建数据框。
+group &amp;lt;- factor(c(1,1,2,2)) # 分组
+y &amp;lt;- DGEList(counts=x,group=group) # x 是包含 counts 的列，group 参数为分组；DGEList 是 edgeR 的数据结构
+y &amp;lt;- calcNormFactors（y）#标准化
+design &amp;lt;- model.matrix(~ group)
+y &amp;lt;- estimatedisp（y，design）
 
-用` &quot;[^&quot;]*&quot; `取代` &quot;.*&quot; `
-&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 
-&lt;h4 id=&quot;使用忽略优先量词&quot;&gt;使用忽略优先量词&lt;/h4&gt;
+&lt;p&gt;准似然比 F-test：
+&lt;code class=&quot;highlighter-rouge&quot;&gt;
+fit &amp;lt;- glmQLFit(y,design)
+qlf &amp;lt;- glmQLFTest(fit,coef=2)
+topTags(qlf)
+&lt;/code&gt;&lt;/p&gt;
 
-&lt;ul&gt;
-  &lt;li&gt;？？&lt;/li&gt;
-  &lt;li&gt;*？&lt;/li&gt;
-  &lt;li&gt;…&lt;/li&gt;
-  &lt;li&gt;排除环视&lt;/li&gt;
-&lt;/ul&gt;
+&lt;p&gt;似然比检测：
+&lt;code class=&quot;highlighter-rouge&quot;&gt;
+fit &amp;lt;- glmFit(y,design)
+lrt &amp;lt;- glmLRT(fit,coef=2)
+topTags(lrt)
+&lt;/code&gt;&lt;/p&gt;
 
-&lt;p&gt;####　匹配优先、忽略优先和回溯的要旨&lt;/p&gt;
+&lt;h2 id=&quot;section-5&quot;&gt;第 二 章&lt;/h2&gt;
 
-&lt;ul&gt;
-  &lt;li&gt;
-    &lt;p&gt;无论是匹配优先还是忽略优先，只要引擎报告匹配失败，它就必然尝试了所有的可能。&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;匹配优先和忽略优先都不会影响需要检测路径的本身，而只会影响检测的顺序。&lt;/p&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
+&lt;h3 id=&quot;section-6&quot;&gt;功能概括&lt;/h3&gt;
 
-&lt;p&gt;####　占有优先量词和固化分组&lt;/p&gt;
+&lt;h4 id=&quot;section-7&quot;&gt;2.1 术语&lt;/h4&gt;
 
-&lt;ul&gt;
-  &lt;li&gt;
-    &lt;p&gt;用（？〉…）实现固化分组&lt;/p&gt;
+&lt;p&gt;为了简单起见，以下内容将基因组 feature 统称为 ’genes‘，其实它可以是转录本、外显子等等。&lt;/p&gt;
 
-    &lt;p&gt;固化分组的要旨：固化分组会放弃某些可能的路径。&lt;/p&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
+&lt;h4 id=&quot;read-&quot;&gt;2.2 将 read 比对到基因组上&lt;/h4&gt;
 
-&lt;h4 id=&quot;占有优先量词---mn&quot;&gt;占有优先量词，?+ *+ ++ {m,n}+&lt;/h4&gt;
+&lt;p&gt;featureCounts 和 htseq 都是可行的。&lt;/p&gt;
 
-&lt;h4 id=&quot;环视中的回溯&quot;&gt;环视中的回溯&lt;/h4&gt;
+&lt;h4 id=&quot;read-counts-&quot;&gt;2.3 产生 read counts 的列表&lt;/h4&gt;
 
-&lt;p&gt;环视分为4种：肯定型、否定型、顺序环视与逆序环视&lt;/p&gt;
+&lt;p&gt;edgeR 的输入文件要求是列表，每行是一个 genes ，每列是一个库（样本）。
+注意：edgeR 应该使用实际的 read counts ，不建议使用预测的转录本丰度（例如 RPKM、FPKM）&lt;/p&gt;
 
-&lt;h4 id=&quot;多选结构&quot;&gt;多选结构&lt;/h4&gt;
+&lt;h4 id=&quot;counts&quot;&gt;2.4 从一个文件中读入 counts&lt;/h4&gt;
 
-&lt;p&gt;&lt;strong&gt;多选结构既不是匹配优先的，也不是忽略优先的，而是按顺序排列的。&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;如果 counts 列表已经在一个文件中，那么需要读入它。
+如果不同样本的数据存储在不同文件中，那么你需要单个读入并整合它们，readDGE 函数可以实现这个功能。这些文件需要两列，一列代表 gene 名字，一列代表 counts 数。&lt;/p&gt;
 
-&lt;h3 id=&quot;nfadfa和posix&quot;&gt;NFA、DFA和POSIX&lt;/h3&gt;
+&lt;h4 id=&quot;dgelist-&quot;&gt;2.5 DGEList 数据类&lt;/h4&gt;
 
-&lt;h4 id=&quot;最左最长规则&quot;&gt;最左最长规则&lt;/h4&gt;
+&lt;p&gt;edgeR 的数据存储在名为 DGEList 的对象中。
+可以用 readDGE 直接构造，如果 counts 列表已经作为矩阵或者数据框输入，用 x 表示，那么：
+&lt;code class=&quot;highlighter-rouge&quot;&gt;
+y &amp;lt;- DGEList(counts=x)
+&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;可以同时加入分组因子：
+&lt;code class=&quot;highlighter-rouge&quot;&gt;
+group &amp;lt;- c(1,1,2,2)
+y &amp;lt;- DGEList(coutns=x,group=group)
+&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;DGEList 对象的主要组成是一个 counts 矩阵，包括所有的 counts，一个 samples 信息的数据框，和一个可选的包含 genes 注释信息的数据框。&lt;/p&gt;
+
+&lt;h4 id=&quot;section-8&quot;&gt;2.6 过滤&lt;/h4&gt;
+
+&lt;p&gt;根据经验，如果 genes 在所有条件下的所有样本都没有表达，那么就应该过滤掉。
+通常一个基因的 counts 为 5——10 才认为它表达了。
+用户应该使用 count-per-million（CPM）指标过滤而不是直接过滤，因为直接过滤没有考虑库的大小。
+命令：
+&lt;code class=&quot;highlighter-rouge&quot;&gt;
+keep &amp;lt;- rowSums(cpm(y)&amp;gt;1) &amp;gt;= 2
+y &amp;lt;- y[keep,,keep.lib.sizes=FALSE]
+&lt;/code&gt;
+CPM 为 1 代表在最小的样本中，count 为 6——7。
+因为每组至少有两个样本，所以要求至少在 2 个库中表达（&amp;gt;=2）。
+这确保如果基因仅在 group 2 中的所有样本表达会保留下来。
+建议过滤后重新计算库的大小，尽管它的影响非常小。
+命令：
+&lt;code class=&quot;highlighter-rouge&quot;&gt;
+y$sample$lib.size &amp;lt;- colSums(y$counts)
+&lt;/code&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;section-9&quot;&gt;2.7 标准化&lt;/h4&gt;
+
+&lt;h5 id=&quot;section-10&quot;&gt;2.7.1 标准化仅对样本特异化影响是必须的&lt;/h5&gt;
+
+&lt;p&gt;edgeR 比较的两个环境下样本的表达水平的相关改变，而不是直接比较表达水平的绝对值。这简化了技术的影响。
+例如，edgeR 不会考虑 genes 长度的影响，因为它与每个样本的 read counts 的影响相关。（即，通过比较表达水平的改变，已经修正过了）&lt;/p&gt;
+
+&lt;h5 id=&quot;section-11&quot;&gt;2.7.2 测序深度&lt;/h5&gt;
+
+&lt;p&gt;edgeR 通过不同库的大小修正测序深度对差异表达分析的影响，这部分已经考虑进 fold-change 或者 P-value 中。&lt;/p&gt;
+
+&lt;h5 id=&quot;rna-&quot;&gt;2.7.3 RNA 组成&lt;/h5&gt;
+
+&lt;p&gt;RNA 组成是第二重要的技术因素。
+当少量的基因在一个样本中高差异表达，而在另一个样本中没有时，这个因素的影响会很大。
+通过寻找库大小的比例因子，它可以最小化样本基因的 log-fold changes，calcNormFactors 函数标准化 RNA组成。
+默认使用 TMM 方法估计比例因子。&lt;/p&gt;
+
+&lt;p&gt;当两两样本间差异表达的基因被确定不会超过一半时，TMM 方法是大多数 RNA-seq 推荐的方法。
+TMM 标准化的命令：
+&lt;code class=&quot;highlighter-rouge&quot;&gt;
+y &amp;lt;- calcNormFactors(y)
+&lt;/code&gt;&lt;/p&gt;
+
+&lt;h5 id=&quot;gc-&quot;&gt;2.7.4 GC 含量&lt;/h5&gt;
+
+&lt;h5 id=&quot;section-12&quot;&gt;2.7.4 基因长度&lt;/h5&gt;
+
+&lt;h5 id=&quot;section-13&quot;&gt;2.7.6 基于模型的标准化，而不是转化&lt;/h5&gt;
+
+&lt;p&gt;注意：edgeR 需要的的原始的 read counts，不是转化后的，如 RPKM 或者 FPKM 值。&lt;/p&gt;
+
+&lt;h5 id=&quot;pseudo-counts&quot;&gt;2.7.7 Pseudo-counts&lt;/h5&gt;
+
+&lt;p&gt;经典的 edgeR 函数 estimateCommonDisp 和 exactTest 产生一个 pseudo-counts 矩阵作为输出的一部分。&lt;/p&gt;
+
+&lt;h4 id=&quot;section-14&quot;&gt;2.8 负二项模型&lt;/h4&gt;
+
+&lt;h5 id=&quot;section-15&quot;&gt;2.8.1 简介&lt;/h5&gt;
+
+&lt;h5 id=&quot;bcv&quot;&gt;2.8.2 生物变异的影响（BCV）&lt;/h5&gt;
+
+&lt;h5 id=&quot;bcvs&quot;&gt;2.8.3 计算 BCVs&lt;/h5&gt;
+
+&lt;h5 id=&quot;quasi-negative-binomial&quot;&gt;2.8.4 Quasi negative binomial&lt;/h5&gt;
+
+&lt;h4 id=&quot;section-16&quot;&gt;2.9 两组或多组的成对比较（经典方法）&lt;/h4&gt;
+
+&lt;h5 id=&quot;section-17&quot;&gt;2.9.1 计算离散度&lt;/h5&gt;
+
+&lt;p&gt;离散度为生物变异系数（BCV）的平方。
+edgeR 对单因素实验使用 qCML（the quantile-adjusted conditional maximum likelihood）方法。&lt;/p&gt;
+
+&lt;p&gt;仅当是单因素实验设计的时候才能使用 qCML 方法，不适于多因素实验设计。&lt;/p&gt;
+
+&lt;p&gt;一次性计算 common dispersion 和 tagwise dispersion：
+&lt;code class=&quot;highlighter-rouge&quot;&gt;
+y &amp;lt;- estimateDisp（y）
+&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;计算 common dispersion：
+&lt;code class=&quot;highlighter-rouge&quot;&gt;
+y &amp;lt;- estimateCommaonDisp（y）
+&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;计算 tagwise disperson：
+&lt;code class=&quot;highlighter-rouge&quot;&gt;
+y &amp;lt;- estimateTagwiseDisp(y)
+&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;注意：如果独立计算，需要先计算 common dispersion，再计算 tagwise disperson。&lt;/p&gt;
+
+&lt;h5 id=&quot;de-genes-&quot;&gt;2.9.2 DE genes 检测&lt;/h5&gt;
+
+&lt;p&gt;精确检测是基于 qCML 方法的，仅适用于单因素实验。
+&lt;code class=&quot;highlighter-rouge&quot;&gt;
+et &amp;lt;- exactTest(y)
+topTags(et)
+&lt;/code&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;glm-&quot;&gt;2.10 更复杂的实验（glm 功能）&lt;/h4&gt;
+
+&lt;h5 id=&quot;glms&quot;&gt;2.10.1 一般线性模型（GLMs）&lt;/h5&gt;
+
+&lt;h5 id=&quot;section-18&quot;&gt;2.10.2 计算离散度&lt;/h5&gt;
+
+&lt;p&gt;对于多因素实验，edgeR CR 方法计算离散度，它通过一个设计矩阵拟合 GLM 模型来考虑多因素影响。&lt;/p&gt;
+
+&lt;p&gt;一次性计算 common dispersion、trended dispersion 和 tagwise dispersion 的命令：
+&lt;code class=&quot;highlighter-rouge&quot;&gt;
+y &amp;lt;- estimateDisp(y,design)
+&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;计算 common dispersion：
+&lt;code class=&quot;highlighter-rouge&quot;&gt;
+y &amp;lt;- estimateGLMCommonDisp(y, design)
+&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;计算 trendedDisp（y，design）
+&lt;code class=&quot;highlighter-rouge&quot;&gt;
+y &amp;lt;- estimateGLMTrendedDisp（y，design）
+&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;计算 tagwise dispersion：
+&lt;code class=&quot;highlighter-rouge&quot;&gt;
+y &amp;lt;- estimateGLMTagwiseDisp（y，design）
+&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;注意：需要先计算 common dispersion 或者 trended dispersion，再计算 tagwise dispersion。
+在多因素实验中，强烈建议使用 tagwise dispersion 方法。&lt;/p&gt;
+
+&lt;h5 id=&quot;de-genes--1&quot;&gt;2.10.3 DE genes 检验&lt;/h5&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;group &amp;lt;- factor（c（1，1，2，2，3，3））
+design &amp;lt;- model.matrix(~group)
+fit &amp;lt;- glmFit(y,design)
+&lt;/div&gt;
+
+&lt;p&gt;拟合函数有三个参数，第一个 group 1 扩基准水平。
+第二个和第三个是 2 vs 1 和 3 vs 1 差异&lt;/p&gt;
+
+&lt;p&gt;比较 2 vs 1:
+&lt;code class=&quot;highlighter-rouge&quot;&gt;
+lrt.2vs1 &amp;lt;- glmLRT(fit, coef=2)
+topTags(lrt.2vs1)
+&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;比较 3 vs 1:
+&lt;code class=&quot;highlighter-rouge&quot;&gt;
+lrt.3vs1 &amp;lt;- glmLRT(fit, coef=3)
+&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;比较 3 vs 2:
+&lt;code class=&quot;highlighter-rouge&quot;&gt;
+lrt.3vs2 &amp;lt;- glmLRT(fit, contrast=c(0,-1,1)) # contrast 参数需要一个零假设的统计检验，coefficient3——coefficient2 等于 0
+&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;寻找三个组都有的差异：
+&lt;code class=&quot;highlighter-rouge&quot;&gt;
+lrt &amp;lt;- glmLRT(fit,coef=2:3)
+topTags(lrt)
+&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;也可以用 QL F-test 检验。
+代码略。&lt;/p&gt;
+
+&lt;h4 id=&quot;section-19&quot;&gt;2.11 如果没有重复怎么办&lt;/h4&gt;
+
+&lt;p&gt;不推荐没有重复的实验，但是实在没有重复时，可以考虑以下选项：
+1. 用描述性统计分析，包括 MDS plot 和 fold changes 分析。
+2. 根据你的实验和相似数据，选择合适的离散度，用于 exactTest 或者 glmFit。对于人类等（可能是自由交配的物种）控制较好的实验，可以选择 BCV = 0.4；遗传上相同的模式生物（可能是指自交的生物，如植物）可以选择 BCV = 0.4；技术重复为 0.01.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;bcv &amp;lt;- 0.2
+counts &amp;lt;- matrix(rnbinom(40,size=1/bcv^2),20,2)
+y &amp;lt;- DGEList(counts=counts,group=1:2)
+et &amp;lt;- exactTest(y,dispersion=bcv^2)
+&lt;/div&gt;
+
+&lt;p&gt;注意:P-value 和显著基因的数量对离散度的选择非常敏感，对于没有控制的数据、没有考虑批次影响等等，可以实际使用更大的离散度。
+然而，选择一个假设的离散度总比忽略生物学变异好。&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;通过从线性模型移除一个或更多因子，来创造残差自由度。具体见原文。&lt;/li&gt;
+  &lt;li&gt;如果存在大量的没有 DE 的转录本，可以用它们来检测离散度。
+例如，找一个在所有处理环境中都没有表达差异的基因作为 housekeeping （管家基因），通过它计算离散度。
+首先，创建一个数据的 copy ，将所有处理视为一个组：
+&lt;code class=&quot;highlighter-rouge&quot;&gt;
+y1 &amp;lt;- y
+y1$samples$grouop &amp;lt;- 1
+&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;然后计算来自 housekeeping 基因的离散度，所有的库视为一组：
+&lt;code class=&quot;highlighter-rouge&quot;&gt;
+y0 &amp;lt;- estimateCommonDisp(y1[housekeeping,1])
+&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;然后将它插入所有数据对象：
+&lt;code class=&quot;highlighter-rouge&quot;&gt;
+y$sommon.dispersion &amp;lt;- y0$common.dispersion
+et &amp;lt;- exactTest(y)
+&lt;/code&gt;
+注意：需要大量的控制转录本，至少有几十个，理想是数百个&lt;/p&gt;
+
+&lt;h4 id=&quot;fold-change-&quot;&gt;2.12 表达差异高于 fold-change 阈值&lt;/h4&gt;
+
+&lt;h4 id=&quot;go--pathway-&quot;&gt;2.13 GO 和 pathway 分析&lt;/h4&gt;
+
+&lt;h4 id=&quot;gene-set-testing&quot;&gt;2.14 Gene set testing&lt;/h4&gt;
+
+&lt;h4 id=&quot;clustering-heatmaps-&quot;&gt;2.15 clustering, heatmaps 等&lt;/h4&gt;
+
+&lt;h4 id=&quot;section-20&quot;&gt;2.16 可变剪接&lt;/h4&gt;
+
+&lt;h4 id=&quot;crispr-cas9-tkg-shrna-seq-screen-&quot;&gt;2.17 CRISPR-Cas9 tkg shRNA-seq screen 分析&lt;/h4&gt;
+
+&lt;h2 id=&quot;section-21&quot;&gt;第 三 章 特异性实验设计&lt;/h2&gt;
+
+&lt;h4 id=&quot;section-22&quot;&gt;3.1 简介&lt;/h4&gt;
+
+&lt;p&gt;本章主要概括设计矩阵，比较一些经典的实验设计&lt;/p&gt;
+
+&lt;h4 id=&quot;section-23&quot;&gt;3.2 两组或多组&lt;/h4&gt;
+
+&lt;h5 id=&quot;section-24&quot;&gt;3.2.1 引言&lt;/h5&gt;
+
+&lt;h5 id=&quot;section-25&quot;&gt;3.2.2 经典方法&lt;/h5&gt;
+
+&lt;p&gt;经典 edgeR 方法进行组间的成对比较。
+&lt;code class=&quot;highlighter-rouge&quot;&gt;
+group &amp;lt;- factor(c('A','A','B','B','C','C'))
+et &amp;lt;- exactTest(y,pair=c('A','B')) # B vs A
+topTags(et)
+et &amp;lt;- exactTest(y,pair=c('A','C')) # C vs A
+et &amp;lt;- exactTest(y, pair=c('C','B')) # B vs C
+et &amp;lt;- exactTest(y, pair=c(3,2)) # 用数字表示，等同于 B vs C
+&lt;/code&gt;
+具体细节见原文&lt;/p&gt;
+
+&lt;h4 id=&quot;glm--1&quot;&gt;GLM 方法&lt;/h4&gt;
+
+&lt;p&gt;GLM 方法允许多个组的比较。
+GLM 方法需要一个设计矩阵，可以用 model.matrix 函数构造，也可以手动构造。
+&lt;code class=&quot;highlighter-rouge&quot;&gt;
+design &amp;lt;- model.matrix(~0+group,data=y$samples)
+colnames(design) &amp;lt;- levels(y$samples$group)
+&lt;/code&gt;&lt;/p&gt;
 
 </description>
-        <pubDate>Thu, 24 Nov 2016 00:00:00 -0500</pubDate>
-        <link>http://liuqibao.me/2016/11/24/RE-how-to-work/</link>
-        <guid isPermaLink="true">http://liuqibao.me/2016/11/24/RE-how-to-work/</guid>
+        <pubDate>Mon, 10 Apr 2017 00:00:00 +0800</pubDate>
+        <link>http://liuqibao.me/2017/04/10/edgeR-introdution/</link>
+        <guid isPermaLink="true">http://liuqibao.me/2017/04/10/edgeR-introdution/</guid>
         
-        <category>正则表达式</category>
+        <category>使用手册</category>
         
         
-        <category>文本编辑</category>
+        <category>bioinformatics</category>
+        
+      </item>
+    
+      <item>
+        <title>HTseq 简单使用</title>
+        <description>
+&lt;p&gt;HTseq 是进行基因 count 表达量分析的软件，可以根据来自多种比对软件的 SAM/BAM 比对结果文件和基因结构注释 GTF 文件计算基因水平的 Counts 表达量
+HTseq 安装需要 python2.7 以上，还需要几个 python 包，也建议用 pip 安装。
+注意：
+1. 若安装自己目录，运行：&lt;code class=&quot;highlighter-rouge&quot;&gt;python setup.py install --user
+2. 自动生成的 htseq 在 &lt;/code&gt;~/.local/bin` 中&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;htseq-count [options] input.sam/bam genome.gtf &amp;gt; counts_out.txt
+&lt;/div&gt;
+&lt;p&gt;options:
+-f：输入文件的格式，SAM/BAM；默认 sam。
+-r：输入文件的排序方式，name/pos；默认 name。（需要用 samtools 对输入文件排序）
+-s：设置是否是链特异性的，yes/no；默认 yes。（反人类的选项，一般情况是 no）
+-a：忽略比对质量低于此值的比对结果；默认 10
+-t：对指定的 feature（gtf/gff 第三列）进行表达量计算，而且忽略其它 ffeature；默认 exon
+-i：设置 feature ID，由 gtf/gff 文件第 9 列标签决定，一般 gtf 为 gene_id, gff 为 ID；默认 gene_id
+-m：表达量计算模式，三种，一般真核生物用 union，详细请看说明书；默认 union
+-o：输出 sam 文件&lt;/p&gt;
+
+&lt;p&gt;注意事项：
+1. 输入文件必须有 sam/bam 比对结果和 gtf/gff 参考基因
+2. gtf/gff 文件不能包含可变剪接信息，否则 HTSeq 会认为每个可变剪接都是单独的基因，导致计算结果为 ambiguous，对基因的 count 计算错误。&lt;/p&gt;
+
+</description>
+        <pubDate>Sun, 09 Apr 2017 00:00:00 +0800</pubDate>
+        <link>http://liuqibao.me/2017/04/09/HTseq-introdution/</link>
+        <guid isPermaLink="true">http://liuqibao.me/2017/04/09/HTseq-introdution/</guid>
+        
+        <category>使用手册</category>
+        
+        
+        <category>bioinformatics</category>
+        
+      </item>
+    
+      <item>
+        <title>SAM 格式简介及 samtools 工具的常用命令</title>
+        <description>&lt;ul id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#sam-&quot; id=&quot;markdown-toc-sam-&quot;&gt;SAM 格式定义&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#samtools-&quot; id=&quot;markdown-toc-samtools-&quot;&gt;samtools 工具的常用命令&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;最近在做 RNA-seq 的时候，发现很多差异分析软件需要对 sam 文件进行排序，所以决定再研究一个 sam 格式。&lt;/p&gt;
+
+&lt;h4 id=&quot;sam-&quot;&gt;SAM 格式定义&lt;/h4&gt;
+
+&lt;p&gt;SAM  是序列比对的格式标准，是 sanger 制定的，它以制表符 &lt;code class=&quot;highlighter-rouge&quot;&gt;\t&lt;/code&gt; 为分割符。
+完整的 sam 文件分为两个主要部分，注释信息（header section）和比对结果部分（alignment），比对结果是必须的，而注释信息是可忽略的。
+注释信息以 &lt;code class=&quot;highlighter-rouge&quot;&gt;@&lt;/code&gt; 开头，用不同的标签（tag）表示不同的信息，例如： 
+- @HD：符合标准的版本、对比序列的排列顺序
+- @SQ：参考序列说明
+- @RG：比对上的 reads 说明
+- @PG：使用说明
+- @Co：任意的说明信息&lt;/p&gt;
+
+&lt;p&gt;比对结果，每行表示一个 segment 的比对信息，共被 &lt;code class=&quot;highlighter-rouge&quot;&gt;\t&lt;/code&gt; 分为 11 个字段和一个可靠字段，其顺序是固定的
+1. QNAME：比对片段或者基因的编号
+2. FLAG：平台比对情况的数字表示
+3. RNAM：参考序列的名字，即，染色体号，无法比对用 &lt;code class=&quot;highlighter-rouge&quot;&gt;*&lt;/code&gt; 表示
+4. position：read 比对到参考序列上，第一个碱基的位置，无法比对，则为 0
+5. 比对质量分数
+6. 匹配上的碱基数
+…&lt;/p&gt;
+
+&lt;h4 id=&quot;samtools-&quot;&gt;samtools 工具的常用命令&lt;/h4&gt;
+
+&lt;p&gt;samtools 的新旧版本用法有些不同，此处用的 V1.4。&lt;/p&gt;
+
+&lt;p&gt;一、view&lt;/p&gt;
+
+&lt;p&gt;view 命令主要用于将 sam 格式转换成 bam 格式，只有转换成 bam 后才能对文件进行操作，例如排序、提取。&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;samtools view [options] bam/sam
+&lt;/div&gt;
+&lt;p&gt;options：
+-o：输出文件的名字
+-b：输出 BAM 格式；默认输出 SAM 格式
+-h：设定输出 sam 文件时带 header 信息；默认输出 sam 不带 header 信息
+-H：仅输出头文件信息
+-S：输入文件是 sam 文件；默认输入文件是 bam 文件，新版本自动检测，可忽略该参数
+-u：耗费磁盘空间，节约时间；需要 -b 参数&lt;/p&gt;
+
+&lt;p&gt;例如：
+&lt;code class=&quot;highlighter-rouge&quot;&gt;
+samtools view -bS abc.sam &amp;gt; abc.bam #将 sam 转换成 bam
+samtools view -T genome.fasta -h input.sam &amp;gt; input.h.sam 根据 fasta 文件，将 header 加入到 sam 或 bam 文件
+samtools view -H input.bam &amp;gt; header.sam # 仅输出 header 文件
+&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;二、sort&lt;/p&gt;
+
+&lt;p&gt;sort 命令是对 bam 文件进行排序&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;samtools sort [options] input.bam 
+&lt;/div&gt;
+&lt;p&gt;options:
+-@：线程数
+-m：每个线程的最大内存
+-n：根据 read 的名字（QNAME）排序，而不是染色体坐标排序；默认通过最左边的坐标排序。
+-o：排序后的输出文件名；默认 samtools 基于 -o 文件的扩展名深度选择一个格式（如 .bam)；如果格式无法推测，则需要指定 -O
+-O：指定输出格式 sam/bam/cram；&lt;/p&gt;
+
+&lt;p&gt;例如：
+&lt;code class=&quot;highlighter-rouge&quot;&gt;
+samtools sort -@ 8 -o output.sorted.bam input.sam #输入 sam 文件，输出排好序的 bam 文件。
+&lt;/code&gt;
+注意：旧版本无法排序的同时转换格式，所以需要先用 view 转换格式，再用 sort 排序&lt;/p&gt;
+
+&lt;p&gt;samtools 的命令还有很多，等用到的时候继续补充&lt;/p&gt;
+</description>
+        <pubDate>Sat, 08 Apr 2017 00:00:00 +0800</pubDate>
+        <link>http://liuqibao.me/2017/04/08/sam-format-and-samtool-v1.4/</link>
+        <guid isPermaLink="true">http://liuqibao.me/2017/04/08/sam-format-and-samtool-v1.4/</guid>
+        
+        <category>使用手册；数据格式</category>
+        
+        
+        <category>bioinformatics</category>
         
       </item>
     

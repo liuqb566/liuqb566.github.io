@@ -124,9 +124,294 @@
       
 
       
-        <li><a href="#year_2016">2016</a>
+        <li><a href="#year_2017">2017</a>
           <ul class="nav">
-            <li><a href="#month_2016_December">December</a></li>
+            <li><a href="#month_2017_May">May</a></li>
+      
+
+      
+            
+          
+              <li><a href="#month_2017_April">April</a></li>
+          
+        
+      
+    
+      
+      
+      
+      
+
+      
+
+      
+            
+          
+        
+      
+    
+      
+      
+      
+      
+
+      
+
+      
+            
+          
+        
+      
+    
+      
+      
+      
+      
+
+      
+
+      
+            
+          
+        
+      
+    
+      
+      
+      
+      
+
+      
+
+      
+            
+          
+        
+      
+    
+      
+      
+      
+      
+
+      
+
+      
+            
+          
+        
+      
+    
+      
+      
+      
+      
+
+      
+
+      
+            
+          
+        
+      
+    
+      
+      
+      
+      
+
+      
+
+      
+            
+          
+        
+      
+    
+      
+      
+      
+      
+
+      
+
+      
+            
+          
+        
+      
+    
+      
+      
+      
+      
+
+      
+
+      
+            
+          
+        
+      
+    
+      
+      
+      
+      
+
+      
+
+      
+            
+          
+        
+      
+    
+      
+      
+      
+      
+
+      
+
+      
+            
+          
+        
+      
+    
+      
+      
+      
+      
+
+      
+
+      
+            
+          
+              <li><a href="#month_2017_March">March</a></li>
+          
+        
+      
+    
+      
+      
+      
+      
+
+      
+
+      
+            
+          
+              <li><a href="#month_2017_February">February</a></li>
+          
+        
+      
+    
+      
+      
+      
+      
+
+      
+
+      
+            
+          
+              <li><a href="#month_2017_January">January</a></li>
+          
+        
+      
+    
+      
+      
+      
+      
+
+      
+
+      
+            
+          
+        
+      
+    
+      
+      
+      
+      
+
+      
+
+      
+            
+          
+        
+      
+    
+      
+      
+      
+      
+
+      
+
+      
+            
+          
+        
+      
+    
+      
+      
+      
+      
+
+      
+
+      
+            
+          
+        
+      
+    
+      
+      
+      
+      
+
+      
+
+      
+            
+          
+        
+      
+    
+      
+      
+      
+      
+
+      
+
+      
+        
+            </ul>
+          </li>
+          <li><a href="#year_2016">2016</a>
+            <ul class="nav">
+              <li><a href="#month_2016_December">December</a></li>
+        
+      
+    
+      
+      
+      
+      
+
       
 
       
@@ -245,18 +530,18 @@
             </header>
             <article class="post-content">
               <ul id="markdown-toc">
-  <li><a href="#正则表达式的平衡法则" id="markdown-toc-正则表达式的平衡法则">正则表达式的平衡法则</a>    <ul>
-      <li><a href="#匹配ip地址" id="markdown-toc-匹配ip地址">匹配IP地址</a></li>
-      <li><a href="#处理文件名" id="markdown-toc-处理文件名">处理文件名</a></li>
-      <li><a href="#匹配对称的括号" id="markdown-toc-匹配对称的括号">匹配对称的括号</a></li>
-      <li><a href="#匹配分隔符之内的文本" id="markdown-toc-匹配分隔符之内的文本">匹配分隔符之内的文本</a></li>
-      <li><a href="#容许引文字符串中出现转义引号" id="markdown-toc-容许引文字符串中出现转义引号">容许引文字符串中出现转义引号</a></li>
-      <li><a href="#去除文本首尾的空白字符" id="markdown-toc-去除文本首尾的空白字符">去除文本首尾的空白字符</a></li>
+  <li><a href="#section" id="markdown-toc-section">正则表达式的平衡法则</a>    <ul>
+      <li><a href="#ip" id="markdown-toc-ip">匹配IP地址</a></li>
+      <li><a href="#section-1" id="markdown-toc-section-1">处理文件名</a></li>
+      <li><a href="#section-2" id="markdown-toc-section-2">匹配对称的括号</a></li>
+      <li><a href="#section-3" id="markdown-toc-section-3">匹配分隔符之内的文本</a></li>
+      <li><a href="#section-4" id="markdown-toc-section-4">容许引文字符串中出现转义引号</a></li>
+      <li><a href="#section-5" id="markdown-toc-section-5">去除文本首尾的空白字符</a></li>
     </ul>
   </li>
 </ul>
 
-<h3 id="正则表达式的平衡法则">正则表达式的平衡法则</h3>
+<h3 id="section">正则表达式的平衡法则</h3>
 
 <p><strong>好的正则表达式必须在以下方面求得平衡:</strong></p>
 
@@ -266,14 +551,13 @@
   <li>如果使用NFA引擎，必须保证效率（如果能够匹配，必须很快地返回匹配结果，如果不能匹配，应该在尽可能短的时间内报告匹配失败。）</li>
 </ul>
 
-<h4 id="匹配ip地址">匹配IP地址</h4>
+<h4 id="ip">匹配IP地址</h4>
 
 <p><strong>对于NFA引擎：应选择尽可能少的分支，以保证效率</strong></p>
 
-<h4 id="处理文件名">处理文件名</h4>
+<h4 id="section-1">处理文件名</h4>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>eg. /usr/local/bin/perl
-</code></pre>
+<div class="highlighter-rouge">eg. /usr/local/bin/perl
 </div>
 
 <ul>
@@ -294,7 +578,7 @@
   </li>
 </ul>
 
-<h4 id="匹配对称的括号">匹配对称的括号</h4>
+<h4 id="section-2">匹配对称的括号</h4>
 
 <hr />
 
@@ -302,26 +586,24 @@
 
 <hr />
 
-<h4 id="匹配分隔符之内的文本">匹配分隔符之内的文本</h4>
+<h4 id="section-3">匹配分隔符之内的文本</h4>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>1. 匹配起始分隔符
+<div class="highlighter-rouge">1. 匹配起始分隔符
 2. 匹配正文
 3. 匹配结束分隔符
-</code></pre>
 </div>
 
-<h4 id="容许引文字符串中出现转义引号">容许引文字符串中出现转义引号</h4>
+<h4 id="section-4">容许引文字符串中出现转义引号</h4>
 
 <p>没看懂</p>
 
-<h4 id="去除文本首尾的空白字符">去除文本首尾的空白字符</h4>
+<h4 id="section-5">去除文本首尾的空白字符</h4>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>```
+<div class="highlighter-rouge">```
 1. s/^\s+//;
 2. s/\s+$//;
 
 ```
-</code></pre>
 </div>
 
 
@@ -360,7 +642,7 @@ var duoshuoQuery = {short_name:"Gossie"};
     
     <footer class="footer" role="contentinfo">
 	<div class="container">
-		<p class="copyright">Copyright &copy; 2014-2016 <a href=""><code>Gossie</code></a>.</p>
+		<p class="copyright">Copyright &copy; 2014-2017 <a href=""><code>Gossie</code></a>.</p>
 		<p>Site powered by <a href="http://jekyllrb.com">Jekyll</a> && <a href="http://www.github.com">Github</a></p>
 	</div>
 </footer>

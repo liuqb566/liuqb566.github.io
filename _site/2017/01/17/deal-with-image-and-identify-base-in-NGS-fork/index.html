@@ -1,0 +1,736 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>二代测序的图象处理和碱基识别</title>
+
+	<link rel="shortcut icon" href="/styles/images/favicon.jpg">
+	<link rel="icon" href="/styles/images/favicon.jpg">
+
+	<link rel="stylesheet" href="/styles/css/index.css">
+	<link rel="stylesheet" href="/styles/css/fontawesome/css/font-awesome.min.css">
+	<link rel="canonical" href="/2017/01/17/deal-with-image-and-identify-base-in-NGS-fork/">
+	<link rel="alternate" type="application/rss+xml" title="Gossie's daily life" href="/feed.xml">
+	
+	<meta name="description" content="">
+
+	<script src="/styles/js/jquery.min.js"></script>
+	<!--[if lt IE 9]>
+    	<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  	<![endif]-->
+  	<script>
+		var _hmt = _hmt || [];
+		(function() {
+		  var hm = document.createElement("script");
+		  hm.src = "//hm.baidu.com/hm.js?94be4b0f9fc5d94cc0d0415ea6761ae9";
+		  var s = document.getElementsByTagName("script")[0]; 
+		  s.parentNode.insertBefore(hm, s);
+		})();
+	</script>
+  	<style type="text/css">
+	  	.docs-content{
+	  		margin-bottom: 10px;
+	  	}
+  	</style>
+</head>
+
+
+  <body class="index">
+
+    <header class="navbar navbar-inverse navbar-fixed-top docs-nav" role="banner">
+  <div class="container">
+    <div class="navbar-header">
+      <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".bs-navbar-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="/" class="navbar-brand">
+        <img src="/styles/images/logo.jpg">
+      </a>
+    </div>
+    <nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">
+      <ul class="nav navbar-nav">    
+        <li>
+          <a href="/">Home</a>
+        </li>
+        <li>
+          <a href="/categories/">分类</a>
+        </li>
+        <li>
+          <a href="/tag">标签</a>
+        </li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+          <a href="/donate/"><strong>打赏</strong></a>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">关于<b class="caret"></b></a>
+          <ul class="dropdown-menu">
+            <li><a rel="nofollow" target="_blank" href="https://github.com/liuqibao566">Github</a></li>
+            <li><a rel="nofollow" target="_blank" href="">关于作者</a></li>
+            <li><a rel="nofollow" href="/books">书架</a></li>
+            <li><a rel="nofollow" href="/reference">相关链接</a></li>
+            <li><a href="/feed.xml">RSS订阅</a></li>
+            <li class="divider"></li>
+            <li><a rel="nofollow" target="_blank" href="https://github.com/liuqb566/">本项目</a></li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+    <div class="docs-header" id="content">
+  <div class="container">
+  	
+  		<!--
+		    <h1>二代测序的图象处理和碱基识别</h1>
+		    <p>Post on Jan 17, 2017 by <a href="/about">Gossie</a></p>
+		-->
+		    <h1></h1>
+    
+  </div>
+</div>
+    
+      
+<div class="banner">
+  <div class="container">
+  	
+    	<a href="/categories/#NGS-ref">NGS</a>	/
+    	<a href="/tag/#测序原理-ref">测序原理</a>
+    
+  </div>
+</div>
+
+    
+
+    <div class="container docs-container">
+  <div class="row">
+    <div class="col-md-3">
+      <div class="sidebar hidden-print" role="complementary">
+        <div id="navigation">
+  <h1>目录</h1>
+  <ul class="nav sidenav">
+<!--
+    
+      
+      
+      
+      
+
+      
+        <li><a href="#year_2017">2017</a>
+          <ul class="nav">
+            <li><a href="#month_2017_May">May</a></li>
+      
+
+      
+            
+          
+              <li><a href="#month_2017_April">April</a></li>
+          
+        
+      
+    
+      
+      
+      
+      
+
+      
+
+      
+            
+          
+        
+      
+    
+      
+      
+      
+      
+
+      
+
+      
+            
+          
+        
+      
+    
+      
+      
+      
+      
+
+      
+
+      
+            
+          
+        
+      
+    
+      
+      
+      
+      
+
+      
+
+      
+            
+          
+        
+      
+    
+      
+      
+      
+      
+
+      
+
+      
+            
+          
+        
+      
+    
+      
+      
+      
+      
+
+      
+
+      
+            
+          
+        
+      
+    
+      
+      
+      
+      
+
+      
+
+      
+            
+          
+        
+      
+    
+      
+      
+      
+      
+
+      
+
+      
+            
+          
+        
+      
+    
+      
+      
+      
+      
+
+      
+
+      
+            
+          
+        
+      
+    
+      
+      
+      
+      
+
+      
+
+      
+            
+          
+        
+      
+    
+      
+      
+      
+      
+
+      
+
+      
+            
+          
+        
+      
+    
+      
+      
+      
+      
+
+      
+
+      
+            
+          
+              <li><a href="#month_2017_March">March</a></li>
+          
+        
+      
+    
+      
+      
+      
+      
+
+      
+
+      
+            
+          
+              <li><a href="#month_2017_February">February</a></li>
+          
+        
+      
+    
+      
+      
+      
+      
+
+      
+
+      
+            
+          
+              <li><a href="#month_2017_January">January</a></li>
+          
+        
+      
+    
+      
+      
+      
+      
+
+      
+
+      
+            
+          
+        
+      
+    
+      
+      
+      
+      
+
+      
+
+      
+            
+          
+        
+      
+    
+      
+      
+      
+      
+
+      
+
+      
+            
+          
+        
+      
+    
+      
+      
+      
+      
+
+      
+
+      
+            
+          
+        
+      
+    
+      
+      
+      
+      
+
+      
+
+      
+            
+          
+        
+      
+    
+      
+      
+      
+      
+
+      
+
+      
+        
+            </ul>
+          </li>
+          <li><a href="#year_2016">2016</a>
+            <ul class="nav">
+              <li><a href="#month_2016_December">December</a></li>
+        
+      
+    
+      
+      
+      
+      
+
+      
+
+      
+            
+          
+        
+      
+    
+      
+      
+      
+      
+
+      
+
+      
+            
+          
+        
+      
+    
+      
+      
+      
+      
+
+      
+
+      
+            
+          
+        
+      
+    
+      
+      
+      
+      
+
+      
+
+      
+            
+          
+        
+      
+    
+      
+      
+      
+      
+
+      
+
+      
+            
+          
+              <li><a href="#month_2016_November">November</a></li>
+          
+        
+      
+    
+      
+      
+      
+      
+
+      
+
+      
+            
+          
+        
+      
+    
+      
+      
+      
+      
+
+      
+
+      
+            
+          
+        
+      
+    
+      
+      
+      
+      
+
+      
+
+      
+            </ul>
+          </li>
+      
+    
+-->
+  </ul>
+</div> 
+      </div>
+    </div>
+    <div class="col-md-9" role="main">
+      <div class="panel docs-content">
+        <div class="wrapper">
+            <header class="post-header">
+              <h1 class="post-title">二代测序的图象处理和碱基识别</h1>
+              <!--
+                <p class="post-meta">Jan 17, 2017</p>
+              -->
+              <div class="meta">Posted on <span class="postdate">Jan 17, 2017</span> By <a target="_blank" href="http://liuqibao.me">Gossie</a></div>
+              <br />
+            </header>
+            <article class="post-content">
+              <ul id="markdown-toc">
+  <li><a href="#section" id="markdown-toc-section">[转]</a></li>
+  <li><a href="#section-1" id="markdown-toc-section-1">1、 预备知识</a></li>
+  <li><a href="#section-2" id="markdown-toc-section-2">2  二代测序数据分析概要</a>    <ul>
+      <li><a href="#section-3" id="markdown-toc-section-3">2.1  初级分析</a></li>
+      <li><a href="#section-4" id="markdown-toc-section-4">2.2  次级分析</a></li>
+      <li><a href="#section-5" id="markdown-toc-section-5">2.3  高级分析</a></li>
+      <li><a href="#section-6" id="markdown-toc-section-6">2.4  数据展示</a></li>
+    </ul>
+  </li>
+  <li><a href="#section-7" id="markdown-toc-section-7">3 图像分析</a>    <ul>
+      <li><a href="#section-8" id="markdown-toc-section-8">3.1 图像校正</a></li>
+      <li><a href="#section-9" id="markdown-toc-section-9">3.2 簇的识别</a></li>
+      <li><a href="#section-10" id="markdown-toc-section-10">3.3 重叠的簇</a></li>
+    </ul>
+  </li>
+  <li><a href="#section-11" id="markdown-toc-section-11">4  碱基识别</a>    <ul>
+      <li><a href="#section-12" id="markdown-toc-section-12">4.1  光学（光谱）校正</a></li>
+      <li><a href="#section-13" id="markdown-toc-section-13">4.2  化学（相位）校正</a></li>
+      <li><a href="#section-14" id="markdown-toc-section-14">4.3  碱基识别</a></li>
+      <li><a href="#pf" id="markdown-toc-pf">4.4  PF</a></li>
+      <li><a href="#qv" id="markdown-toc-qv">4.5  QV</a></li>
+    </ul>
+  </li>
+  <li><a href="#section-15" id="markdown-toc-section-15">5  二代测序数据质量评价</a></li>
+</ul>
+
+<h4 id="section">[转]</h4>
+
+<p>二代测序的显著特点之一是大数据、海量数据。以Illumina最高端的测序平台HiSeq X10为例，每台机器每轮测序所产生的数据量大约是1.6Tb，即1600 Gb。所谓大数据，不仅数据量大，而且分析流程也复杂。如今，不仅二代测序是热门专业，由此衍生而来的生物信息学(bioinformatics)也是热门专业，而且渐渐成为了更加热门的专业。
+二代测序的数据分析通常分为初级分析、次级分析和高级分析三个层次。虽然各个层次的定义以及相互之间的界限并不绝对明确，存在一定的模糊地带，外加学科发展日新月异，像云存贮、云计算、人工智能、深度学习等新技术、新工具、新概念不断涌现，既充实了生物信息学的内容，也扩大了其研究的范围，使得对生物信息学进行简单的概括越来越困难，但是，由于三段划分比较简明，有助于理解，目前仍被广泛接受。
+我们以Illumina测序平台为例，讨论二代测序的图象处理和碱基识别，也就是从荧光信号的产生到碱基序列的识别这一过程，主要包括图象校正（即空间校正）、簇的识别、荧光校正（即光学校正）、phasing/prephasing（即化学校正）、碱基识别、PF、质量评估等7个步骤，涉及到两个软件：HCS (HiSeq ControlSoftware)，控制测序仪的运行，收集荧光信号；RTA(Real-Time Analysis)，在测序过程中实时处理数据，包括图象分析、碱基识别和质量评估等。至于用于二代测序数据展示的第三个软件工具GenomeStudio，属于可选项。本文不涉及更下游的次级和高级分析。</p>
+
+<h3 id="section-1">1、 预备知识</h3>
+<p>Illumina的HiSeq系列测序仪具有红绿波长两根激光管，配备两片滤色片。激光光源与滤色片两两组合，形成4种不同波长的激发光，分别用于激发DNA分子中的A、G、C、T这4种碱基。在测序过程中，cluster上所标记的荧光基团在激光激发下产生荧光信号，荧光信号用相机收集，收集方式有拍照和扫描两种。扫描的速度比较快。
+每台HiSeq测序仪可以同时运行两张flow cell（某些型号只能运行1张），通常每张flow cell有8个通道(lane)；每个通道的内壁，包括顶面和底面，都可以生成簇；由于面积大，为了方便数据管理，软件把顶面或者底面虚拟地划分为2条或者3条column，或者叫swath，每条column或者swath又被虚拟地划分为几十个tile。簇的密度根据上样量以及机器型号和软件版本有各种变化，通常为1M/mm2。</p>
+
+<h3 id="section-2">2  二代测序数据分析概要</h3>
+<p>从原理上看，Illumina二代测序的碱基识别其实非常简单：对测序过程中所获得的荧光信号图片进行空间校准，按空间位置和时间顺序排列，然后根据每个簇随着时间变化而发生的颜色改变读取碱基序列；序列长度就等于SBS的循环次数。
+二代测序数据分析主要包括图像分析、碱基识别、序列组装、突变识别、功能分析等5个环节，以及每个环节都需要的可视化数据展示。图像分析和碱基识别属于初级分析，序列组装和突变识别属于次级分析，功能分析属于高级分析。</p>
+
+<h4 id="section-3">2.1  初级分析</h4>
+<p>初级分析主要指信号收集、图象处理、碱基识别和质量评判4个步骤。
+信号收集(DataCollection)：由测序仪自动进行，相关参数由测序仪操作人员根据项目需求设定。除非出现数据异常，需要进行故障排除，在数据分析阶段通常不需要关注其细节。
+图像分析(imageanalysis)：主要是空间校正、图像叠加和簇的识别，内容包括图像分析算法(algorithm)和图像分析参数(offset)。
+碱基识别(basecalling)：主要是信号强度校正、交叉污染矩阵(cross-talkmatrix)、化学校正（phasing correction）和碱基识别。
+质量评判：对读取的碱基数据根据质量好坏适当进行过滤，去除比较差的，保留好的（pass filtering，PF），并对每一个碱基、每一个测序片段（read）进行质量评分，赋予QV值。
+图像分析的输入是测序仪为每个tile拍摄的信号图像(大量.tiff文件)和仪器运行参数文件(.params文件)，输出是每个cluster的原始信号强度，称为intensity files。内容包括每个tile的信号强度，每个tile的背景噪音强度。信号强度包括每个tile在A、G、C、T这4个波长范围内的4个数据。
+碱基识别的输入是上一步产生的intensityfiles，输出是碱基序列，称为sequence files。内容包括每个cluster的碱基序列，每个cluster的质量评分(quality score)，每个cluster校正后的信号强度。</p>
+
+<h4 id="section-4">2.2  次级分析</h4>
+<p>次级分析主要指基因组序列组装、样本之间的序列比较、SNP和基因突变的识别以及mRNA和miRNA拷贝数定量等4个步骤。次级分析的范围大致限定于识别基因本身的各种特征。
+序列组装(alignment)：主要是片段组装(alignment)、序列产出(sequence output)和数据统计(summary statistics)。
+各种二代测序技术的共同特点是测序读长比较短，通常都在300碱基左右，所以需要把短片段拼成长片段、并组装出完整基因组序列。基因组的组装策略分两种：再测序(resequencing)和从头测序(denovo sequencing)。再测序指该物种曾经有个体进行过基因组测序和数据组装，已经有基因组参考序列。从头测序指该物种从来没有测过基因组，没有参考序列可用。这两种情况组装的难度不同，所运用的策略和软件工具也不同。再测序的序列组装比较容易，需时较短；从头测序的基因组序列组装比较困难，往往需要很长时间才能完成，也有人把它归入高级分析的范畴。
+突变识别(mutationidentification)：主要是alleles、SNPs、indels、RNA counts等。
+基因变异的鉴定方法主要靠比较。比较样本的基因组序列（来自实验室测序）与参考序列（来自公共数据库），或者比较癌组织与癌旁组织的基因组序列，或者比较未知样本与标准品的基因组序列，可以寻找和发现二者之间存在的基因变异。如果这种变异不影响生理功能，称为SNP；如果影响到生理功能，称为基因突变。通常，SNP的发生频率较高，基因突变的发生频率较低。所以也有人把这个逻辑反过来，根据等位基因频率的高低来定义一个变异到底是SNP还是基因突变。
+序列组装的输入是上一步生成的sequencefiles，输出是有关测序数据各种统计结果，包括报表和各种分布图。内容包括qualityfiltering, sequence alignment, run statisticsvisualization。</p>
+
+<h4 id="section-5">2.3  高级分析</h4>
+<p>高级分析主要是基因功能的分析，侧重探索基因变异与生理功能之间的关联，比如局部体细胞突变与癌症发生之间的关系，鉴定罕见病的致病基因，确定其致病机理，研究代谢通路，探索拷贝数变异对生理功能的影响，等等。
+就数据分析的三个层次而言，初级分析的方法路线都比较成熟，通常由各种测序仪自带的标配软件就可以完成，能够自动化进行，不需要过多的人为干预。次级分析也基本上都有现成的分析模块可供选择使用，或者在现有软件工具的基础上进行少量优化即可使用，生物信息学家的主要工作是写一些简短的script，把不同模块连接起来，进行组合运用，以达到自动化操作，节省时间和服务器资源的目的。高级分析往往需要结合每个项目的具体情况和需求，对pipeline进行专门的设计、优化和验证，技术路线是高度个性化的。</p>
+
+<h4 id="section-6">2.4  数据展示</h4>
+<p>如何对大数据的特性进行直观、准确、全面地展示，也是一个相当特殊的问题。二代测序的数据展示，主要指利用各种软件工具，采用图表的形式，直观地展示海量测序数据的分析结论和统计结果，便于阅读理解。
+无论初级、次级还是高级分析，都存在如何恰当地展示分析的结果的问题。另外，由于二代测序获得的是海量数据，无法靠人眼一一过目，也需要通过专门软件将测序数据的各种统计结果展示成直观的图表和曲线，方便判断数据质量和测序表现。Illumina提供GenomeStudio软件，可以用于此目的，还有其他一些相关软件也可以根据情况选用。</p>
+
+<p>二代测序的数据分析可以分为图像分析、碱基识别、序列组装、突变识别、功能分析等5个环节，以及各个环节对应的可视化数据展示。图像分析(image analysis)是其中的第一步，主要包括图像扭曲的校正、不同波长图像的叠加和簇(cluster)的识别等步骤，为碱基识别做准备。</p>
+
+<h3 id="section-7">3 图像分析</h3>
+<p>图像分析的目的有两个：(1)对每一个簇(cluster)进行识别，确定其坐标；(2)提取每个簇分别在A、G、C、T四个波长的信号强度值。</p>
+
+<h4 id="section-8">3.1 图像校正</h4>
+<p>图像校正也叫空间校正，目的是纠正在不同波长(A、G、C、T四个波长)和时间(测序循环次数)所拍摄的图像之间的空间扭曲，使flow cell上同一个位置的簇在不同的图像中可以被准确地对齐，保持它们的空间坐标不变。
+在信号收集过程中，每个tile需要在A、G、C、T这4种波长处各拍摄一张黑白图像，分别纪录这4种碱基（簇）在tile里的分布信息；在图像处理过程中，需要把这4张图叠加在一起，生成一张虚拟的彩色图，以便同时包含这4个波长的信息；在序列读取过程中，还需要把每个tile的虚拟彩色图像按时间顺序排列，然后读取每个簇在每个测序循环的信号颜色，从而进行碱基识别。后两种运算都需要图像严格对齐，使簇的坐标保持稳定不变。
+Illumina测序仪里有4个相机排成一排，分别拍摄A、G、C、T这4种波长的图像。它们拍摄同一张flow cell上的同一个tile的角度必然有一定差异，图片之间存在一定程度的扭曲变形，所以需要在图像处理过程中对变形进行纠正，也就是我们所说的空间校正。
+空间校正所使用的参数称为offset，是从每次测序实验的实测数据中统计出来的。每台机器的offset值是不一样的。软件根据offset值对图片进行scale调整和注册。</p>
+
+<h4 id="section-9">3.2 簇的识别</h4>
+<p>簇的识别需要用到3个参数，带宽、阈值和最大值，分别对簇的边界、下限和上限进行标准化处理，从而使簇与簇之间的有效信号强度取值接近一致，可以有效地进行相互比较。
+a.带宽 (band-pass filter)。带宽用于限定每个簇的四周边界。软件在每个簇的图像的中心部位取面积一样的一小块圆形，使所有簇的直径标准化，保留大小一样的有效面积。该算法是从识别星座的天文学软件中借鉴而来的。经过运算处理以后，能够使簇的边界变得更加清晰锐利，簇的图像得到加强，易于识别。
+b.阈值 (threshold)。阈值用于限定簇信号强度的最低值，把测序信号与背景噪音区分开来。经过阈值运算，把噪音（信号强度比较弱的随机波动）屏蔽掉，防止其干扰簇的识别，同时把信号微弱、低于阈值、质量不好的簇也屏蔽掉，从而把质量可靠的、好的簇挑选出来。
+c.最大值 (maximum)。最大值用于限定簇信号强度的最大值，每个簇的原始信号中超过最大值的部分都被软件切除，从而使所有簇的信号强度都变得一样高。
+由于化学反应存在一定的随机性，flow cell上所形成的簇有大有小，空间分布也是随机的。经过这3步运算，实际上对flow cell上所有的簇的信号强度都进行了归一化，方便相互之间进行比较，为后续的各种运算打下基础。</p>
+
+<h4 id="section-10">3.3 重叠的簇</h4>
+<p>由于簇在flow cell上的生长位置是随机的，所以始终会有一定比例的簇长在一起，挨得比较近。虽然簇的生长具有排它性，簇本身是不会重叠的，但是荧光信号是散射的，如果两个簇挨得太近，就会导致荧光信号产生一定程度的重叠，反映在图像上，看起来就是两个簇有一部分相互重叠。如果重叠严重，还会导致这两个簇的荧光信号都无法识别，最终两个簇的数据都被抛弃，这一损失就比较大。
+为了尽可能清晰、准确地识别部分重叠的簇，可用的对策有两个：
+一是减少簇识别的采样面积。图像分析的参数之一带宽 (band-pass filter)就是为了这个目的。大部分情况下，这样做可以避开互相重叠的部分。簇面积也可以用半峰宽(full width at half maximum, FWHM)来定义，所以减少采样面积实质上就是减少半峰宽。
+另一个方法是多循环识别。如果两个部分重叠的簇碰巧在第一个循环时碱基是一样的，则无论怎么减小半峰宽都不可能把它们区分开。在这种情况下，可以识别第二个、第三个甚至后面更多个循环的碱基，直到碱基不同的循环。后面几个循环仍然遇到同样碱基的概率会越来越小。在后面循环的碱基识别完成后，倒推回去，就可以准确识别这两个簇第一个循环的碱基种类。识别循环次数增多，对电脑资源的消耗随之增大，运算时间也会延长，所以循环次数的增加是有限度的。
+图像处理的精度还受到像素的制约。解决的办法有两个：一是提高相机的像素，一是发展能够进行亚像素识别的算法。测序仪生产厂家一般会同时在这两个方向上进行推进，以求在现有的硬件基础上取得最好的效果。</p>
+
+<p>从头到尾，二代测序的数据分析分为图像分析、碱基识别、序列组装、突变识别、功能分析等5个环节，碱基识别是其中最核心的一步，是此后各种数据加工和分析的基础，涉及到荧光信号交叉污染的校正、化学反应相位差异的校正、信号纯净度计算、碱基识别、碱基质量过滤和碱基质量评分等方面。</p>
+
+<h3 id="section-11">4  碱基识别</h3>
+<p>Flowcell上的每个簇都是由1000-6000个单链DNA分子组成的。这些分子全部来自一个共同的“祖先”模板分子、通过桥式PCR的扩增克隆而成。所以，除了PCR过程中偶尔发生的碱基错配以外，它们的碱基序列是一模一样的。由于二代测序文库的DNA片段很短，总共才不过三五百个碱基，碱基错配的概率不高，在讨论碱基识别的阶段可以暂时忽略不计。
+既然碱基序列是一样的，在测序的每个循环，每个簇所发射的荧光信号的波长（或者说颜色）就是一样的、单一的、纯净的。仪器针对每个簇、在每个测序循环都拍摄了A、G、C、T 4张图象。正常情况下，这4张图中只有1张有信号；另外3张没有信号，只有背景噪音。信号的荧光强度要显著高于噪音的。
+碱基识别的基本过程就是比较每个簇的这4张图，挑出其中信号强度最高的那个波长，从而确定该碱基的种类。
+如果只有一个簇，这种比较是非常简单容易的。但是图象处理的单位是tile，每个tile里包含有几百万、上千万个簇，平行测序导致平行的数据处理，所以上一节讲解的图象处理就非常重要。
+碱基识别涉及到以下5个重要方面。</p>
+
+<h4 id="section-12">4.1  光学（光谱）校正</h4>
+<p>由于荧光信号是散射的，在任何空间位置、任何波长收集的荧光信号数据都不是完全纯净的，都存在一定程度的交叉污染(cross talk)，差别只是杂信号的污染比例有高有低。因此，对于原始信号需要进行归一化(normalization)处理。
+光学校正的依据是cross-talk matrix。对于4色荧光系统来说，matrix是一个4x4的矩阵；对于5色荧光系统来说，matrix是一个5x5的矩阵；依次类推。矩阵里的数字代表每一种波长的信号被另外3种波长的信号所污染的比例，也就是在计算纯净的信号强度时需要被扣除的比例。
+由于每台仪器所处的具体环境是有差别的，荧光交叉污染的情况也有不同，所以matrix不能通用，不能互相复制借用。Matrix数据是依据一定的规则，从每次测序实验的实测数据中统计得来的。</p>
+
+<h4 id="section-13">4.2  化学（相位）校正</h4>
+<p>前面已经解释过，一个簇包含大约6000个DNA分子；它们由同一个祖先分子经过桥式PCR分子克隆而来，其碱基序列一模一样；PCR过程中由于Taq酶工作不认真而导致的少量碱基错配可以暂时忽略不计。所以，当我们测定其中任何一个碱基的时候，每个簇所发射的荧光应当是波长一样的。也就是说，从每个簇、每个测序循环所收集的荧光信号应该是颜色纯净的，没有杂色混入。
+但是实测数据是有一定程度污染的。杂色的来源有三种。前面讲到的不同波长荧光的交叉污染是一种；背景噪音是另外一种。交叉污染可以通过统计matrix扣除解决，背景噪音可以通过设定threshold扣除解决。现在我们讨论第三种情况：测序引物延伸（本质上是碱基合成）的落后和前出，即phasing和prephasing。
+在进行二代测序时，cluster里的每一个分子上都结合有一条测序引物，引物的杂交结合位置是一样的。理想情况下，所有这6000个杂交的测序引物将随着测序循环的进行而同步得到延伸，每个循环延长1个碱基，齐步行进。
+我们人类做实验，隔三差五总是发生意外，虽然总体的犯错比例不算高，可以原谅。分子也不例外，它们和人一样，在进行测序引物延伸反应的时候也会出状况。比如说剪切反应出状况，本来计划每簇剪6000刀，实际上只剪了5998刀，两刀忘剪了，那么这6000个分子中就有2个分子的可逆终止基团未能被切除。后果是，在下一轮合成反应中，这2个分子无法延伸一个碱基。即使再下一轮它们恢复正常，可以延伸了，这两个分子也始终比其他5998个分子短1个碱基，相位落后了。这种现象称为phasing。2/6000=0.03%，该簇的phasing值就是0.03。
+反过来，如果不幸遭遇dNTP质量有问题，有1个dNTP分子没有标记终止基团，它连接到测序引物上之后，该引物还能继续再延伸1个碱基。如果第二个碱基是合格的，带有终止基团修饰，那么这个分子就在1个测序循环中延伸了2个碱基，比其他5999个分子多1个，跑到前面去了。此后，即使每个循环都一切正常，这个分子也将始终比其他5999个分子长1个碱基，相位超前。这种现象称为prephasing。1/6000=0.02%，该簇的prephasing值就是0.02。
+无论phasing还是prephasing，都会导致在该cluster的荧光信号中引入杂色污染，因为在这6000个分子中有少部分被测定的碱基种类不一样了。
+为了消除化学错误的影响，需要统计phasing matrix和prephasing matrix，对荧光信号进行校正。软件对phasing和prephasing的统计以lane为单位，是该lane里所有tile、所有cluster的平均值。</p>
+
+<h4 id="section-14">4.3  碱基识别</h4>
+<p>碱基识别的“原理”也很简单：第一、每一个簇在A、G、C、T四个波长的信号值相互进行比较，取其中信号强度最大的一个，识别它所代表的碱基。第二、不同循环次数测序所得到的碱基按空间和时间顺序排列，识别测序片段(read)的序列。
+如果遭遇两个或多个信号值一样高，或者差别不显著，左右为难，无法识别，怎么办呢？其实也很简单，抛弃这个数据，整条read的全部碱基一起抛弃，无论它是100个、150个、还是300个。
+哪些数据应当保留，哪些数据应当被抛弃，依据是什么呢？这就是簇的信号纯净度(chastity) ——C值。C值的定义是一组4个荧光信号值中，最高值除以最高值与第二高值之和。
+我们考虑两种极端情况：a. 除了1个最高值以外，其他3个信号值都是零；b. 在4个荧光信号值中，有2个值都很高，而且它们相等。a是最好的情况，b是最差的情况。设最高的荧光信号值是x。对于情况a，C = x/(x+0) = 1；对于情况b，C = x/(x+x) = 0.5。可见，C值的理论范围是0.5至1之间，而且越高越好。C值越高，说明碱基信号质量越好，碱基识别就会越准确。
+现行软件以C &gt;= 0.6为标准。C值0.6以上的碱基为质量合格的，C值0.6以下的碱基为质量不合格的。</p>
+
+<h4 id="pf">4.4  PF</h4>
+<p>为了在降低测序错误率与提高测序产量之间达到最佳的平衡，我们需要按照科学客观的标准对测序数据进行一定程度的过滤，筛掉质量差的，保留质量好的。过滤的标准需要经过仔细的权衡，以便做到既不至于测序数据鱼龙混杂，又不过分降低数据产量。
+在Illumina平台，质量过滤的依据是簇的信号纯净度。如果某一个簇的信号被判定为“不纯净”，则抛弃该簇的全部测序数据。对于HiSeq X10来说，就是抛弃长度分别为150个碱基的两条read。
+Illumina默认的数据过滤算法称为PF(pass filtering)。其规则是：对于每一个read，无论读长是多少，都取其起始25个碱基作为代表；在这25个碱基中，第二低的C值必须大于或者等于0.6；否则该read不能通过PF算法，即被判定为质量不合格的，被整体抛弃。第25个碱基之后的序列（对于HiSeq X10来说，就是第26-150个碱基）不论，无论其质量好坏。
+C值低于0.6的碱基是质量不过关的。上述规则换一句话来表达就是，每个read的前25个碱基中，“质量不好的”碱基只允许有1个；如果超过1个，该条read即被全部抛弃。
+通过PF算法而被保留下来的质量合格的数据，称为PF数据。</p>
+
+<h4 id="qv">4.5  QV</h4>
+<p>为了定量评价测序数据的质量好坏，人们为二代测序数据定义了多种qualityscore，其评价结果称为quality value，简称QV。在进行碱基识别的同时，软件还根据预先设定的规则对每一个碱基进行质量评估，为每一个碱基赋予一个QV分值。不同的二代测序平台，如果其测序原理不同，则定义QV所取的参数也不同。
+一个荧光信号被测序软件判读为某一种碱基，存在一定的概率(Pe)发生判断错误。QV就是用来衡量Pe高低的一个定量指标，其定义为：
+QV=-10 x lg Pe
+根据这一定义可知，
+如果碱基识别的准确率是99%，则错误率是1%，QV是20；
+如果碱基识别的准确率是99.9%，则错误率是0.1%，QV是30；
+如果碱基识别的准确率是99.99%，则错误率是0.01%，QV是40；
+余此类推。
+可以看出，如果QV值是10的倍数的话，其第一位数字等于准确率9的个数，很容易记住。
+通常，人们以QV达到或者超过30分为高质量数据的判断标准。二代测序数据中QV值大于或等于30的部分，称为Q30数据。Q30数据是PF数据的一部分。
+由于QV是两位数，存贮起来比较费电脑内存，所以人们对之进行了一个转换，把两位数换成对应的一位ASCII码，比如^、_、’、a等符号。这只是为了节省空间，不具有其他含义。记住一点，尽管在fastq文件里它们看起来像一串乱码，实际上是严整的数字。</p>
+
+<h3 id="section-15">5  二代测序数据质量评价</h3>
+
+<p>二代测序每每获得海量数据，通常称为大数据。正因为数据的体量太大，对于其整体质量的好坏就难以直观评价。为此我们必须建立一套客观的评价体系，通常是相关统计参数，帮助我们对每一批测序数据的好坏进行直观把握。虽然至今还没有建立被普遍接受的公认的标准，在实际工作中，人们主要关心的二代测序数据质量参数逐渐集中于以下这么几个：数据量、%Q30、比对率、覆盖度、重复率。对于外显子组测序，在此基础上再增加一个：捕获率。
+对于这些重要参数，下面我们逐一进行简要介绍。
+1、数据量(yield)：指一次测序所获得的PF数据的总量。注意，是PF数据，而不是原始数据。数据量当然越多越好，实际成绩与测序仪型号有关，不同的机器，产量不一样。对于HiSeq X10来说，厂家承诺的标准是100 Gb/lane。
+2、%Q30：Q30是指QV值大于或等于30分的碱基，可以直观地简单理解为质量合格的、高质量的碱基。%Q30代表全部测序数据中高质量数据所占的比例。这是衡量测序数据质量好坏的指标，也是越高越好。需要注意的是，%Q30的大小与测序片段(read)的读长有关。读长越长，其平均%Q30越低。对于HiSeq X10来说，双端测序(paired-end, PE)的读长是2x150 bp，厂家承诺的%Q30合格标准是&gt;=75%。
+以上两个指标是测序完成就可以得到的，并不需要进行通常意义上的生物信息学数据分析。而要得到以下这些指标的数据，就必须首先采用适当的软件，对测序数据进行相关分析。
+3、比对率(mappingrate)：将测序数据与标准参考序列的数据(reference)进行比对，序列一致的碱基占测序碱基总数的比率。比对率越高越好。对于人类全基因组重测序，比对率通常可以达到99%以上。
+4、覆盖度(coverage)：测序数据经过组装、比对，被定位到染色体上。通常，对于染色体的不同位置，测序数据的覆盖深度是不一样的，有的区域测序数据多，覆盖度深，有的区域测序数据少，覆盖度浅。覆盖度越均匀、越高越好。
+5、重复率(duplicationrate)：在二代测序文库的构建过程中，除了无PCR流程(PCR-free approach)，其他方法都需要进行PCR扩增。PCR扩增会导致染色体的不同区域放大程度不一致，有部分序列被过度放大。这是一种人为引入的偏差。PCR所造成的重复测序数据对于研究目的来说是无用的，是一种浪费，所以越低越好。重复率与文库构建试剂的质量有关，对于人类全基因组测序来说，通常&lt;10%。
+以上是适合所有类型的二代测序应用的质量评价参数。对于外显子组测序来说，除了上述5个参数以外，还有一个外显子组测序所特有的重要参数需要考量。
+6、捕获率(capturerate)：外显子组测序是通过探针杂交捕获来从基因组文库中富集外显子序列的，这是外显子组测序所特有的步骤，与全基因组测序不同。探针杂交捕获存在着捕获效率高低的问题，因此考察、评价这一步骤成败、好坏的参数就是捕获率，越高越好。捕获率与所用的外显子捕获试剂有关，不同的试剂，捕获率不同，通常应当在50-80%之间。
+文： 陈云地  明码科技</p>
+
+
+            </article>
+        </div>
+      </div>
+      <div class="panel docs-content">
+        <article class="post-content">
+          <div class="wrapper">
+            
+
+
+  <div class="ds-thread" data-thread-key="/2017/01/17/deal-with-image-and-identify-base-in-NGS-fork/" data-title="二代测序的图象处理和碱基识别" data-url="http://liuqibao.me/2017/01/17/deal-with-image-and-identify-base-in-NGS-fork/"></div>
+
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"Gossie"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+</script>
+
+
+ 
+          </div>
+        </article>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+    <footer class="footer" role="contentinfo">
+	<div class="container">
+		<p class="copyright">Copyright &copy; 2014-2017 <a href=""><code>Gossie</code></a>.</p>
+		<p>Site powered by <a href="http://jekyllrb.com">Jekyll</a> && <a href="http://www.github.com">Github</a></p>
+	</div>
+</footer>
+
+<script src="/styles/js/jquery.min.js"></script>
+<script src="/styles/js/bootstrap.min.js"></script>
+<script src="/styles/js/holder.min.js"></script>
+<script src="/styles/js/application.js"></script>
+<script src="/styles/js/lessismore.js"></script>
+
+
+  </body>
+</html>

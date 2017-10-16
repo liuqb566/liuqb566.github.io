@@ -1,0 +1,982 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>edgeR：用户使用手册</title>
+
+	<link rel="shortcut icon" href="/styles/images/favicon.jpg">
+	<link rel="icon" href="/styles/images/favicon.jpg">
+
+	<link rel="stylesheet" href="/styles/css/index.css">
+	<link rel="stylesheet" href="/styles/css/fontawesome/css/font-awesome.min.css">
+	<link rel="canonical" href="/2017/04/10/edgeR-introdution/">
+	<link rel="alternate" type="application/rss+xml" title="Gossie's daily life" href="/feed.xml">
+	
+	<meta name="description" content="">
+
+	<script src="/styles/js/jquery.min.js"></script>
+	<!--[if lt IE 9]>
+    	<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  	<![endif]-->
+  	<script>
+		var _hmt = _hmt || [];
+		(function() {
+		  var hm = document.createElement("script");
+		  hm.src = "//hm.baidu.com/hm.js?94be4b0f9fc5d94cc0d0415ea6761ae9";
+		  var s = document.getElementsByTagName("script")[0]; 
+		  s.parentNode.insertBefore(hm, s);
+		})();
+	</script>
+  	<style type="text/css">
+	  	.docs-content{
+	  		margin-bottom: 10px;
+	  	}
+  	</style>
+</head>
+
+
+  <body class="index">
+
+    <header class="navbar navbar-inverse navbar-fixed-top docs-nav" role="banner">
+  <div class="container">
+    <div class="navbar-header">
+      <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".bs-navbar-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="/" class="navbar-brand">
+        <img src="/styles/images/logo.jpg">
+      </a>
+    </div>
+    <nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">
+      <ul class="nav navbar-nav">    
+        <li>
+          <a href="/">Home</a>
+        </li>
+        <li>
+          <a href="/categories/">分类</a>
+        </li>
+        <li>
+          <a href="/tag">标签</a>
+        </li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+          <a href="/donate/"><strong>打赏</strong></a>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">关于<b class="caret"></b></a>
+          <ul class="dropdown-menu">
+            <li><a rel="nofollow" target="_blank" href="https://github.com/liuqibao566">Github</a></li>
+            <li><a rel="nofollow" target="_blank" href="">关于作者</a></li>
+            <li><a rel="nofollow" href="/books">书架</a></li>
+            <li><a rel="nofollow" href="/reference">相关链接</a></li>
+            <li><a href="/feed.xml">RSS订阅</a></li>
+            <li class="divider"></li>
+            <li><a rel="nofollow" target="_blank" href="https://github.com/liuqb566/">本项目</a></li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+    <div class="docs-header" id="content">
+  <div class="container">
+  	
+  		<!--
+		    <h1>edgeR：用户使用手册</h1>
+		    <p>Post on Apr 10, 2017 by <a href="/about">Gossie</a></p>
+		-->
+		    <h1></h1>
+    
+  </div>
+</div>
+    
+      
+<div class="banner">
+  <div class="container">
+  	
+    	<a href="/categories/#bioinformatics-ref">bioinformatics</a>	/
+    	<a href="/tag/#使用手册-ref">使用手册</a>
+    
+  </div>
+</div>
+
+    
+
+    <div class="container docs-container">
+  <div class="row">
+    <div class="col-md-3">
+      <div class="sidebar hidden-print" role="complementary">
+        <div id="navigation">
+  <h1>目录</h1>
+  <ul class="nav sidenav">
+<!--
+    
+      
+      
+      
+      
+
+      
+        <li><a href="#year_2017">2017</a>
+          <ul class="nav">
+            <li><a href="#month_2017_May">May</a></li>
+      
+
+      
+            
+          
+              <li><a href="#month_2017_April">April</a></li>
+          
+        
+      
+    
+      
+      
+      
+      
+
+      
+
+      
+            
+          
+        
+      
+    
+      
+      
+      
+      
+
+      
+
+      
+            
+          
+        
+      
+    
+      
+      
+      
+      
+
+      
+
+      
+            
+          
+        
+      
+    
+      
+      
+      
+      
+
+      
+
+      
+            
+          
+        
+      
+    
+      
+      
+      
+      
+
+      
+
+      
+            
+          
+        
+      
+    
+      
+      
+      
+      
+
+      
+
+      
+            
+          
+        
+      
+    
+      
+      
+      
+      
+
+      
+
+      
+            
+          
+        
+      
+    
+      
+      
+      
+      
+
+      
+
+      
+            
+          
+        
+      
+    
+      
+      
+      
+      
+
+      
+
+      
+            
+          
+        
+      
+    
+      
+      
+      
+      
+
+      
+
+      
+            
+          
+        
+      
+    
+      
+      
+      
+      
+
+      
+
+      
+            
+          
+        
+      
+    
+      
+      
+      
+      
+
+      
+
+      
+            
+          
+              <li><a href="#month_2017_March">March</a></li>
+          
+        
+      
+    
+      
+      
+      
+      
+
+      
+
+      
+            
+          
+              <li><a href="#month_2017_February">February</a></li>
+          
+        
+      
+    
+      
+      
+      
+      
+
+      
+
+      
+            
+          
+              <li><a href="#month_2017_January">January</a></li>
+          
+        
+      
+    
+      
+      
+      
+      
+
+      
+
+      
+            
+          
+        
+      
+    
+      
+      
+      
+      
+
+      
+
+      
+            
+          
+        
+      
+    
+      
+      
+      
+      
+
+      
+
+      
+            
+          
+        
+      
+    
+      
+      
+      
+      
+
+      
+
+      
+            
+          
+        
+      
+    
+      
+      
+      
+      
+
+      
+
+      
+            
+          
+        
+      
+    
+      
+      
+      
+      
+
+      
+
+      
+        
+            </ul>
+          </li>
+          <li><a href="#year_2016">2016</a>
+            <ul class="nav">
+              <li><a href="#month_2016_December">December</a></li>
+        
+      
+    
+      
+      
+      
+      
+
+      
+
+      
+            
+          
+        
+      
+    
+      
+      
+      
+      
+
+      
+
+      
+            
+          
+        
+      
+    
+      
+      
+      
+      
+
+      
+
+      
+            
+          
+        
+      
+    
+      
+      
+      
+      
+
+      
+
+      
+            
+          
+        
+      
+    
+      
+      
+      
+      
+
+      
+
+      
+            
+          
+              <li><a href="#month_2016_November">November</a></li>
+          
+        
+      
+    
+      
+      
+      
+      
+
+      
+
+      
+            
+          
+        
+      
+    
+      
+      
+      
+      
+
+      
+
+      
+            
+          
+        
+      
+    
+      
+      
+      
+      
+
+      
+
+      
+            </ul>
+          </li>
+      
+    
+-->
+  </ul>
+</div> 
+      </div>
+    </div>
+    <div class="col-md-9" role="main">
+      <div class="panel docs-content">
+        <div class="wrapper">
+            <header class="post-header">
+              <h1 class="post-title">edgeR：用户使用手册</h1>
+              <!--
+                <p class="post-meta">Apr 10, 2017</p>
+              -->
+              <div class="meta">Posted on <span class="postdate">Apr 10, 2017</span> By <a target="_blank" href="http://liuqibao.me">Gossie</a></div>
+              <br />
+            </header>
+            <article class="post-content">
+              <ul id="markdown-toc">
+  <li><a href="#section" id="markdown-toc-section">第 一 章</a>    <ul>
+      <li><a href="#section-1" id="markdown-toc-section-1">简介</a>        <ul>
+          <li><a href="#section-2" id="markdown-toc-section-2">1.1 使用范围</a></li>
+          <li><a href="#section-3" id="markdown-toc-section-3">1.2 引用</a></li>
+          <li><a href="#section-4" id="markdown-toc-section-4">1.3 如何获得帮助</a></li>
+          <li><a href="#quick-start" id="markdown-toc-quick-start">1.4 Quick start</a></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li><a href="#section-5" id="markdown-toc-section-5">第 二 章</a>    <ul>
+      <li><a href="#section-6" id="markdown-toc-section-6">功能概括</a>        <ul>
+          <li><a href="#section-7" id="markdown-toc-section-7">2.1 术语</a></li>
+          <li><a href="#read-" id="markdown-toc-read-">2.2 将 read 比对到基因组上</a></li>
+          <li><a href="#read-counts-" id="markdown-toc-read-counts-">2.3 产生 read counts 的列表</a></li>
+          <li><a href="#counts" id="markdown-toc-counts">2.4 从一个文件中读入 counts</a></li>
+          <li><a href="#dgelist-" id="markdown-toc-dgelist-">2.5 DGEList 数据类</a></li>
+          <li><a href="#section-8" id="markdown-toc-section-8">2.6 过滤</a></li>
+          <li><a href="#section-9" id="markdown-toc-section-9">2.7 标准化</a>            <ul>
+              <li><a href="#section-10" id="markdown-toc-section-10">2.7.1 标准化仅对样本特异化影响是必须的</a></li>
+              <li><a href="#section-11" id="markdown-toc-section-11">2.7.2 测序深度</a></li>
+              <li><a href="#rna-" id="markdown-toc-rna-">2.7.3 RNA 组成</a></li>
+              <li><a href="#gc-" id="markdown-toc-gc-">2.7.4 GC 含量</a></li>
+              <li><a href="#section-12" id="markdown-toc-section-12">2.7.4 基因长度</a></li>
+              <li><a href="#section-13" id="markdown-toc-section-13">2.7.6 基于模型的标准化，而不是转化</a></li>
+              <li><a href="#pseudo-counts" id="markdown-toc-pseudo-counts">2.7.7 Pseudo-counts</a></li>
+            </ul>
+          </li>
+          <li><a href="#section-14" id="markdown-toc-section-14">2.8 负二项模型</a>            <ul>
+              <li><a href="#section-15" id="markdown-toc-section-15">2.8.1 简介</a></li>
+              <li><a href="#bcv" id="markdown-toc-bcv">2.8.2 生物变异的影响（BCV）</a></li>
+              <li><a href="#bcvs" id="markdown-toc-bcvs">2.8.3 计算 BCVs</a></li>
+              <li><a href="#quasi-negative-binomial" id="markdown-toc-quasi-negative-binomial">2.8.4 Quasi negative binomial</a></li>
+            </ul>
+          </li>
+          <li><a href="#section-16" id="markdown-toc-section-16">2.9 两组或多组的成对比较（经典方法）</a>            <ul>
+              <li><a href="#section-17" id="markdown-toc-section-17">2.9.1 计算离散度</a></li>
+              <li><a href="#de-genes-" id="markdown-toc-de-genes-">2.9.2 DE genes 检测</a></li>
+            </ul>
+          </li>
+          <li><a href="#glm-" id="markdown-toc-glm-">2.10 更复杂的实验（glm 功能）</a>            <ul>
+              <li><a href="#glms" id="markdown-toc-glms">2.10.1 一般线性模型（GLMs）</a></li>
+              <li><a href="#section-18" id="markdown-toc-section-18">2.10.2 计算离散度</a></li>
+              <li><a href="#de-genes--1" id="markdown-toc-de-genes--1">2.10.3 DE genes 检验</a></li>
+            </ul>
+          </li>
+          <li><a href="#section-19" id="markdown-toc-section-19">2.11 如果没有重复怎么办</a></li>
+          <li><a href="#fold-change-" id="markdown-toc-fold-change-">2.12 表达差异高于 fold-change 阈值</a></li>
+          <li><a href="#go--pathway-" id="markdown-toc-go--pathway-">2.13 GO 和 pathway 分析</a></li>
+          <li><a href="#gene-set-testing" id="markdown-toc-gene-set-testing">2.14 Gene set testing</a></li>
+          <li><a href="#clustering-heatmaps-" id="markdown-toc-clustering-heatmaps-">2.15 clustering, heatmaps 等</a></li>
+          <li><a href="#section-20" id="markdown-toc-section-20">2.16 可变剪接</a></li>
+          <li><a href="#crispr-cas9-tkg-shrna-seq-screen-" id="markdown-toc-crispr-cas9-tkg-shrna-seq-screen-">2.17 CRISPR-Cas9 tkg shRNA-seq screen 分析</a></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li><a href="#section-21" id="markdown-toc-section-21">第 三 章 特异性实验设计</a>    <ul>
+      <li><a href="#section-22" id="markdown-toc-section-22">3.1 简介</a></li>
+      <li><a href="#section-23" id="markdown-toc-section-23">3.2 两组或多组</a>        <ul>
+          <li><a href="#section-24" id="markdown-toc-section-24">3.2.1 引言</a></li>
+          <li><a href="#section-25" id="markdown-toc-section-25">3.2.2 经典方法</a></li>
+        </ul>
+      </li>
+      <li><a href="#glm--1" id="markdown-toc-glm--1">GLM 方法</a></li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="section">第 一 章</h2>
+
+<h3 id="section-1">简介</h3>
+
+<h4 id="section-2">1.1 使用范围</h4>
+
+<p>edgeR 主要用来分析 read 的表达差异，数据可以来自各个平台，如 RNA-seq、ChIP-seq、CRISR-Cas9 、SAGE-seq等。
+edgeR 提供两各方法进行统计分析：
+- 经典 edgeR：分析多组实验的精确统计方法
+- glm edgeR：适合任何复杂的多因子实验的一般线性模型方法（glm）；这部分功能的名字以 ’glm‘ 标识
+edgeR 的功能是基于经验贝叶斯方法的，它可以用于基因、外显子、转录本或者 tag 水平。</p>
+
+<h4 id="section-3">1.2 引用</h4>
+
+<h4 id="section-4">1.3 如何获得帮助</h4>
+
+<h4 id="quick-start">1.4 Quick start</h4>
+
+<p>edgeR 提供了很多分析方法。通常，建议使用 glm 流程，因为它非常灵活。
+在 glm 框架在有两种检测方法：似然比检测和准似然比 F-test。</p>
+
+<p>这个例子用了 4 个RNA-seq 库，分为两组，counts 是排好序的，保存在文件中，基因符号位于一列，命名为 Symbol。</p>
+
+<div class="highlighter-rouge">x &lt;- read.delim("TableOfCounts.txt',row.names='Symbol') # 读入数据，也可以用 read.table 等，或者在 R 中手动构建数据框。
+group &lt;- factor(c(1,1,2,2)) # 分组
+y &lt;- DGEList(counts=x,group=group) # x 是包含 counts 的列，group 参数为分组；DGEList 是 edgeR 的数据结构
+y &lt;- calcNormFactors（y）#标准化
+design &lt;- model.matrix(~ group)
+y &lt;- estimatedisp（y，design）
+
+</div>
+
+<p>准似然比 F-test：
+<code class="highlighter-rouge">
+fit &lt;- glmQLFit(y,design)
+qlf &lt;- glmQLFTest(fit,coef=2)
+topTags(qlf)
+</code></p>
+
+<p>似然比检测：
+<code class="highlighter-rouge">
+fit &lt;- glmFit(y,design)
+lrt &lt;- glmLRT(fit,coef=2)
+topTags(lrt)
+</code></p>
+
+<h2 id="section-5">第 二 章</h2>
+
+<h3 id="section-6">功能概括</h3>
+
+<h4 id="section-7">2.1 术语</h4>
+
+<p>为了简单起见，以下内容将基因组 feature 统称为 ’genes‘，其实它可以是转录本、外显子等等。</p>
+
+<h4 id="read-">2.2 将 read 比对到基因组上</h4>
+
+<p>featureCounts 和 htseq 都是可行的。</p>
+
+<h4 id="read-counts-">2.3 产生 read counts 的列表</h4>
+
+<p>edgeR 的输入文件要求是列表，每行是一个 genes ，每列是一个库（样本）。
+注意：edgeR 应该使用实际的 read counts ，不建议使用预测的转录本丰度（例如 RPKM、FPKM）</p>
+
+<h4 id="counts">2.4 从一个文件中读入 counts</h4>
+
+<p>如果 counts 列表已经在一个文件中，那么需要读入它。
+如果不同样本的数据存储在不同文件中，那么你需要单个读入并整合它们，readDGE 函数可以实现这个功能。这些文件需要两列，一列代表 gene 名字，一列代表 counts 数。</p>
+
+<h4 id="dgelist-">2.5 DGEList 数据类</h4>
+
+<p>edgeR 的数据存储在名为 DGEList 的对象中。
+可以用 readDGE 直接构造，如果 counts 列表已经作为矩阵或者数据框输入，用 x 表示，那么：
+<code class="highlighter-rouge">
+y &lt;- DGEList(counts=x)
+</code></p>
+
+<p>可以同时加入分组因子：
+<code class="highlighter-rouge">
+group &lt;- c(1,1,2,2)
+y &lt;- DGEList(coutns=x,group=group)
+</code></p>
+
+<p>DGEList 对象的主要组成是一个 counts 矩阵，包括所有的 counts，一个 samples 信息的数据框，和一个可选的包含 genes 注释信息的数据框。</p>
+
+<h4 id="section-8">2.6 过滤</h4>
+
+<p>根据经验，如果 genes 在所有条件下的所有样本都没有表达，那么就应该过滤掉。
+通常一个基因的 counts 为 5——10 才认为它表达了。
+用户应该使用 count-per-million（CPM）指标过滤而不是直接过滤，因为直接过滤没有考虑库的大小。
+命令：
+<code class="highlighter-rouge">
+keep &lt;- rowSums(cpm(y)&gt;1) &gt;= 2
+y &lt;- y[keep,,keep.lib.sizes=FALSE]
+</code>
+CPM 为 1 代表在最小的样本中，count 为 6——7。
+因为每组至少有两个样本，所以要求至少在 2 个库中表达（&gt;=2）。
+这确保如果基因仅在 group 2 中的所有样本表达会保留下来。
+建议过滤后重新计算库的大小，尽管它的影响非常小。
+命令：
+<code class="highlighter-rouge">
+y$sample$lib.size &lt;- colSums(y$counts)
+</code></p>
+
+<h4 id="section-9">2.7 标准化</h4>
+
+<h5 id="section-10">2.7.1 标准化仅对样本特异化影响是必须的</h5>
+
+<p>edgeR 比较的两个环境下样本的表达水平的相关改变，而不是直接比较表达水平的绝对值。这简化了技术的影响。
+例如，edgeR 不会考虑 genes 长度的影响，因为它与每个样本的 read counts 的影响相关。（即，通过比较表达水平的改变，已经修正过了）</p>
+
+<h5 id="section-11">2.7.2 测序深度</h5>
+
+<p>edgeR 通过不同库的大小修正测序深度对差异表达分析的影响，这部分已经考虑进 fold-change 或者 P-value 中。</p>
+
+<h5 id="rna-">2.7.3 RNA 组成</h5>
+
+<p>RNA 组成是第二重要的技术因素。
+当少量的基因在一个样本中高差异表达，而在另一个样本中没有时，这个因素的影响会很大。
+通过寻找库大小的比例因子，它可以最小化样本基因的 log-fold changes，calcNormFactors 函数标准化 RNA组成。
+默认使用 TMM 方法估计比例因子。</p>
+
+<p>当两两样本间差异表达的基因被确定不会超过一半时，TMM 方法是大多数 RNA-seq 推荐的方法。
+TMM 标准化的命令：
+<code class="highlighter-rouge">
+y &lt;- calcNormFactors(y)
+</code></p>
+
+<h5 id="gc-">2.7.4 GC 含量</h5>
+
+<h5 id="section-12">2.7.4 基因长度</h5>
+
+<h5 id="section-13">2.7.6 基于模型的标准化，而不是转化</h5>
+
+<p>注意：edgeR 需要的的原始的 read counts，不是转化后的，如 RPKM 或者 FPKM 值。</p>
+
+<h5 id="pseudo-counts">2.7.7 Pseudo-counts</h5>
+
+<p>经典的 edgeR 函数 estimateCommonDisp 和 exactTest 产生一个 pseudo-counts 矩阵作为输出的一部分。</p>
+
+<h4 id="section-14">2.8 负二项模型</h4>
+
+<h5 id="section-15">2.8.1 简介</h5>
+
+<h5 id="bcv">2.8.2 生物变异的影响（BCV）</h5>
+
+<h5 id="bcvs">2.8.3 计算 BCVs</h5>
+
+<h5 id="quasi-negative-binomial">2.8.4 Quasi negative binomial</h5>
+
+<h4 id="section-16">2.9 两组或多组的成对比较（经典方法）</h4>
+
+<h5 id="section-17">2.9.1 计算离散度</h5>
+
+<p>离散度为生物变异系数（BCV）的平方。
+edgeR 对单因素实验使用 qCML（the quantile-adjusted conditional maximum likelihood）方法。</p>
+
+<p>仅当是单因素实验设计的时候才能使用 qCML 方法，不适于多因素实验设计。</p>
+
+<p>一次性计算 common dispersion 和 tagwise dispersion：
+<code class="highlighter-rouge">
+y &lt;- estimateDisp（y）
+</code></p>
+
+<p>计算 common dispersion：
+<code class="highlighter-rouge">
+y &lt;- estimateCommaonDisp（y）
+</code></p>
+
+<p>计算 tagwise disperson：
+<code class="highlighter-rouge">
+y &lt;- estimateTagwiseDisp(y)
+</code></p>
+
+<p>注意：如果独立计算，需要先计算 common dispersion，再计算 tagwise disperson。</p>
+
+<h5 id="de-genes-">2.9.2 DE genes 检测</h5>
+
+<p>精确检测是基于 qCML 方法的，仅适用于单因素实验。
+<code class="highlighter-rouge">
+et &lt;- exactTest(y)
+topTags(et)
+</code></p>
+
+<h4 id="glm-">2.10 更复杂的实验（glm 功能）</h4>
+
+<h5 id="glms">2.10.1 一般线性模型（GLMs）</h5>
+
+<h5 id="section-18">2.10.2 计算离散度</h5>
+
+<p>对于多因素实验，edgeR CR 方法计算离散度，它通过一个设计矩阵拟合 GLM 模型来考虑多因素影响。</p>
+
+<p>一次性计算 common dispersion、trended dispersion 和 tagwise dispersion 的命令：
+<code class="highlighter-rouge">
+y &lt;- estimateDisp(y,design)
+</code></p>
+
+<p>计算 common dispersion：
+<code class="highlighter-rouge">
+y &lt;- estimateGLMCommonDisp(y, design)
+</code></p>
+
+<p>计算 trendedDisp（y，design）
+<code class="highlighter-rouge">
+y &lt;- estimateGLMTrendedDisp（y，design）
+</code></p>
+
+<p>计算 tagwise dispersion：
+<code class="highlighter-rouge">
+y &lt;- estimateGLMTagwiseDisp（y，design）
+</code></p>
+
+<p>注意：需要先计算 common dispersion 或者 trended dispersion，再计算 tagwise dispersion。
+在多因素实验中，强烈建议使用 tagwise dispersion 方法。</p>
+
+<h5 id="de-genes--1">2.10.3 DE genes 检验</h5>
+
+<div class="highlighter-rouge">group &lt;- factor（c（1，1，2，2，3，3））
+design &lt;- model.matrix(~group)
+fit &lt;- glmFit(y,design)
+</div>
+
+<p>拟合函数有三个参数，第一个 group 1 扩基准水平。
+第二个和第三个是 2 vs 1 和 3 vs 1 差异</p>
+
+<p>比较 2 vs 1:
+<code class="highlighter-rouge">
+lrt.2vs1 &lt;- glmLRT(fit, coef=2)
+topTags(lrt.2vs1)
+</code></p>
+
+<p>比较 3 vs 1:
+<code class="highlighter-rouge">
+lrt.3vs1 &lt;- glmLRT(fit, coef=3)
+</code></p>
+
+<p>比较 3 vs 2:
+<code class="highlighter-rouge">
+lrt.3vs2 &lt;- glmLRT(fit, contrast=c(0,-1,1)) # contrast 参数需要一个零假设的统计检验，coefficient3——coefficient2 等于 0
+</code></p>
+
+<p>寻找三个组都有的差异：
+<code class="highlighter-rouge">
+lrt &lt;- glmLRT(fit,coef=2:3)
+topTags(lrt)
+</code></p>
+
+<p>也可以用 QL F-test 检验。
+代码略。</p>
+
+<h4 id="section-19">2.11 如果没有重复怎么办</h4>
+
+<p>不推荐没有重复的实验，但是实在没有重复时，可以考虑以下选项：
+1. 用描述性统计分析，包括 MDS plot 和 fold changes 分析。
+2. 根据你的实验和相似数据，选择合适的离散度，用于 exactTest 或者 glmFit。对于人类等（可能是自由交配的物种）控制较好的实验，可以选择 BCV = 0.4；遗传上相同的模式生物（可能是指自交的生物，如植物）可以选择 BCV = 0.4；技术重复为 0.01.</p>
+
+<div class="highlighter-rouge">bcv &lt;- 0.2
+counts &lt;- matrix(rnbinom(40,size=1/bcv^2),20,2)
+y &lt;- DGEList(counts=counts,group=1:2)
+et &lt;- exactTest(y,dispersion=bcv^2)
+</div>
+
+<p>注意:P-value 和显著基因的数量对离散度的选择非常敏感，对于没有控制的数据、没有考虑批次影响等等，可以实际使用更大的离散度。
+然而，选择一个假设的离散度总比忽略生物学变异好。</p>
+
+<ol>
+  <li>通过从线性模型移除一个或更多因子，来创造残差自由度。具体见原文。</li>
+  <li>如果存在大量的没有 DE 的转录本，可以用它们来检测离散度。
+例如，找一个在所有处理环境中都没有表达差异的基因作为 housekeeping （管家基因），通过它计算离散度。
+首先，创建一个数据的 copy ，将所有处理视为一个组：
+<code class="highlighter-rouge">
+y1 &lt;- y
+y1$samples$grouop &lt;- 1
+</code></li>
+</ol>
+
+<p>然后计算来自 housekeeping 基因的离散度，所有的库视为一组：
+<code class="highlighter-rouge">
+y0 &lt;- estimateCommonDisp(y1[housekeeping,1])
+</code></p>
+
+<p>然后将它插入所有数据对象：
+<code class="highlighter-rouge">
+y$sommon.dispersion &lt;- y0$common.dispersion
+et &lt;- exactTest(y)
+</code>
+注意：需要大量的控制转录本，至少有几十个，理想是数百个</p>
+
+<h4 id="fold-change-">2.12 表达差异高于 fold-change 阈值</h4>
+
+<h4 id="go--pathway-">2.13 GO 和 pathway 分析</h4>
+
+<h4 id="gene-set-testing">2.14 Gene set testing</h4>
+
+<h4 id="clustering-heatmaps-">2.15 clustering, heatmaps 等</h4>
+
+<h4 id="section-20">2.16 可变剪接</h4>
+
+<h4 id="crispr-cas9-tkg-shrna-seq-screen-">2.17 CRISPR-Cas9 tkg shRNA-seq screen 分析</h4>
+
+<h2 id="section-21">第 三 章 特异性实验设计</h2>
+
+<h4 id="section-22">3.1 简介</h4>
+
+<p>本章主要概括设计矩阵，比较一些经典的实验设计</p>
+
+<h4 id="section-23">3.2 两组或多组</h4>
+
+<h5 id="section-24">3.2.1 引言</h5>
+
+<h5 id="section-25">3.2.2 经典方法</h5>
+
+<p>经典 edgeR 方法进行组间的成对比较。
+<code class="highlighter-rouge">
+group &lt;- factor(c('A','A','B','B','C','C'))
+et &lt;- exactTest(y,pair=c('A','B')) # B vs A
+topTags(et)
+et &lt;- exactTest(y,pair=c('A','C')) # C vs A
+et &lt;- exactTest(y, pair=c('C','B')) # B vs C
+et &lt;- exactTest(y, pair=c(3,2)) # 用数字表示，等同于 B vs C
+</code>
+具体细节见原文</p>
+
+<h4 id="glm--1">GLM 方法</h4>
+
+<p>GLM 方法允许多个组的比较。
+GLM 方法需要一个设计矩阵，可以用 model.matrix 函数构造，也可以手动构造。
+<code class="highlighter-rouge">
+design &lt;- model.matrix(~0+group,data=y$samples)
+colnames(design) &lt;- levels(y$samples$group)
+</code></p>
+
+
+            </article>
+        </div>
+      </div>
+      <div class="panel docs-content">
+        <article class="post-content">
+          <div class="wrapper">
+            
+
+
+  <div class="ds-thread" data-thread-key="/2017/04/10/edgeR-introdution/" data-title="edgeR：用户使用手册" data-url="http://liuqibao.me/2017/04/10/edgeR-introdution/"></div>
+
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"Gossie"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+</script>
+
+
+ 
+          </div>
+        </article>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+    <footer class="footer" role="contentinfo">
+	<div class="container">
+		<p class="copyright">Copyright &copy; 2014-2017 <a href=""><code>Gossie</code></a>.</p>
+		<p>Site powered by <a href="http://jekyllrb.com">Jekyll</a> && <a href="http://www.github.com">Github</a></p>
+	</div>
+</footer>
+
+<script src="/styles/js/jquery.min.js"></script>
+<script src="/styles/js/bootstrap.min.js"></script>
+<script src="/styles/js/holder.min.js"></script>
+<script src="/styles/js/application.js"></script>
+<script src="/styles/js/lessismore.js"></script>
+
+
+  </body>
+</html>
