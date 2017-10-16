@@ -1,4 +1,4 @@
-#! bin/bash
+#! /bin/bash
 
 # Program;
 #	this progam is used to push blog.
@@ -33,7 +33,9 @@ git checkout source || exit 0
 
  # push
  git push --all ||exit 0
- 
+
+ git checkout source
+
  echo "All is ok!"
 
  
