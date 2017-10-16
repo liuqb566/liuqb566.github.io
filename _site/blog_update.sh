@@ -29,7 +29,7 @@ git checkout source || exit 0
  #add and commit
  git add -A
  read -p 'Please input the information about this commit:' info
- git commit -m "`ehco $info`" || exit 0
+ git commit -m "`echo $info`" || exit 0
 
  # push
  git push --all ||exit 0
