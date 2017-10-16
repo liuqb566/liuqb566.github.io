@@ -2,7 +2,7 @@
 layout: post
 title: "RNA-seq 中的基因表达量计算和表达差异分析"
 date: 2017-4-6
-categories: bioninformatics
+categories: bioinformatics
 tag: RNA-seq
 ---
 
