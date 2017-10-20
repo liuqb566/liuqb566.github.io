@@ -5,14 +5,14 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>赞助方式</title>
+	<title>‘R软件中安装package的方法’</title>
 
 	<link rel="shortcut icon" href="/styles/images/favicon.jpg">
 	<link rel="icon" href="/styles/images/favicon.jpg">
 
 	<link rel="stylesheet" href="/styles/css/index.css">
 	<link rel="stylesheet" href="/styles/css/fontawesome/css/font-awesome.min.css">
-	<link rel="canonical" href="/donate/method/">
+	<link rel="canonical" href="/2017/02/10/methods-of-install-packages-in-R/">
 	<link rel="alternate" type="application/rss+xml" title="Gossie's daily life" href="/feed.xml">
 	
 	<meta name="description" content="">
@@ -89,8 +89,8 @@
   <div class="container">
   	
   		<!--
-		    <h1>赞助方式</h1>
-		    <p>Post on  by <a href="/about">Gossie</a></p>
+		    <h1>‘R软件中安装package的方法’</h1>
+		    <p>Post on Feb 10, 2017 by <a href="/about">Gossie</a></p>
 		-->
 		    <h1></h1>
     
@@ -101,7 +101,8 @@
 <div class="banner">
   <div class="container">
   	
-    	操千曲而后晓声，观千剑而后识器。
+    	<a href="/categories/#R-ref">R</a>	/
+    	<a href="/tag/#R-ref">R</a>
     
   </div>
 </div>
@@ -652,42 +653,117 @@
       <div class="panel docs-content">
         <div class="wrapper">
             <header class="post-header">
-              <h1 class="post-title">赞助方式</h1>
+              <h1 class="post-title">‘R软件中安装package的方法’</h1>
               <!--
-                <p class="post-meta"></p>
+                <p class="post-meta">Feb 10, 2017</p>
               -->
-              <div class="meta">Posted on <span class="postdate"></span> By <a target="_blank" href="http://liuqibao.me">Gossie</a></div>
+              <div class="meta">Posted on <span class="postdate">Feb 10, 2017</span> By <a target="_blank" href="http://liuqibao.me">Gossie</a></div>
               <br />
             </header>
             <article class="post-content">
-              <h1 id="section">您的支持是作者写作最大的动力！</h1>
+              <ul id="markdown-toc">
+  <li><a href="#package" id="markdown-toc-package">一、安装package的同种方法</a></li>
+  <li><a href="#section" id="markdown-toc-section">二、查看自己的电脑可以安装哪些包</a></li>
+  <li><a href="#section-1" id="markdown-toc-section-1">三、关于安装路径</a></li>
+</ul>
 
-<hr />
+<h3 id="package">一、安装package的同种方法</h3>
 
-<h2 id="section-1">赞助方式一：<code class="highlighter-rouge">支付宝二维码付款</code></h2>
+<ol>
+  <li>R自带的安装工具，网络安装</li>
+</ol>
 
-<hr />
+<div class="highlighter-rouge">install.packages('包名字‘，lib='指定安装网址，可以默认'）
+</div>
 
-<p>您可以选择手机支付宝扫一扫</p>
+<ol>
+  <li>R自带的安装工具，本地安装,<strong>需自己下载好信赖包</strong></li>
+</ol>
 
-<p><img src="/styles/images/zhifubao.jpg" alt="支付宝二维码付款给Freud" width="310" /></p>
+<ul>
+  <li>在R程序内执行本地安装</li>
+</ul>
 
-<p><br />
-<br /></p>
+<div class="highlighter-rouge">install.packages('包的本地绝对路径')
+</div>
 
-<h2 id="section-2">赞助方式二：<code class="highlighter-rouge">微信扫一扫</code></h2>
+<ul>
+  <li>在shell中安装</li>
+</ul>
 
-<hr />
+<div class="highlighter-rouge">R CMD INSTALL 包的绝对路径
+</div>
 
-<p>您可以选择手机微信扫一扫</p>
+<p>3.Bioconductor安装</p>
 
-<p><img src="/styles/images/weixin.jpg" alt="微信二维码付款给Freud" /></p>
+<div class="highlighter-rouge">source("http://bioconductor.org/biocLite.R")
+biocLite("包的名字“）
+</div>
 
-<p><br />
-<br /></p>
+<ol>
+  <li>安装github上的包</li>
+</ol>
 
-<hr />
+<ul>
+  <li>通过debtools包安装</li>
+</ul>
 
+<div class="highlighter-rouge">install.packages("devtools")
+library(devtools)
+install_github("开发者/包的名字”）
+</div>
+
+<p>-通过githubinstall包安装</p>
+
+<div class="highlighter-rouge">install.packages("githubinstall")
+library(githubinstall)
+githubinstall("包的名字“）
+</div>
+<p><code class="highlighter-rouge">githubinstall()</code>会从Github仓库中搜索相应的R包，并询问你是否安装。而且，它支持模糊搜索，会自动纠正包的名字。</p>
+
+<p>githubinstall包提供了若干有用的函数，都是以gh开头，可以自行查看。</p>
+
+<p>ps:
+- 卸载包：<code class="highlighter-rouge">remove.packages("包的名字”）</code>; 
+- 更新包:<code class="highlighter-rouge">update.packages()</code>;
+- 查看已安装的包：<code class="highlighter-rouge">installed.packages()</code></p>
+
+<h3 id="section">二、查看自己的电脑可以安装哪些包</h3>
+
+<p><code class="highlighter-rouge">available.packages()</code>可以查看</p>
+
+<div class="highlighter-rouge">ap &lt;- available.packages()
+dim(ap) #计数
+grep('包名字’，rownames(ap)) #查看想安装的包是否存在于正在使用的R仓库里
+“包名字” %in% rownames(ap)
+available.packages(contriburl="仓库地址“）#查看其它仓库的包
+</div>
+
+<h3 id="section-1">三、关于安装路径</h3>
+
+<ol>
+  <li>查看安装路径 <code class="highlighter-rouge">.libPaths()</code></li>
+  <li>更改默认安装路径
+<code class="highlighter-rouge">
+.libPaths('/yourlibrary')
+.libPaths(c('/yourlibrary1','/yourlibrary2')
+</code></li>
+  <li>安装包的时候指定路径</li>
+</ol>
+
+<p>`install.packages(‘包’,lib=’路径’)</p>
+
+<ol>
+  <li>安装包的时候指定路径</li>
+</ol>
+
+<p>`install.packages(‘包’,lib=’路径’)</p>
+
+<ol>
+  <li>加载包的时候指定路径</li>
+</ol>
+
+<p>`library(‘包’,lib.loc=’路径’)</p>
 
             </article>
         </div>
@@ -698,7 +774,7 @@
             
 
 
-  <div class="ds-thread" data-thread-key="/donate/method/" data-title="赞助方式" data-url="http://liuqibao.me/donate/method/"></div>
+  <div class="ds-thread" data-thread-key="/2017/02/10/methods-of-install-packages-in-R/" data-title="‘R软件中安装package的方法’" data-url="http://liuqibao.me/2017/02/10/methods-of-install-packages-in-R/"></div>
 
 <script type="text/javascript">
 var duoshuoQuery = {short_name:"Gossie"};
