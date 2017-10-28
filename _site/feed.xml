@@ -5,45 +5,12 @@
     <description>好记性不如写博文！</description>
     <link>http://liuqibao.me/</link>
     <atom:link href="http://liuqibao.me/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sat, 28 Oct 2017 08:25:59 +0800</pubDate>
-    <lastBuildDate>Sat, 28 Oct 2017 08:25:59 +0800</lastBuildDate>
+    <pubDate>Sat, 28 Oct 2017 08:43:47 +0800</pubDate>
+    <lastBuildDate>Sat, 28 Oct 2017 08:43:47 +0800</lastBuildDate>
     <generator>Jekyll v3.6.0</generator>
     
       <item>
-        <title></title>
-        <description>
-&lt;hr /&gt;
-&lt;p&gt;第9章提到要建立range思想，在此简单记录。&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;range: 某个染色体序列上有start position和end position的一段特定单链，一个基因是一个range，一个read也是一个range。&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;###寻找overlapping ranges&lt;/p&gt;
-
-&lt;p&gt;1&amp;gt; 理解不同类型的overlaps，思考对一个特定的任务，哪种类型最合适，是最重要的。
-overlaps的类型有：
-- any
-- within
-- start
-- end
-- equal&lt;br /&gt;
-其中 any 和 within 最常用&lt;/p&gt;
-
-&lt;p&gt;2&amp;gt; 为了减少比对次数，提高效率，首先要先对subjet sequence排序,称为interval tree。&lt;/p&gt;
-
-&lt;p&gt;###寻找最近的ranges，并计算距离
-###Run Length Encoding and Views&lt;br /&gt;
-为了节约内存，对覆盖度进行编码，不好理解，看原文。&lt;/p&gt;
-
-</description>
-        <pubDate>Sat, 28 Oct 2017 08:25:59 +0800</pubDate>
-        <link>http://liuqibao.me/2017/10/28/2017-10-24-thinking-ranges-Bioinformatics-Data-Skills/</link>
-        <guid isPermaLink="true">http://liuqibao.me/2017/10/28/2017-10-24-thinking-ranges-Bioinformatics-Data-Skills/</guid>
-        
-        
-      </item>
-    
-      <item>
-        <title>Bioinformatics Data Skills: Chapter 10</title>
+        <title>Bioinformatics Data Skills Chapter 10</title>
         <description>&lt;ul id=&quot;markdown-toc&quot;&gt;
   &lt;li&gt;&lt;a href=&quot;#the-fasta-format&quot; id=&quot;markdown-toc-the-fasta-format&quot;&gt;The FASTA Format&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;#the-fastq-format&quot; id=&quot;markdown-toc-the-fastq-format&quot;&gt;The FASTQ Format&lt;/a&gt;&lt;/li&gt;
@@ -126,6 +93,43 @@ FASTQ quality schemes (adapted from Cock et al., 2010 with permission)&lt;br /&g
         <pubDate>Fri, 27 Oct 2017 00:00:00 +0800</pubDate>
         <link>http://liuqibao.me/2017/10/27/sequence-data-Bioinformatics-Data-Skills/</link>
         <guid isPermaLink="true">http://liuqibao.me/2017/10/27/sequence-data-Bioinformatics-Data-Skills/</guid>
+        
+        <category>bioinformatics</category>
+        
+        
+        <category>笔记</category>
+        
+      </item>
+    
+      <item>
+        <title>学习ranges思想</title>
+        <description>
+&lt;hr /&gt;
+&lt;p&gt;第9章提到要建立range思想，在此简单记录。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;range: 某个染色体序列上有start position和end position的一段特定单链，一个基因是一个range，一个read也是一个range。&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;###寻找overlapping ranges&lt;/p&gt;
+
+&lt;p&gt;1&amp;gt; 理解不同类型的overlaps，思考对一个特定的任务，哪种类型最合适，是最重要的。
+overlaps的类型有：
+- any
+- within
+- start
+- end
+- equal&lt;br /&gt;
+其中 any 和 within 最常用&lt;/p&gt;
+
+&lt;p&gt;2&amp;gt; 为了减少比对次数，提高效率，首先要先对subjet sequence排序,称为interval tree。&lt;/p&gt;
+
+&lt;p&gt;###寻找最近的ranges，并计算距离
+###Run Length Encoding and Views&lt;br /&gt;
+为了节约内存，对覆盖度进行编码，不好理解，看原文。&lt;/p&gt;
+
+</description>
+        <pubDate>Tue, 24 Oct 2017 00:00:00 +0800</pubDate>
+        <link>http://liuqibao.me/2017/10/24/thinking-ranges-Bioinformatics-Data-Skills/</link>
+        <guid isPermaLink="true">http://liuqibao.me/2017/10/24/thinking-ranges-Bioinformatics-Data-Skills/</guid>
         
         <category>bioinformatics</category>
         

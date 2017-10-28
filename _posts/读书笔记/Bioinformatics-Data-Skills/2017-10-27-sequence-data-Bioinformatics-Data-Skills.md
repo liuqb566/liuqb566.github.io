@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Bioinformatics Data Skills: Chapter 10"
+title: "Bioinformatics Data Skills Chapter 10"
 categories: 笔记
 tag: bioinformatics
 ---

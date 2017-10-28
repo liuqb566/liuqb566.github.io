@@ -1,8 +1,8 @@
 ---
 layout: post
-title:  "学习ranges思想"
+title: "学习ranges思想"
 categories: 笔记
-tags:bioinformatics
+tags: bioinformatics
 ---
 
 * content
