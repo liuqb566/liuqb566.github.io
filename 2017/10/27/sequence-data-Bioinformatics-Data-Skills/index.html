@@ -5,14 +5,14 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>第7章 认识字符串</title>
+	<title>Bioinformatics Data Skills: Chapter 10</title>
 
 	<link rel="shortcut icon" href="/styles/images/favicon.jpg">
 	<link rel="icon" href="/styles/images/favicon.jpg">
 
 	<link rel="stylesheet" href="/styles/css/index.css">
 	<link rel="stylesheet" href="/styles/css/fontawesome/css/font-awesome.min.css">
-	<link rel="canonical" href="/2016/12/06/learn-string/">
+	<link rel="canonical" href="/2017/10/27/sequence-data-Bioinformatics-Data-Skills/">
 	<link rel="alternate" type="application/rss+xml" title="Gossie's daily life" href="/feed.xml">
 	
 	<meta name="description" content="">
@@ -89,8 +89,8 @@
   <div class="container">
   	
   		<!--
-		    <h1>第7章 认识字符串</h1>
-		    <p>Post on Dec 06, 2016 by <a href="/about">Gossie</a></p>
+		    <h1>Bioinformatics Data Skills: Chapter 10</h1>
+		    <p>Post on Oct 27, 2017 by <a href="/about">Gossie</a></p>
 		-->
 		    <h1></h1>
     
@@ -101,8 +101,8 @@
 <div class="banner">
   <div class="container">
   	
-    	<a href="/categories/#Python-ref">Python</a>	/
-    	<a href="/tag/#Python学习手册-ref">Python学习手册</a>
+    	<a href="/categories/#笔记-ref">笔记</a>	/
+    	<a href="/tag/#bioinformatics-ref">bioinformatics</a>
     
   </div>
 </div>
@@ -681,201 +681,92 @@
       <div class="panel docs-content">
         <div class="wrapper">
             <header class="post-header">
-              <h1 class="post-title">第7章 认识字符串</h1>
+              <h1 class="post-title">Bioinformatics Data Skills: Chapter 10</h1>
               <!--
-                <p class="post-meta">Dec 6, 2016</p>
+                <p class="post-meta">Oct 27, 2017</p>
               -->
-              <div class="meta">Posted on <span class="postdate">Dec 06, 2016</span> By <a target="_blank" href="http://liuqibao.me">Gossie</a></div>
+              <div class="meta">Posted on <span class="postdate">Oct 27, 2017</span> By <a target="_blank" href="http://liuqibao.me">Gossie</a></div>
               <br />
             </header>
             <article class="post-content">
               <ul id="markdown-toc">
-  <li><a href="#section" id="markdown-toc-section">字符串常量</a>    <ul>
-      <li><a href="#section-1" id="markdown-toc-section-1">单双引号字符串是一样的</a></li>
-      <li><a href="#section-2" id="markdown-toc-section-2">用转义序列代表特殊字节</a></li>
-      <li><a href="#raw" id="markdown-toc-raw">raw字符串抑制转义</a></li>
-      <li><a href="#section-3" id="markdown-toc-section-3">三重引号编写多行字符串块</a></li>
-    </ul>
-  </li>
-  <li><a href="#section-4" id="markdown-toc-section-4">实际应用中的字符串</a>    <ul>
-      <li><a href="#section-5" id="markdown-toc-section-5">基本操作</a></li>
-      <li><a href="#section-6" id="markdown-toc-section-6">索引和分片</a></li>
-      <li><a href="#section-7" id="markdown-toc-section-7">字符串转换工具</a></li>
-    </ul>
-  </li>
-  <li><a href="#section-8" id="markdown-toc-section-8">字符串方法</a>    <ul>
-      <li><a href="#section-9" id="markdown-toc-section-9">字符串方法实例：修改字符串</a></li>
-      <li><a href="#section-10" id="markdown-toc-section-10">字符串方法实例：<strong>文本解析</strong></a></li>
-      <li><a href="#section-11" id="markdown-toc-section-11">实际应用中的其他常见字符串方法</a></li>
-      <li><a href="#section-12" id="markdown-toc-section-12">字符串格式化表达式</a>        <ul>
-          <li><a href="#section-13" id="markdown-toc-section-13">更高级的字符串格式化表达式</a></li>
-          <li><a href="#section-14" id="markdown-toc-section-14">基于字典的字符串格式化</a></li>
-        </ul>
-      </li>
-      <li><a href="#section-15" id="markdown-toc-section-15">字符串格式化调用方法</a>        <ul>
-          <li><a href="#section-16" id="markdown-toc-section-16">基础知识</a></li>
-          <li><a href="#section-17" id="markdown-toc-section-17">添加键、属性和偏移量</a></li>
-          <li><a href="#section-18" id="markdown-toc-section-18">添加具体格式化</a></li>
-        </ul>
-      </li>
-    </ul>
-  </li>
-  <li><a href="#section-19" id="markdown-toc-section-19">通常意义下的类型分类</a>    <ul>
-      <li><a href="#section-20" id="markdown-toc-section-20">同样分类的类型共享其操作集合</a></li>
-      <li><a href="#section-21" id="markdown-toc-section-21">可变类型能够在原处修改</a></li>
+  <li><a href="#the-fasta-format" id="markdown-toc-the-fasta-format">The FASTA Format</a></li>
+  <li><a href="#the-fastq-format" id="markdown-toc-the-fastq-format">The FASTQ Format</a></li>
+  <li><a href="#nucleotide-codes" id="markdown-toc-nucleotide-codes">Nucleotide Codes</a></li>
+  <li><a href="#base-qualities" id="markdown-toc-base-qualities">Base Qualities</a>    <ul>
+      <li><a href="#section" id="markdown-toc-section">换算</a></li>
     </ul>
   </li>
 </ul>
 
-<hr />
-<p>字符串处理工具：核心系列、re模块、基于模式的字符串处理（eg.自然语言处理）、文本处理工具（eg.XML解析器）
-***</p>
-
-<h3 id="section">字符串常量</h3>
-
-<h4 id="section-1">单双引号字符串是一样的</h4>
-
-<h4 id="section-2">用转义序列代表特殊字节</h4>
-
-<h4 id="raw">raw字符串抑制转义</h4>
-
-<ul>
-  <li>
-    <p>raw字符串会关闭转义机制，这在输入网址时很有用，<code class="highlighter-rouge">ft=open(r‘c:\new\text','w')</code></p>
-  </li>
-  <li>
-    <p>另一种办法：使用两个反斜线来保留反斜线,<code class="highlighter-rouge">ft=open('c:\\new\\text','w')</code></p>
-  </li>
-</ul>
-
-<h4 id="section-3">三重引号编写多行字符串块</h4>
-
-<p><strong>原则：</strong>输入的是什么，得到的就是什么！</p>
-
-<h3 id="section-4">实际应用中的字符串</h3>
-
-<h4 id="section-5">基本操作</h4>
-
-<h4 id="section-6">索引和分片</h4>
-
-<ul>
-  <li>步长：<code class="highlighter-rouge">X[I:J:K]</code>其中<code class="highlighter-rouge">K</code>为步长。</li>
-</ul>
-
-<p><strong>若<code class="highlighter-rouge">K=-1</code>就会对字符串进行反转</strong></p>
-
-<ul>
-  <li>分片</li>
-</ul>
-
-<blockquote>
-  <ul>
-    <li><code class="highlighter-rouge">line[:-1]</code>会将该行除最后一个字符之外的所有内容提取</li>
-    <li><code class="highlighter-rouge">line.rstrip()</code>会留下没有换行字符的那一年行的最后一个字符。（<strong>推荐</strong>）</li>
-  </ul>
-</blockquote>
-
-<h4 id="section-7">字符串转换工具</h4>
-
-<ul>
-  <li><code class="highlighter-rouge">int（）</code>和<code class="highlighter-rouge">str（）</code></li>
-  <li>代码转换：<code class="highlighter-rouge">ord（）</code>和<code class="highlighter-rouge">chr（）</code></li>
-</ul>
-
-<h3 id="section-8">字符串方法</h3>
-
-<h4 id="section-9">字符串方法实例：修改字符串</h4>
-
-<ul>
-  <li>替换字符串：<code class="highlighter-rouge">replace</code>方法</li>
-  <li><code class="highlighter-rouge">find</code>搜索字符串，返回<strong>字符串出现处的偏移</strong></li>
-  <li><code class="highlighter-rouge">jion</code>将列表“合成”一个字符串</li>
-</ul>
-
-<h4 id="section-10">字符串方法实例：<strong>文本解析</strong></h4>
-
-<ul>
-  <li>用<strong>分片</strong>技术提取字符串</li>
-  <li><code class="highlighter-rouge">split</code>方法将一个字符串分割为一个子字符串的列表，以<strong>分隔符字符串</strong>为标准
-&gt; 在此分隔答符不一定是<strong>空格</strong>或<strong>标点符号</strong>，也可以是一个<strong>字符串</strong>。</li>
-</ul>
-
-<h4 id="section-11">实际应用中的其他常见字符串方法</h4>
-
-<ul>
-  <li><code class="highlighter-rouge">rstrip</code>：清除每行末尾空白</li>
-  <li><code class="highlighter-rouge">upper</code>：执行大小写转换</li>
-  <li><code class="highlighter-rouge">isalpha</code>：测试内容</li>
-  <li><code class="highlighter-rouge">startswith</code>和<code class="highlighter-rouge">endswith</code>：检测起始和末尾子字符串</li>
-</ul>
-
-<h4 id="section-12">字符串格式化表达式</h4>
-
-<p>字符串格式化允许在一个单个的步骤中对一个字符串执行多个特定类型的替换。
-&gt; 两种形式的实现方式：
-- 字符串格式化表达式
-- 字符串格式化方法调用</p>
+<h3 id="the-fasta-format">The FASTA Format</h3>
 
 <ol>
-  <li><code class="highlighter-rouge">%</code>操作符的左侧放置一个需要进行格式化的字符串。</li>
-  <li><code class="highlighter-rouge">%</code>操作符右侧放置一个（或多个，嵌入到元组中）的对象。</li>
+  <li>格式<br />
+<code class="highlighter-rouge">
+&gt;ENSMUSG00000020122|ENSMUST00000138518              #第一行，ID信息等，以“&gt;”开头
+CCCTCCTATCATGCTGTCAGTGTATCTCTAAATAGCACTCTCAACCCCCGTGAACTTGGTTATTAAAAACATGCCCAAAGTCTGGGAGCCAGGGCTGCAGGGAAATACCACAGCCTCAGTTCATCAAAACAGTTCATTGCCCAAAATGTTCTCAGCTGCAGCTTTCATGAGGTAACTCCAGGGCCCACCTGTTCTCTGGT    #第二行，序列
+&gt;ENSMUSG00000020122|ENSMUST00000125984
+GAGTCAGGTTGAAGCTGCCCTGAACACTACAGAGAAGAGAGGCCTTGGTGTCCTGTTGTCTCCAGAACCCCAATATGTCTTGTGAAGGGCACACAACCCCTCAAAGGGGTGTCACTTCTTCTGATCACTTTTGTTACTGTTTACTAACTGATCCTATGAATCACTGTGTCTTCTCAGAGGCCGTGAACCACGTCTGCAAT
+</code></li>
+  <li>缺点<br />
+没有非常标准的ID格式，在用正则提取的时候容易出现问题。</li>
 </ol>
 
-<h5 id="section-13">更高级的字符串格式化表达式</h5>
+<h3 id="the-fastq-format">The FASTQ Format</h3>
 
-<p>详见标准手册</p>
+<p>FASTQ 格式是在 FASTA 格式上的扩展，增加了每个碱基的质量得分。<br />
+1. 格式<br />
+<code class="highlighter-rouge">
+@DJB775P1:248:D0MDGACXX:7:1202:12362:49613              #以“@”开头，信息行
+TGCTTACTCTGCGTTGATACCACTGCTTAGATCGGAAGAGCACACGTCTGAA    #序列
++                                                       #“+”表示序列结束
+JJJJJIIJJJJJJHIHHHGHFFFFFFCEEEEEDBD?DDDDDDBDDDABDDCA    #每个碱基得分
+@DJB775P1:248:D0MDGACXX:7:1202:12782:49716
+CTCTGCGTTGATACCACTGCTTACTCTGCGTTGATACCACTGCTTAGATCGG
++
+IIIIIIIIIIIIIIIHHHHHHFFFFFFEECCCCBCECCCCCCCCCCCCCCCC
+</code></p>
 
-<h5 id="section-14">基于字典的字符串格式化</h5>
+<ol>
+  <li>缺点<br />
+<code class="highlighter-rouge">@</code>既是信息行的开头，又可以是碱基等分的质量字母，在提取的时候容易出错</li>
+</ol>
 
-<h4 id="section-15">字符串格式化调用方法</h4>
+<h3 id="nucleotide-codes">Nucleotide Codes</h3>
 
-<h5 id="section-16">基础知识</h5>
+<h3 id="base-qualities">Base Qualities</h3>
 
-<p><code class="highlighter-rouge">format</code>方法使用主体字符串作为模板，在主体字符串中，花括号<code class="highlighter-rouge"><span class="p">{}</span></code>通过位置或关键字指出替换目标及将要插入的参数。</p>
+<p>由于每个碱基的质量得分由 ASCⅡ 值表示<br />
+FASTQ quality schemes (adapted from Cock et al., 2010 with permission)<br />
+|————————————–+———————-+——-+——————-+——————-|
+|Name                                  |ASCII character range |Offset |Quality score type |Quality score range|
+|:————————————-+:——————–:+:—–:+:—————–:+:—————–:|
+|Sanger, Illumina (versions 1.8 onward)|33–126                |33     |PHRED              |0–93               |
+|Solexa, early Illumina (before 1.3)   |59–126                |64     |Solexa             |5–62               |
+|Illumina (versions 1.3–1.7)           |64–126                |64     |PHRED              |0–62               |
+|————————————–+———————-+——-+——————-+——————-|</p>
 
-<h5 id="section-17">添加键、属性和偏移量</h5>
-
-<h5 id="section-18">添加具体格式化</h5>
-
-<h3 id="section-19">通常意义下的类型分类</h3>
-
-<h4 id="section-20">同样分类的类型共享其操作集合</h4>
-
-<p>三个主要类型（以及操作）分类：</p>
-
-<ul>
-  <li>数字（整数、浮点数、二进制、分数等）</li>
-</ul>
-
-<p>支持加法和乘法等。</p>
-
-<ul>
-  <li>序列（字符串、列表、元组）：</li>
-</ul>
-
-<p>支持索引、分片和合并等。</p>
-
-<ul>
-  <li>映射（字典）：</li>
-</ul>
-
-<p>支持通过徤的索引等。</p>
-
-<p>集合是自成一体的一个分类。</p>
-
-<h4 id="section-21">可变类型能够在原处修改</h4>
-
-<p>主要核心类型：</p>
-
-<ul>
+<h4 id="section">换算</h4>
+<ol>
   <li>
-    <p>不可变类型（数字、字符串、元组、不可变集合）</p>
+    <p>Sanger quality score -&gt; PHRED quality scores<br />
+<strong>PHRED = Sanger quality score - 33</strong></p>
   </li>
   <li>
-    <p>可变类型（列表、字典、可变集合）</p>
+    <p>PHRED quality score -&gt;  P value the base is correct<br />
+<script type="math/tex">P = 10^{ - Q/10 }</script></p>
   </li>
-</ul>
+  <li>
+    <p>P value -&gt; qualities(Q)<br />
+<script type="math/tex">Q = -10{\log}_{10}P</script></p>
+  </li>
+</ol>
 
+<hr />
+<blockquote>
+  <p>run a program, compare output to original data, run a program, compare output, and so on.</p>
+</blockquote>
 
             </article>
         </div>
@@ -886,7 +777,7 @@
             
 
 
-  <div class="ds-thread" data-thread-key="/2016/12/06/learn-string/" data-title="第7章 认识字符串" data-url="http://liuqibao.me/2016/12/06/learn-string/"></div>
+  <div class="ds-thread" data-thread-key="/2017/10/27/sequence-data-Bioinformatics-Data-Skills/" data-title="Bioinformatics Data Skills: Chapter 10" data-url="http://liuqibao.me/2017/10/27/sequence-data-Bioinformatics-Data-Skills/"></div>
 
 <script type="text/javascript">
 var duoshuoQuery = {short_name:"Gossie"};

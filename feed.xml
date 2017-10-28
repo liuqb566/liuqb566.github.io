@@ -5,9 +5,134 @@
     <description>好记性不如写博文！</description>
     <link>http://liuqibao.me/</link>
     <atom:link href="http://liuqibao.me/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Fri, 27 Oct 2017 16:30:44 +0800</pubDate>
-    <lastBuildDate>Fri, 27 Oct 2017 16:30:44 +0800</lastBuildDate>
+    <pubDate>Sat, 28 Oct 2017 08:25:59 +0800</pubDate>
+    <lastBuildDate>Sat, 28 Oct 2017 08:25:59 +0800</lastBuildDate>
     <generator>Jekyll v3.6.0</generator>
+    
+      <item>
+        <title></title>
+        <description>
+&lt;hr /&gt;
+&lt;p&gt;第9章提到要建立range思想，在此简单记录。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;range: 某个染色体序列上有start position和end position的一段特定单链，一个基因是一个range，一个read也是一个range。&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;###寻找overlapping ranges&lt;/p&gt;
+
+&lt;p&gt;1&amp;gt; 理解不同类型的overlaps，思考对一个特定的任务，哪种类型最合适，是最重要的。
+overlaps的类型有：
+- any
+- within
+- start
+- end
+- equal&lt;br /&gt;
+其中 any 和 within 最常用&lt;/p&gt;
+
+&lt;p&gt;2&amp;gt; 为了减少比对次数，提高效率，首先要先对subjet sequence排序,称为interval tree。&lt;/p&gt;
+
+&lt;p&gt;###寻找最近的ranges，并计算距离
+###Run Length Encoding and Views&lt;br /&gt;
+为了节约内存，对覆盖度进行编码，不好理解，看原文。&lt;/p&gt;
+
+</description>
+        <pubDate>Sat, 28 Oct 2017 08:25:59 +0800</pubDate>
+        <link>http://liuqibao.me/2017/10/28/2017-10-24-thinking-ranges-Bioinformatics-Data-Skills/</link>
+        <guid isPermaLink="true">http://liuqibao.me/2017/10/28/2017-10-24-thinking-ranges-Bioinformatics-Data-Skills/</guid>
+        
+        
+      </item>
+    
+      <item>
+        <title>Bioinformatics Data Skills: Chapter 10</title>
+        <description>&lt;ul id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#the-fasta-format&quot; id=&quot;markdown-toc-the-fasta-format&quot;&gt;The FASTA Format&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#the-fastq-format&quot; id=&quot;markdown-toc-the-fastq-format&quot;&gt;The FASTQ Format&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#nucleotide-codes&quot; id=&quot;markdown-toc-nucleotide-codes&quot;&gt;Nucleotide Codes&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#base-qualities&quot; id=&quot;markdown-toc-base-qualities&quot;&gt;Base Qualities&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#section&quot; id=&quot;markdown-toc-section&quot;&gt;换算&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;the-fasta-format&quot;&gt;The FASTA Format&lt;/h3&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;格式&lt;br /&gt;
+&lt;code class=&quot;highlighter-rouge&quot;&gt;
+&amp;gt;ENSMUSG00000020122|ENSMUST00000138518              #第一行，ID信息等，以“&amp;gt;”开头
+CCCTCCTATCATGCTGTCAGTGTATCTCTAAATAGCACTCTCAACCCCCGTGAACTTGGTTATTAAAAACATGCCCAAAGTCTGGGAGCCAGGGCTGCAGGGAAATACCACAGCCTCAGTTCATCAAAACAGTTCATTGCCCAAAATGTTCTCAGCTGCAGCTTTCATGAGGTAACTCCAGGGCCCACCTGTTCTCTGGT    #第二行，序列
+&amp;gt;ENSMUSG00000020122|ENSMUST00000125984
+GAGTCAGGTTGAAGCTGCCCTGAACACTACAGAGAAGAGAGGCCTTGGTGTCCTGTTGTCTCCAGAACCCCAATATGTCTTGTGAAGGGCACACAACCCCTCAAAGGGGTGTCACTTCTTCTGATCACTTTTGTTACTGTTTACTAACTGATCCTATGAATCACTGTGTCTTCTCAGAGGCCGTGAACCACGTCTGCAAT
+&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;缺点&lt;br /&gt;
+没有非常标准的ID格式，在用正则提取的时候容易出现问题。&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;the-fastq-format&quot;&gt;The FASTQ Format&lt;/h3&gt;
+
+&lt;p&gt;FASTQ 格式是在 FASTA 格式上的扩展，增加了每个碱基的质量得分。&lt;br /&gt;
+1. 格式&lt;br /&gt;
+&lt;code class=&quot;highlighter-rouge&quot;&gt;
+@DJB775P1:248:D0MDGACXX:7:1202:12362:49613              #以“@”开头，信息行
+TGCTTACTCTGCGTTGATACCACTGCTTAGATCGGAAGAGCACACGTCTGAA    #序列
++                                                       #“+”表示序列结束
+JJJJJIIJJJJJJHIHHHGHFFFFFFCEEEEEDBD?DDDDDDBDDDABDDCA    #每个碱基得分
+@DJB775P1:248:D0MDGACXX:7:1202:12782:49716
+CTCTGCGTTGATACCACTGCTTACTCTGCGTTGATACCACTGCTTAGATCGG
++
+IIIIIIIIIIIIIIIHHHHHHFFFFFFEECCCCBCECCCCCCCCCCCCCCCC
+&lt;/code&gt;&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;缺点&lt;br /&gt;
+&lt;code class=&quot;highlighter-rouge&quot;&gt;@&lt;/code&gt;既是信息行的开头，又可以是碱基等分的质量字母，在提取的时候容易出错&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;nucleotide-codes&quot;&gt;Nucleotide Codes&lt;/h3&gt;
+
+&lt;h3 id=&quot;base-qualities&quot;&gt;Base Qualities&lt;/h3&gt;
+
+&lt;p&gt;由于每个碱基的质量得分由 ASCⅡ 值表示&lt;br /&gt;
+FASTQ quality schemes (adapted from Cock et al., 2010 with permission)&lt;br /&gt;
+|————————————–+———————-+——-+——————-+——————-|
+|Name                                  |ASCII character range |Offset |Quality score type |Quality score range|
+|:————————————-+:——————–:+:—–:+:—————–:+:—————–:|
+|Sanger, Illumina (versions 1.8 onward)|33–126                |33     |PHRED              |0–93               |
+|Solexa, early Illumina (before 1.3)   |59–126                |64     |Solexa             |5–62               |
+|Illumina (versions 1.3–1.7)           |64–126                |64     |PHRED              |0–62               |
+|————————————–+———————-+——-+——————-+——————-|&lt;/p&gt;
+
+&lt;h4 id=&quot;section&quot;&gt;换算&lt;/h4&gt;
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;Sanger quality score -&amp;gt; PHRED quality scores&lt;br /&gt;
+&lt;strong&gt;PHRED = Sanger quality score - 33&lt;/strong&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;PHRED quality score -&amp;gt;  P value the base is correct&lt;br /&gt;
+&lt;script type=&quot;math/tex&quot;&gt;P = 10^{ - Q/10 }&lt;/script&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;P value -&amp;gt; qualities(Q)&lt;br /&gt;
+&lt;script type=&quot;math/tex&quot;&gt;Q = -10{\log}_{10}P&lt;/script&gt;&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;hr /&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;run a program, compare output to original data, run a program, compare output, and so on.&lt;/p&gt;
+&lt;/blockquote&gt;
+</description>
+        <pubDate>Fri, 27 Oct 2017 00:00:00 +0800</pubDate>
+        <link>http://liuqibao.me/2017/10/27/sequence-data-Bioinformatics-Data-Skills/</link>
+        <guid isPermaLink="true">http://liuqibao.me/2017/10/27/sequence-data-Bioinformatics-Data-Skills/</guid>
+        
+        <category>bioinformatics</category>
+        
+        
+        <category>笔记</category>
+        
+      </item>
     
       <item>
         <title>linux下的中文输入问题</title>
@@ -804,614 +929,6 @@ Phred score 低于均值的有 5 个&lt;/li&gt;
         <pubDate>Wed, 26 Apr 2017 00:00:00 +0800</pubDate>
         <link>http://liuqibao.me/2017/04/26/fastqc-introdution-and-result/</link>
         <guid isPermaLink="true">http://liuqibao.me/2017/04/26/fastqc-introdution-and-result/</guid>
-        
-        <category>使用手册</category>
-        
-        
-        <category>bioinformatics</category>
-        
-      </item>
-    
-      <item>
-        <title>## vcftools 的简单使用</title>
-        <description>&lt;ul id=&quot;markdown-toc&quot;&gt;
-  &lt;li&gt;&lt;a href=&quot;#section&quot; id=&quot;markdown-toc-section&quot;&gt;1. 安装&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#section-1&quot; id=&quot;markdown-toc-section-1&quot;&gt;2. 使用&lt;/a&gt;    &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;#section-2&quot; id=&quot;markdown-toc-section-2&quot;&gt;2.2. 位点过滤参数：&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#section-3&quot; id=&quot;markdown-toc-section-3&quot;&gt;2.3. 样本过滤参数&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#section-4&quot; id=&quot;markdown-toc-section-4&quot;&gt;2.4. 基因型过滤参数&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#section-5&quot; id=&quot;markdown-toc-section-5&quot;&gt;2.5. 输出参数&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#section-6&quot; id=&quot;markdown-toc-section-6&quot;&gt;2.6. 比较参数&lt;/a&gt;&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;vcftools 是用于 VCF 和 BCF 格式的遗传变异数据的工具包。
-它的功能主要有数据统计、运行数据计算、数据过滤、数据转换。&lt;/p&gt;
-
-&lt;h3 id=&quot;section&quot;&gt;1. 安装&lt;/h3&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;git clone https://github.com/vcftools/vcftools.git
-cd vcftools
-./autogen.sh
-./configure
-make
-make install
-&lt;/div&gt;
-&lt;p&gt;如果是非 root 用户，可以使用：`./configure prefix=’Your path’&lt;/p&gt;
-
-&lt;h3 id=&quot;section-1&quot;&gt;2. 使用&lt;/h3&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;vcftools [ --vcf FILE | --gzvcf FILE | --bcf FILE] [ --out OUTPUT PREFIX ] [ FILTERING OPTIONS ] [ OUTPUT OPTIONS ]
-&lt;/div&gt;
-&lt;p&gt;#### 2.1. 基本参数：
-- 输入文件参数：
-–vcf &lt;输入文件&gt;：输入文件可以是 VCF 格式 v4.0、v4.1 和 v4.2。’-‘ 用于标准输入
---gzvcf &lt;输入文件&gt;： 读入 gzipped 压缩文件
---bcf &lt;输入文件&gt;：读入 BCF2 文件。
-- 输出文件参数：
---out &lt;输出文件&gt;：所有输出文件的文件名前缀。如果忽略，默认为 ’out.'
---stdout
--c：输出为标准输出
--temp &lt;temp_文件&gt;：将 vcftools 产生的所有临时文件输入到指定目录。&lt;/temp_文件&gt;&lt;/输出文件&gt;&lt;/输入文件&gt;&lt;/输入文件&gt;&lt;/输入文件&gt;&lt;/p&gt;
-
-&lt;h4 id=&quot;section-2&quot;&gt;2.2. 位点过滤参数：&lt;/h4&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;位置过滤
-–chr &lt;chromosome&gt; 
---not-chr &lt;chromosome&gt;&lt;/chromosome&gt;&lt;/chromosome&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;匹配或者不匹配某条染色体。可能多次使用该参数，以设定多条染色体。&lt;/p&gt;
-
-&lt;p&gt;–from-bp &lt;integer&gt; 
---to-bp &lt;integer&gt;&lt;/integer&gt;&lt;/integer&gt;&lt;/p&gt;
-
-&lt;p&gt;设定碱基的位置范围，仅与 &lt;code class=&quot;highlighter-rouge&quot;&gt;--chr&lt;/code&gt; 结合使用。可以只使用一个。&lt;/p&gt;
-
-&lt;p&gt;–positions &lt;filename&gt; 
---exclude-positions &lt;filename&gt;&lt;/filename&gt;&lt;/filename&gt;&lt;/p&gt;
-
-&lt;p&gt;使用或者不使用文件中的某些位置的碱基。输入文件的每行用 &lt;code class=&quot;highlighter-rouge&quot;&gt;\t&lt;/code&gt; 制表符分隔，允许加注释行，用 ‘#’ 开头。&lt;/p&gt;
-
-&lt;p&gt;–positions-overlap &lt;filename&gt; 
---exclude-positions-overlap &lt;filename&gt;&lt;/filename&gt;&lt;/filename&gt;&lt;/p&gt;
-
-&lt;p&gt;排除或者不排除文件中与参考等位基因重叠的碱基。&lt;/p&gt;
-
-&lt;p&gt;–bed &lt;filename&gt; 
---exclude-bed &lt;filename&gt;&lt;/filename&gt;&lt;/filename&gt;&lt;/p&gt;
-
-&lt;p&gt;Include or exclude a set of sites on the basis of a BED file. Only the first three columns (chrom, chromStart and chromEnd) are required. The BED file is expected to have a header line. A site will be kept or excluded if any part of any allele (REF or ALT) at a site is within the range of one of the BED entries.&lt;/p&gt;
-
-&lt;p&gt;–thin &lt;integer&gt;&lt;/integer&gt;&lt;/p&gt;
-
-&lt;p&gt;Thin sites so that no two sites are within the specified distance from one another.&lt;/p&gt;
-
-&lt;p&gt;–mask &lt;filename&gt; 
---invert-mask &lt;filename&gt; 
---mask-min &lt;integer&gt;&lt;/integer&gt;&lt;/filename&gt;&lt;/filename&gt;&lt;/p&gt;
-
-&lt;p&gt;These options are used to specify a FASTA-like mask file to filter with. The mask file contains a sequence of integer digits (between 0 and 9) for each position on a chromosome that specify if a site at that position should be filtered or not. 
-An example mask file would look like:
-&lt;code class=&quot;highlighter-rouge&quot;&gt;
-&amp;gt;1 
-0000011111222... 
-&amp;gt;2 
-2222211111000...
-&lt;/code&gt;
-In this example, sites in the VCF file located within the first 5 bases of the start of chromosome 1 would be kept, whereas sites at position 6 onwards would be filtered out. And sites after the 11th position on chromosome 2 would be filtered out as well. 
-The “–invert-mask” option takes the same format mask file as the “–mask” option, however it inverts the mask file before filtering with it. 
-And the “–mask-min” option specifies a threshold mask value between 0 and 9 to filter positions by. The default threshold is 0, meaning only sites with that value or lower will be kept.&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;位点过滤&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;–snp &lt;string&gt;&lt;/string&gt;&lt;/p&gt;
-
-&lt;p&gt;包含一个 SNP 位点，如 dbSNP 的 rsID。可以使用多次。&lt;/p&gt;
-
-&lt;p&gt;–snps &lt;filename&gt; 
---exclude &lt;filename&gt;&lt;/filename&gt;&lt;/filename&gt;&lt;/p&gt;
-
-&lt;p&gt;使用或者不使用文件中给出的 SNPs。文件包含一列 SNP IDs （如 dbSNP rsIDs），每行一个，不需要表头。&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;变异类型过滤
-–keep-only-indels 
-–remove-indels&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;使用或者不使用一个 indel。indel 表示任何与参考等位基因长度不同的变异。&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;FILTER flag 过滤
-–remove-filtered-all&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;根据 vcf 文件中的 FILTER flag 过滤，除了 PASS。&lt;/p&gt;
-
-&lt;p&gt;–keep-filtered &lt;string&gt; 
---remove-filtered &lt;string&gt;&lt;/string&gt;&lt;/string&gt;&lt;/p&gt;
-
-&lt;p&gt;使用或者不使用 FILTER flag 标记的所有位点。可以多次使用该参数。&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;根据 INFO 过滤&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;–keep-INFO &lt;string&gt; 
---remove-INFO &lt;string&gt;&lt;/string&gt;&lt;/string&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;根据 ALLELE 过虑&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;–maf &lt;float&gt; ：过滤大于等于该 MAF 的位点
---max-maf &lt;float&gt;：过滤小于等于该 MAF 的位点。&lt;/float&gt;&lt;/float&gt;&lt;/p&gt;
-
-&lt;p&gt;–non-ref-af &lt;float&gt; 
---max-non-ref-af &lt;float&gt; 
---non-ref-ac &lt;integer&gt; 
---max-non-ref-ac &lt;integer&gt;&lt;/integer&gt;&lt;/integer&gt;&lt;/float&gt;&lt;/float&gt;&lt;/p&gt;
-
-&lt;p&gt;–non-ref-af-any &lt;float&gt; 
---max-non-ref-af-any &lt;float&gt; 
---non-ref-ac-any &lt;integer&gt; 
---max-non-ref-ac-any &lt;integer&gt;&lt;/integer&gt;&lt;/integer&gt;&lt;/float&gt;&lt;/float&gt;&lt;/p&gt;
-
-&lt;p&gt;–mac &lt;integer&gt; ：过滤最小等位基因 count 数大于等位该参数的位点
---max-mac &lt;integer&gt;：过滤最小等位基因 count 数小于等于该参数的位点&lt;/integer&gt;&lt;/integer&gt;&lt;/p&gt;
-
-&lt;p&gt;–min-alleles &lt;integer&gt; 
---max-alleles &lt;integer&gt;&lt;/integer&gt;&lt;/integer&gt;&lt;/p&gt;
-
-&lt;p&gt;过滤等位基因数小于或者大于该参数的位点，可以结合使用，例如，&lt;code class=&quot;highlighter-rouge&quot;&gt;vcftools --vcf file1.vcf --min-alleles 2 --max-alleles 2&lt;/code&gt; 过滤只有两个等位基因的位点。&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;根据基因型数值过滤&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;–min-meanDP &lt;float&gt; 
---max-meanDP &lt;float&gt;&lt;/float&gt;&lt;/float&gt;&lt;/p&gt;
-
-&lt;p&gt;根据测序深度过滤&lt;/p&gt;
-
-&lt;p&gt;–hwe &lt;float&gt;：哈迪-温伯格平衡&lt;/float&gt;&lt;/p&gt;
-
-&lt;p&gt;Assesses sites for Hardy-Weinberg Equilibrium using an exact test, as defined by Wigginton, Cutler and Abecasis (2005). Sites with a p-value below the threshold defined by this option are taken to be out of HWE, and therefore excluded.&lt;/p&gt;
-
-&lt;p&gt;–max-missing &lt;float&gt;：根据缺失数据比例过滤&lt;/float&gt;&lt;/p&gt;
-
-&lt;p&gt;Exclude sites on the basis of the proportion of missing data (defined to be between 0 and 1, where 0 allows sites that are completely missing and 1 indicates no missing data allowed).&lt;/p&gt;
-
-&lt;p&gt;–max-missing-count &lt;integer&gt;&lt;/integer&gt;&lt;/p&gt;
-
-&lt;p&gt;Exclude sites with more than this number of missing genotypes over all individuals.&lt;/p&gt;
-
-&lt;p&gt;–phased&lt;/p&gt;
-
-&lt;p&gt;Excludes all sites that contain unphased genotypes.&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;杂项过滤
-–minQ &lt;float&gt;：根据 Quality 值过滤&lt;/float&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h4 id=&quot;section-3&quot;&gt;2.3. 样本过滤参数&lt;/h4&gt;
-
-&lt;p&gt;–indv &lt;string&gt; 
---remove-indv &lt;string&gt;&lt;/string&gt;&lt;/string&gt;&lt;/p&gt;
-
-&lt;p&gt;使用或者不使用某样本，可以多次使用该参数。&lt;/p&gt;
-
-&lt;p&gt;–keep &lt;filename&gt; 
---remove &lt;filename&gt;&lt;/filename&gt;&lt;/filename&gt;&lt;/p&gt;
-
-&lt;p&gt;使用或者移除的文件中所列的本亲。样本 ID （与 VCF 表头相同）每个一行。如果同时使用两参数，&lt;code class=&quot;highlighter-rouge&quot;&gt;--keep&lt;/code&gt; 先于 &lt;code class=&quot;highlighter-rouge&quot;&gt;--remove&lt;/code&gt; 运行。如果使用了多个文件，先保留所有 ’–keep‘ 文件中的样本，再删除其中 ’–remove‘ 所有文件中的样本。&lt;/p&gt;
-
-&lt;p&gt;–max-indv &lt;integer&gt;: Randomly thins individuals so that only the specified number are retained.&lt;/integer&gt;&lt;/p&gt;
-
-&lt;h4 id=&quot;section-4&quot;&gt;2.4. 基因型过滤参数&lt;/h4&gt;
-
-&lt;p&gt;–remove-filtered-geno-all&lt;/p&gt;
-
-&lt;p&gt;Excludes all genotypes with a FILTER flag not equal to “.” (a missing value) or PASS.&lt;/p&gt;
-
-&lt;p&gt;–remove-filtered-geno &lt;string&gt;&lt;/string&gt;&lt;/p&gt;
-
-&lt;p&gt;Excludes genotypes with a specific FILTER flag.&lt;/p&gt;
-
-&lt;p&gt;–minGQ &lt;float&gt;&lt;/float&gt;&lt;/p&gt;
-
-&lt;p&gt;Exclude all genotypes with a quality below the threshold specified. This option requires that the “GQ” FORMAT tag is specified for all sites.&lt;/p&gt;
-
-&lt;p&gt;–minDP &lt;float&gt; 
---maxDP &lt;float&gt;&lt;/float&gt;&lt;/float&gt;&lt;/p&gt;
-
-&lt;p&gt;Includes only genotypes greater than or equal to the “–minDP” value and less than or equal to the “–maxDP” value. This option requires that the “DP” FORMAT tag is specified for all sites.&lt;/p&gt;
-
-&lt;h4 id=&quot;section-5&quot;&gt;2.5. 输出参数&lt;/h4&gt;
-&lt;ul&gt;
-  &lt;li&gt;输出等位基因统计
--freq 
-–freq2&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;输出带有后缀 ’.frq‘ 文件中的每个位点的等位基因频率。第二选项禁止所有关于等位基因信息的输出。&lt;/p&gt;
-
-&lt;p&gt;–counts 
-–counts2&lt;/p&gt;
-
-&lt;p&gt;输出带有后缀 ‘.frq.count’ 文件中的原始等位基因 counts 数。第二个选项禁止所有关于等位基因信息的输出。&lt;/p&gt;
-
-&lt;p&gt;–derived&lt;/p&gt;
-
-&lt;p&gt;For use with the previous four frequency and count options only. Re-orders the output file columns so that the ancestral allele appears first. This option relies on the ancestral allele being specified in the VCF file using the AA tag in the INFO field.&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;输出深度统计&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;–depth&lt;/p&gt;
-
-&lt;p&gt;Generates a file containing the mean depth per individual. This file has the suffix “.idepth”.&lt;/p&gt;
-
-&lt;p&gt;–site-depth&lt;/p&gt;
-
-&lt;p&gt;Generates a file containing the depth per site summed across all individuals. This output file has the suffix “.ldepth”.&lt;/p&gt;
-
-&lt;p&gt;–site-mean-depth&lt;/p&gt;
-
-&lt;p&gt;Generates a file containing the mean depth per site averaged across all individuals. This output file has the suffix “.ldepth.mean”.&lt;/p&gt;
-
-&lt;p&gt;–geno-depth&lt;/p&gt;
-
-&lt;p&gt;Generates a (possibly very large) file containing the depth for each genotype in the VCF file. Missing entries are given the value -1. The file has the suffix “.gdepth”.&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;输出 LD 统计&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;–hap-r2&lt;/p&gt;
-
-&lt;p&gt;Outputs a file reporting the r2, D, and D’ statistics using phased haplotypes. These are the traditional measures of LD often reported in the population genetics literature. The output file has the suffix “.hap.ld”. This option assumes that the VCF input file has phased haplotypes.&lt;/p&gt;
-
-&lt;p&gt;–geno-r2&lt;/p&gt;
-
-&lt;p&gt;Calculates the squared correlation coefficient between genotypes encoded as 0, 1 and 2 to represent the number of non-reference alleles in each individual. This is the same as the LD measure reported by PLINK. The D and D’ statistics are only available for phased genotypes. The output file has the suffix “.geno.ld”.&lt;/p&gt;
-
-&lt;p&gt;–geno-chisq&lt;/p&gt;
-
-&lt;p&gt;If your data contains sites with more than two alleles, then this option can be used to test for genotype independence via the chi-squared statistic. The output file has the suffix “.geno.chisq”.&lt;/p&gt;
-
-&lt;p&gt;–hap-r2-positions &lt;positions list=&quot;&quot; file=&quot;&quot;&gt; 
---geno-r2-positions &lt;positions list=&quot;&quot; file=&quot;&quot;&gt;&lt;/positions&gt;&lt;/positions&gt;&lt;/p&gt;
-
-&lt;p&gt;Outputs a file reporting the r2 statistics of the sites contained in the provided file verses all other sites. The output files have the suffix “.list.hap.ld” or “.list.geno.ld”, depending on which option is used.&lt;/p&gt;
-
-&lt;p&gt;–ld-window &lt;integer&gt;&lt;/integer&gt;&lt;/p&gt;
-
-&lt;p&gt;This optional parameter defines the maximum number of SNPs between the SNPs being tested for LD in the “–hap-r2”, “–geno-r2”, and “–geno-chisq” functions.&lt;/p&gt;
-
-&lt;p&gt;–ld-window-bp &lt;integer&gt;&lt;/integer&gt;&lt;/p&gt;
-
-&lt;p&gt;This optional parameter defines the maximum number of physical bases between the SNPs being tested for LD in the “–hap-r2”, “–geno-r2”, and “–geno-chisq” functions.&lt;/p&gt;
-
-&lt;p&gt;–ld-window-min &lt;integer&gt;&lt;/integer&gt;&lt;/p&gt;
-
-&lt;p&gt;This optional parameter defines the minimum number of SNPs between the SNPs being tested for LD in the “–hap-r2”, “–geno-r2”, and “–geno-chisq” functions.&lt;/p&gt;
-
-&lt;p&gt;–ld-window-bp-min &lt;integer&gt;&lt;/integer&gt;&lt;/p&gt;
-
-&lt;p&gt;This optional parameter defines the minimum number of physical bases between the SNPs being tested for LD in the “–hap-r2”, “–geno-r2”, and “–geno-chisq” functions.&lt;/p&gt;
-
-&lt;p&gt;–min-r2 &lt;float&gt;&lt;/float&gt;&lt;/p&gt;
-
-&lt;p&gt;This optional parameter sets a minimum value for r2, below which the LD statistic is not reported by the “–hap-r2”, “–geno-r2”, and “–geno-chisq” functions.&lt;/p&gt;
-
-&lt;p&gt;–interchrom-hap-r2 
-–interchrom-geno-r2&lt;/p&gt;
-
-&lt;p&gt;Outputs a file reporting the r2 statistics for sites on different chromosomes. The output files have the suffix “.interchrom.hap.ld” or “.interchrom.geno.ld”, depending on the option used.&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;OUTPUT TRANSITION/TRANSVERSION STATISTICS&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;–TsTv &lt;integer&gt;&lt;/integer&gt;&lt;/p&gt;
-
-&lt;p&gt;Calculates the Transition / Transversion ratio in bins of size defined by this option. Only uses bi-allelic SNPs. The resulting output file has the suffix “.TsTv”.&lt;/p&gt;
-
-&lt;p&gt;–TsTv-summary&lt;/p&gt;
-
-&lt;p&gt;Calculates a simple summary of all Transitions and Transversions. The output file has the suffix “.TsTv.summary”.&lt;/p&gt;
-
-&lt;p&gt;–TsTv-by-count&lt;/p&gt;
-
-&lt;p&gt;Calculates the Transition / Transversion ratio as a function of alternative allele count. Only uses bi-allelic SNPs. The resulting output file has the suffix “.TsTv.count”.&lt;/p&gt;
-
-&lt;p&gt;–TsTv-by-qual&lt;/p&gt;
-
-&lt;p&gt;Calculates the Transition / Transversion ratio as a function of SNP quality threshold. Only uses bi-allelic SNPs. The resulting output file has the suffix “.TsTv.qual”.&lt;/p&gt;
-
-&lt;p&gt;–FILTER-summary&lt;/p&gt;
-
-&lt;p&gt;Generates a summary of the number of SNPs and Ts/Tv ratio for each FILTER category. The output file has the suffix “.FILTER.summary”.&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;输出核酸多态性统计&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;–site-pi&lt;/p&gt;
-
-&lt;p&gt;Measures nucleotide divergency on a per-site basis. The output file has the suffix “.sites.pi”.&lt;/p&gt;
-
-&lt;p&gt;–window-pi &lt;integer&gt; 
---window-pi-step &lt;integer&gt;&lt;/integer&gt;&lt;/integer&gt;&lt;/p&gt;
-
-&lt;p&gt;Measures the nucleotide diversity in windows, with the number provided as the window size. The output file has the suffix “.windowed.pi”. The latter is an optional argument used to specify the step size in between windows.&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;输出 FST 统计&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;–weir-fst-pop &lt;filename&gt;&lt;/filename&gt;&lt;/p&gt;
-
-&lt;p&gt;This option is used to calculate an Fst estimate from Weir and Cockerham’s 1984 paper. This is the preferred calculation of Fst. The provided file must contain a list of individuals (one individual per line) from the VCF file that correspond to one population. This option can be used multiple times to calculate Fst for more than two populations. These files will also be included as “–keep” options. By default, calculations are done on a per-site basis. The output file has the suffix “.weir.fst”.&lt;/p&gt;
-
-&lt;p&gt;–fst-window-size &lt;integer&gt; 
---fst-window-step &lt;integer&gt;&lt;/integer&gt;&lt;/integer&gt;&lt;/p&gt;
-
-&lt;p&gt;These options can be used with “–weir-fst-pop” to do the Fst calculations on a windowed basis instead of a per-site basis. These arguments specify the desired window size and the desired step size between windows.&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;输出其它统计&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;–het&lt;/p&gt;
-
-&lt;p&gt;Calculates a measure of heterozygosity on a per-individual basis. Specfically, the inbreeding coefficient, F, is estimated for each individual using a method of moments. The resulting file has the suffix “.het”.&lt;/p&gt;
-
-&lt;p&gt;–hardy&lt;/p&gt;
-
-&lt;p&gt;Reports a p-value for each site from a Hardy-Weinberg Equilibrium test (as defined by Wigginton, Cutler and Abecasis (2005)). The resulting file (with suffix “.hwe”) also contains the Observed numbers of Homozygotes and Heterozygotes and the corresponding Expected numbers under HWE.&lt;/p&gt;
-
-&lt;p&gt;–TajimaD &lt;integer&gt;&lt;/integer&gt;&lt;/p&gt;
-
-&lt;p&gt;Outputs Tajima’s D statistic in bins with size of the specified number. The output file has the suffix “.Tajima.D”.&lt;/p&gt;
-
-&lt;p&gt;–indv-freq-burden&lt;/p&gt;
-
-&lt;p&gt;This option calculates the number of variants within each individual of a specific frequency. The resulting file has the suffix “.ifreqburden”.&lt;/p&gt;
-
-&lt;p&gt;–LROH&lt;/p&gt;
-
-&lt;p&gt;This option will identify and output Long Runs of Homozygosity. The output file has the suffix “.LROH”. This function is experimental, and will use a lot of memory if applied to large datasets.&lt;/p&gt;
-
-&lt;p&gt;–relatedness&lt;/p&gt;
-
-&lt;p&gt;This option is used to calculate and output a relatedness statistic based on the method of Yang et al, Nature Genetics 2010 (doi:10.1038/ng.608). Specifically, calculate the unadjusted Ajk statistic. Expectation of Ajk is zero for individuals within a populations, and one for an individual with themselves. The output file has the suffix “.relatedness”.&lt;/p&gt;
-
-&lt;p&gt;–relatedness2&lt;/p&gt;
-
-&lt;p&gt;This option is used to calculate and output a relatedness statistic based on the method of Manichaikul et al., BIOINFORMATICS 2010 (doi:10.1093/bioinformatics/btq559). The output file has the suffix “.relatedness2”.&lt;/p&gt;
-
-&lt;p&gt;–site-quality&lt;/p&gt;
-
-&lt;p&gt;Generates a file containing the per-site SNP quality, as found in the QUAL column of the VCF file. This file has the suffix “.lqual”.&lt;/p&gt;
-
-&lt;p&gt;–missing-indv&lt;/p&gt;
-
-&lt;p&gt;Generates a file reporting the missingness on a per-individual basis. The file has the suffix “.imiss”.&lt;/p&gt;
-
-&lt;p&gt;–missing-site&lt;/p&gt;
-
-&lt;p&gt;Generates a file reporting the missingness on a per-site basis. The file has the suffix “.lmiss”.&lt;/p&gt;
-
-&lt;p&gt;–SNPdensity &lt;integer&gt;&lt;/integer&gt;&lt;/p&gt;
-
-&lt;p&gt;Calculates the number and density of SNPs in bins of size defined by this option. The resulting output file has the suffix “.snpden”.&lt;/p&gt;
-
-&lt;p&gt;–kept-sites&lt;/p&gt;
-
-&lt;p&gt;Creates a file listing all sites that have been kept after filtering. The file has the suffix “.kept.sites”.&lt;/p&gt;
-
-&lt;p&gt;–removed-sites&lt;/p&gt;
-
-&lt;p&gt;Creates a file listing all sites that have been removed after filtering. The file has the suffix “.removed.sites”.&lt;/p&gt;
-
-&lt;p&gt;–singletons&lt;/p&gt;
-
-&lt;p&gt;This option will generate a file detailing the location of singletons, and the individual they occur in. The file reports both true singletons, and private doubletons (i.e. SNPs where the minor allele only occurs in a single individual and that individual is homozygotic for that allele). The output file has the suffix “.singletons”.&lt;/p&gt;
-
-&lt;p&gt;–hist-indel-len&lt;/p&gt;
-
-&lt;p&gt;This option will generate a histogram file of the length of all indels (including SNPs). It shows both the count and the percentage of all indels for indel lengths that occur at least once in the input file. SNPs are considered indels with length zero. The output file has the suffix “.indel.hist”.&lt;/p&gt;
-
-&lt;p&gt;–hapcount &lt;BED file=&quot;&quot;&gt;&lt;/BED&gt;&lt;/p&gt;
-
-&lt;p&gt;This option will output the number of unique haplotypes within user specified bins, as defined by the BED file. The output file has the suffix “.hapcount”.&lt;/p&gt;
-
-&lt;p&gt;–mendel &lt;PED file=&quot;&quot;&gt;&lt;/PED&gt;&lt;/p&gt;
-
-&lt;p&gt;This option is use to report mendel errors identified in trios. The command requires a PLINK-style PED file, with the first four columns specifying a family ID, the child ID, the father ID, and the mother ID. The output of this command has the suffix “.mendel”.&lt;/p&gt;
-
-&lt;p&gt;–extract-FORMAT-info &lt;string&gt;&lt;/string&gt;&lt;/p&gt;
-
-&lt;p&gt;Extract information from the genotype fields in the VCF file relating to a specfied FORMAT identifier. The resulting output file has the suffix “.&lt;FORMAT_ID&gt;.FORMAT&quot;. For example, the following command would extract the all of the GT (i.e. Genotype) entries:&lt;/FORMAT_ID&gt;&lt;/p&gt;
-
-&lt;p&gt;vcftools –vcf file1.vcf –extract-FORMAT-info GT&lt;/p&gt;
-
-&lt;p&gt;–get-INFO &lt;string&gt;&lt;/string&gt;&lt;/p&gt;
-
-&lt;p&gt;This option is used to extract information from the INFO field in the VCF file. The &lt;string&gt; argument specifies the INFO tag to be extracted, and the option can be used multiple times in order to extract multiple INFO entries. The resulting file, with suffix &quot;.INFO&quot;, contains the required INFO information in a tab-separated table. For example, to extract the NS and DB flags, one would use the command:&lt;/string&gt;&lt;/p&gt;
-
-&lt;p&gt;vcftools –vcf file1.vcf –get-INFO NS –get-INFO DB&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;输出 VCF 格式&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;–recode 
-–recode-bcf&lt;/p&gt;
-
-&lt;p&gt;These options are used to generate a new file in either VCF or BCF from the input VCF or BCF file after applying the filtering options specified by the user. The output file has the suffix “.recode.vcf” or “.recode.bcf”. By default, the INFO fields are removed from the output file, as the INFO values may be invalidated by the recoding (e.g. the total depth may need to be recalculated if individuals are removed). This behavior may be overriden by the following options. By default, BCF files are written out as BGZF compressed files.&lt;/p&gt;
-
-&lt;p&gt;–recode-INFO &lt;string&gt; 
---recode-INFO-all&lt;/string&gt;&lt;/p&gt;
-
-&lt;p&gt;These options can be used with the above recode options to define an INFO key name to keep in the output file. This option can be used multiple times to keep more of the INFO fields. The second option is used to keep all INFO values in the original file.&lt;/p&gt;
-
-&lt;p&gt;–contigs &lt;string&gt;&lt;/string&gt;&lt;/p&gt;
-
-&lt;p&gt;This option can be used in conjuction with the –recode-bcf when the input file does not have any contig declarations. This option expects a file name with one contig header per line. These lines are included in the output file.&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;输出其它格式&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;–012&lt;/p&gt;
-
-&lt;p&gt;This option outputs the genotypes as a large matrix. Three files are produced. The first, with suffix “.012”, contains the genotypes of each individual on a separate line. Genotypes are represented as 0, 1 and 2, where the number represent that number of non-reference alleles. Missing genotypes are represented by -1. The second file, with suffix “.012.indv” details the individuals included in the main file. The third file, with suffix “.012.pos” details the site locations included in the main file.&lt;/p&gt;
-
-&lt;p&gt;–IMPUTE&lt;/p&gt;
-
-&lt;p&gt;This option outputs phased haplotypes in IMPUTE reference-panel format. As IMPUTE requires phased data, using this option also implies –phased. Unphased individuals and genotypes are therefore excluded. Only bi-allelic sites are included in the output. Using this option generates three files. The IMPUTE haplotype file has the suffix “.impute.hap”, and the IMPUTE legend file has the suffix “.impute.hap.legend”. The third file, with suffix “.impute.hap.indv”, details the individuals included in the haplotype file, although this file is not needed by IMPUTE.&lt;/p&gt;
-
-&lt;p&gt;–ldhat 
-–ldhat-geno&lt;/p&gt;
-
-&lt;p&gt;These options output data in LDhat format. This option requires the “–chr” filter option to also be used. The first option outputs phased data only, and therefore also implies “–phased” be used, leading to unphased individuals and genotypes being excluded. The second option treats all of the data as unphased, and therefore outputs LDhat files in genotype/unphased format. Two output files are generated with the suffixes “.ldhat.sites” and “.ldhat.locs”, which correspond to the LDhat “sites” and “locs” input files respectively.&lt;/p&gt;
-
-&lt;p&gt;–BEAGLE-GL 
-–BEAGLE-PL&lt;/p&gt;
-
-&lt;p&gt;These options output genotype likelihood information for input into the BEAGLE program. The VCF file is required to contain FORMAT fields with “GL” or “PL” tags, which can generally be output by SNP callers such as the GATK. Use of this option requires a chromosome to be specified via the “–chr” option. The resulting output file has the suffix “.BEAGLE.GL” or “.BEAGLE.PL” and contains genotype likelihoods for biallelic sites. This file is suitable for input into BEAGLE via the “like=” argument.&lt;/p&gt;
-
-&lt;p&gt;–plink 
-–plink-tped 
-–chrom-map&lt;/p&gt;
-
-&lt;p&gt;这些参数输出 PLINK PED 格式，产生两个文件，’.ped’ 和 ‘.map‘。仅双等位基因位点会被输出。具体请看 PLINK 说明文件。
-注意：第一个选项对大数据集很慢。用户可以作用 ’–chr‘ 参数分割文件，或者使用 ‘–plink-tped’ 参数输出 PLINK 转置格式的文件，后缀为 ‘.tped’ 和 ‘.tfam’。
-For usage with variant sites in species other than humans, the –chrom-map option may be used to specify a file name that has a tab-delimited mapping of chromosome name to a desired integer value with one line per chromosome. This file must contain a mapping for every chromosome value found in the file.&lt;/p&gt;
-
-&lt;h4 id=&quot;section-6&quot;&gt;2.6. 比较参数&lt;/h4&gt;
-
-&lt;p&gt;These options are used to compare the original variant file to another variant file and output the results. All of the diff functions require both files to contain the same chromosomes and that the files be sorted in the same order. If one of the files contains chromosomes that the other file does not, use the –not-chr filter to remove them from the analysis.&lt;/p&gt;
-
-&lt;p&gt;DIFF VCF FILE&lt;/p&gt;
-
-&lt;p&gt;–diff &lt;filename&gt; 
---gzdiff &lt;filename&gt; 
---diff-bcf &lt;filename&gt;&lt;/filename&gt;&lt;/filename&gt;&lt;/filename&gt;&lt;/p&gt;
-
-&lt;p&gt;These options compare the original input file to this specified VCF, gzipped VCF, or BCF file. These options must be specified with one additional option described below in order to specify what type of comparison is to be performed. See the examples section for typical usage.&lt;/p&gt;
-
-&lt;p&gt;DIFF OPTIONS&lt;/p&gt;
-
-&lt;p&gt;–diff-site&lt;/p&gt;
-
-&lt;p&gt;Outputs the sites that are common / unique to each file. The output file has the suffix “.diff.sites_in_files”.&lt;/p&gt;
-
-&lt;p&gt;–diff-indv&lt;/p&gt;
-
-&lt;p&gt;Outputs the individuals that are common / unique to each file. The output file has the suffix “.diff.indv_in_files”.&lt;/p&gt;
-
-&lt;p&gt;–diff-site-discordance&lt;/p&gt;
-
-&lt;p&gt;This option calculates discordance on a site by site basis. The resulting output file has the suffix “.diff.sites”.&lt;/p&gt;
-
-&lt;p&gt;–diff-indv-discordance&lt;/p&gt;
-
-&lt;p&gt;This option calculates discordance on a per-individual basis. The resulting output file has the suffix “.diff.indv”.&lt;/p&gt;
-
-&lt;p&gt;–diff-indv-map &lt;filename&gt;&lt;/filename&gt;&lt;/p&gt;
-
-&lt;p&gt;This option allows the user to specify a mapping of individual IDs in the second file to those in the first file. The program expects the file to contain a tab-delimited line containing an individual’s name in file one followed by that same individual’s name in file two with one mapping per line.&lt;/p&gt;
-
-&lt;p&gt;–diff-discordance-matrix&lt;/p&gt;
-
-&lt;p&gt;This option calculates a discordance matrix. This option only works with bi-allelic loci with matching alleles that are present in both files. The resulting output file has the suffix “.diff.discordance.matrix”.&lt;/p&gt;
-
-&lt;p&gt;–diff-switch-error&lt;/p&gt;
-
-&lt;p&gt;This option calculates phasing errors (specifically “switch errors”). This option creates an output file describing switch errors found between sites, with suffix “.diff.switch”.&lt;/p&gt;
-</description>
-        <pubDate>Mon, 24 Apr 2017 00:00:00 +0800</pubDate>
-        <link>http://liuqibao.me/2017/04/24/vcftools-introduction/</link>
-        <guid isPermaLink="true">http://liuqibao.me/2017/04/24/vcftools-introduction/</guid>
-        
-        <category>使用手册</category>
-        
-        
-        <category>bioinformatics</category>
-        
-      </item>
-    
-      <item>
-        <title>sratoolkit 工具的简单使用</title>
-        <description>&lt;p&gt;sratoolkit 是 NCBI 的一个工具包，它包含很多数据格式转换的功能：
-- Frequently Used Tools:
-fastq-dump: Convert SRA data into fastq format&lt;/p&gt;
-
-&lt;p&gt;prefetch: Allows command-line downloading of SRA, dbGaP, and ADSP data&lt;/p&gt;
-
-&lt;p&gt;sam-dump: Convert SRA data to sam format&lt;/p&gt;
-
-&lt;p&gt;sra-pileup: Generate pileup statistics on aligned SRA data&lt;/p&gt;
-
-&lt;p&gt;vdb-config: Display and modify VDB configuration information&lt;/p&gt;
-
-&lt;p&gt;vdb-decrypt: Decrypt non-SRA dbGaP data (“phenotype data”)&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Additional Tools:
-abi-dump: Convert SRA data into ABI format (csfasta / qual)&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;illumina-dump: Convert SRA data into Illumina native formats (qseq, etc.)&lt;/p&gt;
-
-&lt;p&gt;sff-dump: Convert SRA data to sff format&lt;/p&gt;
-
-&lt;p&gt;sra-stat: Generate statistics about SRA data (quality distribution, etc.)&lt;/p&gt;
-
-&lt;p&gt;vdb-dump: Output the native VDB format of SRA data.&lt;/p&gt;
-
-&lt;p&gt;vdb-encrypt: Encrypt non-SRA dbGaP data (“phenotype data”)&lt;/p&gt;
-
-&lt;p&gt;vdb-validate: Validate the integrity of downloaded SRA data&lt;/p&gt;
-
-&lt;p&gt;但是我常用的只有 fastq-dump 功能，就量将 sra 格式的压缩数据转换为 fastq 格式，我想大部分人也只用这个功能（都是被 NCBI 逼的！！）&lt;/p&gt;
-
-&lt;h3 id=&quot;section&quot;&gt;1. 安装&lt;/h3&gt;
-&lt;p&gt;sratools 的安装很简单，直接下载适合你版本的包，解压可用，不用编译，为了方便也可以放到环境变量下
-我的系统是 Ubuntu，所以：
-&lt;code class=&quot;highlighter-rouge&quot;&gt;
-wget https://ftp-trace.ncbi.nlm.nih.gov/sra/sdk/2.8.2-1/sratoolkit.2.8.2-1-ubuntu64.tar.gz
-tar zxvf sratoolkit.*
-&lt;/code&gt;
-所有的工具都在 sratoolkit 的 /bin 目录下&lt;/p&gt;
-
-&lt;h3 id=&quot;fastq-dump-&quot;&gt;2. fastq-dump 的使用&lt;/h3&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;fastq-dump [options] &amp;lt;path/file&amp;gt; [&amp;lt;path/file&amp;gt; ...]
-fastq-dump [options] &amp;lt;accession&amp;gt;
-&lt;/div&gt;
-&lt;p&gt;使用比较简单，需要注意的是对于单端测序和双端测序，软件给了不同的参数。&lt;/p&gt;
-
-&lt;p&gt;–split-file：将文件分为两个部分，后缀为相应数字。
-–split-3: 将文件分为三个部分，’&lt;em&gt;_1.fastaq’ 和 ’&lt;/em&gt;_2.fastq‘ 对双端测序数据是必有的，如果有未配对的数据，会放在 ’*。fastq‘ 文件中。&lt;/p&gt;
-
-&lt;p&gt;所以，我的理解是，测序质量较好的话，对于双端测序，这两个参数产生的结果一样，‘–split-3’ 没有产生未配对文件。
-在 biostar 上也有一些解释：
-–split-3 will output 1,2, or 3 files: 1 file means the data is not paired. 2 files means paired data with no low quality reads or reads shorter than 20bp. 3 files means paired data, but asymmetric quality or trimming.  in the case of 3 file output, most people ignore &lt;file&gt;.fastq . this is a very old formatting option introduced for phase1 of 1000genomes.  before there were many analysis or trimming utilities and SRA submissions  always contained all reads from sequencer. back then nobody wanted to throw anything away. you might want to use --split-files instead. that will give only 2 files for paired-end data. or not bother with text output and access the data directly using sra ngs apis.&lt;/file&gt;&lt;/p&gt;
-</description>
-        <pubDate>Mon, 24 Apr 2017 00:00:00 +0800</pubDate>
-        <link>http://liuqibao.me/2017/04/24/sratoolkit-instrodution/</link>
-        <guid isPermaLink="true">http://liuqibao.me/2017/04/24/sratoolkit-instrodution/</guid>
         
         <category>使用手册</category>
         
