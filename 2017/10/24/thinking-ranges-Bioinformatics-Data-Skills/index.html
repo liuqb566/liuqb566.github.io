@@ -5,14 +5,14 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Bioinformatics Data Skills Chapter 10</title>
+	<title>学习ranges思想</title>
 
 	<link rel="shortcut icon" href="/styles/images/favicon.jpg">
 	<link rel="icon" href="/styles/images/favicon.jpg">
 
 	<link rel="stylesheet" href="/styles/css/index.css">
 	<link rel="stylesheet" href="/styles/css/fontawesome/css/font-awesome.min.css">
-	<link rel="canonical" href="/2017/10/27/sequence-data-Bioinformatics-Data-Skills/">
+	<link rel="canonical" href="/2017/10/24/thinking-ranges-Bioinformatics-Data-Skills/">
 	<link rel="alternate" type="application/rss+xml" title="Gossie's daily life" href="/feed.xml">
 	
 	<meta name="description" content="">
@@ -89,8 +89,8 @@
   <div class="container">
   	
   		<!--
-		    <h1>Bioinformatics Data Skills Chapter 10</h1>
-		    <p>Post on Oct 27, 2017 by <a href="/about">Gossie</a></p>
+		    <h1>学习ranges思想</h1>
+		    <p>Post on Oct 24, 2017 by <a href="/about">Gossie</a></p>
 		-->
 		    <h1></h1>
     
@@ -102,7 +102,7 @@
   <div class="container">
   	
     	<a href="/categories/#笔记-ref">笔记</a>	/
-    	<a href="/tag/#bioinformatics-ref">bioinformatics</a>
+    	<a href="/tag/#-ref"></a>
     
   </div>
 </div>
@@ -681,92 +681,37 @@
       <div class="panel docs-content">
         <div class="wrapper">
             <header class="post-header">
-              <h1 class="post-title">Bioinformatics Data Skills Chapter 10</h1>
+              <h1 class="post-title">学习ranges思想</h1>
               <!--
-                <p class="post-meta">Oct 27, 2017</p>
+                <p class="post-meta">Oct 24, 2017</p>
               -->
-              <div class="meta">Posted on <span class="postdate">Oct 27, 2017</span> By <a target="_blank" href="http://liuqibao.me">Gossie</a></div>
+              <div class="meta">Posted on <span class="postdate">Oct 24, 2017</span> By <a target="_blank" href="http://liuqibao.me">Gossie</a></div>
               <br />
             </header>
             <article class="post-content">
-              <ul id="markdown-toc">
-  <li><a href="#the-fasta-format" id="markdown-toc-the-fasta-format">The FASTA Format</a></li>
-  <li><a href="#the-fastq-format" id="markdown-toc-the-fastq-format">The FASTQ Format</a></li>
-  <li><a href="#nucleotide-codes" id="markdown-toc-nucleotide-codes">Nucleotide Codes</a></li>
-  <li><a href="#base-qualities" id="markdown-toc-base-qualities">Base Qualities</a>    <ul>
-      <li><a href="#section" id="markdown-toc-section">换算</a></li>
-    </ul>
-  </li>
-</ul>
-
-<h3 id="the-fasta-format">The FASTA Format</h3>
-
-<ol>
-  <li>格式<br />
-<code class="highlighter-rouge">
-&gt;ENSMUSG00000020122|ENSMUST00000138518              #第一行，ID信息等，以“&gt;”开头
-CCCTCCTATCATGCTGTCAGTGTATCTCTAAATAGCACTCTCAACCCCCGTGAACTTGGTTATTAAAAACATGCCCAAAGTCTGGGAGCCAGGGCTGCAGGGAAATACCACAGCCTCAGTTCATCAAAACAGTTCATTGCCCAAAATGTTCTCAGCTGCAGCTTTCATGAGGTAACTCCAGGGCCCACCTGTTCTCTGGT    #第二行，序列
-&gt;ENSMUSG00000020122|ENSMUST00000125984
-GAGTCAGGTTGAAGCTGCCCTGAACACTACAGAGAAGAGAGGCCTTGGTGTCCTGTTGTCTCCAGAACCCCAATATGTCTTGTGAAGGGCACACAACCCCTCAAAGGGGTGTCACTTCTTCTGATCACTTTTGTTACTGTTTACTAACTGATCCTATGAATCACTGTGTCTTCTCAGAGGCCGTGAACCACGTCTGCAAT
-</code></li>
-  <li>缺点<br />
-没有非常标准的ID格式，在用正则提取的时候容易出现问题。</li>
-</ol>
-
-<h3 id="the-fastq-format">The FASTQ Format</h3>
-
-<p>FASTQ 格式是在 FASTA 格式上的扩展，增加了每个碱基的质量得分。<br />
-1. 格式<br />
-<code class="highlighter-rouge">
-@DJB775P1:248:D0MDGACXX:7:1202:12362:49613              #以“@”开头，信息行
-TGCTTACTCTGCGTTGATACCACTGCTTAGATCGGAAGAGCACACGTCTGAA    #序列
-+                                                       #“+”表示序列结束
-JJJJJIIJJJJJJHIHHHGHFFFFFFCEEEEEDBD?DDDDDDBDDDABDDCA    #每个碱基得分
-@DJB775P1:248:D0MDGACXX:7:1202:12782:49716
-CTCTGCGTTGATACCACTGCTTACTCTGCGTTGATACCACTGCTTAGATCGG
-+
-IIIIIIIIIIIIIIIHHHHHHFFFFFFEECCCCBCECCCCCCCCCCCCCCCC
-</code></p>
-
-<ol>
-  <li>缺点<br />
-<code class="highlighter-rouge">@</code>既是信息行的开头，又可以是碱基等分的质量字母，在提取的时候容易出错</li>
-</ol>
-
-<h3 id="nucleotide-codes">Nucleotide Codes</h3>
-
-<h3 id="base-qualities">Base Qualities</h3>
-
-<p>由于每个碱基的质量得分由 ASCⅡ 值表示<br />
-FASTQ quality schemes (adapted from Cock et al., 2010 with permission)<br />
-|————————————–+———————-+——-+——————-+——————-|
-|Name                                  |ASCII character range |Offset |Quality score type |Quality score range|
-|:————————————-+:——————–:+:—–:+:—————–:+:—————–:|
-|Sanger, Illumina (versions 1.8 onward)|33–126                |33     |PHRED              |0–93               |
-|Solexa, early Illumina (before 1.3)   |59–126                |64     |Solexa             |5–62               |
-|Illumina (versions 1.3–1.7)           |64–126                |64     |PHRED              |0–62               |
-|————————————–+———————-+——-+——————-+——————-|</p>
-
-<h4 id="section">换算</h4>
-<ol>
-  <li>
-    <p>Sanger quality score -&gt; PHRED quality scores<br />
-<strong>PHRED = Sanger quality score - 33</strong></p>
-  </li>
-  <li>
-    <p>PHRED quality score -&gt;  P value the base is correct<br />
-<script type="math/tex">P = 10^{ - Q/10 }</script></p>
-  </li>
-  <li>
-    <p>P value -&gt; qualities(Q)<br />
-<script type="math/tex">Q = -10{\log}_{10}P</script></p>
-  </li>
-</ol>
-
+              
 <hr />
-<blockquote>
-  <p>run a program, compare output to original data, run a program, compare output, and so on.</p>
-</blockquote>
+<p>第9章提到要建立range思想，在此简单记录。</p>
+
+<p><strong>range: 某个染色体序列上有start position和end position的一段特定单链，一个基因是一个range，一个read也是一个range。</strong></p>
+
+<p>###寻找overlapping ranges</p>
+
+<p>1&gt; 理解不同类型的overlaps，思考对一个特定的任务，哪种类型最合适，是最重要的。
+overlaps的类型有：
+- any
+- within
+- start
+- end
+- equal<br />
+其中 any 和 within 最常用</p>
+
+<p>2&gt; 为了减少比对次数，提高效率，首先要先对subjet sequence排序,称为interval tree。</p>
+
+<p>###寻找最近的ranges，并计算距离
+###Run Length Encoding and Views<br />
+为了节约内存，对覆盖度进行编码，不好理解，看原文。</p>
+
 
             </article>
         </div>
@@ -777,7 +722,7 @@ FASTQ quality schemes (adapted from Cock et al., 2010 with permission)<br />
             
 
 
-  <div class="ds-thread" data-thread-key="/2017/10/27/sequence-data-Bioinformatics-Data-Skills/" data-title="Bioinformatics Data Skills Chapter 10" data-url="http://liuqibao.me/2017/10/27/sequence-data-Bioinformatics-Data-Skills/"></div>
+  <div class="ds-thread" data-thread-key="/2017/10/24/thinking-ranges-Bioinformatics-Data-Skills/" data-title="学习ranges思想" data-url="http://liuqibao.me/2017/10/24/thinking-ranges-Bioinformatics-Data-Skills/"></div>
 
 <script type="text/javascript">
 var duoshuoQuery = {short_name:"Gossie"};
