@@ -702,23 +702,30 @@
 <h3 id="the-fasta-format">The FASTA Format</h3>
 
 <ol>
-  <li>格式<br />
-<code class="highlighter-rouge">
-&gt;ENSMUSG00000020122|ENSMUST00000138518              #第一行，ID信息等，以“&gt;”开头
+  <li>格式</li>
+</ol>
+
+<div class="highlighter-rouge">&gt;ENSMUSG00000020122|ENSMUST00000138518              #第一行，ID信息等，以“&gt;”开头
 CCCTCCTATCATGCTGTCAGTGTATCTCTAAATAGCACTCTCAACCCCCGTGAACTTGGTTATTAAAAACATGCCCAAAGTCTGGGAGCCAGGGCTGCAGGGAAATACCACAGCCTCAGTTCATCAAAACAGTTCATTGCCCAAAATGTTCTCAGCTGCAGCTTTCATGAGGTAACTCCAGGGCCCACCTGTTCTCTGGT    #第二行，序列
 &gt;ENSMUSG00000020122|ENSMUST00000125984
 GAGTCAGGTTGAAGCTGCCCTGAACACTACAGAGAAGAGAGGCCTTGGTGTCCTGTTGTCTCCAGAACCCCAATATGTCTTGTGAAGGGCACACAACCCCTCAAAGGGGTGTCACTTCTTCTGATCACTTTTGTTACTGTTTACTAACTGATCCTATGAATCACTGTGTCTTCTCAGAGGCCGTGAACCACGTCTGCAAT
-</code></li>
-  <li>缺点<br />
-没有非常标准的ID格式，在用正则提取的时候容易出现问题。</li>
+</div>
+
+<ol>
+  <li>缺点</li>
 </ol>
+
+<p>没有非常标准的ID格式，在用正则提取的时候容易出现问题。</p>
 
 <h3 id="the-fastq-format">The FASTQ Format</h3>
 
-<p>FASTQ 格式是在 FASTA 格式上的扩展，增加了每个碱基的质量得分。<br />
-1. 格式<br />
-<code class="highlighter-rouge">
-@DJB775P1:248:D0MDGACXX:7:1202:12362:49613              #以“@”开头，信息行
+<p>FASTQ 格式是在 FASTA 格式上的扩展，增加了每个碱基的质量得分。</p>
+
+<ol>
+  <li>格式</li>
+</ol>
+
+<div class="highlighter-rouge">@DJB775P1:248:D0MDGACXX:7:1202:12362:49613              #以“@”开头，信息行
 TGCTTACTCTGCGTTGATACCACTGCTTAGATCGGAAGAGCACACGTCTGAA    #序列
 +                                                       #“+”表示序列结束
 JJJJJIIJJJJJJHIHHHGHFFFFFFCEEEEEDBD?DDDDDDBDDDABDDCA    #每个碱基得分
@@ -726,19 +733,21 @@ JJJJJIIJJJJJJHIHHHGHFFFFFFCEEEEEDBD?DDDDDDBDDDABDDCA    #每个碱基得分
 CTCTGCGTTGATACCACTGCTTACTCTGCGTTGATACCACTGCTTAGATCGG
 +
 IIIIIIIIIIIIIIIHHHHHHFFFFFFEECCCCBCECCCCCCCCCCCCCCCC
-</code></p>
+</div>
 
 <ol>
-  <li>缺点<br />
-<code class="highlighter-rouge">@</code>既是信息行的开头，又可以是碱基等分的质量字母，在提取的时候容易出错</li>
+  <li>缺点</li>
 </ol>
+
+<p><code class="highlighter-rouge">@</code>既是信息行的开头，又可以是碱基等分的质量字母，在提取的时候容易出错</p>
 
 <h3 id="nucleotide-codes">Nucleotide Codes</h3>
 
 <h3 id="base-qualities">Base Qualities</h3>
 
-<p>由于每个碱基的质量得分由 ASCⅡ 值表示<br />
-FASTQ quality schemes (adapted from Cock et al., 2010 with permission)<br />
+<p>由于每个碱基的质量得分由 ASCⅡ 值表示, 早期不同的平台用的编码范围不同，现在都趋于用 Sanger 方法。</p>
+
+<p>FASTQ quality schemes (adapted from Cock et al., 2010 with permission)<br />
 |————————————–+———————-+——-+——————-+——————-|
 |Name                                  |ASCII character range |Offset |Quality score type |Quality score range|
 |:————————————-+:——————–:+:—–:+:—————–:+:—————–:|

@@ -5,8 +5,8 @@
     <description>好记性不如写博文！</description>
     <link>http://liuqibao.me/</link>
     <atom:link href="http://liuqibao.me/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sat, 28 Oct 2017 08:43:47 +0800</pubDate>
-    <lastBuildDate>Sat, 28 Oct 2017 08:43:47 +0800</lastBuildDate>
+    <pubDate>Sat, 28 Oct 2017 08:50:17 +0800</pubDate>
+    <lastBuildDate>Sat, 28 Oct 2017 08:50:17 +0800</lastBuildDate>
     <generator>Jekyll v3.6.0</generator>
     
       <item>
@@ -24,23 +24,30 @@
 &lt;h3 id=&quot;the-fasta-format&quot;&gt;The FASTA Format&lt;/h3&gt;
 
 &lt;ol&gt;
-  &lt;li&gt;格式&lt;br /&gt;
-&lt;code class=&quot;highlighter-rouge&quot;&gt;
-&amp;gt;ENSMUSG00000020122|ENSMUST00000138518              #第一行，ID信息等，以“&amp;gt;”开头
+  &lt;li&gt;格式&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&amp;gt;ENSMUSG00000020122|ENSMUST00000138518              #第一行，ID信息等，以“&amp;gt;”开头
 CCCTCCTATCATGCTGTCAGTGTATCTCTAAATAGCACTCTCAACCCCCGTGAACTTGGTTATTAAAAACATGCCCAAAGTCTGGGAGCCAGGGCTGCAGGGAAATACCACAGCCTCAGTTCATCAAAACAGTTCATTGCCCAAAATGTTCTCAGCTGCAGCTTTCATGAGGTAACTCCAGGGCCCACCTGTTCTCTGGT    #第二行，序列
 &amp;gt;ENSMUSG00000020122|ENSMUST00000125984
 GAGTCAGGTTGAAGCTGCCCTGAACACTACAGAGAAGAGAGGCCTTGGTGTCCTGTTGTCTCCAGAACCCCAATATGTCTTGTGAAGGGCACACAACCCCTCAAAGGGGTGTCACTTCTTCTGATCACTTTTGTTACTGTTTACTAACTGATCCTATGAATCACTGTGTCTTCTCAGAGGCCGTGAACCACGTCTGCAAT
-&lt;/code&gt;&lt;/li&gt;
-  &lt;li&gt;缺点&lt;br /&gt;
-没有非常标准的ID格式，在用正则提取的时候容易出现问题。&lt;/li&gt;
+&lt;/div&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;缺点&lt;/li&gt;
 &lt;/ol&gt;
+
+&lt;p&gt;没有非常标准的ID格式，在用正则提取的时候容易出现问题。&lt;/p&gt;
 
 &lt;h3 id=&quot;the-fastq-format&quot;&gt;The FASTQ Format&lt;/h3&gt;
 
-&lt;p&gt;FASTQ 格式是在 FASTA 格式上的扩展，增加了每个碱基的质量得分。&lt;br /&gt;
-1. 格式&lt;br /&gt;
-&lt;code class=&quot;highlighter-rouge&quot;&gt;
-@DJB775P1:248:D0MDGACXX:7:1202:12362:49613              #以“@”开头，信息行
+&lt;p&gt;FASTQ 格式是在 FASTA 格式上的扩展，增加了每个碱基的质量得分。&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;格式&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;@DJB775P1:248:D0MDGACXX:7:1202:12362:49613              #以“@”开头，信息行
 TGCTTACTCTGCGTTGATACCACTGCTTAGATCGGAAGAGCACACGTCTGAA    #序列
 +                                                       #“+”表示序列结束
 JJJJJIIJJJJJJHIHHHGHFFFFFFCEEEEEDBD?DDDDDDBDDDABDDCA    #每个碱基得分
@@ -48,19 +55,21 @@ JJJJJIIJJJJJJHIHHHGHFFFFFFCEEEEEDBD?DDDDDDBDDDABDDCA    #每个碱基得分
 CTCTGCGTTGATACCACTGCTTACTCTGCGTTGATACCACTGCTTAGATCGG
 +
 IIIIIIIIIIIIIIIHHHHHHFFFFFFEECCCCBCECCCCCCCCCCCCCCCC
-&lt;/code&gt;&lt;/p&gt;
+&lt;/div&gt;
 
 &lt;ol&gt;
-  &lt;li&gt;缺点&lt;br /&gt;
-&lt;code class=&quot;highlighter-rouge&quot;&gt;@&lt;/code&gt;既是信息行的开头，又可以是碱基等分的质量字母，在提取的时候容易出错&lt;/li&gt;
+  &lt;li&gt;缺点&lt;/li&gt;
 &lt;/ol&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;@&lt;/code&gt;既是信息行的开头，又可以是碱基等分的质量字母，在提取的时候容易出错&lt;/p&gt;
 
 &lt;h3 id=&quot;nucleotide-codes&quot;&gt;Nucleotide Codes&lt;/h3&gt;
 
 &lt;h3 id=&quot;base-qualities&quot;&gt;Base Qualities&lt;/h3&gt;
 
-&lt;p&gt;由于每个碱基的质量得分由 ASCⅡ 值表示&lt;br /&gt;
-FASTQ quality schemes (adapted from Cock et al., 2010 with permission)&lt;br /&gt;
+&lt;p&gt;由于每个碱基的质量得分由 ASCⅡ 值表示, 早期不同的平台用的编码范围不同，现在都趋于用 Sanger 方法。&lt;/p&gt;
+
+&lt;p&gt;FASTQ quality schemes (adapted from Cock et al., 2010 with permission)&lt;br /&gt;
 |————————————–+———————-+——-+——————-+——————-|
 |Name                                  |ASCII character range |Offset |Quality score type |Quality score range|
 |:————————————-+:——————–:+:—–:+:—————–:+:—————–:|
@@ -103,13 +112,17 @@ FASTQ quality schemes (adapted from Cock et al., 2010 with permission)&lt;br /&g
     
       <item>
         <title>学习ranges思想</title>
-        <description>
+        <description>&lt;ul id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#overlapping-ranges&quot; id=&quot;markdown-toc-overlapping-ranges&quot;&gt;寻找overlapping ranges&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#ranges&quot; id=&quot;markdown-toc-ranges&quot;&gt;寻找最近的ranges，并计算距离&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
 &lt;hr /&gt;
 &lt;p&gt;第9章提到要建立range思想，在此简单记录。&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;range: 某个染色体序列上有start position和end position的一段特定单链，一个基因是一个range，一个read也是一个range。&lt;/strong&gt;&lt;/p&gt;
 
-&lt;p&gt;###寻找overlapping ranges&lt;/p&gt;
+&lt;h3 id=&quot;overlapping-ranges&quot;&gt;寻找overlapping ranges&lt;/h3&gt;
 
 &lt;p&gt;1&amp;gt; 理解不同类型的overlaps，思考对一个特定的任务，哪种类型最合适，是最重要的。
 overlaps的类型有：
@@ -122,8 +135,8 @@ overlaps的类型有：
 
 &lt;p&gt;2&amp;gt; 为了减少比对次数，提高效率，首先要先对subjet sequence排序,称为interval tree。&lt;/p&gt;
 
-&lt;p&gt;###寻找最近的ranges，并计算距离
-###Run Length Encoding and Views&lt;br /&gt;
+&lt;h3 id=&quot;ranges&quot;&gt;寻找最近的ranges，并计算距离&lt;/h3&gt;
+&lt;p&gt;### Run Length Encoding and Views&lt;br /&gt;
 为了节约内存，对覆盖度进行编码，不好理解，看原文。&lt;/p&gt;
 
 </description>
