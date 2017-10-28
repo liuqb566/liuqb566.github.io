@@ -22,6 +22,9 @@ highlighter: rouge
 
 # Build settings
 markdown: kramdown
+Kranmdown:
+  input: GFM
+
 
 FB:
   comments :
