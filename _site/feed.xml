@@ -3,10 +3,10 @@
   <channel>
     <title></title>
     <description>好记性不如写博文！</description>
-    <link>http://liuqibao.me/</link>
-    <atom:link href="http://liuqibao.me/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sat, 28 Oct 2017 09:50:44 +0800</pubDate>
-    <lastBuildDate>Sat, 28 Oct 2017 09:50:44 +0800</lastBuildDate>
+    <link>http://localhost:4000/</link>
+    <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
+    <pubDate>Sat, 28 Oct 2017 10:12:37 +0800</pubDate>
+    <lastBuildDate>Sat, 28 Oct 2017 10:12:37 +0800</lastBuildDate>
     <generator>Jekyll v3.6.0</generator>
     
       <item>
@@ -110,8 +110,8 @@ IIIIIIIIIIIIIIIHHHHHHFFFFFFEECCCCBCECCCCCCCCCCCCCCCC
 &lt;/blockquote&gt;
 </description>
         <pubDate>Fri, 27 Oct 2017 00:00:00 +0800</pubDate>
-        <link>http://liuqibao.me/2017/10/27/sequence-data-Bioinformatics-Data-Skills/</link>
-        <guid isPermaLink="true">http://liuqibao.me/2017/10/27/sequence-data-Bioinformatics-Data-Skills/</guid>
+        <link>http://localhost:4000/2017/10/27/sequence-data-Bioinformatics-Data-Skills/</link>
+        <guid isPermaLink="true">http://localhost:4000/2017/10/27/sequence-data-Bioinformatics-Data-Skills/</guid>
         
         <category>bioinformatics</category>
         
@@ -151,8 +151,8 @@ overlaps的类型有：
 
 </description>
         <pubDate>Tue, 24 Oct 2017 00:00:00 +0800</pubDate>
-        <link>http://liuqibao.me/2017/10/24/thinking-ranges-Bioinformatics-Data-Skills/</link>
-        <guid isPermaLink="true">http://liuqibao.me/2017/10/24/thinking-ranges-Bioinformatics-Data-Skills/</guid>
+        <link>http://localhost:4000/2017/10/24/thinking-ranges-Bioinformatics-Data-Skills/</link>
+        <guid isPermaLink="true">http://localhost:4000/2017/10/24/thinking-ranges-Bioinformatics-Data-Skills/</guid>
         
         <category>bioinformatics</category>
         
@@ -181,8 +181,8 @@ export QT_IM_MODULE=&quot;fcitx&quot;
 &lt;p&gt;需要注意的是，有些软件的启动脚本在&lt;code class=&quot;highlighter-rouge&quot;&gt;/usr/bin/&lt;/code&gt;目录下，例如wps在&lt;code class=&quot;highlighter-rouge&quot;&gt;/usr/bin/wps 或 wpp 或 et&lt;/code&gt;；而Foxitreader的在安装目录下，即&lt;code class=&quot;highlighter-rouge&quot;&gt;Foxitreader/Foxitreader.sh&lt;/code&gt;&lt;/p&gt;
 </description>
         <pubDate>Wed, 28 Jun 2017 00:00:00 +0800</pubDate>
-        <link>http://liuqibao.me/2017/06/28/input-Chinese-in-linux/</link>
-        <guid isPermaLink="true">http://liuqibao.me/2017/06/28/input-Chinese-in-linux/</guid>
+        <link>http://localhost:4000/2017/06/28/input-Chinese-in-linux/</link>
+        <guid isPermaLink="true">http://localhost:4000/2017/06/28/input-Chinese-in-linux/</guid>
         
         <category>input</category>
         
@@ -285,8 +285,8 @@ python distruct.py -K 5 --input=test/testoutput_simple --output=test/testoutput_
 &lt;/code&gt;&lt;/p&gt;
 </description>
         <pubDate>Wed, 21 Jun 2017 00:00:00 +0800</pubDate>
-        <link>http://liuqibao.me/2017/06/21/faststructure-introduction/</link>
-        <guid isPermaLink="true">http://liuqibao.me/2017/06/21/faststructure-introduction/</guid>
+        <link>http://localhost:4000/2017/06/21/faststructure-introduction/</link>
+        <guid isPermaLink="true">http://localhost:4000/2017/06/21/faststructure-introduction/</guid>
         
         <category>使用手册</category>
         
@@ -346,8 +346,8 @@ mtext(text, side = 3, line = 0, outer = FALSE, at = NA,
 
 </description>
         <pubDate>Tue, 16 May 2017 00:00:00 +0800</pubDate>
-        <link>http://liuqibao.me/2017/05/16/parameter-about-gragh-in-R/</link>
-        <guid isPermaLink="true">http://liuqibao.me/2017/05/16/parameter-about-gragh-in-R/</guid>
+        <link>http://localhost:4000/2017/05/16/parameter-about-gragh-in-R/</link>
+        <guid isPermaLink="true">http://localhost:4000/2017/05/16/parameter-about-gragh-in-R/</guid>
         
         
       </item>
@@ -382,8 +382,8 @@ source .bashrc 可以在当前 shell 上更改配置。&lt;/p&gt;
 
 </description>
         <pubDate>Tue, 16 May 2017 00:00:00 +0800</pubDate>
-        <link>http://liuqibao.me/2017/05/16/problem-when-use-useradd-command/</link>
-        <guid isPermaLink="true">http://liuqibao.me/2017/05/16/problem-when-use-useradd-command/</guid>
+        <link>http://localhost:4000/2017/05/16/problem-when-use-useradd-command/</link>
+        <guid isPermaLink="true">http://localhost:4000/2017/05/16/problem-when-use-useradd-command/</guid>
         
         <category>command</category>
         
@@ -468,8 +468,8 @@ iconv -f gbk -t utf8 filename.txt -&amp;gt; filename.txt.utf8
 
 </description>
         <pubDate>Tue, 16 May 2017 00:00:00 +0800</pubDate>
-        <link>http://liuqibao.me/2017/05/16/linux-file-encoding/</link>
-        <guid isPermaLink="true">http://liuqibao.me/2017/05/16/linux-file-encoding/</guid>
+        <link>http://localhost:4000/2017/05/16/linux-file-encoding/</link>
+        <guid isPermaLink="true">http://localhost:4000/2017/05/16/linux-file-encoding/</guid>
         
         <category>format</category>
         
@@ -558,8 +558,8 @@ sudo resolvconf -u    #重启 dns，否则无法解析域名
 ```&lt;/p&gt;
 </description>
         <pubDate>Wed, 10 May 2017 00:00:00 +0800</pubDate>
-        <link>http://liuqibao.me/2017/05/10/set-static-ip-ubuntu16/</link>
-        <guid isPermaLink="true">http://liuqibao.me/2017/05/10/set-static-ip-ubuntu16/</guid>
+        <link>http://localhost:4000/2017/05/10/set-static-ip-ubuntu16/</link>
+        <guid isPermaLink="true">http://localhost:4000/2017/05/10/set-static-ip-ubuntu16/</guid>
         
         <category>internet</category>
         
@@ -603,8 +603,8 @@ wget --post-data=&quot;username=abc&amp;amp;password=123456&amp;amp;pwd=123456&a
 &lt;p&gt;最后再说一遍，一定要看清 form data 和 Request URL 的格式！！！&lt;/p&gt;
 </description>
         <pubDate>Mon, 01 May 2017 00:00:00 +0800</pubDate>
-        <link>http://liuqibao.me/2017/05/01/web-authentication-by-wget-or-curl-in-linux/</link>
-        <guid isPermaLink="true">http://liuqibao.me/2017/05/01/web-authentication-by-wget-or-curl-in-linux/</guid>
+        <link>http://localhost:4000/2017/05/01/web-authentication-by-wget-or-curl-in-linux/</link>
+        <guid isPermaLink="true">http://localhost:4000/2017/05/01/web-authentication-by-wget-or-curl-in-linux/</guid>
         
         <category>internet</category>
         
@@ -954,8 +954,8 @@ Phred score 低于均值的有 5 个&lt;/li&gt;
 
 </description>
         <pubDate>Wed, 26 Apr 2017 00:00:00 +0800</pubDate>
-        <link>http://liuqibao.me/2017/04/26/fastqc-introdution-and-result/</link>
-        <guid isPermaLink="true">http://liuqibao.me/2017/04/26/fastqc-introdution-and-result/</guid>
+        <link>http://localhost:4000/2017/04/26/fastqc-introdution-and-result/</link>
+        <guid isPermaLink="true">http://localhost:4000/2017/04/26/fastqc-introdution-and-result/</guid>
         
         <category>使用手册</category>
         
