@@ -1,8 +1,8 @@
 ---
-layout:post
-title:""
+layout: post
+title: ""
 categories: 
-tag:
+tags:
 ---
 
 * content
