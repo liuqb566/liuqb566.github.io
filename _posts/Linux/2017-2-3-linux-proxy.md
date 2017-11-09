@@ -1,8 +1,8 @@
 ---
-layout:post
-title:linux下科学上网
-categories:Linux
-tags:internet
+layout: post
+title: linux下科学上网
+categories: Linux
+tags: internet
 ---
 
 linux下实现上网代理
