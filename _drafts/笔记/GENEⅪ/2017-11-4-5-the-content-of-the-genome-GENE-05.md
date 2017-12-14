@@ -39,4 +39,25 @@ Qusetion:
 
 -----
 
+### 5.6 Eukaryotic Protein-Coding Genes Can Be Identified by the Conservation of Exons
+
+In a region **containing a gene** whose function has been conserved among a range of species,the sequence representing the polypeptide should have **two distinctive properties**:
+
+1. It must have an **open reading frame**.
+2. It is likely to have a related (**orthologous**)sequence in other species.
+
+### 5.7 The Conservation of Genome Organization Helps to Identify Genes
+
+In the **simplest cases**, the first and last exons contain the start and end of the coding region,respectively (as well as the 5' and 3' untranslated regions)
+
+In **more complex cases**, the first or last exons may have **only untranslated regions** and may therefore be more difficult to identify.
+
+### 5.8 Some Organelle Have DNA
+
+### 5.9 Organelle Genomes Are Circular DNAs That Encode Organelle Proteins
+
+### 5.10 The Chloroplast Genome Encodes Many Proteins and RNAs
+
+### 5.11 Mitochondria and Chloroplasts Evolved by Endosymbiosis
+
 

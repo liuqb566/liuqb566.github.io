@@ -118,3 +118,29 @@ with open('fastqc_summary.txt','wt') as f:
 ```
 ----
 2017-11-8
+
+
+### 增加对每项统计‘pass’ 或者‘fail'的结果整理
+```
+#summary one section is 'pass', 'warning' or 'fail'
+with open('fastqc_pass_result.txt','wt') as f:
+    header='File name'
+    row=[]
+    for zfile in zfile_list:
+        z=zipfile.ZipFile(zfile,'r')
+        path=[file for file in z.namelist() if 'summary' in file][0]
+
+        value=None
+        for line in z.open(path,'r'):
+            line=line.decode('utf8')
+            line_split=line.strip().split('\t')
+            if value is None:
+                value=line_split[2]
+            else:
+                value=value+'\t'+line_split[0]
+
+            if 'Kmer' not in header:
+                header=header+'\t'+line_split[1]
+        row.append(value)
+    print(header,'\n'.join(row),sep='\n',file=f)
+```
