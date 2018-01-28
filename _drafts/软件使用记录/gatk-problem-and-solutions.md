@@ -359,6 +359,18 @@ CombineGVCFs 无法使用多线程运行，一个缩短运行时间的方法是�
 
 ### Apply hard filters to a call set
 
+VQSR 更好，hard-filtering 较差。但是 VQSR 需要有大量的变异和已知的正确的变异位点（known snp）进行机器学习。没办法，变异较少或者非模式物种还是用 hard-filtering 吧。比没有强。。。
+
+过滤参数的选择比较困难。gatk team 给了一些参考，但是还需要结合自己的实际情况。
+
+有时间再画图比较。
+
 对没有 known SNP 的文件进行 hard filter
 
+参考：
 
+[Understanding and adapting the generic hard-filtering recommendations](https://gatkforums.broadinstitute.org/gatk/discussion/6925/understanding-and-adapting-the-generic-hard-filtering-recommendations)
+
+[I am unable to use VQSR (recalibration) to filter variants](https://gatkforums.broadinstitute.org/gatk/discussion/3225/i-am-unable-to-use-vqsr-recalibration-to-filter-variants)
+
+[(howto) Apply hard filters to a call set](https://gatkforums.broadinstitute.org/gatk/discussion/2806/howto-apply-hard-filters-to-a-call-set/p1)
